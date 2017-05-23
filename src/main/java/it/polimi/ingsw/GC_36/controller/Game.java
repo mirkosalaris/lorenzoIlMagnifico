@@ -1,12 +1,12 @@
 package it.polimi.ingsw.GC_36.controller;
 
+import it.polimi.ingsw.GC_36.Common;
 import it.polimi.ingsw.GC_36.model.Board;
 import it.polimi.ingsw.GC_36.model.DeckSet;
 
 public class Game {
 	private static ThreadLocal<Game> instance = null;
 	private Board board;
-	private static final int MAX_PERIOD = 3;
 
 	private Game() {}
 
@@ -42,7 +42,7 @@ public class Game {
 	}
 
 	private void play() {
-		for (int i = 1; i < MAX_PERIOD; i++) {
+		for (int i = 1; i < Common.NUMBER_OF_PERIODS; i++) {
 			DeckSet deckSet = board.getDeckSet(i);
 			new Period(i, deckSet).start();
 		}

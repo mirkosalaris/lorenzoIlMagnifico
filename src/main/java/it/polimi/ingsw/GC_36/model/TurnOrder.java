@@ -6,6 +6,10 @@ import java.util.List;
 public class TurnOrder {
 	List<Player> players;
 
+	public TurnOrder(List<Player> players) {
+		this.players = players;
+	}
+
 	public boolean hasNext() {
 		return !players.isEmpty();
 	}

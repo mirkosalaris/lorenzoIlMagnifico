@@ -22,10 +22,11 @@ public class Round {
 	}
 
 	private void allocateCards(Board board) {
-		allocateTerritories(board, deckSet.getTerritoriesDeck());
-		allocateBuildings(board, deckSet.getBuildingsDeck());
-		allocateCharacters(board, deckSet.getCharactersDeck());
-		allocateVentures(board, deckSet.getVenturesDeck());
+		// TODO: un-comment when data will be actually loaded
+		//		allocateTerritories(board, deckSet.getTerritoriesDeck());
+		//		allocateBuildings(board, deckSet.getBuildingsDeck());
+		//		allocateCharacters(board, deckSet.getCharactersDeck());
+		//		allocateVentures(board, deckSet.getVenturesDeck());
 	}
 
 	// TODO change this 4 methods to be just one and add modularity
@@ -51,7 +52,7 @@ public class Round {
 
 	private void executeRound(Board board) {
 		TurnOrder turnOrder = board.getTurnOrder();
-		while(turnOrder.hasNext()) {
+		while (turnOrder.hasNext()) {
 			Player player = turnOrder.getNextPlayer();
 			TurnExecutor.play(player);
 		}

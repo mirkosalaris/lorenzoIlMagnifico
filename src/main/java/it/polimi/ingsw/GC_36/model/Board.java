@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.Common;
+
 public class Board {
 
 	Die[] dice;
@@ -13,7 +15,9 @@ public class Board {
 	}
 
 	public void initialize() {
-		//TODO
+		// TODO
+		deckSets = new DeckSet[Common.NUMBER_OF_PERIODS];
+		turnOrder = new TurnOrder(null);
 	}
 
 	public void clean() {
@@ -28,6 +32,6 @@ public class Board {
 
 	public TurnOrder getTurnOrder() {
 		//TODO
-		return null;
+		return turnOrder;
 	}
 }
