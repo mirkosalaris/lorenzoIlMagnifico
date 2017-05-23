@@ -21,7 +21,9 @@ public class Board {
 	}
 
 	public DeckSet getDeckSet(int periodNumber) {
-		return deckSets[periodNumber - 1];
+		// TODO: un-comment after actual initialization of data
+		//return deckSets[periodNumber - 1];
+		return null;
 	}
 
 	public TurnOrder getTurnOrder() {

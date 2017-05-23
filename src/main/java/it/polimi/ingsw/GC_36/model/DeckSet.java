@@ -10,7 +10,7 @@ public class DeckSet {
 		return territoriesDeck;
 	}
 
-	public Deck getBuildingsDecksDeck() {
+	public Deck getBuildingsDeck() {
 		return buildingsDeck;
 	}
 
@@ -18,7 +18,7 @@ public class DeckSet {
 		return charactersDeck;
 	}
 
-	public Deck getVenturesDecksDeck() {
+	public Deck getVenturesDeck() {
 		return venturesDeck;
 	}
 }

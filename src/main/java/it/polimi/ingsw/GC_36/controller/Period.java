@@ -1,9 +1,13 @@
 package it.polimi.ingsw.GC_36.controller;
 
+import it.polimi.ingsw.GC_36.model.DeckSet;
+
 public class Period {
+	private int periodNumber;
 	final DeckSet deckSet;
 
-	public Period(DeckSet deckSet) {
+	public Period(int periodNumber, DeckSet deckSet) {
+		this.periodNumber = periodNumber;
 		this.deckSet = deckSet;
 	}
 
