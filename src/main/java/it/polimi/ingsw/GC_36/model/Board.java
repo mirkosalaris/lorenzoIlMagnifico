@@ -16,7 +16,7 @@ public class Board {
 
 	public void initialize() {
 		// TODO
-		deckSets = new DeckSet[Common.NUMBER_OF_PERIODS];
+		deckSets = new DeckSet[Common.getInstance().NUMBER_OF_PERIODS];
 		turnOrder = new TurnOrder(null);
 	}
 

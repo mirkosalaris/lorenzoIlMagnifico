@@ -4,9 +4,12 @@ import it.polimi.ingsw.GC_36.Common;
 import it.polimi.ingsw.GC_36.model.Board;
 import it.polimi.ingsw.GC_36.model.DeckSet;
 
+import java.io.File;
+
 public class Game {
 	private static ThreadLocal<Game> instance = null;
 	private Board board;
+	private Common common;
 
 	private Game() {}
 
@@ -35,6 +38,8 @@ public class Game {
 	}
 
 	private void initialize() {
+		File file = new File("common.json");
+		common = new Common(file);
 		board = new Board();
 		board.initialize();
 		// TODO: implement ModelCommunicator as in UML or change to observer
@@ -42,7 +47,7 @@ public class Game {
 	}
 
 	private void play() {
-		for (int i = 1; i < Common.NUMBER_OF_PERIODS; i++) {
+		for (int i = 1; i < common.NUMBER_OF_PERIODS; i++) {
 			DeckSet deckSet = board.getDeckSet(i);
 			new Period(i, deckSet).start();
 		}

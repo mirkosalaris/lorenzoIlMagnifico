@@ -14,36 +14,10 @@ public class Round {
 	public void startRound() {
 		// Game is a Thread-Singleton
 		Board board = Game.getInstance().getBoard();
-		allocateCards(board);
 		rollDice(board);
 		executeRound(board);
 		adjustTurnOrder(board);
 		cleanBoard(board);
-	}
-
-	private void allocateCards(Board board) {
-		// TODO: un-comment when data will be actually loaded
-		//		allocateTerritories(board, deckSet.getTerritoriesDeck());
-		//		allocateBuildings(board, deckSet.getBuildingsDeck());
-		//		allocateCharacters(board, deckSet.getCharactersDeck());
-		//		allocateVentures(board, deckSet.getVenturesDeck());
-	}
-
-	// TODO change this 4 methods to be just one and add modularity
-	private void allocateTerritories(Board board, Deck deck) {
-		// TODO impl
-	}
-
-	private void allocateBuildings(Board board, Deck deck) {
-		// TODO impl
-	}
-
-	private void allocateCharacters(Board board, Deck deck) {
-		// TODO impl
-	}
-
-	private void allocateVentures(Board board, Deck deck) {
-		// TODO impl
 	}
 
 	private void rollDice(Board board) {

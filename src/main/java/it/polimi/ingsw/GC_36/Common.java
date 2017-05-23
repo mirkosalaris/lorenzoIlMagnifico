@@ -1,38 +1,94 @@
 package it.polimi.ingsw.GC_36;
 
+import java.io.File;
+
 public final class Common {
-	public static final int NUMBER_OF_PERIODS = 3;
-	public static final Object ACTION_SPACES_IDS = new Object() {
-		public static final int COUNCIL = 1;
+	private static ThreadLocal<Common> threadInstance;
 
-		public static final int MARKET_COINS = 2;
-		public static final int MARKET_SERVANT = 3;
-		public static final int MARKET_MILITARY_COINS = 4;
-		public static final int MARKET_COUNCILS_FAVORS = 5;
+	public final int NUMBER_OF_PERIODS;
 
-		public static final int HARVEST = 6;
-		public static final int PRODUCTION = 7;
+	// AS stands for ActionSpace
+	public final int AS_COUNCIL;
 
-		public static final int TERRITORIES_1 = 8;
-		public static final int TERRITORIES_2 = 9;
-		public static final int TERRITORIES_3 = 10;
-		public static final int TERRITORIES_4 = 11;
+	public final int AS_MARKET_COINS;
+	public final int AS_MARKET_SERVANT;
+	public final int AS_MARKET_MILITARY_COINS;
+	public final int AS_MARKET_COUNCILS_FAVORS;
 
-		public static final int BUILDINGS_1 = 12;
-		public static final int BUILDINGS_2 = 13;
-		public static final int BUILDINGS_3 = 14;
-		public static final int BUILDINGS_4 = 15;
+	public final int AS_HARVEST;
+	public final int AS_PRODUCTION;
 
-		public static final int CHARACTERS_1 = 16;
-		public static final int CHARACTERS_2 = 17;
-		public static final int CHARACTERS_3 = 18;
-		public static final int CHARACTERS_4 = 19;
+	public final int AS_TERRITORIES_1;
+	public final int AS_TERRITORIES_2;
+	public final int AS_TERRITORIES_3;
+	public final int AS_TERRITORIES_4;
 
-		public static final int VENTURES_1 = 20;
-		public static final int VENTURES_2 = 21;
-		public static final int VENTURES_3 = 22;
-		public static final int VENTURES_4 = 23;
-	};
+	public final int AS_BUILDINGS_1;
+	public final int AS_BUILDINGS_2;
+	public final int AS_BUILDINGS_3;
+	public final int AS_BUILDINGS_4;
 
-	private Common() {}
+	public final int AS_CHARACTERS_1;
+	public final int AS_CHARACTERS_2;
+	public final int AS_CHARACTERS_3;
+	public final int AS_CHARACTERS_4;
+
+	public final int AS_VENTURES_1;
+	public final int AS_VENTURES_2;
+	public final int AS_VENTURES_3;
+	public final int AS_VENTURES_4;
+
+	public Common(File file) {
+		Common instance = this;
+		threadInstance = new ThreadLocal<Common> () {
+			@Override
+			protected Common initialValue() {
+				return instance;
+			}
+		};
+
+		Parser parser = new Parser(file);
+
+		NUMBER_OF_PERIODS = parser.get("number_of_periods");
+
+		AS_COUNCIL = parser.get("as_council");
+
+		AS_MARKET_COINS = parser.get("as_market_coins");
+		AS_MARKET_SERVANT = parser.get("as_market_servant");
+		AS_MARKET_MILITARY_COINS = parser.get("as_market_military_coins");
+		AS_MARKET_COUNCILS_FAVORS = parser.get("as_market_councils_favors");
+
+		AS_HARVEST = parser.get("as_harvest");
+		AS_PRODUCTION = parser.get("as_production");
+
+		AS_TERRITORIES_1 = parser.get("as_territories_1");
+		AS_TERRITORIES_2 = parser.get("as_territories_2");
+		AS_TERRITORIES_3 = parser.get("as_territories_3");
+		AS_TERRITORIES_4 = parser.get("as_territories_4");
+
+		AS_BUILDINGS_1 = parser.get("as_buildings_1");
+		AS_BUILDINGS_2 = parser.get("as_buildings_2");
+		AS_BUILDINGS_3 = parser.get("as_buildings_3");
+		AS_BUILDINGS_4 = parser.get("as_buildings_4");
+
+		AS_CHARACTERS_1 = parser.get("as_characters_1");
+		AS_CHARACTERS_2 = parser.get("as_characters_2");
+		AS_CHARACTERS_3 = parser.get("as_characters_3");
+		AS_CHARACTERS_4 = parser.get("as_characters_4");
+
+		AS_VENTURES_1 = parser.get("as_ventures_1");
+		AS_VENTURES_2 = parser.get("as_ventures_2");
+		AS_VENTURES_3 = parser.get("as_ventures_3");
+		AS_VENTURES_4 = parser.get("as_ventures_4");
+	}
+
+	public static Common getInstance() {
+		if (threadInstance == null) {
+			throw new IllegalStateException(
+					"There has to be an instance of Common");
+		} else {
+			return threadInstance.get();
+		}
+	}
 }
+
