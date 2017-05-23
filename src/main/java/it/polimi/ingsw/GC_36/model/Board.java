@@ -21,10 +21,11 @@ public class Board {
 	}
 
 	public DeckSet getDeckSet(int periodNumber) {
-		//TODO
+		return deckSets[periodNumber - 1];
 	}
 
 	public TurnOrder getTurnOrder() {
 		//TODO
+		return null;
 	}
 }
