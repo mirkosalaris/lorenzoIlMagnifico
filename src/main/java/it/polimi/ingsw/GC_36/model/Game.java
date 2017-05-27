@@ -60,6 +60,10 @@ public class Game implements Observable {
 		return board;
 	}
 
+	public Period getCurrentPeriod() {
+		return currentPeriod;
+	}
+
 	public void run() {
 		play();
 		finalScoring();

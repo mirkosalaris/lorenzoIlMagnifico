@@ -1,11 +1,12 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.controller.TurnExecutor;
-import it.polimi.ingsw.GC_36.model.*;
 
 public class Round {
-	DeckSet deckSet;
-	Game game;
+	private DeckSet deckSet;
+	private Game game;
+	private Player currentPlayer;
+
 
 	public Round(DeckSet deckSet) {
 		this.deckSet = deckSet;
@@ -46,4 +47,9 @@ public class Round {
 	private void cleanBoard(Board board) {
 		board.clean();
 	}
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
 }
