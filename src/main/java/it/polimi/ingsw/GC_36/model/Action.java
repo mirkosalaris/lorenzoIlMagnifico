@@ -8,7 +8,7 @@ public class Action {
 	ResourcesList cardPayment;
 	private List<Integer> councilPriviledgeList;
 
-	public List<Integer> getCouncilPriviledgeList(){
+	public List<Integer> getCouncilPriviledgeList() {
 		return councilPriviledgeList;
 	}
 }

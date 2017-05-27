@@ -8,6 +8,7 @@ public class ResorcelistBasedOnOwnResorces implements ImmediateEffect {
 	ResourcesList resourcesList;
 	int factor;
 	Resource resource;
+
 	@Override
 	public void applyEffect(Action action) {
 
