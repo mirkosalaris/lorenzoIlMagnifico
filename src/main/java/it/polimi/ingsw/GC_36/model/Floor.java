@@ -4,16 +4,18 @@ public class Floor {
 	private Tower associatedTower;
 	private DevelopmentCard developmentCard;
 
-	public Floor() {
-		//TODO
+	public Floor(Tower tower) {
+		this.associatedTower = tower;
+		this.developmentCard = null;
 	}
 
 	public boolean isCardTaken() {
-		//TODO
 		return (developmentCard == null) ? true : false;
 	}
 
 	public DevelopmentCard getCard() {
-		return developmentCard;
+		DevelopmentCard card = developmentCard;
+		developmentCard = null;
+		return card;
 	}
 }

@@ -1,8 +1,9 @@
 package it.polimi.ingsw.GC_36.model;
 
 import java.util.List;
+import java.util.Stack;
 
-public class Deck {
+public class Deck extends Stack {
 	String typeDevelopmentCard;
 	int period;
 	List<DevelopmentCard> developmentCardList;
