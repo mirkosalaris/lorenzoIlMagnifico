@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.model;
 
-import java.util.Collection;
 import java.util.List;
 
 public class TurnOrder {
@@ -23,7 +22,6 @@ public class TurnOrder {
 	public void adjust() {
 		// TODO
 
-		Board board = new Board();
 		// board.getActionSpaces().get(Commons.COUNCIL_ACTION_SPACE);
 	}
 }
