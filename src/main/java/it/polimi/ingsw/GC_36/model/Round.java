@@ -1,5 +1,6 @@
-package it.polimi.ingsw.GC_36.controller;
+package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.controller.TurnExecutor;
 import it.polimi.ingsw.GC_36.model.*;
 
 public class Round {
@@ -14,10 +15,15 @@ public class Round {
 	public void startRound() {
 		// Game is a Thread-Singleton
 		Board board = Game.getInstance().getBoard();
-		rollDice(board);
+		initialize(board);
 		executeRound(board);
 		adjustTurnOrder(board);
 		cleanBoard(board);
+	}
+
+	private void initialize(Board board) {
+		board.initialize(deckSet);
+		rollDice(board);
 	}
 
 	private void rollDice(Board board) {

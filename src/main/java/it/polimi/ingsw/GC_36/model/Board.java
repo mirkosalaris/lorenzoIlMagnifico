@@ -1,22 +1,24 @@
 package it.polimi.ingsw.GC_36.model;
 
-import it.polimi.ingsw.GC_36.Common;
+import it.polimi.ingsw.GC_36.Observable;
+import it.polimi.ingsw.GC_36.Observer;
 
-public class Board {
+import java.util.List;
 
+public class Board implements Observable {
 	Die[] dice;
 	TurnOrder turnOrder;
 	Player[] players;
-	DeckSet[] deckSets;
 
+	List<Observer> observerList;
 
-	public Board() {
+	public Board(List<Player> players) {
 		//TODO
 	}
 
-	public void initialize() {
+	public void initialize(DeckSet deckSet) {
 		// TODO
-		deckSets = new DeckSet[Common.getInstance().NUMBER_OF_PERIODS];
+
 		turnOrder = new TurnOrder(null);
 	}
 
@@ -24,7 +26,7 @@ public class Board {
 		//TODO
 	}
 
-	public DeckSet getDeckSet(int periodNumber) {
+	public DeckSet getDeckSet() {
 		// TODO: un-comment after actual initialization of data
 		//return deckSets[periodNumber - 1];
 		return null;
@@ -33,5 +35,15 @@ public class Board {
 	public TurnOrder getTurnOrder() {
 		//TODO
 		return turnOrder;
+	}
+
+	@Override
+	public void subscribe(Observer o) {
+
+	}
+
+	@Override
+	public void changeNotify() {
+
 	}
 }

@@ -1,6 +1,4 @@
-package it.polimi.ingsw.GC_36.controller;
-
-import it.polimi.ingsw.GC_36.model.DeckSet;
+package it.polimi.ingsw.GC_36.model;
 
 public class Period {
 	private int periodNumber;
