@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public class ResourcesList {
 	private final ResourceCounter woods, stones, servants, coins,
@@ -50,6 +51,10 @@ public class ResourcesList {
 			this.get(key).subtract(resources.get(key).getValue());
 		}
 	}
+
+	//public <T> T iterate(Function<ResourcesList,T> lambda) {
+
+
 
 
 }
