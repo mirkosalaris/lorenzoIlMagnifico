@@ -17,6 +17,6 @@ public class Main {
 		players.add(new Player());
 
 		Game game = new Game(players);
-		game.run();
+		game.start();
 	}
 }

@@ -1,9 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
-import it.polimi.ingsw.GC_36.Commons;
-import it.polimi.ingsw.GC_36.Observable;
-import it.polimi.ingsw.GC_36.Observer;
 import it.polimi.ingsw.GC_36.controller.Scorer;
+import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.parsers.DeckSetsParser;
 
 import java.io.File;
@@ -11,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Game implements Observable {
+public class Game {
 	public static final String COMMONS_FILE = "commons.json";
 	public static final String DECKSETS_FILE = "deckSets.json";
 
@@ -19,12 +17,10 @@ public class Game implements Observable {
 
 	private static ThreadLocal<Game> threadInstance = null;
 	private Board board;
-	private Commons commons;
 	private GameState currentState;
 	private Period currentPeriod;
 
-	private Set<Observer> observers = new HashSet<>();
-
+	private Set<GameObserver> observers = new HashSet<>();
 
 	public Game(List<Player> players) {
 		if (threadInstance != null)
@@ -32,8 +28,6 @@ public class Game implements Observable {
 
 		setCurrentState(GameState.STARTING);
 		board = new Board(players);
-
-		commons = new Commons(new File(COMMONS_FILE));
 
 		deckSetsParser = new DeckSetsParser(new File(DECKSETS_FILE));
 
@@ -48,9 +42,10 @@ public class Game implements Observable {
 		};
 	}
 
-	// Game is a Thread-Singleton (a singleton for each thread)
-	// this method implements it.
 	public static Game getInstance() throws IllegalStateException {
+		// Game is a Thread-Singleton (a singleton for each thread).
+		// This method implements it.
+
 		if (threadInstance == null) {
 			throw new IllegalStateException("No game instance");
 		}
@@ -65,32 +60,45 @@ public class Game implements Observable {
 		return currentPeriod;
 	}
 
+	public void newPeriod(int periodNumber) {
+		// TODO how do we check that this method will be called just three
+		// times?
+
+		DeckSet deckSet = deckSetsParser.get(periodNumber);
+		currentPeriod = new Period(periodNumber, deckSet);
+
+		newPeriodNotify();
+	}
+
 	public GameState getState() {
 		return currentState;
 	}
 
-	private void setCurrentState(GameState currentState) {
-		this.currentState = currentState;
-		changeNotify();
+	public void start() {
+		play();
 	}
 
-	public void run() {
-		play();
-		finalScoring();
-		setCurrentState(GameState.FINISHED);
+	public void subscribe(GameObserver o) {
+		observers.add(o);
 	}
 
 	private void play() {
 		setCurrentState(GameState.PLAYING);
-		for (int periodNumber = 1;
+
+		/*
+		// TODO: delete
+		 for (int periodNumber = 1;
 		     periodNumber < commons.NUMBER_OF_PERIODS;
 		     periodNumber++) {
 
-			DeckSet deckSet = deckSetsParser.get(periodNumber);
-			currentPeriod = new Period(periodNumber, deckSet);
+
 			currentPeriod.start();
-		}
-		// TODO: check if this is all
+		}*/
+	}
+
+	private void setCurrentState(GameState currentState) {
+		this.currentState = currentState;
+		newStateNotify();
 	}
 
 	private void finalScoring() {
@@ -98,17 +106,19 @@ public class Game implements Observable {
 
 		// TODO: impl the action to communicate the winner
 		Scorer.calculate();
+
+		setCurrentState(GameState.FINISHED);
 	}
 
-	@Override
-	public void subscribe(Observer o) {
-		observers.add(o);
+	private void newStateNotify() {
+		for (GameObserver o : observers) {
+			o.update(currentState);
+		}
 	}
 
-	@Override
-	public void changeNotify() {
-		for (Observer o : observers) {
-			o.update();
+	private void newPeriodNotify() {
+		for (GameObserver o : observers) {
+			o.update(currentPeriod);
 		}
 	}
 }

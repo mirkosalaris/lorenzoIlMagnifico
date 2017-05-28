@@ -1,6 +1,6 @@
 package it.polimi.ingsw.GC_36.model;
 
-import it.polimi.ingsw.GC_36.Observer;
+import it.polimi.ingsw.GC_36.observers.GameObserver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,21 +48,31 @@ public class GameTest {
 	}
 
 	@Test
-	public void run() throws Exception {
-		// the only thing you can test is that after run the field state
-		// should be set to GameState.FINISHED
-		game.run();
+	public void start() throws Exception {
+		// the only thing you can test is that after start the field state
+		// should be set to GameState.PLAYING
+		game.start();
 		final Field field = game.getClass().getDeclaredField("currentState");
 		field.setAccessible(true);
 		assertEquals("Game state is wrong after finishing running",
-				field.get(game), GameState.FINISHED);
+				field.get(game), GameState.PLAYING);
 	}
 
 	@Test
 	public void subscribe() throws Exception {
-		Observer o1 = () -> {
+		GameObserver o1 = new GameObserver() {
+			@Override
+			public void update(GameState newState) {}
+
+			@Override
+			public void update(Period newPeriod) {}
 		};
-		Observer o2 = () -> {
+		GameObserver o2 = new GameObserver() {
+			@Override
+			public void update(GameState newState) {}
+
+			@Override
+			public void update(Period period) {}
 		};
 
 		game.subscribe(o1);
@@ -71,25 +81,30 @@ public class GameTest {
 		final Field fieldList = game.getClass().getDeclaredField("observers");
 		fieldList.setAccessible(true);
 
-		Set<Observer> set = (Set<Observer>) fieldList.get(game);
+		Set<GameObserver> set = (Set<GameObserver>) fieldList.get(game);
 		assertTrue(set.contains(o1) && set.contains(o2));
 	}
 
 	@Test
-	public void changeNotifyCalled() throws Exception {
+	public void newStateNotifyCalled() throws Exception {
+		// check if newStateNotify is being called correctly
+
+		// at the end both cells have to be true
 		Boolean obValue[] = new Boolean[2];
 
-		Observer o1 = new Observer() {
+		GameObserver o1 = new GameObserver() {
 			@Override
-			public void update() {
-				obValue[0] = true;
-			}
+			public void update(GameState newState) {obValue[0] = true;}
+
+			@Override
+			public void update(Period newPeriod) {}
 		};
-		Observer o2 = new Observer() {
+		GameObserver o2 = new GameObserver() {
 			@Override
-			public void update() {
-				obValue[1] = true;
-			}
+			public void update(GameState newState) {obValue[1] = true;}
+
+			@Override
+			public void update(Period newPeriod) {}
 		};
 
 		game.subscribe(o1);
@@ -101,20 +116,27 @@ public class GameTest {
 
 		method.invoke(game, GameState.FINISHED);
 
-		assertTrue(obValue[0] && obValue[1]);
+		assertTrue(obValue[0]);
+		assertTrue(obValue[1]);
 	}
 
 	@Test
-	public void changeNotifyCalledJustOnce() throws Exception {
+	public void newStateNotifyCalledJustOnce() throws Exception {
+		// check if the notify is called just once per each observer
+
 		// can't use a simple counter because it must be final. So our counter
 		// is a List and his size is the counter value
 		List<Integer> updatedCounter = new ArrayList<>();
 
-		Observer o1 = new Observer() {
+		GameObserver o1 = new GameObserver() {
 			@Override
-			public void update() {
+			public void update(GameState newState) {
 				updatedCounter.add(0);
 			}
+
+			@Override
+			public void update(Period newPeriod) {}
+
 		};
 
 		game.subscribe(o1);
@@ -126,6 +148,65 @@ public class GameTest {
 		method.setAccessible(true);
 
 		method.invoke(game, GameState.FINISHED);
+
+		assertTrue(updatedCounter.size() == 1);
+	}
+
+	@Test
+	public void newPeriodNotifyCalled() throws Exception {
+		// check if newPeriodNotify is being called correctly
+
+		// at the end both cells have to be true
+		Boolean obValue[] = new Boolean[2];
+
+		GameObserver o1 = new GameObserver() {
+			@Override
+			public void update(GameState newState) {}
+
+			@Override
+			public void update(Period newPeriod) {obValue[0] = true;}
+		};
+		GameObserver o2 = new GameObserver() {
+			@Override
+			public void update(GameState newState) {}
+
+			@Override
+			public void update(Period newPeriod) {obValue[1] = true;}
+		};
+
+		game.subscribe(o1);
+		game.subscribe(o2);
+
+		game.newPeriod(1);
+
+		assertTrue(obValue[0]);
+		assertTrue(obValue[1]);
+	}
+
+	@Test
+	public void newPeriodNotifyCalledJustOnce() throws Exception {
+		// check if the notify is called just once per each observer
+
+		// can't use a simple counter because it must be final. So our counter
+		// is a List and his size is the counter value
+		List<Integer> updatedCounter = new ArrayList<>();
+
+		GameObserver o1 = new GameObserver() {
+			@Override
+			public void update(GameState newState) {}
+
+			@Override
+			public void update(Period newPeriod) {
+				updatedCounter.add(0);
+			}
+
+		};
+
+		game.subscribe(o1);
+		game.subscribe(o1);
+		game.subscribe(o1);
+
+		game.newPeriod(1);
 
 		assertTrue(updatedCounter.size() == 1);
 	}

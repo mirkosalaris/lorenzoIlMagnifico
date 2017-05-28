@@ -14,6 +14,6 @@ public class Parser {
 
 	public Object get(String s) {
 		// TODO impl
-		return 0;
+		return null;
 	}
 }
