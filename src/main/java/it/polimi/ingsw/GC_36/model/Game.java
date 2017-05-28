@@ -7,8 +7,9 @@ import it.polimi.ingsw.GC_36.controller.Scorer;
 import it.polimi.ingsw.GC_36.parsers.DeckSetsParser;
 
 import java.io.File;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game implements Observable {
 	public static final String COMMONS_FILE = "commons.json";
@@ -22,14 +23,14 @@ public class Game implements Observable {
 	private GameState currentState;
 	private Period currentPeriod;
 
-	private List<Observer> observers = new LinkedList<>();
+	private Set<Observer> observers = new HashSet<>();
 
 
 	public Game(List<Player> players) {
 		if (threadInstance != null)
 			throw new IllegalStateException("A game instance already exists");
 
-		currentState = GameState.STARTING;
+		setCurrentState(GameState.STARTING);
 		board = new Board(players);
 
 		commons = new Commons(new File(COMMONS_FILE));
@@ -64,21 +65,23 @@ public class Game implements Observable {
 		return currentPeriod;
 	}
 
+	public GameState getState() {
+		return currentState;
+	}
+
+	private void setCurrentState(GameState currentState) {
+		this.currentState = currentState;
+		changeNotify();
+	}
+
 	public void run() {
 		play();
 		finalScoring();
-		currentState = GameState.FINISHED;
+		setCurrentState(GameState.FINISHED);
 	}
 
-	// TODO delete this method if not needed
-	/*private void initialize() {
-		board.initialize();
-		// TODO: implement ModelCommunicator as in UML or change to observer
-		// pattern
-	}*/
-
 	private void play() {
-		currentState = GameState.PLAYING;
+		setCurrentState(GameState.PLAYING);
 		for (int periodNumber = 1;
 		     periodNumber < commons.NUMBER_OF_PERIODS;
 		     periodNumber++) {
@@ -91,7 +94,7 @@ public class Game implements Observable {
 	}
 
 	private void finalScoring() {
-		currentState = GameState.SCORING;
+		setCurrentState(GameState.SCORING);
 
 		// TODO: impl the action to communicate the winner
 		Scorer.calculate();

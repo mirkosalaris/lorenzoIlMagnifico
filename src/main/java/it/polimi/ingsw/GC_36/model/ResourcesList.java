@@ -59,6 +59,7 @@ public class ResourcesList {
 		}
 	}
 
+	// TODO
 	//public <T> T iterate(Function<ResourcesList,T> lambda) {
 
 

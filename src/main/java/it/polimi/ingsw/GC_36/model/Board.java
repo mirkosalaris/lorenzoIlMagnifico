@@ -3,14 +3,16 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Observable;
 import it.polimi.ingsw.GC_36.Observer;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Board implements Observable {
 	Die[] dice;
 	TurnOrder turnOrder;
 	Player[] players;
 
-	List<Observer> observerList;
+	private Set<Observer> observers = new HashSet<>();
 
 	public Board(List<Player> players) {
 		//TODO
@@ -39,11 +41,13 @@ public class Board implements Observable {
 
 	@Override
 	public void subscribe(Observer o) {
-
+		observers.add(o);
 	}
 
 	@Override
 	public void changeNotify() {
-
+		for (Observer o : observers) {
+			o.update();
+		}
 	}
 }

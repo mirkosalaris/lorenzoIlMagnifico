@@ -8,13 +8,13 @@ import it.polimi.ingsw.GC_36.model.ResourcesList;
 import java.util.HashSet;
 import java.util.List;
 
-public class ImmediateCouncilPriviledges implements ImmediateEffect {
+public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	private boolean mustDiffer;
 	private Integer numberOfPriviledges;
 	private CouncilPriviledge councilPriviledge;
 
-	public ImmediateCouncilPriviledges(Integer numberOfPriviledges,
-	                                   boolean mustDiffer) {
+	public ImmediateCouncilPrivileges(Integer numberOfPriviledges,
+	                                  boolean mustDiffer) {
 		this.numberOfPriviledges = numberOfPriviledges;
 		this.mustDiffer = mustDiffer;
 	}
@@ -48,8 +48,8 @@ public class ImmediateCouncilPriviledges implements ImmediateEffect {
 	}
 
 	private boolean allDifferent(List<Integer> list) {
-		HashSet<Integer> set = new HashSet<Integer>(list);
-		return (list.size() == set.size());
+		HashSet<Integer> set = new HashSet<>(list);
+		return list.size() == set.size();
 
 	}
 

@@ -4,13 +4,11 @@ import it.polimi.ingsw.GC_36.controller.TurnExecutor;
 
 public class Round {
 	private DeckSet deckSet;
-	private Game game;
 	private Player currentPlayer;
 
 
 	public Round(DeckSet deckSet) {
 		this.deckSet = deckSet;
-		game = Game.getInstance();
 	}
 
 	public void startRound() {
@@ -32,9 +30,15 @@ public class Round {
 	}
 
 	private void executeRound(Board board) {
+		// TODO URGENT
+		// change this whole logic, it has to work with ONLY observer pattern,
+		// no direct calling of methods, just set currentPlayer and then
+		// notify. Think about who has to call round.changeCurrentPlayer() etc.
+
 		TurnOrder turnOrder = board.getTurnOrder();
 		while (turnOrder.hasNext()) {
 			Player player = turnOrder.getNextPlayer();
+			setCurrentPlayer(player);
 			TurnExecutor.play(player);
 		}
 		// TODO check if this is the whole implementation
@@ -52,4 +56,7 @@ public class Round {
 		return currentPlayer;
 	}
 
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
 }

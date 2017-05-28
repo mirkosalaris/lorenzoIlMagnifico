@@ -8,10 +8,13 @@ public abstract class CardType {
 
 	@Override
 	public boolean equals(Object o) {
+		if (o == null)
+			return false;
+
 		return this.getClass().equals(o.getClass());
 	}
 
-	public static class TerritorieCard extends CardType {
+	public static class TerritoryCard extends CardType {
 	}
 
 	public static class BuildingCard extends CardType {

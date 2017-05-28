@@ -1,9 +1,8 @@
 package it.polimi.ingsw.GC_36.model;
 
 import java.util.List;
-import java.util.Stack;
 
-public class Deck extends Stack {
+public class Deck {
 	String typeDevelopmentCard;
 	int period;
 	List<DevelopmentCard> developmentCardList;
@@ -16,7 +15,9 @@ public class Deck extends Stack {
 	}
 
 	public DevelopmentCard popCard() {
-		//TODO
-		return null;
+		DevelopmentCard card = developmentCardList.get(
+				developmentCardList.size());
+		developmentCardList.remove(developmentCardList.size());
+		return card;
 	}
 }

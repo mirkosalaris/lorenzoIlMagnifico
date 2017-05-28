@@ -4,7 +4,7 @@ import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.Resource;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 
-public class ResorcelistBasedOnOwnResorces implements ImmediateEffect {
+public class ResorcelistBasedOnOwnedResorces implements ImmediateEffect {
 	ResourcesList resourcesList;
 	int factor;
 	Resource resource;

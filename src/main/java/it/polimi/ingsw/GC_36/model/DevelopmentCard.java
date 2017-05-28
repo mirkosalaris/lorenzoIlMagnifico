@@ -1,17 +1,21 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
+import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
+
 public class DevelopmentCard {
 
-	private String type;
+	private CardType type;
 	private int period;
 	private String name;
 	private ResourcesList requirementsList;
-	private Effect immediateEffect, permanentEffect;
+	private ImmediateEffect immediateEffect;
+	private PermanentEffect permanentEffect;
 
-	public DevelopmentCard(String type, int period, String name,
+	public DevelopmentCard(CardType type, int period, String name,
 	                       ResourcesList requirementsList,
-	                       Effect immediateEffect,
-	                       Effect permanentEffect) {
+	                       ImmediateEffect immediateEffect,
+	                       PermanentEffect permanentEffect) {
 		this.type = type;
 		this.period = period;
 		this.name = name;
@@ -28,11 +32,11 @@ public class DevelopmentCard {
 		return requirementsList;
 	}
 
-	public Effect getImmediateEffect() {
+	public ImmediateEffect getImmediateEffect() {
 		return immediateEffect;
 	}
 
-	public Effect getPermanentEffect() {
+	public PermanentEffect getPermanentEffect() {
 		return permanentEffect;
 	}
 
