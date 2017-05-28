@@ -10,7 +10,6 @@ public class ResourceCounter {
 
 	public int getValue() {
 		return value;
-
 	}
 
 	public void subtract(int fee) {

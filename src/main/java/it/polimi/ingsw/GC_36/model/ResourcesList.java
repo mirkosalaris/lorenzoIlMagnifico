@@ -21,6 +21,14 @@ public class ResourcesList {
 		this.victoryPoints = new ResourceCounter(victoryPoints);
 		this.faithPoints = new ResourceCounter(faithPoints);
 		this.militaryPoints = new ResourceCounter(militaryPoints);
+
+		map.put(new Resource.Wood(), this.woods);
+		map.put(new Resource.Stone(), this.stones);
+		map.put(new Resource.Servant(), this.servants);
+		map.put(new Resource.Coins(), this.coins);
+		map.put(new Resource.VictoryPoints(), this.victoryPoints);
+		map.put(new Resource.FaithPoints(), this.faithPoints);
+		map.put(new Resource.MilitaryPoints(), this.militaryPoints);
 	}
 
 	public ResourceCounter get(Resource r) {
