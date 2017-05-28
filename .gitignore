@@ -138,3 +138,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/java,linux,windows,intellij
+
+# Library patch
+!lib/*
+!.idea/libraries/
