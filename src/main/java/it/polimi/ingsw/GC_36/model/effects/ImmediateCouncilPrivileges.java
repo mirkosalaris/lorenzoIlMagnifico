@@ -1,7 +1,7 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
 import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.CouncilPriviledge;
+import it.polimi.ingsw.GC_36.model.CouncilPrivilege;
 import it.polimi.ingsw.GC_36.model.Game;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 
@@ -10,12 +10,12 @@ import java.util.List;
 
 public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	private boolean mustDiffer;
-	private Integer numberOfPriviledges;
-	private CouncilPriviledge councilPriviledge;
+	private Integer numberOfPrivileges;
+	private CouncilPrivilege councilPrivilege;
 
-	public ImmediateCouncilPrivileges(Integer numberOfPriviledges,
+	public ImmediateCouncilPrivileges(Integer numberOfPrivileges,
 	                                  boolean mustDiffer) {
-		this.numberOfPriviledges = numberOfPriviledges;
+		this.numberOfPrivileges = numberOfPrivileges;
 		this.mustDiffer = mustDiffer;
 	}
 
@@ -25,19 +25,19 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	//le aggiunge alla personal board altrimenti throw exception
 	@Override
 	public void applyEffect(Action action) {
-		if (numberOfPriviledges.equals(
-				action.getCouncilPriviledgeList().size()))
+		if (!numberOfPrivileges.equals(
+				action.getCouncilPrivilegeList().size()))
 			//TODO:eccezione
 			if ((mustDiffer) && (!allDifferent(
-					action.getCouncilPriviledgeList()))) {
+					action.getCouncilPrivilegeList()))) {
 
 				//TODO:mossa non valida
 			} else {
 				//aggiungi risorse
-				for (Integer key : action.getCouncilPriviledgeList()) {
+				for (Integer key : action.getCouncilPrivilegeList()) {
 
-					ResourcesList favor = councilPriviledge.getResourcesList(
-							action.getCouncilPriviledgeList().get(key));
+					ResourcesList favor = councilPrivilege.getResourcesList(
+							action.getCouncilPrivilegeList().get(key));
 
 					Game.getInstance().getCurrentPeriod().getCurrentRound()
 							.getCurrentPlayer().getPersonalBoard()

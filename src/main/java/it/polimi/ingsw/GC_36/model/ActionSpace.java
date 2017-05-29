@@ -1,14 +1,21 @@
 package it.polimi.ingsw.GC_36.model;
 
 public class ActionSpace {
-
+	private int id;
 	private boolean free;
 	private int requiredActionValue;
-	private ResourcesList resourcesList; //requisiti o ricompensa?
+	private ResourcesList requiredResourcesList;
 	private Floor associatedFlor;
 
-	public ActionSpace() {
-		//TODO
+
+	public ActionSpace(int id, boolean free, int requiredActionValue,
+	                   ResourcesList requiredResourcesList,
+	                   Floor associatedFlor) {
+		this.id = id;
+		this.free = free;
+		this.requiredActionValue = requiredActionValue;
+		this.requiredResourcesList = requiredResourcesList;
+		this.associatedFlor = associatedFlor;
 	}
 
 	public boolean isAvailable() {
@@ -19,8 +26,8 @@ public class ActionSpace {
 		return requiredActionValue;
 	}
 
-	public ResourcesList getResourcesList() {
-		return resourcesList;
+	public ResourcesList getRequiredResourcesList() {
+		return requiredResourcesList;
 	}
 
 	public boolean isInTower() {

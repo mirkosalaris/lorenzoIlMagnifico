@@ -45,7 +45,7 @@ public class ResourcesList {
 
 	//ceck if every Resourcecounter is >= than the coupled ones
 	// in the ResourcesList passed by arguments
-	public boolean ceckResources(ResourcesList resources) {
+	public boolean checkResources(ResourcesList resources) {
 		for (Resource key : this.map.keySet()) {
 			if (this.get(key).getValue() >= resources.get(key).getValue())
 				return false;
