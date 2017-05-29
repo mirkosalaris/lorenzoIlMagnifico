@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.parsers;
 
+import it.polimi.ingsw.GC_36.model.ActionSpace;
+
 import java.io.File;
 
 public class Parser {
@@ -13,6 +15,11 @@ public class Parser {
 	}
 
 	public Object get(String s) {
+		// TODO impl
+		return null;
+	}
+
+	public static ActionSpace getActionSpace(int ID) {
 		// TODO impl
 		return null;
 	}
