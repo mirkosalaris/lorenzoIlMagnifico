@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GameTest {
 	Game game;
@@ -29,22 +28,70 @@ public class GameTest {
 
 	@After
 	public void tearDown() throws Exception {
+		// reset threadInstance to be able to instantiate game again
+
 		Field field = game.getClass().getDeclaredField("threadInstance");
 		field.setAccessible(true);
+
 		field.set(game, null);
 	}
 
 	@Test
 	public void getInstance() throws Exception {
-		assertEquals(game, Game.getInstance());
+		assertEquals("game retrieved in wrong way", game, Game.getInstance());
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void getInstanceException() throws Exception {
+		tearDown();
+		// now there is no instance of Game class
+
+		Game.getInstance();
 	}
 
 	@Test
 	public void getBoard() throws Exception {
-		final Field field = game.getClass().getDeclaredField("board");
+		Field field = game.getClass().getDeclaredField("board");
 		field.setAccessible(true);
 		assertEquals("board retrieved in wrong way", field.get(game),
 				game.getBoard());
+	}
+
+	@Test
+	public void getCurrentPeriod() throws Exception {
+		final Field field = game.getClass().getDeclaredField("currentPeriod");
+		field.setAccessible(true);
+		assertEquals("currentPeriod retrieved in wrong way", field.get(game),
+				game.getCurrentPeriod());
+	}
+
+	@Test
+	public void newPeriod() throws Exception {
+		// check if the currentPeriod change for real
+
+		final Field field = game.getClass().getDeclaredField("currentPeriod");
+		field.setAccessible(true);
+
+		Period oldPeriod = (Period) field.get(game);
+		game.newPeriod(0);
+		Period currentPeriod = (Period) field.get(game);
+
+		assertNotEquals(oldPeriod, currentPeriod);
+	}
+
+	@Test
+	public void getState() throws Exception {
+		final Field field = game.getClass().getDeclaredField("currentState");
+		field.setAccessible(true);
+		assertEquals("Game state is retrieved in the wrong way",
+				field.get(game), game.getState());
+
+		game.start();
+		// now the gameState should have changed (but we don't have to test if
+		// it has changed, it is just to do a second check)
+
+		assertEquals("Game state is retrieved in the wrong way",
+				field.get(game), game.getState());
 	}
 
 	@Test
@@ -60,6 +107,9 @@ public class GameTest {
 
 	@Test
 	public void subscribe() throws Exception {
+		// check if subscribe actually add observers to the set of observers
+		// The check is done with two observers, just to be sure
+
 		GameObserver o1 = new GameObserver() {
 			@Override
 			public void update(GameState newState) {}
