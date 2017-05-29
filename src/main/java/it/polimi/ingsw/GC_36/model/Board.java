@@ -10,18 +10,20 @@ import java.util.Set;
 public class Board implements Observable {
 	Die[] dice;
 	TurnOrder turnOrder;
-	Player[] players;
+	List<Player> players;
 
 	private Set<Observer> observers = new HashSet<>();
 
 	public Board(List<Player> players) {
 		//TODO
+
+		this.players = players;
 	}
 
 	public void initialize(DeckSet deckSet) {
 		// TODO
 
-		turnOrder = new TurnOrder(null);
+		turnOrder = new TurnOrder(players);
 	}
 
 	public void clean() {

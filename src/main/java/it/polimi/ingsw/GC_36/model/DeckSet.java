@@ -4,16 +4,16 @@ import java.util.List;
 
 public class DeckSet {
 	int period;
-	List<DeckSet> deckSetList;
+	List<Deck> deckList;
 	private Deck territoriesDeck;
 	private Deck buildingsDeck;
 	private Deck charactersDeck;
 	private Deck venturesDeck;
 
 	public DeckSet(int period,
-	               List<DeckSet> deckSetList) {
+	               List<Deck> deckList) {
 		this.period = period;
-		this.deckSetList = deckSetList;
+		this.deckList = deckList;
 	}
 
 	public Deck getTerritoriesDeck() {
