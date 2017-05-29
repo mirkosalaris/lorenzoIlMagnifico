@@ -3,9 +3,12 @@ package it.polimi.ingsw.GC_36.model;
 public class Player {
 	private PersonalBoard personalBoard;
 	private FamilyMember[] familyMembers;
+	private PlayerState currentState;
 
 	public Player() {
-		//TODO
+		// TODO
+
+		currentState = PlayerState.WAITING;
 	}
 
 	public PersonalBoard getPersonalBoard() {

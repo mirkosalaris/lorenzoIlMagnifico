@@ -3,14 +3,13 @@ package it.polimi.ingsw.GC_36.model;
 import java.util.List;
 
 public class Deck {
-	CardType typeDevelopmentCard;
+	CardType type;
 	int period;
 	List<DevelopmentCard> developmentCardList;
 
-	public Deck(CardType type
-			, int period,
-			    List<DevelopmentCard> developmentCardList) {
-		this.typeDevelopmentCard = type;
+	public Deck(CardType type, int period,
+	            List<DevelopmentCard> developmentCardList) {
+		this.type = type;
 		this.period = period;
 		this.developmentCardList = developmentCardList;
 	}

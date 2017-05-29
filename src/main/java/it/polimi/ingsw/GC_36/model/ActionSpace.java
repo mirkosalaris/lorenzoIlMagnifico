@@ -37,4 +37,8 @@ public class ActionSpace {
 	public Floor getAssociatedFlor() {
 		return associatedFlor;
 	}
+
+	public void reset() {
+		// TODO impl
+	}
 }
