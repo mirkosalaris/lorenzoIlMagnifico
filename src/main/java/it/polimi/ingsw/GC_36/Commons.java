@@ -7,38 +7,42 @@ import java.io.File;
 public final class Commons {
 	private static ThreadLocal<Commons> threadInstance;
 
-	public final int NUMBER_OF_PERIODS;
+	public static final int NUMBER_OF_PERIODS = 1;
 
 	// ActionSpaces
-	public final int AS_COUNCIL;
+	public static final int AS_COUNCIL = 0;
 
-	public final int AS_MARKET_COINS;
-	public final int AS_MARKET_SERVANT;
-	public final int AS_MARKET_MILITARY_COINS;
-	public final int AS_MARKET_COUNCILS_FAVORS;
+	public static final int AS_TERRITORIES_1 = 1;
+	public static final int AS_TERRITORIES_2 = 2;
+	public static final int AS_TERRITORIES_3 = 3;
+	public static final int AS_TERRITORIES_4 = 4;
 
-	public final int AS_HARVEST;
-	public final int AS_PRODUCTION;
+	public static final int AS_BUILDINGS_1 = 5;
+	public static final int AS_BUILDINGS_2 = 6;
+	public static final int AS_BUILDINGS_3 = 7;
+	public static final int AS_BUILDINGS_4 = 8;
 
-	public final int AS_TERRITORIES_1;
-	public final int AS_TERRITORIES_2;
-	public final int AS_TERRITORIES_3;
-	public final int AS_TERRITORIES_4;
+	public static final int AS_CHARACTERS_1 = 9;
+	public static final int AS_CHARACTERS_2 = 10;
+	public static final int AS_CHARACTERS_3 = 11;
+	public static final int AS_CHARACTERS_4 = 12;
 
-	public final int AS_BUILDINGS_1;
-	public final int AS_BUILDINGS_2;
-	public final int AS_BUILDINGS_3;
-	public final int AS_BUILDINGS_4;
+	public static final int AS_VENTURES_1 = 13;
+	public static final int AS_VENTURES_2 = 14;
+	public static final int AS_VENTURES_3 = 15;
+	public static final int AS_VENTURES_4 = 16;
 
-	public final int AS_CHARACTERS_1;
-	public final int AS_CHARACTERS_2;
-	public final int AS_CHARACTERS_3;
-	public final int AS_CHARACTERS_4;
+	public static final int AS_HARVEST = 17;
+	public static final int AS_HARVEST_BIG = 18;
 
-	public final int AS_VENTURES_1;
-	public final int AS_VENTURES_2;
-	public final int AS_VENTURES_3;
-	public final int AS_VENTURES_4;
+	public static final int AS_PRODUCTION = 19;
+	public static final int AS_PRODUCTION_BIG = 20;
+
+	public static final int AS_MARKET_COINS = 21;
+	public static final int AS_MARKET_SERVANT = 22;
+	public static final int AS_MARKET_MILITARY_COINS = 23;
+	public static final int AS_MARKET_COUNCILS_FAVORS = 24;
+
 
 	public Commons(File file) {
 		// save this instance to be referable from static context
@@ -54,39 +58,7 @@ public final class Commons {
 
 		Parser parser = new Parser(file);
 
-		NUMBER_OF_PERIODS = (int) parser.get("number_of_periods");
-
-		AS_COUNCIL = (int) parser.get("as_council");
-
-		AS_MARKET_COINS = (int) parser.get("as_market_coins");
-		AS_MARKET_SERVANT = (int) parser.get("as_market_servant");
-		AS_MARKET_MILITARY_COINS = (int) parser.get
-				("as_market_military_coins");
-		AS_MARKET_COUNCILS_FAVORS = (int) parser.get(
-				"as_market_councils_favors");
-
-		AS_HARVEST = (int) parser.get("as_harvest");
-		AS_PRODUCTION = (int) parser.get("as_production");
-
-		AS_TERRITORIES_1 = (int) parser.get("as_territories_1");
-		AS_TERRITORIES_2 = (int) parser.get("as_territories_2");
-		AS_TERRITORIES_3 = (int) parser.get("as_territories_3");
-		AS_TERRITORIES_4 = (int) parser.get("as_territories_4");
-
-		AS_BUILDINGS_1 = (int) parser.get("as_buildings_1");
-		AS_BUILDINGS_2 = (int) parser.get("as_buildings_2");
-		AS_BUILDINGS_3 = (int) parser.get("as_buildings_3");
-		AS_BUILDINGS_4 = (int) parser.get("as_buildings_4");
-
-		AS_CHARACTERS_1 = (int) parser.get("as_characters_1");
-		AS_CHARACTERS_2 = (int) parser.get("as_characters_2");
-		AS_CHARACTERS_3 = (int) parser.get("as_characters_3");
-		AS_CHARACTERS_4 = (int) parser.get("as_characters_4");
-
-		AS_VENTURES_1 = (int) parser.get("as_ventures_1");
-		AS_VENTURES_2 = (int) parser.get("as_ventures_2");
-		AS_VENTURES_3 = (int) parser.get("as_ventures_3");
-		AS_VENTURES_4 = (int) parser.get("as_ventures_4");
+		// TODO
 	}
 
 	public static Commons getInstance() {
