@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PeriodTest {
 	Period period;
@@ -45,7 +44,7 @@ public class PeriodTest {
 		Round oldRound = (Round) field.get(period);
 		period.advance();
 		Round newRound = (Round) field.get(period);
-		assertEquals(oldRound, newRound);
+		assertNotEquals(oldRound, newRound);
 	}
 
 	@Test
