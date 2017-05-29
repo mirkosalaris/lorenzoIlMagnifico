@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.model;
 
-import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.PeriodObserver;
 import org.junit.After;
 import org.junit.Before;
@@ -12,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PeriodTest {
 	Period period;
@@ -38,12 +38,14 @@ public class PeriodTest {
 
 	@Test
 	public void advance() throws Exception {
+		// check if the currentRound change for real
 		Field field = period.getClass().getDeclaredField("currentRound");
 		field.setAccessible(true);
 
 		Round oldRound = (Round) field.get(period);
 		period.advance();
-		assertEquals(field.get(period), period.getCurrentRound());
+		Round newRound = (Round) field.get(period);
+		assertEquals(oldRound, newRound);
 	}
 
 	@Test
