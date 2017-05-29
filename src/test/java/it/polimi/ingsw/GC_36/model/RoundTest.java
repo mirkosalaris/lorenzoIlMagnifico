@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.model;
 
-import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.RoundObserver;
 import org.junit.After;
 import org.junit.Before;
@@ -83,6 +82,15 @@ public class RoundTest {
 
 	}
 
+	@Test(expected = IllegalStateException.class)
+	public void advanceException() throws Exception {
+		Field field = round.getClass().getDeclaredField("currentState");
+		field.setAccessible(true);
+		field.set(round, RoundState.FINALIZING);
+		advance();
+
+	}
+
 
 	@Test
 	public void getCurrentPlayer() throws Exception {
@@ -94,7 +102,7 @@ public class RoundTest {
 
 	@Test
 	public void subscribe() throws Exception {
-		RoundObserver o1= new RoundObserver() {
+		RoundObserver o1 = new RoundObserver() {
 			@Override
 			public void update(RoundState newState) {
 
@@ -105,7 +113,7 @@ public class RoundTest {
 
 			}
 		};
-		RoundObserver o2=new RoundObserver() {
+		RoundObserver o2 = new RoundObserver() {
 			@Override
 			public void update(RoundState newState) {
 
@@ -125,5 +133,6 @@ public class RoundTest {
 		Set<RoundObserver> set = (Set<RoundObserver>) fieldList.get(round);
 		assertTrue(set.contains(o1) && set.contains(o2));
 	}
+
 
 }
