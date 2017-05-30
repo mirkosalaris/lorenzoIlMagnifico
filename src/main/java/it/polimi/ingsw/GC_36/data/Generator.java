@@ -1,8 +1,10 @@
 package it.polimi.ingsw.GC_36.data;
 
-import com.google.gson.Gson;
-import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.model.CardType;
+import it.polimi.ingsw.GC_36.model.DevelopmentCard;
+import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
+import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,53 +12,51 @@ import java.util.Scanner;
 
 public class Generator {
 
-	public ResourcesList buildRequirements() {
+	public List<ResourcesList> buildRequirements() {
 		int woods, stones, servants, coins, victoryPoints, faithPoints,
 				militaryPoints;
+		List<ResourcesList> requirements = new ArrayList<>();
+
+		String choose;
 		Scanner input = new Scanner(System.in);
+		do {
+			System.out.print("Insert woods: ");
+			woods = Integer.parseInt(input.nextLine());
+			System.out.print("Insert stones: ");
+			stones = Integer.parseInt(input.nextLine());
+			System.out.print("Insert servants: ");
+			servants = Integer.parseInt(input.nextLine());
+			System.out.print("Insert coins: ");
+			coins = Integer.parseInt(input.nextLine());
+			System.out.print("Insert vitoryPoints: ");
+			victoryPoints = Integer.parseInt(input.nextLine());
+			System.out.print("Insert faithPoints: ");
+			faithPoints = Integer.parseInt(input.nextLine());
+			System.out.print("Insert militaryPoints: ");
+			militaryPoints = Integer.parseInt(input.nextLine());
 
-		System.out.print("Insert woods: ");
-		woods = Integer.parseInt(input.nextLine());
-		System.out.print("Insert stones: ");
-		stones = Integer.parseInt(input.nextLine());
-		System.out.print("Insert servants: ");
-		servants = Integer.parseInt(input.nextLine());
-		System.out.print("Insert coins: ");
-		coins = Integer.parseInt(input.nextLine());
-		System.out.print("Insert vitoryPoints: ");
-		victoryPoints = Integer.parseInt(input.nextLine());
-		System.out.print("Insert faithPoints: ");
-		faithPoints = Integer.parseInt(input.nextLine());
-		System.out.print("Insert militaryPoints: ");
-		militaryPoints = Integer.parseInt(input.nextLine());
-
-		ResourcesList requirements = new ResourcesList(woods, stones, servants,
-				coins, victoryPoints, faithPoints,
-				militaryPoints);
-
+			requirements.add(new ResourcesList());
+			System.out.print("Finish?   ");
+			choose = input.nextLine();
+		} while (choose.equals("n"));
 		return requirements;
 	}
 
-/*
-	private DevelopmentCard buildDevelopmentCard(String type, int period) {
+	private DevelopmentCard buildDevelopmentCard(CardType type, int period) {
 		String name;
 		Scanner input = new Scanner(System.in);
 
 		System.out.print("Insert name: ");
 		name = input.nextLine();
 
-		ResourcesList requirements = buildRequirements();
+		List<ResourcesList> requirements = this.buildRequirements();
+		ImmediateEffect immediateEffect = null;
+		PermanentEffect permanentEffect = null;
 
-		//buil permanent effect
-		Effect immediateEffect = null, permanentEffect = null; //TODO fix
-
-		DevelopmentCard developmentCard = new DevelopmentCard(type, period,
-				name,
-				requirements, immediateEffect, permanentEffect);
-
-		return developmentCard;
+		return new DevelopmentCard(type, period, name, requirements,
+				immediateEffect, permanentEffect);
 	}
-
+/*
 	//take a period and make all cart of that period.
 	//dovrebbe prendere un tipo? add type and remove from buildDeckSet
 	private Deck buildDeck(String typeDevelopmentCard, int period) {
