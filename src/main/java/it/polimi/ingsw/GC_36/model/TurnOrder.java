@@ -3,16 +3,14 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Observable;
 import it.polimi.ingsw.GC_36.Observer;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TurnOrder implements Observable {
 	List<Player> players;
 	Set<Observer> observers = new HashSet<>();
 
-	public TurnOrder(List<Player> players) {
-		this.players = players;
+	public TurnOrder(Map<PlayerColor, Player> players) {
+		this.players = new ArrayList<>(players.values());
 	}
 
 	public boolean hasNext() {

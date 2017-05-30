@@ -6,9 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -20,11 +18,13 @@ public class RoundTest {
 
 	@Before
 	public void setUp() throws Exception {
-		List<Player> players = new ArrayList<>();
-		player = new Player();
-		//please let players have only one player for the right execution of
-		// the test "advanceHasPlayer"
-		players.add(player);
+		Map<PlayerColor, Player> players = new HashMap<>();
+
+		// DO NOT CHANGE, let 'players' have only one player for the right
+		// execution of the test "advanceHasPlayer"
+		player = new Player(PlayerColor.BLUE, null);
+		players.put(PlayerColor.BLUE, player);
+
 		game = new Game(players);
 
 		int currentPeriod = 1;
@@ -45,9 +45,9 @@ public class RoundTest {
 		field.set(game, null);
 	}
 
-	//check the transition from STARTING to PLAYING
 	@Test
 	public void advanceStToPl() throws Exception {
+		//check the transition from STARTING to PLAYING
 		round.advance();
 		final Field field = round.getClass().getDeclaredField("currentState");
 		field.setAccessible(true);

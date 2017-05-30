@@ -2,10 +2,13 @@ package it.polimi.ingsw.GC_36.model;
 
 public class FamilyMember {
 	private boolean Available;
+	private PlayerColor color;
 	private Die die;
 
-	public FamilyMember(Die die) {
-		this.die = die;
+	public FamilyMember(PlayerColor color, DieColor dieColor) {
+		// TODO get the right die from board
+		this.color = color;
+		//this.die = die;
 	}
 
 	public int getValue() {
@@ -24,8 +27,12 @@ public class FamilyMember {
 		this.Available = false;
 	}
 
-	public Color getColor() {
-		return die.getColor();
+	public PlayerColor getColor() {
+		return color;
+	}
+
+	public DieColor getDieColor() {
+		return die.getDieColor();
 	}
 }
 

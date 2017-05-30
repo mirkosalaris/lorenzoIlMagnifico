@@ -1,7 +1,7 @@
 package it.polimi.ingsw.GC_36;
 
 import it.polimi.ingsw.GC_36.model.ActionSpace;
-import it.polimi.ingsw.GC_36.model.Color;
+import it.polimi.ingsw.GC_36.model.DieColor;
 import it.polimi.ingsw.GC_36.model.Die;
 import it.polimi.ingsw.GC_36.parsers.Parser;
 
@@ -81,11 +81,11 @@ public final class Commons {
 		}
 	}
 
-	public static Map<Integer, Die> diceInitializer() {
-		Map<Integer, Die> dice = new HashMap<>();
-		dice.put(BLACK_DIE, new Die(Color.BLACK));
-		dice.put(ORANGE_DIE, new Die(Color.ORANGE));
-		dice.put(WHITE_DIE, new Die(Color.WHITE));
+	public static Map<DieColor, Die> diceInitializer() {
+		Map<DieColor, Die> dice = new HashMap<>();
+		dice.put(DieColor.BLACK, new Die(DieColor.BLACK));
+		dice.put(DieColor.ORANGE, new Die(DieColor.ORANGE));
+		dice.put(DieColor.WHITE, new Die(DieColor.WHITE));
 
 		return dice;
 	}

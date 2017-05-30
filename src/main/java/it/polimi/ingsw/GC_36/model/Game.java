@@ -6,7 +6,7 @@ import it.polimi.ingsw.GC_36.parsers.DeckSetsParser;
 
 import java.io.File;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Game {
@@ -22,12 +22,13 @@ public class Game {
 
 	private Set<GameObserver> observers = new HashSet<>();
 
-	public Game(List<Player> players) {
+	public Game(Map<PlayerColor, Player> players) {
 		if (threadInstance != null)
 			throw new IllegalStateException("A game instance already exists");
 
 		setCurrentState(GameState.STARTING);
-		board = new Board(players);
+		board = new Board();
+		board.setPlayers(players);
 
 		deckSetsParser = new DeckSetsParser(new File(DECKSETS_FILE));
 

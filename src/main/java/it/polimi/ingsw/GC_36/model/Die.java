@@ -2,16 +2,16 @@ package it.polimi.ingsw.GC_36.model;
 
 public class Die {
 
-	private Color color;
+	private DieColor dieColor;
 	private int value;
 
-	public Die(Color color) {
-		this.color = color;
+	public Die(DieColor dieColor) {
+		this.dieColor = dieColor;
 	}
 
-	public Color getColor() {
+	public DieColor getDieColor() {
 
-		return color;
+		return dieColor;
 	}
 
 	public int getValue() {

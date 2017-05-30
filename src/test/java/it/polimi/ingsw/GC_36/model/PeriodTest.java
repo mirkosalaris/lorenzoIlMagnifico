@@ -7,9 +7,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -19,9 +17,11 @@ public class PeriodTest {
 
 	@Before
 	public void setUp() throws Exception {
-		List<Player> players = new ArrayList<>();
-		players.add(new Player());
-		players.add(new Player());
+		Map<PlayerColor, Player> players = new HashMap<>();
+
+		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE, null));
+		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE, null));
+
 		game = new Game(players);
 
 		DeckSet deckSet = new DeckSet(1, null);
