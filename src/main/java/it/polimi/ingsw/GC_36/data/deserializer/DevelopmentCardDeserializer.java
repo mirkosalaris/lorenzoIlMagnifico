@@ -1,4 +1,4 @@
-package it.polimi.ingsw.GC_36.data.deserializer;
+/*package it.polimi.ingsw.GC_36.data.deserializer;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -45,3 +45,4 @@ public class DevelopmentCardDeserializer
 
 }
 
+*/

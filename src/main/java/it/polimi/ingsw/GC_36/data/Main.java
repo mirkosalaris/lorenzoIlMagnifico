@@ -1,5 +1,5 @@
 package it.polimi.ingsw.GC_36.data;
-
+/*
 public class Main {
 	private Main() {}
 
@@ -45,6 +45,7 @@ public class Main {
 		ResourcesList requirements= deserializeString.fromJson
 		(serializedString, ResourcesList.class);
 		System.out.println(requirements.get(new Resource.Wood()).getValue());
-		*/
+
 	}
 }
+*/

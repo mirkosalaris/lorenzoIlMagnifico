@@ -3,17 +3,19 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.util.List;
+
 public class DevelopmentCard {
 
 	private CardType type;
 	private int period;
 	private String name;
-	private ResourcesList requirementsList;
+	private List<ResourcesList> requirementsList;
 	private ImmediateEffect immediateEffect;
 	private PermanentEffect permanentEffect;
 
 	public DevelopmentCard(CardType type, int period, String name,
-	                       ResourcesList requirementsList,
+	                       List<ResourcesList> requirementsList,
 	                       ImmediateEffect immediateEffect,
 	                       PermanentEffect permanentEffect) {
 		this.type = type;
@@ -28,7 +30,7 @@ public class DevelopmentCard {
 		return name;
 	}
 
-	public ResourcesList getRequirements() {
+	public List<ResourcesList> getRequirements() {
 		return requirementsList;
 	}
 

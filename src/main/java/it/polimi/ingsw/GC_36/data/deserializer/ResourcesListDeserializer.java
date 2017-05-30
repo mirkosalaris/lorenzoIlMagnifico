@@ -1,3 +1,4 @@
+/*
 package it.polimi.ingsw.GC_36.data.deserializer;
 
 import com.google.gson.JsonDeserializationContext;
@@ -35,3 +36,4 @@ public class ResourcesListDeserializer
 		//		faithPoints, militaryPoints);
 	}
 }
+*/

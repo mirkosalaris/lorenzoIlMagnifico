@@ -1,4 +1,6 @@
+/*
 package it.polimi.ingsw.GC_36.data;
+
 
 import it.polimi.ingsw.GC_36.model.CardType;
 import it.polimi.ingsw.GC_36.model.DevelopmentCard;
@@ -56,7 +58,7 @@ public class Generator {
 		return new DevelopmentCard(type, period, name, requirements,
 				immediateEffect, permanentEffect);
 	}
-/*
+
 	//take a period and make all cart of that period.
 	//dovrebbe prendere un tipo? add type and remove from buildDeckSet
 	private Deck buildDeck(String typeDevelopmentCard, int period) {
@@ -118,5 +120,7 @@ public class Generator {
 
 	public void iWantToBeSmart() {
 	}
-	*/
+
 }
+
+*/

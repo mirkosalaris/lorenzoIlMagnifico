@@ -1,3 +1,4 @@
+/*
 package it.polimi.ingsw.GC_36.data;
 
 import com.google.gson.Gson;
@@ -23,7 +24,7 @@ public class Encoder {
 		String serializedString = developmentCardGson.toJson(developmentCard);
 		return serializedString;
 	}
-	*/
+
 	public <T> String build(T element) {
 		Gson gson = new Gson();
 		String serializedString = gson.toJson(element);
@@ -36,3 +37,4 @@ public class Encoder {
 		return serializedString;
 	}
 }
+*/

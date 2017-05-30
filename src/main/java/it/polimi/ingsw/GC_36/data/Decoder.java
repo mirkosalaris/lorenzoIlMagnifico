@@ -1,3 +1,4 @@
+/*
 package it.polimi.ingsw.GC_36.data;
 
 import com.google.gson.Gson;
@@ -40,3 +41,4 @@ public class Decoder {
 	}
 
 }
+*/
