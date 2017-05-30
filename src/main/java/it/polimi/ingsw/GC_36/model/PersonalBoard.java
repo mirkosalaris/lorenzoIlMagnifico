@@ -25,7 +25,8 @@ public class PersonalBoard {
 	}
 
 	public void payResources(ResourcesList resources) {
-		resourcesList.checkResources(resources);
+		// TODO: change it to actually check
+		resourcesList.checkEnoughResources(resources);
 		resourcesList.subtractResources(resources);
 	}
 
