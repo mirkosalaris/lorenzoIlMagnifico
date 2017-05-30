@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.controller.Scorer;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.parsers.DeckSetsParser;
@@ -22,14 +23,16 @@ public class Game {
 
 	private Set<GameObserver> observers = new HashSet<>();
 
-	public Game(Map<PlayerColor, Player> players) {
+	public Game() {
+		// instantiate Commons, for later use of other classes
+		Commons common = new Commons(new File(COMMONS_FILE));
+
 		if (threadInstance != null)
 			throw new IllegalStateException("A game instance already exists");
 
 		setCurrentState(GameState.STARTING);
-		board = new Board();
-		board.setPlayers(players);
 
+		board = new Board();
 		deckSetsParser = new DeckSetsParser(new File(DECKSETS_FILE));
 
 		// save this instance to be referable from static context
@@ -51,6 +54,11 @@ public class Game {
 			throw new IllegalStateException("No game instance");
 		}
 		return threadInstance.get();
+	}
+
+	// TODO: test
+	public void setPlayers(Map<PlayerColor, Player> players) {
+		board.initPlayers(players);
 	}
 
 	public Board getBoard() {

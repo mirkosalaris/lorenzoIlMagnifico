@@ -18,22 +18,24 @@ public class RoundTest {
 
 	@Before
 	public void setUp() throws Exception {
+		game = new Game();
+
 		Map<PlayerColor, Player> players = new HashMap<>();
 
 		// DO NOT CHANGE, let 'players' have only one player for the right
 		// execution of the test "advanceHasPlayer"
-		player = new Player(PlayerColor.BLUE, null);
+		player = new Player(PlayerColor.BLUE);
 		players.put(PlayerColor.BLUE, player);
 
-		game = new Game(players);
+		game.setPlayers(players);
 
 		int currentPeriod = 1;
-		CardType cardType = new CardType.BuildingCard();
+		CardType cardType = CardType.BUILDING;
 		List<DevelopmentCard> developmentCardList = new ArrayList<>();
 		List<Deck> deckList = new ArrayList<>();
 		deckList.add(new Deck(cardType, currentPeriod, developmentCardList));
 
-		DeckSet deckSet = new DeckSet(currentPeriod, deckList);
+		DeckSet deckSet = new DeckSet(currentPeriod);
 		round = new Round(deckSet);
 
 	}

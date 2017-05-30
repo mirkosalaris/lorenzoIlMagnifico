@@ -1,34 +1,31 @@
 package it.polimi.ingsw.GC_36.model;
 
-import java.util.List;
+import it.polimi.ingsw.GC_36.Commons;
+
+import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class DeckSet {
 	int period;
-	List<Deck> deckList;
-	private Deck territoriesDeck;
-	private Deck buildingsDeck;
-	private Deck charactersDeck;
-	private Deck venturesDeck;
+	EnumMap<CardType, Deck> decks;
 
-	public DeckSet(int period,
-	               List<Deck> deckList) {
+	public DeckSet(int period) {
+		decks = Commons.getInstance().getDeckSet(period);
+
+		// TODO delete when parser is implemented
+		decks = new EnumMap<>(CardType.class);
+		decks.put(CardType.TERRITORY,
+				new Deck(CardType.TERRITORY, period, new ArrayList<>()));
+		decks.put(CardType.BUILDING,
+				new Deck(CardType.BUILDING, period, new ArrayList<>()));
+		decks.put(CardType.CHARACTER,
+				new Deck(CardType.CHARACTER, period, new ArrayList<>()));
+		decks.put(CardType.VENTURE,
+				new Deck(CardType.VENTURE, period, new ArrayList<>()));
 		this.period = period;
-		this.deckList = deckList;
 	}
 
-	public Deck getTerritoriesDeck() {
-		return territoriesDeck;
-	}
-
-	public Deck getBuildingsDeck() {
-		return buildingsDeck;
-	}
-
-	public Deck getCharactersDeck() {
-		return charactersDeck;
-	}
-
-	public Deck getVenturesDeck() {
-		return venturesDeck;
+	public Deck getDeck(CardType cardType) {
+		return decks.get(cardType);
 	}
 }

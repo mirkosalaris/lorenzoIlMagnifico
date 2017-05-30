@@ -1,18 +1,19 @@
 package it.polimi.ingsw.GC_36;
 
-import it.polimi.ingsw.GC_36.model.ActionSpace;
-import it.polimi.ingsw.GC_36.model.DieColor;
-import it.polimi.ingsw.GC_36.model.Die;
+import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.parsers.Parser;
 
 import java.io.File;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class Commons {
+	private final Parser parser;
 	private static ThreadLocal<Commons> threadInstance;
 
 	public static final int NUMBER_OF_PERIODS = 1;
+	public static final int NUMBER_OF_FLOORS = 4;
 
 	// Dice
 	public static final int BLACK_DIE = 1;
@@ -67,7 +68,7 @@ public final class Commons {
 		};
 
 
-		Parser parser = new Parser(file);
+		parser = new Parser(file);
 
 		// TODO
 	}
@@ -81,8 +82,8 @@ public final class Commons {
 		}
 	}
 
-	public static Map<DieColor, Die> diceInitializer() {
-		Map<DieColor, Die> dice = new HashMap<>();
+	public static EnumMap<DieColor, Die> diceInitializer() {
+		EnumMap<DieColor, Die> dice = new EnumMap<>(DieColor.class);
 		dice.put(DieColor.BLACK, new Die(DieColor.BLACK));
 		dice.put(DieColor.ORANGE, new Die(DieColor.ORANGE));
 		dice.put(DieColor.WHITE, new Die(DieColor.WHITE));
@@ -123,6 +124,14 @@ public final class Commons {
 
 
 		return map;
+	}
+
+	public ResourcesList getInitialResources(int ordinal) {
+		return (ResourcesList) parser.get("personalBoard" + ordinal);
+	}
+
+	public EnumMap<CardType, Deck> getDeckSet(int period) {
+		return (EnumMap<CardType, Deck>) parser.get("deckSet" + period);
 	}
 }
 

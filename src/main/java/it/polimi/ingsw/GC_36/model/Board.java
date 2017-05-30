@@ -3,14 +3,12 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.observers.BoardState;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Board {
 	private TurnOrder turnOrder;
 	private Map<PlayerColor, Player> players = null;
-	private Map<DieColor, Die> dice;
+	private EnumMap<DieColor, Die> dice;
 	private DeckSet deckSet;
 
 	private BoardState currentState;
@@ -26,8 +24,17 @@ public class Board {
 		actionSpaces = Commons.actionSpacesInitializer();
 	}
 
-	public void setPlayers(Map<PlayerColor, Player> players) {
-		// set the list of players and create a turnOrder instance
+	public void initPlayers(Map<PlayerColor, Player> players) {
+		// initialize players and store them
+
+		// initialize players
+		List<Player> p = new ArrayList<>(players.values());
+		for (int i = 0; i < p.size(); i++) {
+			PersonalBoard playerBoard = new PersonalBoard(i + 1);
+			p.get(i).init(playerBoard);
+		}
+
+		// store the list of players and create a turnOrder instance
 		if (this.players == null) {
 			this.players = players;
 			turnOrder = new TurnOrder(players);
@@ -35,8 +42,10 @@ public class Board {
 			throw new IllegalStateException(
 					"The list of players can be set just once");
 		}
+
 	}
 
+	// called before every Round
 	public void initialize(DeckSet deckSet) {
 		if (currentState != BoardState.UNINITIALIZED) {
 			throw new IllegalStateException(
@@ -45,7 +54,13 @@ public class Board {
 
 		setCurrentState(BoardState.INITIALIZING);
 		this.deckSet = deckSet;
+		initTowers();
 		setCurrentState(BoardState.READY);
+	}
+
+	// TODO: test
+	public Map<DieColor, Die> getDice() {
+		return dice;
 	}
 
 	public void clean() {
@@ -69,6 +84,27 @@ public class Board {
 		return turnOrder;
 	}
 
+	private void setCurrentState(BoardState newState) {
+		this.currentState = newState;
+		newStateNotify();
+	}
+
+	private void initTowers() {
+		// distribute cards in towers
+
+		// iterate on towers
+		for (Tower tower : Tower.values()) {
+
+			// iterate on floors of tower
+			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
+				DevelopmentCard card =
+						deckSet.getDeck(tower.getCardType()).popCard();
+
+				tower.getFloor(i).setDevelopmentCard(card);
+			}
+		}
+	}
+
 	public void subscribe(BoardObserver o) {
 		observers.add(o);
 	}
@@ -77,10 +113,5 @@ public class Board {
 		for (BoardObserver o : observers) {
 			o.update(currentState);
 		}
-	}
-
-	private void setCurrentState(BoardState newState) {
-		this.currentState = newState;
-		newStateNotify();
 	}
 }

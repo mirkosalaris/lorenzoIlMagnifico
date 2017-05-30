@@ -17,14 +17,16 @@ public class PeriodTest {
 
 	@Before
 	public void setUp() throws Exception {
+		game = new Game();
+
 		Map<PlayerColor, Player> players = new HashMap<>();
 
-		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE, null));
-		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE, null));
+		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE));
+		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE));
 
-		game = new Game(players);
+		game.setPlayers(players);
 
-		DeckSet deckSet = new DeckSet(1, null);
+		DeckSet deckSet = new DeckSet(1);
 		period = new Period(1, deckSet);
 	}
 

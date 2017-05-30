@@ -1,28 +1,49 @@
 package it.polimi.ingsw.GC_36.model;
 
+import java.util.EnumMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Player {
-	private PlayerColor color;
+	private PlayerColor playerColor;
 	private PersonalBoard personalBoard;
-	private FamilyMember[] familyMembers;
+	private EnumMap<DieColor, FamilyMember> familyMembers =
+			new EnumMap<>(DieColor.class);
 	private PlayerState currentState;
 	private Set<PlayerObserver> observers = new HashSet<>();
 
-	public Player(PlayerColor color, PersonalBoard personalBoard) {
+	public Player(PlayerColor playerColor) {
 		// TODO
 
-		this.color = color;
+		this.playerColor = playerColor;
 
-		this.personalBoard = personalBoard;
 		setCurrentState(PlayerState.UNINITIALIZED);
 	}
 
-	public void init() {
-		// TODO initialize familyMembers getting dice
+	public void init(PersonalBoard personalBoard) {
+		if (currentState != PlayerState.UNINITIALIZED) {
+			throw new IllegalStateException(
+					"Player already initialized");
+		}
+
+		// save associated personalBoard
+		this.personalBoard = personalBoard;
+
+		// initialize familyMembers
+		Map<DieColor, Die> dice = Game.getInstance().getBoard().getDice();
+		for (Map.Entry<DieColor, Die> dieEntry : dice.entrySet()) {
+			DieColor dieColor = dieEntry.getKey();
+			FamilyMember member =
+					new FamilyMember(this.playerColor, dieColor);
+
+			familyMembers.put(dieColor, member);
+		}
+
+		// change state
 		setCurrentState(PlayerState.WAITING);
 	}
+
 
 	public PersonalBoard getPersonalBoard() {
 		return personalBoard;
