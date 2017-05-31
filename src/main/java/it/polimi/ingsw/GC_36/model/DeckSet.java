@@ -4,10 +4,11 @@ import it.polimi.ingsw.GC_36.Commons;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.Map;
 
 public class DeckSet {
 	int period;
-	EnumMap<CardType, Deck> decks;
+	Map<CardType, Deck> decks;
 
 	public DeckSet(int period) {
 		decks = Commons.getInstance().getDeckSet(period);
@@ -22,6 +23,8 @@ public class DeckSet {
 				new Deck(CardType.CHARACTER, period, new ArrayList<>()));
 		decks.put(CardType.VENTURE,
 				new Deck(CardType.VENTURE, period, new ArrayList<>()));
+		// delete up to here
+
 		this.period = period;
 	}
 

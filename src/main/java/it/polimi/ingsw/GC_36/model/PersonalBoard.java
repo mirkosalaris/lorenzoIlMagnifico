@@ -5,12 +5,13 @@ import it.polimi.ingsw.GC_36.Commons;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class PersonalBoard {
 
 	private ResourcesList resourcesList;
 	private BonusTile bonusTile; // TODO use it
-	EnumMap<CardType, List<DevelopmentCard>> map =
+	Map<CardType, List<DevelopmentCard>> map =
 			new EnumMap<>(CardType.class);
 
 

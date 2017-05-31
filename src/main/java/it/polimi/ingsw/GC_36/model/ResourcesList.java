@@ -1,9 +1,10 @@
 package it.polimi.ingsw.GC_36.model;
 
 import java.util.EnumMap;
+import java.util.Map;
 
 public class ResourcesList {
-	EnumMap<Resource, ResourceCounter> map = new EnumMap<>(Resource.class);
+	Map<Resource, ResourceCounter> map = new EnumMap<>(Resource.class);
 
 	public ResourcesList() {
 		map.put(Resource.WOOD, new ResourceCounter(0));

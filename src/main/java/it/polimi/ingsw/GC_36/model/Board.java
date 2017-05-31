@@ -1,18 +1,19 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.observers.BoardObserver;
 
 import java.util.*;
 
 public class Board {
 	private TurnOrder turnOrder;
 	private Map<PlayerColor, Player> players = null;
-	private EnumMap<DieColor, Die> dice;
+	private Map<DieColor, Die> dice;
 	private DeckSet deckSet;
 
 	private BoardState currentState;
 
-	private Set<BoardObserver> observers = new HashSet<>();
+	private Set<BoardObserver> boardObservers = new HashSet<>();
 	private Map<Integer, ActionSpace> actionSpaces;
 
 	public Board() {
@@ -99,17 +100,17 @@ public class Board {
 				DevelopmentCard card =
 						deckSet.getDeck(tower.getCardType()).popCard();
 
-				tower.getFloor(i).setDevelopmentCard(card);
+				tower.getFloor(i + 1).setDevelopmentCard(card);
 			}
 		}
 	}
 
 	public void subscribe(BoardObserver o) {
-		observers.add(o);
+		boardObservers.add(o);
 	}
 
 	private void newStateNotify() {
-		for (BoardObserver o : observers) {
+		for (BoardObserver o : boardObservers) {
 			o.update(currentState);
 		}
 	}

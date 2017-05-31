@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Action {
 	FamilyMember familyMember;
-	ActionSpace actionSpace;
+	ActionSpaceInterface actionSpaceInterface;
 	ResourcesList paymentList;
 	private List<Integer> councilPriviledgeList;
 
@@ -12,8 +12,8 @@ public class Action {
 		this.familyMember = familyMember;
 	}
 
-	public void setActionSpace(ActionSpace actionSpace) {
-		this.actionSpace = actionSpace;
+	public void setActionSpace(ActionSpaceInterface actionSpaceInterface) {
+		this.actionSpaceInterface = actionSpaceInterface;
 	}
 
 	public void setPaymentList(ResourcesList resourcesList) {
@@ -28,8 +28,8 @@ public class Action {
 		return familyMember;
 	}
 
-	public ActionSpace getActionSpace() {
-		return actionSpace;
+	public ActionSpaceInterface getActionSpace() {
+		return actionSpaceInterface;
 	}
 
 	public ResourcesList getPaymentList() {

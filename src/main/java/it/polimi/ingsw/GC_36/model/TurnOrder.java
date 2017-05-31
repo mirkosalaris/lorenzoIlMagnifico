@@ -1,13 +1,11 @@
 package it.polimi.ingsw.GC_36.model;
 
-import it.polimi.ingsw.GC_36.Observable;
-import it.polimi.ingsw.GC_36.Observer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import java.util.*;
-
-public class TurnOrder implements Observable {
-	List<Player> players;
-	Set<Observer> observers = new HashSet<>();
+public class TurnOrder {
+	private List<Player> players;
 
 	public TurnOrder(Map<PlayerColor, Player> players) {
 		this.players = new ArrayList<>(players.values());
@@ -28,19 +26,5 @@ public class TurnOrder implements Observable {
 
 		// board.getActionSpaces().get(Commons.COUNCIL_ACTION_SPACE);
 		// calculate new turn order
-
-		changeNotify();
-	}
-
-	@Override
-	public void subscribe(Observer o) {
-		observers.add(o);
-	}
-
-	@Override
-	public void changeNotify() {
-		for (Observer o : observers) {
-			o.update();
-		}
 	}
 }

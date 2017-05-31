@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.observers.PlayerObserver;
+
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -8,7 +10,7 @@ import java.util.Set;
 public class Player {
 	private PlayerColor playerColor;
 	private PersonalBoard personalBoard;
-	private EnumMap<DieColor, FamilyMember> familyMembers =
+	private Map<DieColor, FamilyMember> familyMembers =
 			new EnumMap<>(DieColor.class);
 	private PlayerState currentState;
 	private Set<PlayerObserver> observers = new HashSet<>();
