@@ -5,9 +5,7 @@ import it.polimi.ingsw.GC_36.parsers.Parser;
 
 import java.io.File;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Predicate;
 
 public final class Commons {
 	private final Parser parser;
@@ -20,42 +18,6 @@ public final class Commons {
 	public static final int BLACK_DIE = 1;
 	public static final int WHITE_DIE = 2;
 	public static final int ORANGE_DIE = 3;
-
-
-	// ActionSpaces
-	public static final int AS_COUNCIL = 0;
-
-	public static final int AS_TERRITORIES_1 = 1;
-	public static final int AS_TERRITORIES_2 = 2;
-	public static final int AS_TERRITORIES_3 = 3;
-	public static final int AS_TERRITORIES_4 = 4;
-
-	public static final int AS_BUILDINGS_1 = 5;
-	public static final int AS_BUILDINGS_2 = 6;
-	public static final int AS_BUILDINGS_3 = 7;
-	public static final int AS_BUILDINGS_4 = 8;
-
-	public static final int AS_CHARACTERS_1 = 9;
-	public static final int AS_CHARACTERS_2 = 10;
-	public static final int AS_CHARACTERS_3 = 11;
-	public static final int AS_CHARACTERS_4 = 12;
-
-	public static final int AS_VENTURES_1 = 13;
-	public static final int AS_VENTURES_2 = 14;
-	public static final int AS_VENTURES_3 = 15;
-	public static final int AS_VENTURES_4 = 16;
-
-	public static final int AS_HARVEST = 17;
-	public static final int AS_HARVEST_BIG = 18;
-
-	public static final int AS_PRODUCTION = 19;
-	public static final int AS_PRODUCTION_BIG = 20;
-
-	public static final int AS_MARKET_COINS = 21;
-	public static final int AS_MARKET_SERVANT = 22;
-	public static final int AS_MARKET_MILITARY_COINS = 23;
-	public static final int AS_MARKET_COUNCILS_FAVORS = 24;
-
 
 	public Commons(File file) {
 		// save this instance to be referable from static context
@@ -93,9 +55,10 @@ public final class Commons {
 	}
 
 	public static Map<ActionSpaceIds, ActionSpace> actionSpacesInitializer() {
-		Map<ActionSpaceIds, ActionSpace> map = new HashMap<>();
+		Map<ActionSpaceIds, ActionSpace> map = new EnumMap<>(
+				ActionSpaceIds.class);
 
-		for (ActionSpaceIds id : ActionSpaceIds.values()){
+		for (ActionSpaceIds id : ActionSpaceIds.values()) {
 			map.put(id, new ActionSpace(id));
 		}
 
@@ -115,13 +78,9 @@ public final class Commons {
 		if (!ActionSpaceIds.checkId(actionSpaceId)) {
 			throw new IllegalArgumentException(
 					"actionSpaceId can't be " + actionSpaceId.value());
-		}
-
-		if (actionSpaceId.value() == 0 || actionSpaceId.value() > 16) {
+		} else if (actionSpaceId.value() == 0 || actionSpaceId.value() > 16) {
 			return null;
-		}
-
-		if (actionSpaceId.value() <= 4) {
+		} else if (actionSpaceId.value() <= 4) {
 			return Tower.TERRITORIES.getFloor(actionSpaceId.value());
 		} else if (actionSpaceId.value() <= 8) {
 			return Tower.BUILDINGS.getFloor(actionSpaceId.value() - 4);
@@ -146,7 +105,7 @@ public final class Commons {
 		// "requiredActionValue");
 	}
 
-	public ResourcesList getRequirements(ActionSpaceIds actionSpaceId) {
+	public ResourcesList getResources(ActionSpaceIds actionSpaceId) {
 
 		if (!ActionSpaceIds.checkId(actionSpaceId)) {
 			throw new IllegalArgumentException(
