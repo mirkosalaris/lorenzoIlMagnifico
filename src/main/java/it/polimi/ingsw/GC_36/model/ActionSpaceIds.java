@@ -55,7 +55,7 @@ public enum ActionSpaceIds {
 	}
 
 	public static boolean checkId(ActionSpaceIds id) {
-		return (id.value > maxValue || id.value < minValue);
+		return (id.value >= maxValue || id.value <= minValue);
 	}
 
 	private void setMin(int value) {

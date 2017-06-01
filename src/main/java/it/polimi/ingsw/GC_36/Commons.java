@@ -117,6 +117,10 @@ public final class Commons {
 					"actionSpaceId can't be " + actionSpaceId.value());
 		}
 
+		if (actionSpaceId.value() == 0 || actionSpaceId.value() > 16) {
+			return null;
+		}
+
 		if (actionSpaceId.value() <= 4) {
 			return Tower.TERRITORIES.getFloor(actionSpaceId.value());
 		} else if (actionSpaceId.value() <= 8) {
