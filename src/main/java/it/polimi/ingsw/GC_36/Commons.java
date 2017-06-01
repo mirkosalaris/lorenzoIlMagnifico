@@ -92,37 +92,12 @@ public final class Commons {
 		return dice;
 	}
 
-	public static Map<Integer, ActionSpace> actionSpacesInitializer() {
-		Map<Integer, ActionSpace> map = new HashMap<>();
+	public static Map<ActionSpaceIds, ActionSpace> actionSpacesInitializer() {
+		Map<ActionSpaceIds, ActionSpace> map = new HashMap<>();
 
-		map.put(AS_COUNCIL, new ActionSpace(AS_COUNCIL));
-		map.put(AS_TERRITORIES_1, new ActionSpace(AS_TERRITORIES_1));
-		map.put(AS_TERRITORIES_2, new ActionSpace(AS_TERRITORIES_2));
-		map.put(AS_TERRITORIES_3, new ActionSpace(AS_TERRITORIES_3));
-		map.put(AS_TERRITORIES_4, new ActionSpace(AS_TERRITORIES_4));
-		map.put(AS_BUILDINGS_1, new ActionSpace(AS_BUILDINGS_1));
-		map.put(AS_BUILDINGS_2, new ActionSpace(AS_BUILDINGS_2));
-		map.put(AS_BUILDINGS_3, new ActionSpace(AS_BUILDINGS_3));
-		map.put(AS_BUILDINGS_4, new ActionSpace(AS_BUILDINGS_4));
-		map.put(AS_CHARACTERS_1, new ActionSpace(AS_CHARACTERS_1));
-		map.put(AS_CHARACTERS_2, new ActionSpace(AS_CHARACTERS_2));
-		map.put(AS_CHARACTERS_3, new ActionSpace(AS_CHARACTERS_3));
-		map.put(AS_CHARACTERS_4, new ActionSpace(AS_CHARACTERS_4));
-		map.put(AS_VENTURES_1, new ActionSpace(AS_VENTURES_1));
-		map.put(AS_VENTURES_2, new ActionSpace(AS_VENTURES_2));
-		map.put(AS_VENTURES_3, new ActionSpace(AS_VENTURES_3));
-		map.put(AS_VENTURES_4, new ActionSpace(AS_VENTURES_4));
-		map.put(AS_HARVEST, new ActionSpace(AS_HARVEST));
-		map.put(AS_HARVEST_BIG, new ActionSpace(AS_HARVEST_BIG));
-		map.put(AS_PRODUCTION, new ActionSpace(AS_PRODUCTION));
-		map.put(AS_PRODUCTION_BIG, new ActionSpace(AS_PRODUCTION_BIG));
-		map.put(AS_MARKET_COINS, new ActionSpace(AS_MARKET_COINS));
-		map.put(AS_MARKET_SERVANT, new ActionSpace(AS_MARKET_SERVANT));
-		map.put(AS_MARKET_MILITARY_COINS,
-				new ActionSpace(AS_MARKET_MILITARY_COINS));
-		map.put(AS_MARKET_COUNCILS_FAVORS,
-				new ActionSpace(AS_MARKET_COUNCILS_FAVORS));
-
+		for (ActionSpaceIds id : ActionSpaceIds.values()){
+			map.put(id, new ActionSpace(id));
+		}
 
 		return map;
 	}
@@ -135,31 +110,29 @@ public final class Commons {
 		return (Map<CardType, Deck>) parser.get("deckSet" + period);
 	}
 
-	public Floor getAssociatedFloor(int actionSpaceId) {
+	public Floor getAssociatedFloor(ActionSpaceIds actionSpaceId) {
 
-		// goes fine or throws IllegalArgumentException
-		if (!checkId(actionSpaceId, i -> (i > 0) && (i <= 16))) {
-			return null;
+		if (!ActionSpaceIds.checkId(actionSpaceId)) {
+			throw new IllegalArgumentException(
+					"actionSpaceId can't be " + actionSpaceId.value());
 		}
 
-		if (actionSpaceId <= 4) {
-			return Tower.TERRITORIES.getFloor(actionSpaceId);
-		} else if (actionSpaceId <= 8) {
-			return Tower.BUILDINGS.getFloor(actionSpaceId - 4);
-		} else if (actionSpaceId <= 12) {
-			return Tower.CHARACTERS.getFloor(actionSpaceId - 8);
+		if (actionSpaceId.value() <= 4) {
+			return Tower.TERRITORIES.getFloor(actionSpaceId.value());
+		} else if (actionSpaceId.value() <= 8) {
+			return Tower.BUILDINGS.getFloor(actionSpaceId.value() - 4);
+		} else if (actionSpaceId.value() <= 12) {
+			return Tower.CHARACTERS.getFloor(actionSpaceId.value() - 8);
 		} else {
-			return Tower.VENTURERS.getFloor(actionSpaceId - 12);
+			return Tower.VENTURERS.getFloor(actionSpaceId.value() - 12);
 		}
 	}
 
-	public int getRequiredActionValue(int actionSpaceId) {
+	public int getRequiredActionValue(ActionSpaceIds actionSpaceId) {
 
-		if (!checkId(actionSpaceId,
-				i -> (i >= 0) && (i <= AS_MARKET_COUNCILS_FAVORS))) {
-
+		if (!ActionSpaceIds.checkId(actionSpaceId)) {
 			throw new IllegalArgumentException(
-					"actionSpaceId can't be " + actionSpaceId);
+					"actionSpaceId can't be " + actionSpaceId.value());
 		}
 
 		// TODO delete next line and uncomment next line when parser is impl
@@ -169,21 +142,15 @@ public final class Commons {
 		// "requiredActionValue");
 	}
 
-	public ResourcesList getRequirements(int actionSpaceId) {
+	public ResourcesList getRequirements(ActionSpaceIds actionSpaceId) {
 
-		if (!checkId(actionSpaceId,
-				i -> (i >= 0) && (i <= AS_MARKET_COUNCILS_FAVORS))) {
-
+		if (!ActionSpaceIds.checkId(actionSpaceId)) {
 			throw new IllegalArgumentException(
 					"actionSpaceId can't be " + actionSpaceId);
 		}
 
 		return (ResourcesList) parser.get("actionSpace" + actionSpaceId,
-				"requirements");
-	}
-
-	private boolean checkId(int id, Predicate<Integer> p) {
-		return p.test(id);
+				"resources");
 	}
 }
 

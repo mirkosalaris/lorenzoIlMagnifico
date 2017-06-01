@@ -7,14 +7,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ActionSpace implements ActionSpaceInterface {
-	private int id;
+	private ActionSpaceIds id;
 	private boolean free;
 	private int requiredActionValue;
 	private ResourcesList requiredResourcesList;
 	private Floor associatedFloor;
 	private Set<ActionSpaceObserver> observers = new HashSet<>();
 
-	public ActionSpace(int id) {
+	public ActionSpace(ActionSpaceIds id) {
 		Commons common = Commons.getInstance();
 
 		this.id = id;
@@ -61,6 +61,11 @@ public class ActionSpace implements ActionSpaceInterface {
 		// TODO impl
 
 		setFree(true);
+	}
+
+	@Override
+	public ActionSpaceIds getId() {
+		return id;
 	}
 
 	private void setFree(boolean free) {

@@ -16,4 +16,6 @@ public interface ActionSpaceInterface {
 	void subscribe(ActionSpaceObserver o);
 
 	void reset();
+
+	ActionSpaceIds getId();
 }

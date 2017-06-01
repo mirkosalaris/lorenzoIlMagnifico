@@ -14,7 +14,7 @@ public class Board {
 	private BoardState currentState;
 
 	private Set<BoardObserver> boardObservers = new HashSet<>();
-	private Map<Integer, ActionSpace> actionSpaces;
+	private Map<ActionSpaceIds, ActionSpace> actionSpaces;
 
 	public Board() {
 		// Board is being constructed, but it WON'T be initialized after that
