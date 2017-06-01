@@ -42,4 +42,11 @@ public class DevelopmentCard {
 		return permanentEffect;
 	}
 
+	public int getPeriod() {
+		return period;
+	}
+
+	public CardType getType() {
+		return type;
+	}
 }

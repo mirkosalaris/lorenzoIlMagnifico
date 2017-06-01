@@ -1,46 +1,60 @@
-/*
+
 package it.polimi.ingsw.GC_36.data;
 
 
 import it.polimi.ingsw.GC_36.model.CardType;
 import it.polimi.ingsw.GC_36.model.DevelopmentCard;
+import it.polimi.ingsw.GC_36.model.ResourceType;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Generator {
 
-	public List<ResourcesList> buildRequirements() {
-		int woods, stones, servants, coins, victoryPoints, faithPoints,
-				militaryPoints;
+	private List<ResourcesList> buildRequirements() {
+
 		List<ResourcesList> requirements = new ArrayList<>();
 
 		String choose;
 		Scanner input = new Scanner(System.in);
 		do {
+			ResourcesList resourcesList = new ResourcesList();
 			System.out.print("Insert woods: ");
-			woods = Integer.parseInt(input.nextLine());
+			resourcesList.set(ResourceType.WOOD,
+					Integer.parseInt(input.nextLine()));
 			System.out.print("Insert stones: ");
-			stones = Integer.parseInt(input.nextLine());
+			resourcesList.set(ResourceType.STONE,
+					Integer.parseInt(input.nextLine()));
 			System.out.print("Insert servants: ");
-			servants = Integer.parseInt(input.nextLine());
+			resourcesList.set(ResourceType.SERVANT,
+					Integer.parseInt(input.nextLine()));
 			System.out.print("Insert coins: ");
-			coins = Integer.parseInt(input.nextLine());
+			resourcesList.set(ResourceType.COINS,
+					Integer.parseInt(input.nextLine()));
 			System.out.print("Insert vitoryPoints: ");
-			victoryPoints = Integer.parseInt(input.nextLine());
+			resourcesList.set(ResourceType.VICTORY_POINTS,
+					Integer.parseInt(input.nextLine()));
 			System.out.print("Insert faithPoints: ");
-			faithPoints = Integer.parseInt(input.nextLine());
+			resourcesList.set(ResourceType.FAITH_POINTS,
+					Integer.parseInt(input.nextLine()));
 			System.out.print("Insert militaryPoints: ");
-			militaryPoints = Integer.parseInt(input.nextLine());
+			resourcesList.set(ResourceType.MILITARY_POINTS,
+					Integer.parseInt(input.nextLine()));
+			requirements.add(resourcesList);
 
-			requirements.add(new ResourcesList());
-			System.out.print("Finish?   ");
+			System.out.print("Insert other requirements list?   ");
 			choose = input.nextLine();
-		} while (choose.equals("n"));
+		} while (choose.equals("y"));
 		return requirements;
 	}
 
@@ -59,68 +73,95 @@ public class Generator {
 				immediateEffect, permanentEffect);
 	}
 
-	//take a period and make all cart of that period.
-	//dovrebbe prendere un tipo? add type and remove from buildDeckSet
-	private Deck buildDeck(String typeDevelopmentCard, int period) {
-		//TODO add control json exist
-		//List
-		Deck deck = new Deck();
+	public List<DevelopmentCard> buildType(CardType type,
+	                                       List<DevelopmentCard>
+			                                       developmentCardList) {
+		List<DevelopmentCard> developmentCardType = new ArrayList<>();
+		for (DevelopmentCard developmentCard : developmentCardList) {
+			if (type.equals(developmentCard.getType())) {
+				developmentCardType.add(developmentCard);
+			}
+		}
+		return developmentCardType;
+	}
+
+	public List<DevelopmentCard> buildPeriod(int period,
+	                                         List<DevelopmentCard>
+			                                         developmentCardList) {
+		List<DevelopmentCard> developmentCardPeriod = new ArrayList<>();
+		for (DevelopmentCard developmentCard : developmentCardList) {
+			if (period == developmentCard.getPeriod()) {
+				developmentCardPeriod.add(developmentCard);
+			}
+		}
+		return developmentCardPeriod;
+	}
+
+	public void createDevelopmentCard() throws IOException {
 		Scanner input = new Scanner(System.in);
+		CardType cardType1 = null;
+		String temp;
+		int period = 0;
 		String choose;
+		String onetimeinsert;
+		Boolean t = false;
+		List<DevelopmentCard> developmentCardList = new ArrayList<>();
+		String serializedString;
+		Encoder e = new Encoder();
+		Decoder d = new Decoder();
+		if (new File("cards.json").exists()) {
+			String content = this.readFile("cards.json",
+					Charset.defaultCharset());
+			System.out.println(content);
+			developmentCardList = d.buildDevelopmentCardList(content);
+			System.out.println(developmentCardList.get(0).getName().toString
+					());
+		}
+		System.out.print(
+				"Do you want to insert period and type only one time? (y/n) ");
+		onetimeinsert = input.nextLine();
 		do {
-			// Add developmentCard of the same period
-			DevelopmentCard developmentCard = buildDevelopmentCard();
-			//deck.add(developmentCard); <--IMPORTANTE nono
-			//CREA LISTA DEV CARD E PASSO NEL COSTRUTTORE DI DECK
-			System.out.print("Finish?   ");
+			if (t == false) {
+				System.out.print(
+						"\nb: BUILDING\tc: CHARACTER\tt: TERRITORY\tv: " +
+								"VENTURE\nInsert typeCard: ");
+				temp = input.nextLine();
+
+				if (temp == "b") {
+					cardType1 = CardType.BUILDING;
+				} else if (temp == "c") {
+					cardType1 = CardType.CHARACTER;
+				} else if (temp == "t") {
+					cardType1 = CardType.TERRITORY;
+				} else if (temp == "v") {
+					cardType1 = CardType.VENTURE;
+				}
+				System.out.print("Insert card period: ");
+				period = Integer.parseInt(input.nextLine());
+				if (onetimeinsert.equals("y")) {
+					t = true;
+				}
+			}
+			DevelopmentCard developmentCard = this.buildDevelopmentCard
+					(cardType1, period);
+			developmentCardList.add(developmentCard);
+			System.out.print("Insert other DevelopmentCard? (y/n)   ");
 			choose = input.nextLine();
-		} while (choose.equals("n"));
-		// COSTRUISCO IL DECK - NEW DECK LISTA
-		//TODO generate json
-		return deck;
+		} while (choose.equals("y"));
+		serializedString = e.build(developmentCardList);
+
+		try {
+			FileWriter fileUser = new FileWriter("cards.json");
+			fileUser.write(serializedString);
+			fileUser.close();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
-	private DeckSet buildDeckSet(String typeDevelopmentCard, int period) {
-		DeckSet deckSet = new DeckSet();
-		Scanner input = new Scanner(System.in);
-		String choose;
-		do {
-			// Add deck in a set deck of equals typeDevelopmentCard
-			Deck deck = buildDeck(period);
-			//deckSet.add(deck); <-- IMPORTANTW
-
-			System.out.print("Finish?   ");
-			choose = input.nextLine();
-		} while (choose.equals("n"));
-		return deckSet;
+	static String readFile(String path, Charset encoding)
+			throws IOException {
+		byte[] encoded = Files.readAllBytes(Paths.get(path));
+		return new String(encoded, encoding);
 	}
-
-	public List<DeckSet> buildTotalDevelopmentDeck() {
-		List<DeckSet> tot = new ArrayList<DeckSet>();
-		String typeDevelopmentCard;
-		int period;
-		Scanner input = new Scanner(System.in);
-		String choose;
-		do { //4volte
-			System.out.print("Insert type of Deck: ");
-			typeDevelopmentCard = input.nextLine();
-			System.out.print("Insert period: ");
-			period = Integer.parseInt(input.nextLine());
-			tot.add(buildDeckSet("TerritoriesDeck", period));
-
-			System.out.print("Finish?   ");
-			choose = input.nextLine();
-		} while (choose.equals("n"));
-		//ADD TO MAIN
-		Gson card2gson = new Gson();
-		String u = card2gson.toJson(tot);
-		System.out.println(u);
-		return tot;
-	}
-
-	public void iWantToBeSmart() {
-	}
-
 }
-
-*/

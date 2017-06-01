@@ -32,8 +32,7 @@ public class ResourcesListDeserializer
 				"militaryPoints").getAsJsonObject().get("value").getAsInt();
 		return new ResourcesList();
 		//return new ResourcesList(woods, stones, servants, coins,
-		// victoryPoints,
-		//		faithPoints, militaryPoints);
+		// victoryPoints, faithPoints, militaryPoints);
 	}
 }
 */
