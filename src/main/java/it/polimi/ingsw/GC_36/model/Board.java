@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.observers.BoardObserver;
+import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
 import java.util.*;
 
@@ -63,6 +64,7 @@ public class Board {
 		return dice;
 	}
 
+	// called at the end of every round
 	public void clean() {
 		// reset deckSet
 		deckSet = null;
@@ -107,6 +109,27 @@ public class Board {
 
 	public void subscribe(BoardObserver o) {
 		boardObservers.add(o);
+	}
+
+	public void subscribe(ModelObserver o) {
+		boardObservers.add(o);
+
+		// subscribe to actionSpaces
+		for (ActionSpace as : actionSpaces.values()) {
+			as.subscribe(o);
+		}
+
+		// subscribe to Floors
+		for (Tower tower : Tower.values()) {
+			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
+				tower.getFloor(i).subscribe(o);
+			}
+		}
+
+		for (Player p : players.values()) {
+			p.subscribe(o);
+		}
+
 	}
 
 	private void newStateNotify() {

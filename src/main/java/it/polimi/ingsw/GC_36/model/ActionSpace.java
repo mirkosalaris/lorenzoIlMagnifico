@@ -76,7 +76,7 @@ public class ActionSpace implements ActionSpaceInterface {
 
 	private void changeNotify() {
 		for (ActionSpaceObserver o : observers) {
-			o.update(this);
+			o.update(this.id, free);
 		}
 	}
 }

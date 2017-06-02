@@ -3,6 +3,7 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.controller.Scorer;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
+import it.polimi.ingsw.GC_36.observers.ModelObserver;
 import it.polimi.ingsw.GC_36.parsers.DeckSetsParser;
 
 import java.io.File;
@@ -51,7 +52,7 @@ public class Game {
 		// This method implements it.
 
 		if (threadInstance == null) {
-			throw new IllegalStateException("No game instance");
+			throw new IllegalStateException("No game instance exists");
 		}
 		return threadInstance.get();
 	}
@@ -89,6 +90,11 @@ public class Game {
 
 	public void subscribe(GameObserver o) {
 		observers.add(o);
+	}
+
+	public void subscribe(ModelObserver o) {
+		observers.add(o);
+		board.subscribe(o);
 	}
 
 	private void play() {

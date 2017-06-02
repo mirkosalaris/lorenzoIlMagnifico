@@ -8,23 +8,23 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public final class Commons {
+	public static final String HOST = "localhost";
+	public static final int PORT = 7777;
+	public static final int MAX_PLAYERS = 4;
+	public static final int MIN_PLAYERS = 2;
+
 	private final Parser parser;
 	private static ThreadLocal<Commons> threadInstance;
 	public static Map<Integer, ResourcesList> councilPrivilegeMap;
-	//TODO:compilare councilPrivilegeMap tramite parser
 
+	//TODO:compilare councilPrivilegeMap tramite parser
 
 	public ResourcesList getResourcesList(Integer integer) {
 		return councilPrivilegeMap.get(integer);
 	}
 
-	public static final int NUMBER_OF_PERIODS = 1;
+	public static final int NUMBER_OF_PERIODS = 3;
 	public static final int NUMBER_OF_FLOORS = 4;
-
-	// Dice
-	public static final int BLACK_DIE = 1;
-	public static final int WHITE_DIE = 2;
-	public static final int ORANGE_DIE = 3;
 
 	public Commons(File file) {
 		// save this instance to be referable from static context
@@ -97,7 +97,7 @@ public final class Commons {
 
 	public int getRequiredActionValue(ActionSpaceIds actionSpaceId) {
 
-		// TODO delete next line and uncomment next line when parser is impl
+		// TODO delete this line and uncomment next line when parser is impl
 		return 0;
 
 		// return (int) parser.get("actionSpace" + actionSpaceId,
