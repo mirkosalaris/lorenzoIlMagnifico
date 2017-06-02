@@ -10,8 +10,8 @@ import java.util.Set;
 public class Player {
 	private PlayerColor playerColor;
 	private PersonalBoard personalBoard;
-	private Map<DieColor, FamilyMember> familyMembers =
-			new EnumMap<>(DieColor.class);
+	private Map<MemberColor, FamilyMember> familyMembers =
+			new EnumMap<>(MemberColor.class);
 	private PlayerState currentState;
 	private Set<PlayerObserver> observers = new HashSet<>();
 
@@ -33,13 +33,12 @@ public class Player {
 		this.personalBoard = personalBoard;
 
 		// initialize familyMembers
-		Map<DieColor, Die> dice = Game.getInstance().getBoard().getDice();
-		for (Map.Entry<DieColor, Die> dieEntry : dice.entrySet()) {
-			DieColor dieColor = dieEntry.getKey();
-			FamilyMember member =
-					new FamilyMember(this.playerColor, dieColor);
+		for (MemberColor memberColor : MemberColor.values()) {
 
-			familyMembers.put(dieColor, member);
+			FamilyMember member =
+					new FamilyMember(this.playerColor, memberColor);
+
+			familyMembers.put(memberColor, member);
 		}
 
 		// change state
@@ -55,6 +54,8 @@ public class Player {
 		//TODO
 		return null;
 	}
+
+
 
 	public void subscribe(PlayerObserver o) {
 		observers.add(o);

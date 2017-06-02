@@ -1,17 +1,29 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.Commons;
+
 public class FamilyMember {
 	private boolean Available;
 	private PlayerColor playerColor;
+	private MemberColor memberColor;
 	private Die die;
 
-	public FamilyMember(PlayerColor playerColor, DieColor dieColor) {
+	public FamilyMember(PlayerColor playerColor, MemberColor memberColor) {
 		this.playerColor = playerColor;
-		die = Game.getInstance().getBoard().getDice().get(dieColor);
+
+		if (memberColor == MemberColor.UNCOLORED) {
+			die = null;
+		} else {
+			DieColor dieColor = Commons.memberColorToDieColor(memberColor);
+			die = Game.getInstance().getBoard().getDice().get(dieColor);
+		}
 	}
 
 	public int getValue() {
-		return die.getValue();
+		if (die == null)
+			return 1;
+		else
+			return die.getValue();
 	}
 
 	public boolean isAvailable() {

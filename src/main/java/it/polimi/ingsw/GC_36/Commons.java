@@ -10,6 +10,14 @@ import java.util.Map;
 public final class Commons {
 	private final Parser parser;
 	private static ThreadLocal<Commons> threadInstance;
+	Map<Integer, ResourcesList> councilPrivilegeMap;
+	//TODO:compilare councilPrivilegeMap tramite parser
+
+
+
+	public ResourcesList getResourcesList(Integer integer) {
+		return councilPrivilegeMap.get(integer);
+	}
 
 	public static final int NUMBER_OF_PERIODS = 1;
 	public static final int NUMBER_OF_FLOORS = 4;
@@ -75,10 +83,7 @@ public final class Commons {
 
 	public Floor getAssociatedFloor(ActionSpaceIds actionSpaceId) {
 
-		if (!ActionSpaceIds.checkId(actionSpaceId)) {
-			throw new IllegalArgumentException(
-					"actionSpaceId can't be " + actionSpaceId.value());
-		} else if (actionSpaceId.value() == 0 || actionSpaceId.value() > 16) {
+		if (actionSpaceId.value() == 0 || actionSpaceId.value() > 16) {
 			return null;
 		} else if (actionSpaceId.value() <= 4) {
 			return Tower.TERRITORIES.getFloor(actionSpaceId.value());
@@ -93,11 +98,6 @@ public final class Commons {
 
 	public int getRequiredActionValue(ActionSpaceIds actionSpaceId) {
 
-		if (!ActionSpaceIds.checkId(actionSpaceId)) {
-			throw new IllegalArgumentException(
-					"actionSpaceId can't be " + actionSpaceId.value());
-		}
-
 		// TODO delete next line and uncomment next line when parser is impl
 		return 0;
 
@@ -107,13 +107,20 @@ public final class Commons {
 
 	public ResourcesList getResources(ActionSpaceIds actionSpaceId) {
 
-		if (!ActionSpaceIds.checkId(actionSpaceId)) {
-			throw new IllegalArgumentException(
-					"actionSpaceId can't be " + actionSpaceId);
-		}
-
 		return (ResourcesList) parser.get("actionSpace" + actionSpaceId,
 				"resources");
 	}
+
+	public static DieColor memberColorToDieColor ( MemberColor color){
+		Map <MemberColor, DieColor> map = new EnumMap<>(MemberColor.class);
+		map.put(MemberColor.ORANGE, DieColor.ORANGE);
+		map.put(MemberColor.BLACK, DieColor.BLACK);
+		map.put(MemberColor.WHITE, DieColor.WHITE);
+
+		return map.get(color);
+	}
+
+
+
 }
 

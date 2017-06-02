@@ -2,18 +2,20 @@ package it.polimi.ingsw.GC_36.model;
 
 import java.util.List;
 
+//usare id al posto di actionspace e sostituire l-interfaccia con id
+
 public class Action {
-	FamilyMember familyMember;
-	ActionSpaceInterface actionSpaceInterface;
+	MemberColor memberColor;
+	ActionSpaceIds actionSpaceIds;
 	ResourcesList paymentList;
 	private List<Integer> councilPriviledgeList;
 
-	public void setFamilyMember(FamilyMember familyMember) {
-		this.familyMember = familyMember;
+	public void setMemberColor(MemberColor MemberColor) {
+		this.memberColor = MemberColor;
 	}
 
-	public void setActionSpace(ActionSpaceInterface actionSpaceInterface) {
-		this.actionSpaceInterface = actionSpaceInterface;
+	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds) {
+		this.actionSpaceIds=actionSpaceIds;
 	}
 
 	public void setPaymentList(ResourcesList resourcesList) {
@@ -24,16 +26,21 @@ public class Action {
 		this.councilPriviledgeList = privilegeList;
 	}
 
-	public FamilyMember getFamilyMember() {
-		return familyMember;
+	public MemberColor getMemberColor() {
+		return memberColor;
+		//TODO:associated test replacing getFamilyMemberTest
 	}
 
-	public ActionSpaceInterface getActionSpace() {
-		return actionSpaceInterface;
+	public ActionSpaceIds getActionSpace() {
+		return actionSpaceIds;
 	}
 
 	public ResourcesList getPaymentList() {
 		return paymentList;
+	}
+
+	public void putPrivilegeChoose(int choose){
+		councilPriviledgeList.add(choose);
 	}
 
 	public List<Integer> getCouncilPrivilegeList() {

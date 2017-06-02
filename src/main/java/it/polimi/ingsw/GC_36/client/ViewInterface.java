@@ -1,7 +1,6 @@
 package it.polimi.ingsw.GC_36.client;
 
-import it.polimi.ingsw.GC_36.model.ActionSpace;
-import it.polimi.ingsw.GC_36.model.FamilyMember;
+import it.polimi.ingsw.GC_36.model.MemberColor;
 import it.polimi.ingsw.GC_36.observers.ActionSpaceObserver;
 import it.polimi.ingsw.GC_36.observers.BoardObserver;
 import it.polimi.ingsw.GC_36.observers.FloorObserver;
@@ -13,7 +12,25 @@ public interface ViewInterface
 		ActionSpaceObserver,
 		PlayerObserver {
 
-	FamilyMember chooseFamilyMember();
+	MemberColor chooseMemberColor();
 
-	ActionSpace chooseActionSpace();
+	int chooseActionSpaceId();
+
+	int choosePrivilege();
+
+	int selectNumberOfWoods();
+
+	int selectNumberOfStones();
+
+	int selectNumberOfServants();
+
+	int selectNumberOfCoins();
+
+	int selectNumberOfVictoryPoints();
+
+	int selectNumberOfMilitaryPoints();
+
+	int selectNumberOfFaithPoints();
+
+
 }

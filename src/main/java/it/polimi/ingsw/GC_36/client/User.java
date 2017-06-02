@@ -1,11 +1,9 @@
 package it.polimi.ingsw.GC_36.client;
 
-import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.ActionSpace;
-import it.polimi.ingsw.GC_36.model.ActionSpaceIds;
-import it.polimi.ingsw.GC_36.model.FamilyMember;
+import it.polimi.ingsw.GC_36.model.*;
 
 public class User {
+	private Player player;
 	private ViewInterface view;
 
 	public User(ViewInterface view) {
@@ -17,22 +15,79 @@ public class User {
 		// there can't be a way to construct a new Action. The user has to use
 		// the one passed
 
-		chooseFamilyMember(action);
+		chooseMemberColor(action);
 		chooseActionSpace(action);
 
 	}
 
-	private void chooseFamilyMember(Action action) {
-		FamilyMember familyMember = view.chooseFamilyMember();
-		action.setFamilyMember(familyMember);
+	private void chooseMemberColor(Action action) {
+		MemberColor memberColor = view.chooseMemberColor();
+		action.setMemberColor(memberColor);
 	}
 
 	private void chooseActionSpace(Action action) {
-		ActionSpace actionSpace = view.chooseActionSpace();
-		if (actionSpace.getId() == ActionSpaceIds.AS_COUNCIL) {
-			// TODO impl
-			// choose privilege
+		int id;
+		do {
+			id = view.chooseActionSpaceId();
+		} while (!ActionSpaceIds.checkId(id));
+		ActionSpaceIds[] actionSpaceIds = ActionSpaceIds.values();
+		ActionSpaceIds actionSpaceId = actionSpaceIds[id];
+		action.setActionSpaceIds(actionSpaceId);
+
+		if (actionSpaceId == ActionSpaceIds.AS_COUNCIL) {
+			int choose;
+			//check the choice
+			choose = view.choosePrivilege();
+			//check the choice
+			action.putPrivilegeChoose(choose);
+
 		}
+
+	}
+
+	private void compilePaymentResourcesList(Action action) {
+		ResourcesList paymentList = new ResourcesList();
+		int woods, stones, coins, servant, victorypoints, militarypoints,
+				faithpoints;
+		do {
+			woods = view.selectNumberOfWoods();
+		} while (!(player.getPersonalBoard().getResourcesList().get(
+				ResourceType.WOOD).getValue() >= woods));
+
+		do {
+			stones = view.selectNumberOfStones();
+		} while (player.getPersonalBoard().getResourcesList().get(
+				ResourceType.STONE).getValue() >= stones);
+		do {
+			servant = view.selectNumberOfServants();
+		} while (!(player.getPersonalBoard().getResourcesList().get(
+				ResourceType.SERVANT).getValue() >= servant));
+		do {
+			coins = view.selectNumberOfCoins();
+		} while (!(player.getPersonalBoard().getResourcesList().get(
+				ResourceType.COINS).getValue() >= coins));
+		do {
+			victorypoints = view.selectNumberOfVictoryPoints();
+		} while (!(player.getPersonalBoard().getResourcesList().get(
+				ResourceType.VICTORY_POINTS).getValue() >= victorypoints));
+		do {
+			militarypoints = view.selectNumberOfMilitaryPoints();
+		} while (!(player.getPersonalBoard().getResourcesList().get(
+				ResourceType.MILITARY_POINTS).getValue() >= militarypoints));
+		do {
+			faithpoints = view.selectNumberOfFaithPoints();
+		} while (!(player.getPersonalBoard().getResourcesList().get(
+				ResourceType.FAITH_POINTS).getValue() >= faithpoints));
+
+		paymentList.set(ResourceType.WOOD, woods);
+		paymentList.set(ResourceType.STONE, stones);
+		paymentList.set(ResourceType.SERVANT, servant);
+		paymentList.set(ResourceType.COINS, coins);
+		paymentList.set(ResourceType.VICTORY_POINTS,victorypoints);
+		paymentList.set(ResourceType.MILITARY_POINTS, militarypoints);
+		paymentList.set(ResourceType.FAITH_POINTS, faithpoints);
+
+		action.setPaymentList(paymentList);
 
 	}
 
