@@ -19,7 +19,7 @@ public class ActionSpace implements ActionSpaceInterface {
 
 		this.id = id;
 		this.requiredActionValue = common.getRequiredActionValue(id);
-		this.requiredResourcesList = common.getRequirements(id);
+		this.requiredResourcesList = common.getResources(id);
 		this.associatedFloor = common.getAssociatedFloor(id);
 
 		// no need to notify changes during construction
