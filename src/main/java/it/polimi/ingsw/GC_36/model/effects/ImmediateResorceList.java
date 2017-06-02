@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
+import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.Game;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
@@ -17,4 +18,11 @@ public class ImmediateResorceList implements ImmediateEffect {
 				.getCurrentPlayer().getPersonalBoard().addResources(
 				this.resourcesList);
 	}
+
+	@Override
+	public void chooseOptions(ViewInterface view, Action action) {
+
+	}
+
+
 }

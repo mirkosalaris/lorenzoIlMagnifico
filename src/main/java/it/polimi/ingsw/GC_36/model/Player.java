@@ -56,7 +56,6 @@ public class Player {
 	}
 
 
-
 	public void subscribe(PlayerObserver o) {
 		observers.add(o);
 	}

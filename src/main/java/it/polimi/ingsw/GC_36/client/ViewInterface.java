@@ -16,7 +16,7 @@ public interface ViewInterface
 
 	int chooseActionSpaceId();
 
-	int choosePrivilege();
+	int choosePrivilege(int n);
 
 	int selectNumberOfWoods();
 

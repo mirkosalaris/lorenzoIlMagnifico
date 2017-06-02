@@ -2,9 +2,12 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
 
+import java.util.HashMap;
+
 public class User {
 	private Player player;
 	private ViewInterface view;
+	private HashMap<ActionSpaceIds, DevelopmentCard> cards;
 
 	public User(ViewInterface view) {
 		this.view = view;
@@ -33,11 +36,14 @@ public class User {
 		ActionSpaceIds[] actionSpaceIds = ActionSpaceIds.values();
 		ActionSpaceIds actionSpaceId = actionSpaceIds[id];
 		action.setActionSpaceIds(actionSpaceId);
-
+		DevelopmentCard card = cards.get(actionSpaceId);
+		if (!(card == null)) {
+			card.getImmediateEffect().chooseOptions(view, action);
+		}
 		if (actionSpaceId == ActionSpaceIds.AS_COUNCIL) {
 			int choose;
 			//check the choice
-			choose = view.choosePrivilege();
+			choose = view.choosePrivilege(1);
 			//check the choice
 			action.putPrivilegeChoose(choose);
 
@@ -83,7 +89,7 @@ public class User {
 		paymentList.set(ResourceType.STONE, stones);
 		paymentList.set(ResourceType.SERVANT, servant);
 		paymentList.set(ResourceType.COINS, coins);
-		paymentList.set(ResourceType.VICTORY_POINTS,victorypoints);
+		paymentList.set(ResourceType.VICTORY_POINTS, victorypoints);
 		paymentList.set(ResourceType.MILITARY_POINTS, militarypoints);
 		paymentList.set(ResourceType.FAITH_POINTS, faithpoints);
 

@@ -69,8 +69,9 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public int choosePrivilege() {
+	public int choosePrivilege(int n) {
 		Scanner in = new Scanner(System.in);
+		System.out.println("choose number:" + n);
 		System.out.println("Please specify how to convert your privilege:" +
 				"0: one wood & one stone" +
 				"1: two servants" +
@@ -88,15 +89,15 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many victory points do you want to use? Keep attention to specify not " +
+					"how many victory points do you want to use? Keep " +
+							"attention to specify not " +
 
 							"more victory points than you got or less than 0");
 
 			victorypoints = in.nextInt();
-		}while (victorypoints>=0);
+		} while (victorypoints >= 0);
 		return victorypoints;
 	}
-
 
 
 	@Override
@@ -105,12 +106,13 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many stones do you want to use? Keep attention to specify not " +
+					"how many stones do you want to use? Keep attention to " +
+							"specify not " +
 
 							"more stones than you got or less than 0");
 
 			stones = in.nextInt();
-		}while (stones>=0);
+		} while (stones >= 0);
 		return stones;
 	}
 
@@ -120,12 +122,13 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many servants do you want to use? Keep attention to specify not " +
+					"how many servants do you want to use? Keep attention to " +
+							"specify not " +
 
 							"more servants than you got or less than 0");
 
 			servants = in.nextInt();
-		}while (servants>=0);
+		} while (servants >= 0);
 		return servants;
 	}
 
@@ -135,12 +138,13 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many coins do you want to use? Keep attention to specify not " +
+					"how many coins do you want to use? Keep attention to " +
+							"specify not " +
 
 							"more coins than you got or less than 0");
 
 			coins = in.nextInt();
-		}while (coins>=0);
+		} while (coins >= 0);
 		return coins;
 	}
 
@@ -150,12 +154,13 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many woods do you want to use? Keep attention to specify not " +
+					"how many woods do you want to use? Keep attention to " +
+							"specify not " +
 
 							"more woods than you got or less than 0");
 
 			woods = in.nextInt();
-		}while (woods>=0);
+		} while (woods >= 0);
 		return woods;
 	}
 
@@ -165,12 +170,14 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many military points do you want to use? Keep attention to specify not " +
+					"how many military points do you want to use? Keep " +
+							"attention to specify not " +
 
-							"more military points than you got or less than 0");
+							"more military points than you got or less than " +
+							"0");
 
 			militaryPoints = in.nextInt();
-		}while (militaryPoints>=0);
+		} while (militaryPoints >= 0);
 		return militaryPoints;
 	}
 
@@ -180,12 +187,13 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many faith points do you want to use? Keep attention to specify not " +
+					"how many faith points do you want to use? Keep attention " +
+							"to specify not " +
 
 							"more faith points than you got or less than 0");
 
 			faithPoints = in.nextInt();
-		}while (faithPoints>=0);
+		} while (faithPoints >= 0);
 		return faithPoints;
 	}
 

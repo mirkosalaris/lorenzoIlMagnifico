@@ -10,9 +10,8 @@ import java.util.Map;
 public final class Commons {
 	private final Parser parser;
 	private static ThreadLocal<Commons> threadInstance;
-	Map<Integer, ResourcesList> councilPrivilegeMap;
+	public static Map<Integer, ResourcesList> councilPrivilegeMap;
 	//TODO:compilare councilPrivilegeMap tramite parser
-
 
 
 	public ResourcesList getResourcesList(Integer integer) {
@@ -111,15 +110,14 @@ public final class Commons {
 				"resources");
 	}
 
-	public static DieColor memberColorToDieColor ( MemberColor color){
-		Map <MemberColor, DieColor> map = new EnumMap<>(MemberColor.class);
+	public static DieColor memberColorToDieColor(MemberColor color) {
+		Map<MemberColor, DieColor> map = new EnumMap<>(MemberColor.class);
 		map.put(MemberColor.ORANGE, DieColor.ORANGE);
 		map.put(MemberColor.BLACK, DieColor.BLACK);
 		map.put(MemberColor.WHITE, DieColor.WHITE);
 
 		return map.get(color);
 	}
-
 
 
 }

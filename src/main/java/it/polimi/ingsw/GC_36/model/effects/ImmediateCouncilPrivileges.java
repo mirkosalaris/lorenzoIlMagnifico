@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
+import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.CouncilPrivilege;
 import it.polimi.ingsw.GC_36.model.Game;
@@ -47,10 +49,31 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 
 	}
 
+
+	@Override
+	public void chooseOptions(ViewInterface view, Action action) {
+		int choice;
+		for (int i = 0; i < numberOfPrivileges; i++) {
+			//check if the choice is valis
+			do {
+				choice = view.choosePrivilege(i + 1);
+			} while (!Isvalid(
+					choice) || (mustDiffer & action.getCouncilPrivilegeList()
+					.contains(
+							choice)));
+			//end check
+			action.putPrivilegeChoose(choice);
+		}
+	}
+
 	private boolean allDifferent(List<Integer> list) {
 		HashSet<Integer> set = new HashSet<>(list);
 		return list.size() == set.size();
 
+	}
+
+	private boolean Isvalid(int choice) {
+		return (choice >= 0 && choice < Commons.councilPrivilegeMap.size());
 	}
 
 

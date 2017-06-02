@@ -15,7 +15,7 @@ public class Action {
 	}
 
 	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds) {
-		this.actionSpaceIds=actionSpaceIds;
+		this.actionSpaceIds = actionSpaceIds;
 	}
 
 	public void setPaymentList(ResourcesList resourcesList) {
@@ -39,7 +39,7 @@ public class Action {
 		return paymentList;
 	}
 
-	public void putPrivilegeChoose(int choose){
+	public void putPrivilegeChoose(int choose) {
 		councilPriviledgeList.add(choose);
 	}
 

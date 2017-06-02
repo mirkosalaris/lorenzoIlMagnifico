@@ -1,13 +1,15 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
+import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
+import it.polimi.ingsw.GC_36.model.ActionSpaceIds;
 
 import java.util.Set;
 
 public class ExtraProduction implements ImmediateEffect {
-	private Set<Integer> actionSpaces;
+	private Set<ActionSpaceIds> actionSpaces;
 
-	public ExtraProduction(Set<Integer> actionSpaces) {
+	public ExtraProduction(Set<ActionSpaceIds> actionSpaces) {
 		this.actionSpaces = actionSpaces;
 	}
 
@@ -15,4 +17,11 @@ public class ExtraProduction implements ImmediateEffect {
 	public void applyEffect(Action action) {
 
 	}
+
+	@Override
+	public void chooseOptions(ViewInterface view, Action action) {
+
+	}
+
+
 }
