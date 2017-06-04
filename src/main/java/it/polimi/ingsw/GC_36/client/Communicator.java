@@ -6,4 +6,5 @@ public interface Communicator {
 
 	void connect() throws IOException;
 
+	void start();
 }

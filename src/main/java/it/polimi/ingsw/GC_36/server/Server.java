@@ -1,26 +1,22 @@
 package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.Commons;
-import it.polimi.ingsw.GC_36.model.Game;
-import it.polimi.ingsw.GC_36.model.Player;
-import it.polimi.ingsw.GC_36.model.PlayerColor;
+import it.polimi.ingsw.GC_36.controller.GameExecutor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Scanner;
 
 public class Server {
+	private static ServerSocket ss;
 
 	private Server() {}
 
 	public static void main(String[] args) throws IOException {
 		Server server = new Server();
-
-		ServerSocket ss;
 		Socket[] sockets = new Socket[Commons.MAX_PLAYERS];
 
 		ss = new ServerSocket(Commons.PORT);
@@ -39,12 +35,8 @@ public class Server {
 			}
 		}
 
-		server.startMatch(sockets);
-	}
 
-	private void startMatch(Socket[] sockets) {
-
-		List<UserSOC> users = new ArrayList<>();
+		List<User> users = new ArrayList<>();
 
 		for (Socket s : sockets) {
 			try {
@@ -62,32 +54,44 @@ public class Server {
 		}
 
 		if (users.size() < Commons.MIN_PLAYERS) {
-			for (UserSOC u : users) {
+			for (User u : users) {
 				u.fatalError(
 						"Some players have abandoned the match. Too few " +
 								"remaining to play");
 			}
+
+		} else {
+			GameExecutor executor = new GameExecutor(users);
+			new Thread(executor).start();
 		}
 
-		Game game = new Game();
 
-		Map<PlayerColor, Player> players = new EnumMap<>(PlayerColor.class);
-		for (int i = 0; i < users.size(); i++) {
-			UserSOC u = users.get(i);
-			PlayerColor color = PlayerColor.values()[i];
-			Player p = new Player(color);
-			players.put(color, p);
-			u.setPlayer(p);
-		}
+		// accept "exit" as input and close the server
+		new Thread(new Runnable() {
+			private boolean running = true;
 
-		game.setPlayers(players);
-
-		for (UserSOC u : users) {
-			game.subscribe(u);
-		}
-
-		game.start();
+			@Override
+			public void run() {
+				String line;
+				Scanner sc = new Scanner(System.in);
+				do {
+					line = sc.nextLine();
+					if ("exit".equalsIgnoreCase(line)) {
+						exit();
+					}
+				} while (running);
+			}
+		}).start();
 	}
 
+	private static void exit() {
+		try {
+			ss.close();
+		} catch (IOException e) {
+			System.out.println("Cannot properly close ServerSocket");
+			e.printStackTrace();
+		}
 
+		System.exit(0);
+	}
 }

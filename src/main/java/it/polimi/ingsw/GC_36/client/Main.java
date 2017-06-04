@@ -6,10 +6,16 @@ import java.util.Scanner;
 public class Main {
 	static Communicator communicator;
 
+	private Main() {}
+
 	public static void main(String[] args) {
 		// TODO impl
 
-		communicator = chooseCommunicator();
+		ViewInterface view = chooseView();
+
+		User user = new User(view);
+
+		communicator = chooseCommunicator(user);
 
 		try {
 			communicator.connect();
@@ -17,25 +23,29 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		ViewInterface view = chooseView();
 		view.start();
 
-		// wait for other players
 
-		// launch actual application
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				communicator.start();
+			}
+		}).start();
+
 	}
 
-	private static Communicator chooseCommunicator() {
+	private static Communicator chooseCommunicator(User user) {
 		Communicator communicator = null;
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Type r to choose RMI, s to choose socket");
-		char choice = (char) sc.nextByte();
+		System.out.print("Type r to choose RMI, s to choose socket: ");
+		char choice = sc.next().charAt(0);
 		do {
 			if (choice == 's') {
-				communicator = new CommunicatorSocket();
+				communicator = new CommunicatorSocket(user);
 			} else if (choice == 'r') {
-				communicator = new CommunicatorRMI();
+				communicator = new CommunicatorRMI(user);
 			}
 		} while (communicator == null);
 
@@ -47,7 +57,7 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Type g to choose GUI, c to choose CLI");
-		char choice = (char) sc.nextByte();
+		char choice = sc.next().charAt(0);
 
 		do {
 			if (choice == 'c') {

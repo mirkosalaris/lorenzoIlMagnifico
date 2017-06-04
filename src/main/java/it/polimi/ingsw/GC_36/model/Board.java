@@ -122,7 +122,7 @@ public class Board {
 		// subscribe to Floors
 		for (Tower tower : Tower.values()) {
 			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
-				tower.getFloor(i).subscribe(o);
+				tower.getFloor(i + 1).subscribe(o);
 			}
 		}
 

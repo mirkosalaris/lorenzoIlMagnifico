@@ -1,7 +1,6 @@
 package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.model.*;
-import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -10,9 +9,8 @@ import java.net.Socket;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
 
-public class UserSOC implements ModelObserver {
+public class UserSOC implements User {
 	private ObjectOutputStream objOut;
 	private Player player;
 
@@ -23,10 +21,12 @@ public class UserSOC implements ModelObserver {
 	}
 
 
+	@Override
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
+	@Override
 	public void fatalError(String s) {
 		sendMessage("fatal_error", s, "Cannot send error to user");
 	}
@@ -90,10 +90,11 @@ public class UserSOC implements ModelObserver {
 	}
 
 	private void sendMessage(String type, Object obj, String error) {
-		Entry<String, Object> entry;
+		SimpleEntry<String, Object> entry;
 		entry = new SimpleEntry<>(type, obj);
 		try {
 			objOut.writeObject(entry);
+			objOut.flush();
 		} catch (IOException e) {
 			System.err.println(error);
 			e.printStackTrace();

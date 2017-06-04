@@ -2,76 +2,79 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.AbstractMap.SimpleEntry;
 
 public class CommunicatorSocket implements Communicator {
 
-	Scanner scIn;
-	PrintWriter out;
+	private final User user;
+	private ObjectOutputStream objOut;
+	private ObjectInputStream objIn;
+	private Socket socket;
+	private boolean matchEnded = false;
+
+	public CommunicatorSocket(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public void connect() throws IOException {
 
-		Socket socket = new Socket(Commons.HOST, Commons.PORT);
-		System.out.println("Connection established");
+		socket = new Socket(Commons.HOST, Commons.PORT);
+		System.out.println("Connection established\n");
 
-		new Thread(new ServerReader(socket)).start();
-		new Thread(new ServerWriter(socket)).start();
-	}
-}
-
-class ServerReader implements Runnable {
-	InputStream socketInput;
-
-	public ServerReader(Socket s) {
-		try {
-			socketInput = s.getInputStream();
-		} catch (IOException e) {
-			//TODO impl
-			e.printStackTrace();
-		}
+		objIn = new ObjectInputStream(
+				new BufferedInputStream(socket.getInputStream()));
+		objOut = new ObjectOutputStream(
+				new BufferedOutputStream(socket.getOutputStream()));
 	}
 
-	public void run() {
-		int byteIn;
-		while (true) {
+	@Override
+	public void start() {
+		System.out.println("listening...");
 
+		while (!matchEnded) {
+			// TODO manage exception: what to do in case of exception???
 			try {
-				byteIn = socketInput.read();
-				System.out.print((char) byteIn);
+				SimpleEntry<String, Object> entry = (SimpleEntry<String,
+						Object>) objIn
+						.readObject();
+
+				handleEntry(entry);
+
 			} catch (IOException e) {
+				System.out.println("Cannot read object from socket");
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				System.out.println("Cannot deserialize object from socket");
 				e.printStackTrace();
 			}
-
 		}
-	}
-}
 
-class ServerWriter implements Runnable {
-	PrintWriter socketOut;
-	Scanner stdin;
-
-	public ServerWriter(Socket s) {
 		try {
-			socketOut = new PrintWriter(s.getOutputStream(),
-					true);
+			socket.close();
 		} catch (IOException e) {
-			//TODO impl
+			System.out.println("Cannot close the socket");
 			e.printStackTrace();
 		}
-		stdin = new Scanner(System.in);
-
 	}
 
-	public void run() {
-		String inputLine;
-		while (true) {
-			inputLine = stdin.nextLine();
-			socketOut.println(inputLine);
+	private void handleEntry(SimpleEntry<String, Object> entry) {
+		switch (entry.getKey()) {
+			case "fatal_error":
+				//user.fatalError(entry.getValue());
+				matchEnded = true;
+
+			case "updateBoardState":
+				//user.update();
+
+				// TODO etc.
+			default:
+				System.out.println(
+						"Cannot retrieve information correctly from network:" +
+								" " +
+								"Object with wrong key");
 		}
 	}
 }
