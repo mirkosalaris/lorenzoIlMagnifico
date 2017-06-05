@@ -1,6 +1,6 @@
 package it.polimi.ingsw.GC_36.client;
 
-import it.polimi.ingsw.GC_36.model.MemberColor;
+import it.polimi.ingsw.GC_36.model.*;
 
 import java.util.Scanner;
 
@@ -160,9 +160,11 @@ public class ViewCLI implements ViewInterface {
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many faith points do you want to use? Keep attention" +
+					"how many faith points do you want to use? Keep " +
+							"attention" +
 							" " +
-							"to specify not more faith points than you got or" +
+							"to specify not more faith points than you got " +
+							"or" +
 							" " +
 							"less than 0");
 
@@ -173,7 +175,74 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public void start() {
-		// this has to "start" the view
-		// TODO impl
+		System.out.println("Welcome, enjoy the game");
+	}
+
+	@Override
+	public void update(Round newRound) {
+		System.out.println("newRound: " + newRound);
+	}
+
+	@Override
+	public void update(BoardState currentState) {
+		System.out.println("newBoardState: " + currentState);
+
+	}
+
+	@Override
+	public void update(PlayerState newState) {
+		System.out.println("newPlayerState: " + newState);
+
+	}
+
+	@Override
+	public void update(ActionSpaceIds id, boolean free) {
+		System.out.print(id.name());
+		if (free) {
+			System.out.print("is free\n");
+		} else {
+			System.out.print("is not free\n");
+		}
+
+		System.out.flush();
+	}
+
+	@Override
+	public void fatalError(String s) {
+		System.out.println("fatal error: " + s);
+
+	}
+
+	@Override
+	public void update(GameState newState) {
+		System.out.println("newGameState: " + newState);
+
+	}
+
+	@Override
+	public void update(Period newPeriod) {
+		System.out.println("newPeriod: " + newPeriod);
+
+	}
+
+	@Override
+	public void update(RoundState newState) {
+		System.out.println("newRoundState: " + newState);
+
+	}
+
+	@Override
+	public void update(Player newPlayer) {
+		System.out.println("newPlayer: " + newPlayer);
+
+	}
+
+	@Override
+	public void update(int floorNumber, Tower tower,
+	                   DevelopmentCard developmentCard) {
+		System.out.println(
+				"floorNumber: " + floorNumber + "\n tower " + tower +
+						"\n card " + developmentCard);
+
 	}
 }

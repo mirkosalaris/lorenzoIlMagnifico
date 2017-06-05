@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.client;
 
 import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,8 +20,10 @@ public class Main {
 
 		try {
 			communicator.connect();
-		} catch (IOException e) {
+		} catch (IOException | InterruptedException | NotBoundException e) {
+			System.out.println("Cannot connect to server. Exiting...");
 			e.printStackTrace();
+			System.exit(1);
 		}
 
 		view.start();
@@ -56,7 +59,7 @@ public class Main {
 		ViewInterface view = null;
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Type g to choose GUI, c to choose CLI");
+		System.out.print("Type g to choose GUI, c to choose CLI: ");
 		char choice = sc.next().charAt(0);
 
 		do {

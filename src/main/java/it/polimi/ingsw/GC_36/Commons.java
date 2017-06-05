@@ -10,8 +10,11 @@ import java.util.Map;
 public final class Commons {
 	public static final String HOST = "localhost";
 	public static final int PORT = 7777;
-	public static final int MAX_PLAYERS = 4;
-	public static final int MIN_PLAYERS = 2;
+	public static final int RMI_PORT = 7070;
+
+	// TODO: change value. Now both at 1 just for testing
+	public static final int MAX_PLAYERS = 1;
+	public static final int MIN_PLAYERS = 1;
 
 	private final Parser parser;
 	private static ThreadLocal<Commons> threadInstance;

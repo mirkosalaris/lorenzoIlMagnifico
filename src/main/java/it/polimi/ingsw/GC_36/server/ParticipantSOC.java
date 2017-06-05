@@ -10,20 +10,13 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSOC implements User {
+public class ParticipantSOC implements Participant {
 	private ObjectOutputStream objOut;
-	private Player player;
 
-	public UserSOC(Socket socket) throws IOException {
+	public ParticipantSOC(Socket socket) throws IOException {
 
 		objOut = new ObjectOutputStream(
 				new BufferedOutputStream(socket.getOutputStream()));
-	}
-
-
-	@Override
-	public void setPlayer(Player player) {
-		this.player = player;
 	}
 
 	@Override
@@ -83,10 +76,8 @@ public class UserSOC implements User {
 
 	@Override
 	public void update(Player newPlayer) {
-		if (!newPlayer.equals(this.player)) {
-			sendMessage("updateCurrentPlayer", newPlayer,
-					"cannot update new Player");
-		}
+		sendMessage("updateCurrentPlayer", newPlayer,
+				"cannot update new Player");
 	}
 
 	private void sendMessage(String type, Object obj, String error) {

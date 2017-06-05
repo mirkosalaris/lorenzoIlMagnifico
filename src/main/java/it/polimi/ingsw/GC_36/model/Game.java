@@ -28,6 +28,7 @@ public class Game {
 		// instantiate Commons, for later use of other classes
 		Commons common = new Commons(new File(COMMONS_FILE));
 
+		// TODO: bug this is not how ThreadLocal works
 		if (threadInstance != null)
 			throw new IllegalStateException("A game instance already exists");
 

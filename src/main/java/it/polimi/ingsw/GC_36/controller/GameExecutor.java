@@ -4,30 +4,30 @@ package it.polimi.ingsw.GC_36.controller;
 import it.polimi.ingsw.GC_36.model.Game;
 import it.polimi.ingsw.GC_36.model.Player;
 import it.polimi.ingsw.GC_36.model.PlayerColor;
-import it.polimi.ingsw.GC_36.server.User;
+import it.polimi.ingsw.GC_36.server.Participant;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class GameExecutor implements Runnable {
 	private Game game;
 
-	public GameExecutor(List<User> users) {
+	public GameExecutor(Set<Participant> users) {
 		game = new Game();
 
 		Map<PlayerColor, Player> players = new EnumMap<>(PlayerColor.class);
 		for (int i = 0; i < users.size(); i++) {
-			User u = users.get(i);
+			Participant u = users.iterator().next();
+
 			PlayerColor color = PlayerColor.values()[i];
 			Player p = new Player(color);
 			players.put(color, p);
-			u.setPlayer(p);
 		}
 
 		game.setPlayers(players);
 
-		for (User u : users) {
+		for (Participant u : users) {
 			game.subscribe(u);
 		}
 

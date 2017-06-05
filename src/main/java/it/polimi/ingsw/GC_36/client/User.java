@@ -1,10 +1,11 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.server.Participant;
 
 import java.util.HashMap;
 
-public class User {
+public class User implements Participant {
 	private Player player;
 	private ViewInterface view;
 	private HashMap<ActionSpaceIds, DevelopmentCard> cards;
@@ -97,4 +98,64 @@ public class User {
 
 	}
 
+	@Override
+	public void update(Round newRound) {
+		// TODO think and impl
+		view.update(newRound);
+	}
+
+	@Override
+	public void update(BoardState currentState) {
+		// TODO think and impl
+		view.update(currentState);
+	}
+
+	@Override
+	public void update(PlayerState newState) {
+		// TODO think and impl
+		view.update(newState);
+	}
+
+	@Override
+	public void update(ActionSpaceIds id, boolean free) {
+		// TODO think and impl
+		view.update(id, free);
+	}
+
+	@Override
+	public void fatalError(String s) {
+		// TODO think and impl
+		view.fatalError(s);
+	}
+
+	@Override
+	public void update(GameState newState) {
+		// TODO think and impl
+		view.update(newState);
+	}
+
+	@Override
+	public void update(Period newPeriod) {
+		// TODO think and impl
+		view.update(newPeriod);
+	}
+
+	@Override
+	public void update(RoundState newState) {
+		// TODO think and impl
+		view.update(newState);
+	}
+
+	@Override
+	public void update(Player newPlayer) {
+		// TODO think and impl
+		view.update(newPlayer);
+	}
+
+	@Override
+	public void update(int floorNumber, Tower tower,
+	                   DevelopmentCard developmentCard) {
+		// TODO think and impl
+		view.update(floorNumber, tower, developmentCard);
+	}
 }

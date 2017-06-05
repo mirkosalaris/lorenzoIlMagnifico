@@ -1,8 +1,9 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.MemberColor;
+import it.polimi.ingsw.GC_36.server.Participant;
 
-public interface ViewInterface {
+public interface ViewInterface extends Participant {
 
 	MemberColor chooseMemberColor();
 

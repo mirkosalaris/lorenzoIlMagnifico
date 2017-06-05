@@ -24,6 +24,7 @@ public class CommunicatorSocket implements Communicator {
 		socket = new Socket(Commons.HOST, Commons.PORT);
 		System.out.println("Connection established\n");
 
+
 		objIn = new ObjectInputStream(
 				new BufferedInputStream(socket.getInputStream()));
 		objOut = new ObjectOutputStream(
@@ -37,9 +38,8 @@ public class CommunicatorSocket implements Communicator {
 		while (!matchEnded) {
 			// TODO manage exception: what to do in case of exception???
 			try {
-				SimpleEntry<String, Object> entry = (SimpleEntry<String,
-						Object>) objIn
-						.readObject();
+				SimpleEntry<String, Object> entry =
+						(SimpleEntry<String, Object>) objIn.readObject();
 
 				handleEntry(entry);
 
@@ -65,16 +65,21 @@ public class CommunicatorSocket implements Communicator {
 			case "fatal_error":
 				//user.fatalError(entry.getValue());
 				matchEnded = true;
+				break;
 
 			case "updateBoardState":
 				//user.update();
+				break;
 
-				// TODO etc.
+			case "updateGameState":
+				System.out.println(entry.getKey() + " " + entry.getValue());
+				break;
+			// TODO etc.
 			default:
 				System.out.println(
 						"Cannot retrieve information correctly from network:" +
 								" " +
-								"Object with wrong key");
+								"Object with wrong key: " + entry.getKey());
 		}
 	}
 }

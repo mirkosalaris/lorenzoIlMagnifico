@@ -1,16 +1,13 @@
 package it.polimi.ingsw.GC_36.server;
 
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.model.*;
 
-public class UserRMI implements User {
-	@Override
-	public void setPlayer(Player player) {
+public class ParticipantRMI implements Participant {
+	private final User user;
 
-	}
-
-	@Override
-	public void fatalError(String s) {
-
+	public ParticipantRMI(User user) {
+		this.user = user;
 	}
 
 	@Override
@@ -50,6 +47,11 @@ public class UserRMI implements User {
 
 	@Override
 	public void update(Player newPlayer) {
+
+	}
+
+	@Override
+	public void fatalError(String s) {
 
 	}
 
