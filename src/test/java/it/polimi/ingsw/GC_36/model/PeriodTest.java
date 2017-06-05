@@ -17,7 +17,7 @@ public class PeriodTest {
 
 	@Before
 	public void setUp() throws Exception {
-		game = new Game();
+		game = Game.getInstance();
 
 		Map<PlayerColor, Player> players = new HashMap<>();
 

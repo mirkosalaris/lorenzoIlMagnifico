@@ -16,7 +16,7 @@ public class GameTest {
 
 	@Before
 	public void setUp() throws Exception {
-		game = new Game();
+		game = Game.getInstance();
 
 		Map<PlayerColor, Player> players = new HashMap<>();
 
@@ -39,14 +39,6 @@ public class GameTest {
 	@Test
 	public void getInstance() throws Exception {
 		assertEquals("game retrieved in wrong way", game, Game.getInstance());
-	}
-
-	@Test(expected = IllegalStateException.class)
-	public void getInstanceException() throws Exception {
-		tearDown();
-		// now there is no instance of Game class
-
-		Game.getInstance();
 	}
 
 	@Test

@@ -14,7 +14,7 @@ public class GameExecutor implements Runnable {
 	private Game game;
 
 	public GameExecutor(Set<Participant> users) {
-		game = new Game();
+		game = Game.getInstance();
 
 		Map<PlayerColor, Player> players = new EnumMap<>(PlayerColor.class);
 		for (int i = 0; i < users.size(); i++) {

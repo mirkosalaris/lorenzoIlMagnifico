@@ -26,34 +26,26 @@ public class Game {
 
 	public Game() {
 		// instantiate Commons, for later use of other classes
-		Commons common = new Commons(new File(COMMONS_FILE));
-
-		// TODO: bug this is not how ThreadLocal works
-		if (threadInstance != null)
-			throw new IllegalStateException("A game instance already exists");
+		Commons common = Commons.getInstance(new File(COMMONS_FILE));
 
 		setCurrentState(GameState.STARTING);
 
 		board = new Board();
 		deckSetsParser = new DeckSetsParser(new File(DECKSETS_FILE));
-
-		// save this instance to be referable from static context
-		// -> Game is a multithread singleton (one instance for each thread)
-		Game instance = this;
-		threadInstance = new ThreadLocal<Game>() {
-			@Override
-			protected Game initialValue() {
-				return instance;
-			}
-		};
 	}
 
-	public static Game getInstance() throws IllegalStateException {
+	public static Game getInstance() {
 		// Game is a Thread-Singleton (a singleton for each thread).
 		// This method implements it.
 
 		if (threadInstance == null) {
-			throw new IllegalStateException("No game instance exists");
+			threadInstance = new ThreadLocal<Game>() {
+				@Override
+				protected Game initialValue() {
+					return new Game();
+				}
+			};
+			//throw new IllegalStateException("No game instance exists");
 		}
 		return threadInstance.get();
 	}

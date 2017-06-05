@@ -29,7 +29,7 @@ public final class Commons {
 	public static final int NUMBER_OF_PERIODS = 3;
 	public static final int NUMBER_OF_FLOORS = 4;
 
-	public Commons(File file) {
+	private Commons(File file) {
 		// save this instance to be referable from static context
 		// -> Commons is a multithread singleton (one instance for each thread)
 		Commons instance = this;
@@ -46,10 +46,23 @@ public final class Commons {
 		// TODO
 	}
 
+	public static Commons getInstance(File file) {
+		if (threadInstance == null) {
+			threadInstance = new ThreadLocal<Commons>() {
+				@Override
+				protected Commons initialValue() {
+					return new Commons(file);
+				}
+			};
+		}
+		return threadInstance.get();
+
+	}
+
 	public static Commons getInstance() {
 		if (threadInstance == null) {
 			throw new IllegalStateException(
-					"There has to be an instance of Commons");
+					"There are no instances of Commons to use");
 		} else {
 			return threadInstance.get();
 		}
