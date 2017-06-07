@@ -1,14 +1,16 @@
 package it.polimi.ingsw.GC_36.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-//usare id al posto di actionspace e sostituire l-interfaccia con id
-
-public class Action {
+public class Action implements Serializable {
 	MemberColor memberColor;
 	ActionSpaceIds actionSpaceIds;
 	ResourcesList paymentList;
-	private List<Integer> councilPriviledgeList;
+	private List<Integer> councilPrivilegeList;
+
+	public Action() {
+	}
 
 	public void setMemberColor(MemberColor MemberColor) {
 		this.memberColor = MemberColor;
@@ -22,8 +24,8 @@ public class Action {
 		this.paymentList = resourcesList;
 	}
 
-	public void setCouncilPriviledgeList(List<Integer> privilegeList) {
-		this.councilPriviledgeList = privilegeList;
+	public void setCouncilPrivilegeList(List<Integer> privilegeList) {
+		this.councilPrivilegeList = privilegeList;
 	}
 
 	public MemberColor getMemberColor() {
@@ -31,7 +33,7 @@ public class Action {
 		//TODO:associated test replacing getFamilyMemberTest
 	}
 
-	public ActionSpaceIds getActionSpace() {
+	public ActionSpaceIds getActionSpaceId() {
 		return actionSpaceIds;
 	}
 
@@ -39,11 +41,19 @@ public class Action {
 		return paymentList;
 	}
 
-	public void putPrivilegeChoose(int choose) {
-		councilPriviledgeList.add(choose);
+	public void putPrivilegeChoice(int choice) {
+		councilPrivilegeList.add(choice);
 	}
 
 	public List<Integer> getCouncilPrivilegeList() {
-		return councilPriviledgeList;
+		return councilPrivilegeList;
+	}
+
+	public void copyFrom(Action action) {
+		// TODO test if constraints are the same between this and action
+
+		this.memberColor = action.memberColor;
+		this.actionSpaceIds = action.actionSpaceIds;
+		this.councilPrivilegeList = action.councilPrivilegeList;
 	}
 }

@@ -58,11 +58,11 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 			do {
 				choice = view.choosePrivilege(i + 1);
 			} while (!Isvalid(
-					choice) || (mustDiffer & action.getCouncilPrivilegeList()
+					choice) || (mustDiffer && action.getCouncilPrivilegeList()
 					.contains(
 							choice)));
 			//end check
-			action.putPrivilegeChoose(choice);
+			action.putPrivilegeChoice(choice);
 		}
 	}
 

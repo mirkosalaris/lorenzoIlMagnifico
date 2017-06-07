@@ -32,7 +32,13 @@ public class Main {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				communicator.start();
+				try {
+					communicator.start();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
 			}
 		}).start();
 

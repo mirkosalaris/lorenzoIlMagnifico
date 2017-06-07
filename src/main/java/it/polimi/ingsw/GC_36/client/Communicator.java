@@ -5,7 +5,7 @@ import java.rmi.NotBoundException;
 
 public interface Communicator {
 
-	void connect() throws IOException, NotBoundException, InterruptedException;
+	void connect() throws IOException, InterruptedException, NotBoundException;
 
-	void start();
+	void start() throws IOException, ClassNotFoundException;
 }

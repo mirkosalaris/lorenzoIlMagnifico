@@ -3,9 +3,10 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DevelopmentCard {
+public class DevelopmentCard implements Serializable {
 
 	private CardType type;
 	private int period;

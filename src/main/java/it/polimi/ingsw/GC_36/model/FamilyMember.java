@@ -2,7 +2,9 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
 
-public class FamilyMember {
+import java.io.Serializable;
+
+public class FamilyMember implements Serializable {
 	private boolean Available;
 	private PlayerColor playerColor;
 	private MemberColor memberColor;

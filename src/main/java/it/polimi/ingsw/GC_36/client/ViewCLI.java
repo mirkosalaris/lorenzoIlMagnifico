@@ -44,15 +44,14 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public int choosePrivilege(int n) {
 		Scanner in = new Scanner(System.in);
-		System.out.println("choose number:" + n);
-		System.out.println("Please specify how to convert your privilege:" +
-				"0: one wood & one stone" +
-				"1: two servants" +
-				"3: two coins" +
-				"4: two military points" +
-				"5: one faith point");
+		System.out.println("choice number " + n);
+		System.out.println("Please specify how to convert your privilege:\n" +
+				"0: one wood & one stone\n" +
+				"1: two servants\n" +
+				"3: two coins\n" +
+				"4: two military points\n" +
+				"5: one faith point\n");
 		return in.nextInt();
-
 	}
 
 	@Override
@@ -179,19 +178,18 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(Round newRound) {
-		System.out.println("newRound: " + newRound);
+	public void update() {
+		System.out.println("A new Round has started");
 	}
 
 	@Override
 	public void update(BoardState currentState) {
-		System.out.println("newBoardState: " + currentState);
-
+		System.out.println("new Board State: " + currentState);
 	}
 
 	@Override
 	public void update(PlayerState newState) {
-		System.out.println("newPlayerState: " + newState);
+		System.out.println("new Player State: " + newState);
 
 	}
 
@@ -215,26 +213,25 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public void update(GameState newState) {
-		System.out.println("newGameState: " + newState);
+		System.out.println("new Game State: " + newState);
 
 	}
 
 	@Override
-	public void update(Period newPeriod) {
-		System.out.println("newPeriod: " + newPeriod);
+	public void update(int periodNumber) {
+		System.out.println("A new Period has started");
 
 	}
 
 	@Override
 	public void update(RoundState newState) {
-		System.out.println("newRoundState: " + newState);
+		System.out.println("new Round State: " + newState);
 
 	}
 
 	@Override
 	public void update(Player newPlayer) {
-		System.out.println("newPlayer: " + newPlayer);
-
+		System.out.println("Current player: " + newPlayer);
 	}
 
 	@Override
@@ -243,6 +240,16 @@ public class ViewCLI implements ViewInterface {
 		System.out.println(
 				"floorNumber: " + floorNumber + "\n tower " + tower +
 						"\n card " + developmentCard);
+
+	}
+
+	@Override
+	public void play(Action action) {
+
+	}
+
+	@Override
+	public void exit() {
 
 	}
 }

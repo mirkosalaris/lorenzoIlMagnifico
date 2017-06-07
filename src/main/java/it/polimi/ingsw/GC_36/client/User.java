@@ -1,8 +1,10 @@
 package it.polimi.ingsw.GC_36.client;
 
+import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.server.Participant;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class User implements Participant {
@@ -12,16 +14,6 @@ public class User implements Participant {
 
 	public User(ViewInterface view) {
 		this.view = view;
-	}
-
-	public void execute(Action action) {
-		// this change action through setter. It's to be this way for safety:
-		// there can't be a way to construct a new Action. The user has to use
-		// the one passed
-
-		chooseMemberColor(action);
-		chooseActionSpace(action);
-
 	}
 
 	private void chooseMemberColor(Action action) {
@@ -42,66 +34,70 @@ public class User implements Participant {
 			card.getImmediateEffect().chooseOptions(view, action);
 		}
 		if (actionSpaceId == ActionSpaceIds.AS_COUNCIL) {
-			int choose;
+			int choice;
 			//check the choice
-			choose = view.choosePrivilege(1);
+			choice = view.choosePrivilege(1);
 			//check the choice
-			action.putPrivilegeChoose(choose);
+			action.putPrivilegeChoice(choice);
 
 		}
 
 	}
 
 	private void compilePaymentResourcesList(Action action) {
+		// TODO auto-compilation for simple cases?
+
+		// TODO do we really need to check here for resources of player?
+		// we don't have a reference to player!!!
+
 		ResourcesList paymentList = new ResourcesList();
-		int woods, stones, coins, servant, victorypoints, militarypoints,
-				faithpoints;
+		ResourcesList actualResources = player.getPersonalBoard()
+				.getResourcesList();
+
+		int woods, stones, coins, servants, victoryPoints, militaryPoints,
+				faithPoints;
 		do {
 			woods = view.selectNumberOfWoods();
-		} while (!(player.getPersonalBoard().getResourcesList().get(
-				ResourceType.WOOD).getValue() >= woods));
+		} while (woods > actualResources.get(ResourceType.WOOD).getValue());
 
 		do {
 			stones = view.selectNumberOfStones();
-		} while (player.getPersonalBoard().getResourcesList().get(
-				ResourceType.STONE).getValue() >= stones);
+		} while (stones > actualResources.get(ResourceType.STONE).getValue());
 		do {
-			servant = view.selectNumberOfServants();
-		} while (!(player.getPersonalBoard().getResourcesList().get(
-				ResourceType.SERVANT).getValue() >= servant));
+			servants = view.selectNumberOfServants();
+		} while (servants >
+				actualResources.get(ResourceType.SERVANT).getValue());
 		do {
 			coins = view.selectNumberOfCoins();
-		} while (!(player.getPersonalBoard().getResourcesList().get(
-				ResourceType.COINS).getValue() >= coins));
+		} while (coins > actualResources.get(ResourceType.COINS).getValue());
 		do {
-			victorypoints = view.selectNumberOfVictoryPoints();
-		} while (!(player.getPersonalBoard().getResourcesList().get(
-				ResourceType.VICTORY_POINTS).getValue() >= victorypoints));
+			victoryPoints = view.selectNumberOfVictoryPoints();
+		} while (victoryPoints >
+				actualResources.get(ResourceType.VICTORY_POINTS).getValue());
 		do {
-			militarypoints = view.selectNumberOfMilitaryPoints();
-		} while (!(player.getPersonalBoard().getResourcesList().get(
-				ResourceType.MILITARY_POINTS).getValue() >= militarypoints));
+			militaryPoints = view.selectNumberOfMilitaryPoints();
+		} while (militaryPoints >
+				actualResources.get(ResourceType.MILITARY_POINTS).getValue());
 		do {
-			faithpoints = view.selectNumberOfFaithPoints();
-		} while (!(player.getPersonalBoard().getResourcesList().get(
-				ResourceType.FAITH_POINTS).getValue() >= faithpoints));
+			faithPoints = view.selectNumberOfFaithPoints();
+		} while (faithPoints >
+				actualResources.get(ResourceType.FAITH_POINTS).getValue());
 
 		paymentList.set(ResourceType.WOOD, woods);
 		paymentList.set(ResourceType.STONE, stones);
-		paymentList.set(ResourceType.SERVANT, servant);
+		paymentList.set(ResourceType.SERVANT, servants);
 		paymentList.set(ResourceType.COINS, coins);
-		paymentList.set(ResourceType.VICTORY_POINTS, victorypoints);
-		paymentList.set(ResourceType.MILITARY_POINTS, militarypoints);
-		paymentList.set(ResourceType.FAITH_POINTS, faithpoints);
+		paymentList.set(ResourceType.VICTORY_POINTS, victoryPoints);
+		paymentList.set(ResourceType.MILITARY_POINTS, militaryPoints);
+		paymentList.set(ResourceType.FAITH_POINTS, faithPoints);
 
 		action.setPaymentList(paymentList);
-
 	}
 
 	@Override
-	public void update(Round newRound) {
+	public void update() {
 		// TODO think and impl
-		view.update(newRound);
+		view.update();
 	}
 
 	@Override
@@ -129,15 +125,35 @@ public class User implements Participant {
 	}
 
 	@Override
+	public void exit() {
+
+	}
+
+	@Override
+	public void play(Action action)
+			throws IOException, ClassNotFoundException {
+
+		// this change action through setter. It's to be this way for safety:
+		// there can't be a way to construct a new Action. The user has to use
+		// the one passed
+
+		chooseMemberColor(action);
+		chooseActionSpace(action);
+		if (Commons.isFloor(action.getActionSpaceId())) {
+			compilePaymentResourcesList(action);
+		}
+	}
+
+	@Override
 	public void update(GameState newState) {
 		// TODO think and impl
 		view.update(newState);
 	}
 
 	@Override
-	public void update(Period newPeriod) {
+	public void update(int periodNumber) {
 		// TODO think and impl
-		view.update(newPeriod);
+		view.update(periodNumber);
 	}
 
 	@Override
@@ -148,14 +164,17 @@ public class User implements Participant {
 
 	@Override
 	public void update(Player newPlayer) {
-		// TODO think and impl
-		view.update(newPlayer);
+		// DO NOT inform user HERE of his turn
+		if (!player.equals(newPlayer)) {
+			view.update(newPlayer);
+		}
 	}
 
 	@Override
 	public void update(int floorNumber, Tower tower,
 	                   DevelopmentCard developmentCard) {
-		// TODO think and impl
+
+		// TODO save developmentCard in cards
 		view.update(floorNumber, tower, developmentCard);
 	}
 }

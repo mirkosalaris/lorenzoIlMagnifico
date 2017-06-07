@@ -39,15 +39,10 @@ public enum ActionSpaceIds {
 
 	static int maxValue;
 	static int minValue = 0;
-	private boolean first = true;
+	private static boolean first = true;
 
 	ActionSpaceIds(int value) {
-		this.value = value;
-
-		setMin(value);
-		setMax(value);
-
-		first = false;
+		setValue(value);
 	}
 
 	public int value() {
@@ -58,16 +53,27 @@ public enum ActionSpaceIds {
 		return (id >= maxValue || id <= minValue);
 	}
 
-	private void setMin(int value) {
+	private static void setMin(int value) {
 		if (first || value < minValue) {
 			minValue = value;
 		}
 	}
 
-	private void setMax(int value) {
+	private static void setMax(int value) {
 		if (first || value < maxValue) {
 			minValue = value;
 		}
+	}
+
+	private void setValue(int value) {
+		// method needed to assign 'first': it is illegal to access static
+		// member directly from constructor
+
+		this.value = value;
+
+		setMin(value);
+		setMax(value);
+		first = false;
 	}
 
 

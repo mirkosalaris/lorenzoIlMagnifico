@@ -16,11 +16,14 @@ public final class Commons {
 	public static final int MAX_PLAYERS = 1;
 	public static final int MIN_PLAYERS = 1;
 
-	private final Parser parser;
-	private static ThreadLocal<Commons> threadInstance;
-	public static Map<Integer, ResourcesList> councilPrivilegeMap;
+	private static final String COMMONS_FILE = "commons.json";
 
 	//TODO:compilare councilPrivilegeMap tramite parser
+	public static Map<Integer, ResourcesList> councilPrivilegeMap;
+
+	private final Parser parser;
+	private static ThreadLocal<Commons> threadInstance;
+
 
 	public ResourcesList getResourcesList(Integer integer) {
 		return councilPrivilegeMap.get(integer);
@@ -29,43 +32,21 @@ public final class Commons {
 	public static final int NUMBER_OF_PERIODS = 3;
 	public static final int NUMBER_OF_FLOORS = 4;
 
-	private Commons(File file) {
-		// save this instance to be referable from static context
-		// -> Commons is a multithread singleton (one instance for each thread)
-		Commons instance = this;
-		threadInstance = new ThreadLocal<Commons>() {
-			@Override
-			protected Commons initialValue() {
-				return instance;
-			}
-		};
-
-
-		parser = new Parser(file);
-
-		// TODO
+	private Commons() {
+		parser = new Parser(new File(COMMONS_FILE));
 	}
 
-	public static Commons getInstance(File file) {
+	public static Commons getInstance() {
 		if (threadInstance == null) {
 			threadInstance = new ThreadLocal<Commons>() {
 				@Override
 				protected Commons initialValue() {
-					return new Commons(file);
+					return new Commons();
 				}
 			};
 		}
 		return threadInstance.get();
 
-	}
-
-	public static Commons getInstance() {
-		if (threadInstance == null) {
-			throw new IllegalStateException(
-					"There are no instances of Commons to use");
-		} else {
-			return threadInstance.get();
-		}
 	}
 
 	public static Map<DieColor, Die> diceInitializer() {
@@ -109,6 +90,10 @@ public final class Commons {
 		} else {
 			return Tower.VENTURERS.getFloor(actionSpaceId.value() - 12);
 		}
+	}
+
+	public static boolean isFloor(ActionSpaceIds actionSpaceId) {
+		return actionSpaceId.value() >= 1 && actionSpaceId.value() <= 16;
 	}
 
 	public int getRequiredActionValue(ActionSpaceIds actionSpaceId) {

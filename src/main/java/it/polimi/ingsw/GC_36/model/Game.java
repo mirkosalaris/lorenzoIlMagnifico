@@ -4,19 +4,12 @@ import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.controller.Scorer;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
-import it.polimi.ingsw.GC_36.parsers.DeckSetsParser;
 
-import java.io.File;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class Game {
-	public static final String COMMONS_FILE = "commons.json";
-	public static final String DECKSETS_FILE = "deckSets.json";
-
-	private DeckSetsParser deckSetsParser;
-
 	private static ThreadLocal<Game> threadInstance = null;
 	private Board board;
 	private GameState currentState;
@@ -26,12 +19,11 @@ public class Game {
 
 	public Game() {
 		// instantiate Commons, for later use of other classes
-		Commons common = Commons.getInstance(new File(COMMONS_FILE));
+		Commons common = Commons.getInstance();
 
 		setCurrentState(GameState.STARTING);
 
 		board = new Board();
-		deckSetsParser = new DeckSetsParser(new File(DECKSETS_FILE));
 	}
 
 	public static Game getInstance() {
@@ -67,7 +59,7 @@ public class Game {
 		// TODO how do we check that this method will be called just three
 		// times?
 
-		DeckSet deckSet = deckSetsParser.get(periodNumber);
+		DeckSet deckSet = new DeckSet(periodNumber);
 		currentPeriod = new Period(periodNumber, deckSet);
 
 		newPeriodNotify();
@@ -126,7 +118,7 @@ public class Game {
 
 	private void newPeriodNotify() {
 		for (GameObserver o : observers) {
-			o.update(currentPeriod);
+			o.update(currentPeriod.getPeriodNumber());
 		}
 	}
 }

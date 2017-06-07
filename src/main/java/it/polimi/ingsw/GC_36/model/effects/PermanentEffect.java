@@ -1,6 +1,8 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
-public interface PermanentEffect {
+import java.io.Serializable;
+
+public interface PermanentEffect extends Serializable {
 
 	public void applyEffect();
 }

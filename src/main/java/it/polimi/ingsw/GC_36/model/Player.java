@@ -1,24 +1,28 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.observers.PlayerObserver;
+import it.polimi.ingsw.GC_36.server.Participant;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Player {
+public class Player implements Serializable {
 	private PlayerColor playerColor;
+	private final Participant user;
 	private PersonalBoard personalBoard;
 	private Map<MemberColor, FamilyMember> familyMembers =
 			new EnumMap<>(MemberColor.class);
 	private PlayerState currentState;
 	private Set<PlayerObserver> observers = new HashSet<>();
 
-	public Player(PlayerColor playerColor) {
+	public Player(PlayerColor playerColor, Participant user) {
 		// TODO
 
 		this.playerColor = playerColor;
+		this.user = user;
 
 		setCurrentState(PlayerState.UNINITIALIZED);
 	}
@@ -55,6 +59,9 @@ public class Player {
 		return null;
 	}
 
+	public Participant getUser() {
+		return user;
+	}
 
 	public void subscribe(PlayerObserver o) {
 		observers.add(o);

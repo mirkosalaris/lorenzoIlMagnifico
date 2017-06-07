@@ -1,6 +1,9 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.client.User;
+import it.polimi.ingsw.GC_36.client.ViewCLI;
 import it.polimi.ingsw.GC_36.observers.PeriodObserver;
+import it.polimi.ingsw.GC_36.server.ParticipantRMI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,8 +24,13 @@ public class PeriodTest {
 
 		Map<PlayerColor, Player> players = new HashMap<>();
 
-		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE));
-		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE));
+		Player player1 = new Player(PlayerColor.BLUE,
+				new ParticipantRMI(new User(new ViewCLI())));
+		Player player2 = new Player(PlayerColor.BLUE,
+				new ParticipantRMI(new User(new ViewCLI())));
+
+		players.put(PlayerColor.BLUE, player1);
+		players.put(PlayerColor.BLUE, player2);
 
 		game.setPlayers(players);
 
@@ -60,11 +68,11 @@ public class PeriodTest {
 	public void subscribe() throws Exception {
 		PeriodObserver o1 = new PeriodObserver() {
 			@Override
-			public void update(Round newRound) {}
+			public void update() {}
 		};
 		PeriodObserver o2 = new PeriodObserver() {
 			@Override
-			public void update(Round newRound) {}
+			public void update() {}
 		};
 
 		period.subscribe(o1);
@@ -86,11 +94,11 @@ public class PeriodTest {
 
 		PeriodObserver o1 = new PeriodObserver() {
 			@Override
-			public void update(Round newRound) {obValue[0] = true;}
+			public void update() {obValue[0] = true;}
 		};
 		PeriodObserver o2 = new PeriodObserver() {
 			@Override
-			public void update(Round newRound) {obValue[1] = true;}
+			public void update() {obValue[1] = true;}
 		};
 
 		period.subscribe(o1);
@@ -114,7 +122,7 @@ public class PeriodTest {
 
 		PeriodObserver o1 = new PeriodObserver() {
 			@Override
-			public void update(Round newRound) {updatedCounter.add(0);}
+			public void update() {updatedCounter.add(0);}
 		};
 
 		period.subscribe(o1);

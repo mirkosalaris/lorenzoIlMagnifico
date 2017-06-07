@@ -1,6 +1,9 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.client.User;
+import it.polimi.ingsw.GC_36.client.ViewCLI;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
+import it.polimi.ingsw.GC_36.server.ParticipantRMI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,8 +23,13 @@ public class GameTest {
 
 		Map<PlayerColor, Player> players = new HashMap<>();
 
-		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE));
-		players.put(PlayerColor.BLUE, new Player(PlayerColor.BLUE));
+		Player player1 = new Player(PlayerColor.BLUE,
+				new ParticipantRMI(new User(new ViewCLI())));
+		Player player2 = new Player(PlayerColor.BLUE,
+				new ParticipantRMI(new User(new ViewCLI())));
+
+		players.put(PlayerColor.BLUE, player1);
+		players.put(PlayerColor.BLUE, player2);
 
 		game.setPlayers(players);
 	}
@@ -107,14 +115,14 @@ public class GameTest {
 			public void update(GameState newState) {}
 
 			@Override
-			public void update(Period newPeriod) {}
+			public void update(int periodNumber) {}
 		};
 		GameObserver o2 = new GameObserver() {
 			@Override
 			public void update(GameState newState) {}
 
 			@Override
-			public void update(Period period) {}
+			public void update(int periodNumber) {}
 		};
 
 		game.subscribe(o1);
@@ -139,14 +147,14 @@ public class GameTest {
 			public void update(GameState newState) {obValue[0] = true;}
 
 			@Override
-			public void update(Period newPeriod) {}
+			public void update(int periodNumber) {}
 		};
 		GameObserver o2 = new GameObserver() {
 			@Override
 			public void update(GameState newState) {obValue[1] = true;}
 
 			@Override
-			public void update(Period newPeriod) {}
+			public void update(int periodNumber) {}
 		};
 
 		game.subscribe(o1);
@@ -177,7 +185,7 @@ public class GameTest {
 			}
 
 			@Override
-			public void update(Period newPeriod) {}
+			public void update(int periodNumber) {}
 
 		};
 
@@ -206,14 +214,14 @@ public class GameTest {
 			public void update(GameState newState) {}
 
 			@Override
-			public void update(Period newPeriod) {obValue[0] = true;}
+			public void update(int periodNumber) {obValue[0] = true;}
 		};
 		GameObserver o2 = new GameObserver() {
 			@Override
 			public void update(GameState newState) {}
 
 			@Override
-			public void update(Period newPeriod) {obValue[1] = true;}
+			public void update(int periodNumber) {obValue[1] = true;}
 		};
 
 		game.subscribe(o1);
@@ -238,7 +246,7 @@ public class GameTest {
 			public void update(GameState newState) {}
 
 			@Override
-			public void update(Period newPeriod) {
+			public void update(int periodNumber) {
 				updatedCounter.add(0);
 			}
 

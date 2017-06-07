@@ -37,9 +37,12 @@ public class Period {
 
 	private void newRoundNotify() {
 		for (PeriodObserver o : observers) {
-			o.update(currentRound);
+			o.update();
 		}
 	}
 
 
+	public int getPeriodNumber() {
+		return periodNumber;
+	}
 }

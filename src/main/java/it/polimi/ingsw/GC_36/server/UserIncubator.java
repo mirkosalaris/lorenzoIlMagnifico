@@ -14,13 +14,14 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class UserIncubator extends UnicastRemoteObject {
-	private BlockingQueue<Socket> sockets = new LinkedBlockingDeque<>();
-	private BlockingQueue<User> users = new LinkedBlockingDeque<>();
+	private transient BlockingQueue<Socket> sockets = new
+			LinkedBlockingDeque<>();
+	private transient BlockingQueue<User> users = new LinkedBlockingDeque<>();
 
 	UserIncubator() throws RemoteException {}
 
 
-	void addUser(Socket socket) {
+	void addUser(Socket socket) throws InterruptedException {
 
 		try {
 			sockets.put(socket);
@@ -32,7 +33,7 @@ public class UserIncubator extends UnicastRemoteObject {
 			}
 		} catch (InterruptedException e) {
 			System.out.println("Cannot add user");
-			e.printStackTrace();
+			throw e;
 		}
 
 
@@ -82,7 +83,7 @@ class Initializer implements Runnable {
 				} catch (InterruptedException e) {
 					System.err.println(
 							"Cannot take an element from sockets set");
-					e.printStackTrace();
+					Thread.currentThread().interrupt();
 				}
 			}
 
@@ -96,7 +97,7 @@ class Initializer implements Runnable {
 				} catch (InterruptedException e) {
 					System.err.println(
 							"Cannot take an element from users set");
-					e.printStackTrace();
+					Thread.currentThread().interrupt();
 				}
 			}
 		}

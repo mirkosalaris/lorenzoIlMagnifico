@@ -1,6 +1,9 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.client.User;
+import it.polimi.ingsw.GC_36.client.ViewCLI;
 import it.polimi.ingsw.GC_36.observers.RoundObserver;
+import it.polimi.ingsw.GC_36.server.ParticipantRMI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +13,7 @@ import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 
 public class RoundTest {
 	Round round;
@@ -24,7 +28,8 @@ public class RoundTest {
 
 		// DO NOT CHANGE, let 'players' have only one player for the right
 		// execution of the test "advanceHasPlayer"
-		player = new Player(PlayerColor.BLUE);
+		player = new Player(PlayerColor.BLUE,
+				new ParticipantRMI(new User(new ViewCLI())));
 		players.put(PlayerColor.BLUE, player);
 
 		game.setPlayers(players);

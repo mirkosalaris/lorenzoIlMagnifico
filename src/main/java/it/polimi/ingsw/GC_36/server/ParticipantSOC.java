@@ -2,9 +2,7 @@ package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.model.*;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
@@ -12,11 +10,35 @@ import java.util.List;
 
 public class ParticipantSOC implements Participant {
 	private ObjectOutputStream objOut;
+	private ObjectInputStream objIn;
 
 	public ParticipantSOC(Socket socket) throws IOException {
 
 		objOut = new ObjectOutputStream(
 				new BufferedOutputStream(socket.getOutputStream()));
+
+		// send the header (to avoid input hanging on client)
+		objOut.flush();
+
+		objIn = new ObjectInputStream(
+				new BufferedInputStream(socket.getInputStream()));
+	}
+
+	@Override
+	public void exit() {
+
+	}
+
+
+	@Override
+	public void play(Action action)
+			throws IOException, ClassNotFoundException {
+
+		sendMessage("play", action, "Error in making user play");
+
+		// TODO do we ever need to pass an "entry"? Can we delete the method?
+		Action retrievedAction = (Action) objIn.readObject();
+		action.copyFrom(retrievedAction);
 	}
 
 	@Override
@@ -55,8 +77,8 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update(Round newRound) {
-		sendMessage("updateNewRound", newRound, "cannot update new Round");
+	public void update() {
+		sendMessage("updateNewRound", "cannot update new Round");
 	}
 
 	@Override
@@ -65,8 +87,9 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update(Period newPeriod) {
-		sendMessage("updateNewPeriod", newPeriod, "cannot update new Period");
+	public void update(int periodNumber) {
+		sendMessage("updateNewPeriod", periodNumber,
+				"cannot update new Period");
 	}
 
 	@Override
@@ -80,6 +103,10 @@ public class ParticipantSOC implements Participant {
 				"cannot update new Player");
 	}
 
+	private void sendMessage(String type, String error) {
+		sendMessage(type, null, error);
+	}
+
 	private void sendMessage(String type, Object obj, String error) {
 		SimpleEntry<String, Object> entry;
 		entry = new SimpleEntry<>(type, obj);
@@ -89,6 +116,23 @@ public class ParticipantSOC implements Participant {
 		} catch (IOException e) {
 			System.err.println(error);
 			e.printStackTrace();
+		}
+	}
+
+	private void handleEntry(SimpleEntry<String, Object> entry) {
+		switch (entry.getKey()) {
+			case "example":
+				break;
+
+			case "second_example":
+				//user.update();
+				break;
+
+			default:
+				System.out.println(
+						"Cannot retrieve information correctly from network:" +
+								" " +
+								"Object with wrong key: " + entry.getKey());
 		}
 	}
 }

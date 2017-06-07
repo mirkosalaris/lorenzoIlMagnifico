@@ -1,6 +1,9 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.model.Action;
+import it.polimi.ingsw.GC_36.model.BoardState;
+import it.polimi.ingsw.GC_36.model.GameState;
 
 import java.io.*;
 import java.net.Socket;
@@ -25,14 +28,15 @@ public class CommunicatorSocket implements Communicator {
 		System.out.println("Connection established\n");
 
 
-		objIn = new ObjectInputStream(
-				new BufferedInputStream(socket.getInputStream()));
 		objOut = new ObjectOutputStream(
 				new BufferedOutputStream(socket.getOutputStream()));
+		objOut.flush(); // send the header (to avoid input hanging on server)
+		objIn = new ObjectInputStream(
+				new BufferedInputStream(socket.getInputStream()));
 	}
 
 	@Override
-	public void start() {
+	public void start() throws ClassNotFoundException, IOException {
 		System.out.println("listening...");
 
 		while (!matchEnded) {
@@ -44,11 +48,10 @@ public class CommunicatorSocket implements Communicator {
 				handleEntry(entry);
 
 			} catch (IOException e) {
-				System.out.println("Cannot read object from socket");
-				e.printStackTrace();
+				throw new IOException("Cannot read object from socket", e);
 			} catch (ClassNotFoundException e) {
-				System.out.println("Cannot deserialize object from socket");
-				e.printStackTrace();
+				throw new ClassNotFoundException(
+						"Cannot deserialize object from socket", e);
 			}
 		}
 
@@ -60,19 +63,29 @@ public class CommunicatorSocket implements Communicator {
 		}
 	}
 
-	private void handleEntry(SimpleEntry<String, Object> entry) {
+	private void handleEntry(SimpleEntry<String, Object> entry)
+			throws IOException, ClassNotFoundException {
 		switch (entry.getKey()) {
 			case "fatal_error":
-				//user.fatalError(entry.getValue());
+				user.fatalError((String) entry.getValue());
 				matchEnded = true;
 				break;
 
 			case "updateBoardState":
-				//user.update();
+				user.update((BoardState) entry.getValue());
 				break;
 
 			case "updateGameState":
-				System.out.println(entry.getKey() + " " + entry.getValue());
+				user.update((GameState) entry.getValue());
+				break;
+			case "updateNewPeriod":
+				user.update((int) entry.getValue());
+				break;
+			case "play":
+				Action action = (Action) entry.getValue();
+				user.play(action);
+
+				sendBack(action);
 				break;
 			// TODO etc.
 			default:
@@ -81,5 +94,9 @@ public class CommunicatorSocket implements Communicator {
 								" " +
 								"Object with wrong key: " + entry.getKey());
 		}
+	}
+
+	private void sendBack(Action action) throws IOException {
+		objOut.writeObject(action);
 	}
 }

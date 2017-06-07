@@ -12,15 +12,16 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 
 public class Server extends UnicastRemoteObject {
-	private static ServerSocket ss;
-	private static boolean exit = false;
-	UserIncubator incubator;
+	private ServerSocket ss;
+	private boolean exit = false;
+	private UserIncubator incubator;
 
 	private Server() throws RemoteException {
 		incubator = new UserIncubator();
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)
+			throws IOException, InterruptedException {
 		Server server = new Server();
 
 		server.startRMI();
@@ -35,7 +36,7 @@ public class Server extends UnicastRemoteObject {
 		System.out.println("Server RMI up and running");
 	}
 
-	private void startSOC() throws IOException {
+	private void startSOC() throws IOException, InterruptedException {
 		ss = new ServerSocket(Commons.PORT);
 		System.out.println("ServerSocket waiting for connections...");
 
@@ -53,30 +54,14 @@ public class Server extends UnicastRemoteObject {
 					}
 				} while (!exit);
 			}
-		});
+		}).start();
 
 		while (!exit) {
-
-			/*
-			Socket[] sockets = new Socket[Commons.MAX_PLAYERS];
-			boolean full = false;
-
-			// TODO add a "timer" to enter a match with less than MAX_PLAYERS
-			int i = 0;
-			while (!full) {
-				sockets[i] = ss.accept();
-				System.out.println("Client accepted " + sockets[i]);
-				i++;
-				if (i == Commons.MAX_PLAYERS) {
-					full = true;
-				}
-			}
-			threadPool.execute(new GameInitializer(sockets));
-			*/
-
 			Socket socket = ss.accept();
 			incubator.addUser(socket);
 		}
+
+		ss.close();
 	}
 
 	private void exit() {

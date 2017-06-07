@@ -1,9 +1,10 @@
 package it.polimi.ingsw.GC_36.model;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class ResourcesList {
+public class ResourcesList implements Serializable {
 	Map<ResourceType, ResourceCounter> map = new EnumMap<>(ResourceType.class);
 
 	public ResourcesList() {

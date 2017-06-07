@@ -60,7 +60,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void update(Round newRound) {
+	public void update() {
 
 	}
 
@@ -90,7 +90,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void update(Period newPeriod) {
+	public void update(int periodNumber) {
 
 	}
 
@@ -107,6 +107,16 @@ public class ViewGUI implements ViewInterface {
 	@Override
 	public void update(int floorNumber, Tower tower,
 	                   DevelopmentCard developmentCard) {
+
+	}
+
+	@Override
+	public void play(Action action) {
+
+	}
+
+	@Override
+	public void exit() {
 
 	}
 }
