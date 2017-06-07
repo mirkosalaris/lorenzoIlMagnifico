@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.BoardState;
 import it.polimi.ingsw.GC_36.model.GameState;
@@ -58,8 +59,8 @@ public class CommunicatorSocket implements Communicator {
 		try {
 			socket.close();
 		} catch (IOException e) {
+			ExceptionLogger.log(e);
 			System.out.println("Cannot close the socket");
-			e.printStackTrace();
 		}
 	}
 

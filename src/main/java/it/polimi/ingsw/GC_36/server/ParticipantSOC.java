@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.server;
 
+import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.*;
@@ -115,7 +116,7 @@ public class ParticipantSOC implements Participant {
 			objOut.flush();
 		} catch (IOException e) {
 			System.err.println(error);
-			e.printStackTrace();
+			ExceptionLogger.log(e);
 		}
 	}
 

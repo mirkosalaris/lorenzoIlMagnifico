@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.controller.GameExecutor;
 
@@ -32,6 +33,7 @@ public class UserIncubator extends UnicastRemoteObject {
 				new Thread(new Initializer(sockets, users)).start();
 			}
 		} catch (InterruptedException e) {
+			ExceptionLogger.log(e);
 			System.out.println("Cannot add user");
 			throw e;
 		}
@@ -78,9 +80,10 @@ class Initializer implements Runnable {
 					}
 
 				} catch (IOException e) {
+					ExceptionLogger.log(e);
 					System.err.println("Cannot instantiate new Participant");
-					e.printStackTrace();
 				} catch (InterruptedException e) {
+					ExceptionLogger.log(e);
 					System.err.println(
 							"Cannot take an element from sockets set");
 					Thread.currentThread().interrupt();
@@ -95,6 +98,7 @@ class Initializer implements Runnable {
 						full = true;
 					}
 				} catch (InterruptedException e) {
+					ExceptionLogger.log(e);
 					System.err.println(
 							"Cannot take an element from users set");
 					Thread.currentThread().interrupt();

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.client;
 
+import it.polimi.ingsw.GC_36.ExceptionLogger;
+
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.util.Scanner;
@@ -21,8 +23,8 @@ public class Main {
 		try {
 			communicator.connect();
 		} catch (IOException | InterruptedException | NotBoundException e) {
+			ExceptionLogger.log(e);
 			System.out.println("Cannot connect to server. Exiting...");
-			e.printStackTrace();
 			System.exit(1);
 		}
 
@@ -34,10 +36,8 @@ public class Main {
 			public void run() {
 				try {
 					communicator.start();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
+				} catch (IOException | ClassNotFoundException e) {
+					ExceptionLogger.log(e);
 				}
 			}
 		}).start();

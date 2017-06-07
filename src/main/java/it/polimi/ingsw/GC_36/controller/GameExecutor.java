@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.controller;
 
 
+import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.server.Participant;
 
@@ -68,8 +69,8 @@ public class GameExecutor implements Runnable {
 			player.getUser().play(action);
 			System.out.println(action);
 		} catch (IOException | ClassNotFoundException e) {
+			ExceptionLogger.log(e);
 			System.out.println("Cannot let players play. Exiting");
-			e.printStackTrace();
 			closeAll();
 			// kill thread
 			return;

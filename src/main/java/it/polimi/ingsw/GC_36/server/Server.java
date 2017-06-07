@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.ExceptionLogger;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -17,6 +18,7 @@ public class Server extends UnicastRemoteObject {
 	private UserIncubator incubator;
 
 	private Server() throws RemoteException {
+		ExceptionLogger.setDebug();
 		incubator = new UserIncubator();
 	}
 
@@ -68,8 +70,8 @@ public class Server extends UnicastRemoteObject {
 		try {
 			ss.close();
 		} catch (IOException e) {
+			ExceptionLogger.log(e);
 			System.out.println("Cannot properly close ServerSocket");
-			e.printStackTrace();
 		}
 
 		System.exit(0);
