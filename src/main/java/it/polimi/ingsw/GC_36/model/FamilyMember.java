@@ -4,13 +4,14 @@ import it.polimi.ingsw.GC_36.Commons;
 
 import java.io.Serializable;
 
-public class FamilyMember implements Serializable {
+public class FamilyMember {
 	private boolean Available;
 	private PlayerColor playerColor;
 	private MemberColor memberColor;
 	private Die die;
 
-	public FamilyMember(PlayerColor playerColor, MemberColor memberColor) {
+	public FamilyMember(PlayerColor playerColor, MemberColor memberColor)
+			throws IllegalStateException {
 		this.playerColor = playerColor;
 
 		if (memberColor == MemberColor.UNCOLORED) {

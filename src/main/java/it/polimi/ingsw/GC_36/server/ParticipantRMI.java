@@ -1,20 +1,21 @@
 package it.polimi.ingsw.GC_36.server;
 
-import it.polimi.ingsw.GC_36.client.User;
+import it.polimi.ingsw.GC_36.client.UserInterface;
 import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 public class ParticipantRMI implements Participant {
-	private final User user;
+	private final UserInterface user;
 
-	public ParticipantRMI(User user) {
+	public ParticipantRMI(UserInterface user) {
 		this.user = user;
 	}
 
 	@Override
-	public void exit() {
-
+	public void exit() throws RemoteException {
+		user.exit();
 	}
 
 	@Override
@@ -25,53 +26,55 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update() {
-
+	public void update() throws RemoteException {
+		user.update();
 	}
 
 	@Override
-	public void update(BoardState currentState) {
-
+	public void update(BoardState currentState) throws RemoteException {
+		user.update(currentState);
 	}
 
 	@Override
-	public void update(PlayerState newState) {
-
+	public void update(PlayerState newState) throws RemoteException {
+		user.update(newState);
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, boolean free) {
-
+	public void update(ActionSpaceIds id, boolean free) throws
+			RemoteException {
+		user.update(id, free);
 	}
 
 	@Override
-	public void update(GameState newState) {
-
+	public void update(GameState newState) throws RemoteException {
+		user.update(newState);
 	}
 
 	@Override
-	public void update(int periodNumber) {
-
+	public void update(int periodNumber) throws RemoteException {
+		user.update(periodNumber);
 	}
 
 	@Override
-	public void update(RoundState newState) {
-
+	public void update(RoundState newState) throws RemoteException {
+		user.update(newState);
 	}
 
 	@Override
-	public void update(Player newPlayer) {
-
+	public void update(Player newPlayer) throws RemoteException {
+		user.update(newPlayer);
 	}
 
 	@Override
-	public void fatalError(String s) {
-
+	public void fatalError(String s) throws RemoteException {
+		user.fatalError(s);
 	}
 
 	@Override
 	public void update(int floorNumber, Tower tower,
-	                   DevelopmentCard developmentCard) {
-
+	                   DevelopmentCard developmentCard) throws
+			RemoteException {
+		user.update(floorNumber, tower, developmentCard);
 	}
 }

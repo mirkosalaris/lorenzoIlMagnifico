@@ -6,6 +6,7 @@ import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.server.Participant;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class GameExecutor implements Runnable {
 	private Map<PlayerColor, Player> players;
 	private Set<Participant> users;
 
-	public GameExecutor(Set<Participant> users) {
+	public GameExecutor(Set<Participant> users) throws RemoteException {
 		this.users = users;
 
 		players = new EnumMap<>(PlayerColor.class);
@@ -31,15 +32,18 @@ public class GameExecutor implements Runnable {
 
 	@Override
 	public void run() {
-		game = Game.getInstance();
+		try {
+			game = Game.getInstance();
 
-		game.setPlayers(players);
+			game.setPlayers(players);
 
-		for (Participant u : users) {
-			game.subscribe(u);
-		}
+			for (Participant u : users) {
+				game.subscribe(u);
+			}
 
-		game.start();
+
+			game.start();
+
 
 		/*
 		while (game.advanceable()) {
@@ -55,32 +59,40 @@ public class GameExecutor implements Runnable {
 		 */
 
 
-		board = game.getBoard();
+			board = game.getBoard();
 
-		game.newPeriod(1);
-		Period period = game.getCurrentPeriod();
-		period.advance();
-		Round round = period.getCurrentRound();
-		round.advance();
-		Player player = round.getCurrentPlayer();
-		Action action = new Action();
+			game.newPeriod(1);
+			Period period = game.getCurrentPeriod();
+			period.advance();
+			Round round = period.getCurrentRound();
+			round.advance();
+			Player player = round.getCurrentPlayer();
+			Action action = new Action();
 
-		try {
-			player.getUser().play(action);
-			System.out.println(action);
-		} catch (IOException | ClassNotFoundException e) {
+			try {
+				player.getUser().play(action);
+				System.out.println(action);
+			} catch (IOException | ClassNotFoundException e) {
+				ExceptionLogger.log(e);
+				System.out.println("Cannot let players play. Exiting");
+				closeAll();
+				// kill thread
+				return;
+			}
+
+		} catch (IllegalStateException | RemoteException e) {
 			ExceptionLogger.log(e);
-			System.out.println("Cannot let players play. Exiting");
-			closeAll();
+
 			// kill thread
 			return;
 		}
+
 
 		// TODO input output
 
 	}
 
-	private void closeAll() {
+	private void closeAll() throws RemoteException {
 		for (Participant u : users) {
 			u.exit();
 		}

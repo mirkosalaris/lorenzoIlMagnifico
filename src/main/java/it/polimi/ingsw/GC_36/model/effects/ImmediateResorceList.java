@@ -13,7 +13,7 @@ public class ImmediateResorceList implements ImmediateEffect {
 	}
 
 	@Override
-	public void applyEffect(Action action) {
+	public void applyEffect(Action action) throws IllegalStateException {
 		Game.getInstance().getCurrentPeriod().getCurrentRound()
 				.getCurrentPlayer().getPersonalBoard().addResources(
 				this.resourcesList);

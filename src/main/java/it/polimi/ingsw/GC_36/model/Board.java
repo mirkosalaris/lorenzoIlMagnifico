@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.observers.BoardObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
+import java.rmi.RemoteException;
 import java.util.*;
 
 public class Board {
@@ -17,7 +18,7 @@ public class Board {
 	private Set<BoardObserver> boardObservers = new HashSet<>();
 	private Map<ActionSpaceIds, ActionSpace> actionSpaces;
 
-	public Board() {
+	public Board() throws RemoteException {
 		// Board is being constructed, but it WON'T be initialized after that
 		setCurrentState(BoardState.UNINITIALIZED);
 
@@ -25,7 +26,8 @@ public class Board {
 		actionSpaces = Commons.actionSpacesInitializer();
 	}
 
-	public void initPlayers(Map<PlayerColor, Player> players) {
+	public void initPlayers(Map<PlayerColor, Player> players)
+			throws IllegalStateException, RemoteException {
 		// initialize players and store them
 
 		// initialize players
@@ -47,7 +49,7 @@ public class Board {
 	}
 
 	// called before every Round
-	public void initialize(DeckSet deckSet) {
+	public void initialize(DeckSet deckSet) throws RemoteException {
 		if (currentState != BoardState.UNINITIALIZED) {
 			throw new IllegalStateException(
 					"to initialize Board it has to be uninitialized");
@@ -65,7 +67,7 @@ public class Board {
 	}
 
 	// called at the end of every round
-	public void clean() {
+	public void clean() throws RemoteException {
 		// reset deckSet
 		deckSet = null;
 
@@ -86,7 +88,7 @@ public class Board {
 		return turnOrder;
 	}
 
-	private void setCurrentState(BoardState newState) {
+	private void setCurrentState(BoardState newState) throws RemoteException {
 		this.currentState = newState;
 		newStateNotify();
 	}
@@ -132,7 +134,7 @@ public class Board {
 
 	}
 
-	private void newStateNotify() {
+	private void newStateNotify() throws RemoteException {
 		for (BoardObserver o : boardObservers) {
 			o.update(currentState);
 		}

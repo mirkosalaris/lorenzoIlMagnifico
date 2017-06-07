@@ -27,7 +27,7 @@ public class ParticipantSOC implements Participant {
 
 	@Override
 	public void exit() {
-
+		sendMessage("exit", "Cannot send exit message to user");
 	}
 
 
@@ -37,7 +37,6 @@ public class ParticipantSOC implements Participant {
 
 		sendMessage("play", action, "Error in making user play");
 
-		// TODO do we ever need to pass an "entry"? Can we delete the method?
 		Action retrievedAction = (Action) objIn.readObject();
 		action.copyFrom(retrievedAction);
 	}
@@ -120,6 +119,8 @@ public class ParticipantSOC implements Participant {
 		}
 	}
 
+
+	// TODO do we ever need to receive an "entry"? Can we delete the method?
 	private void handleEntry(SimpleEntry<String, Object> entry) {
 		switch (entry.getKey()) {
 			case "example":

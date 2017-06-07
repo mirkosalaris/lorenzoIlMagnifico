@@ -9,10 +9,9 @@ import java.net.Socket;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 
-public class Server extends UnicastRemoteObject {
+public class Server {
 	private ServerSocket ss;
 	private boolean exit = false;
 	private UserIncubator incubator;

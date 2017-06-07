@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 
 public interface ImmediateEffect extends Serializable {
-	void applyEffect(Action action);
+	void applyEffect(Action action) throws IllegalStateException;
 
 	void chooseOptions(ViewInterface view, Action action);
 }

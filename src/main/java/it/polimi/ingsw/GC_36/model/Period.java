@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.observers.PeriodObserver;
 
+import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class Period {
 		this.deckSet = deckSet;
 	}
 
-	public void advance() {
+	public void advance() throws RemoteException {
 		// TODO: how do we check that this method will be called just 2 times?
 		newRound();
 	}
@@ -26,7 +27,7 @@ public class Period {
 		return currentRound;
 	}
 
-	private void newRound() {
+	private void newRound() throws RemoteException {
 		currentRound = new Round(deckSet);
 		newRoundNotify();
 	}
@@ -35,7 +36,7 @@ public class Period {
 		observers.add(observer);
 	}
 
-	private void newRoundNotify() {
+	private void newRoundNotify() throws RemoteException {
 		for (PeriodObserver o : observers) {
 			o.update();
 		}

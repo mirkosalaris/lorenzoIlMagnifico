@@ -2,17 +2,18 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.model.*;
-import it.polimi.ingsw.GC_36.server.Participant;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 
-public class User implements Participant {
-	private Player player;
-	private ViewInterface view;
-	private HashMap<ActionSpaceIds, DevelopmentCard> cards;
+public class User extends UnicastRemoteObject implements UserInterface {
+	private transient Player player;
+	private transient ViewInterface view;
+	private transient HashMap<ActionSpaceIds, DevelopmentCard> cards;
 
-	public User(ViewInterface view) {
+	public User(ViewInterface view) throws RemoteException {
 		this.view = view;
 	}
 
@@ -95,37 +96,38 @@ public class User implements Participant {
 	}
 
 	@Override
-	public void update() {
+	public void update() throws RemoteException {
 		// TODO think and impl
 		view.update();
 	}
 
 	@Override
-	public void update(BoardState currentState) {
+	public void update(BoardState currentState) throws RemoteException {
 		// TODO think and impl
 		view.update(currentState);
 	}
 
 	@Override
-	public void update(PlayerState newState) {
+	public void update(PlayerState newState) throws RemoteException {
 		// TODO think and impl
 		view.update(newState);
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, boolean free) {
+	public void update(ActionSpaceIds id, boolean free) throws
+			RemoteException {
 		// TODO think and impl
 		view.update(id, free);
 	}
 
 	@Override
-	public void fatalError(String s) {
+	public void fatalError(String s) throws RemoteException {
 		// TODO think and impl
 		view.fatalError(s);
 	}
 
 	@Override
-	public void exit() {
+	public void exit() throws RemoteException {
 
 	}
 
@@ -145,25 +147,25 @@ public class User implements Participant {
 	}
 
 	@Override
-	public void update(GameState newState) {
+	public void update(GameState newState) throws RemoteException {
 		// TODO think and impl
 		view.update(newState);
 	}
 
 	@Override
-	public void update(int periodNumber) {
+	public void update(int periodNumber) throws RemoteException {
 		// TODO think and impl
 		view.update(periodNumber);
 	}
 
 	@Override
-	public void update(RoundState newState) {
+	public void update(RoundState newState) throws RemoteException {
 		// TODO think and impl
 		view.update(newState);
 	}
 
 	@Override
-	public void update(Player newPlayer) {
+	public void update(Player newPlayer) throws RemoteException {
 		// DO NOT inform user HERE of his turn
 		if (!player.equals(newPlayer)) {
 			view.update(newPlayer);
@@ -172,7 +174,8 @@ public class User implements Participant {
 
 	@Override
 	public void update(int floorNumber, Tower tower,
-	                   DevelopmentCard developmentCard) {
+	                   DevelopmentCard developmentCard) throws
+			RemoteException {
 
 		// TODO save developmentCard in cards
 		view.update(floorNumber, tower, developmentCard);

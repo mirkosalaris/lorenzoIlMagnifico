@@ -4,13 +4,15 @@ import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
 import java.io.IOException;
-import java.io.Serializable;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-public interface Participant extends ModelObserver, Serializable {
+public interface Participant extends ModelObserver, Remote {
 
-	void fatalError(String s);
+	void fatalError(String s) throws RemoteException;
 
-	void play(Action action) throws IOException, ClassNotFoundException;
+	void play(Action action)
+			throws RemoteException, IOException, ClassNotFoundException;
 
-	void exit();
+	void exit() throws RemoteException;
 }

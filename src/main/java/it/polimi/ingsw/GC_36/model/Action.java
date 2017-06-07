@@ -1,12 +1,13 @@
 package it.polimi.ingsw.GC_36.model;
 
 import java.io.Serializable;
+import java.rmi.Remote;
 import java.util.List;
 
-public class Action implements Serializable {
-	MemberColor memberColor;
-	ActionSpaceIds actionSpaceIds;
-	ResourcesList paymentList;
+public class Action implements Serializable, Remote {
+	private MemberColor memberColor;
+	private ActionSpaceIds actionSpaceIds;
+	private ResourcesList paymentList;
 	private List<Integer> councilPrivilegeList;
 
 	public Action() {

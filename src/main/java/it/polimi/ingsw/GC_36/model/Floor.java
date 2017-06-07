@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.observers.FloorObserver;
 
+import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,7 +44,7 @@ public class Floor {
 		observers.add(o);
 	}
 
-	private void changeNotify() {
+	private void changeNotify() throws RemoteException {
 		for (FloorObserver o : observers) {
 			o.update(floorNumber, associatedTower, developmentCard);
 		}

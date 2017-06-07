@@ -26,7 +26,7 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	//check sulle scelte
 	//le aggiunge alla personal board altrimenti throw exception
 	@Override
-	public void applyEffect(Action action) {
+	public void applyEffect(Action action) throws IllegalStateException {
 		if (!numberOfPrivileges.equals(
 				action.getCouncilPrivilegeList().size()))
 			//TODO:eccezione

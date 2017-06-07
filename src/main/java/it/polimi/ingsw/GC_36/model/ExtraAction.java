@@ -12,7 +12,7 @@ public class ExtraAction extends Action {
 	@Override
 	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds) {
 		//if
-		this.actionSpaceIds = actionSpaceIds;
+		super.setActionSpaceIds(actionSpaceIds);
 		// else
 
 	}

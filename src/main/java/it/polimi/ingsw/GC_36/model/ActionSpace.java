@@ -3,6 +3,7 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.observers.ActionSpaceObserver;
 
+import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -57,7 +58,7 @@ public class ActionSpace implements ActionSpaceInterface {
 	}
 
 	@Override
-	public void reset() {
+	public void reset() throws RemoteException {
 		// TODO impl
 
 		setFree(true);
@@ -68,13 +69,13 @@ public class ActionSpace implements ActionSpaceInterface {
 		return id;
 	}
 
-	private void setFree(boolean free) {
+	private void setFree(boolean free) throws RemoteException {
 		this.free = free;
 
 		changeNotify();
 	}
 
-	private void changeNotify() {
+	private void changeNotify() throws RemoteException {
 		for (ActionSpaceObserver o : observers) {
 			o.update(this.id, free);
 		}

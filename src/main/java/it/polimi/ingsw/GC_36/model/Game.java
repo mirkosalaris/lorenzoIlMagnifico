@@ -1,10 +1,12 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.controller.Scorer;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
+import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -17,7 +19,7 @@ public class Game {
 
 	private Set<GameObserver> observers = new HashSet<>();
 
-	public Game() {
+	public Game() throws RemoteException {
 		// instantiate Commons, for later use of other classes
 		Commons common = Commons.getInstance();
 
@@ -26,7 +28,7 @@ public class Game {
 		board = new Board();
 	}
 
-	public static Game getInstance() {
+	public static Game getInstance() throws IllegalStateException {
 		// Game is a Thread-Singleton (a singleton for each thread).
 		// This method implements it.
 
@@ -34,16 +36,28 @@ public class Game {
 			threadInstance = new ThreadLocal<Game>() {
 				@Override
 				protected Game initialValue() {
-					return new Game();
+
+					try {
+						return new Game();
+					} catch (RemoteException e) {
+						ExceptionLogger.log(e);
+						return null;
+					}
+
 				}
 			};
+
+			if (threadInstance.get() == null) {
+				throw new IllegalStateException("cannot instantiate Game");
+			}
 			//throw new IllegalStateException("No game instance exists");
 		}
 		return threadInstance.get();
 	}
 
 	// TODO: test
-	public void setPlayers(Map<PlayerColor, Player> players) {
+	public void setPlayers(Map<PlayerColor, Player> players)
+			throws IllegalStateException, RemoteException {
 		board.initPlayers(players);
 	}
 
@@ -55,7 +69,7 @@ public class Game {
 		return currentPeriod;
 	}
 
-	public void newPeriod(int periodNumber) {
+	public void newPeriod(int periodNumber) throws RemoteException {
 		// TODO how do we check that this method will be called just three
 		// times?
 
@@ -69,7 +83,7 @@ public class Game {
 		return currentState;
 	}
 
-	public void start() {
+	public void start() throws RemoteException {
 		play();
 	}
 
@@ -82,26 +96,17 @@ public class Game {
 		board.subscribe(o);
 	}
 
-	private void play() {
+	private void play() throws RemoteException {
 		setCurrentState(GameState.PLAYING);
-
-		/*
-		// TODO: delete
-		 for (int periodNumber = 1;
-		     periodNumber < commons.NUMBER_OF_PERIODS;
-		     periodNumber++) {
-
-
-			currentPeriod.start();
-		}*/
 	}
 
-	private void setCurrentState(GameState currentState) {
+	private void setCurrentState(GameState currentState)
+			throws RemoteException {
 		this.currentState = currentState;
 		newStateNotify();
 	}
 
-	private void finalScoring() {
+	private void finalScoring() throws RemoteException {
 		setCurrentState(GameState.SCORING);
 
 		// TODO: impl the action to communicate the winner
@@ -110,13 +115,13 @@ public class Game {
 		setCurrentState(GameState.FINISHED);
 	}
 
-	private void newStateNotify() {
+	private void newStateNotify() throws RemoteException {
 		for (GameObserver o : observers) {
 			o.update(currentState);
 		}
 	}
 
-	private void newPeriodNotify() {
+	private void newPeriodNotify() throws RemoteException {
 		for (GameObserver o : observers) {
 			o.update(currentPeriod.getPeriodNumber());
 		}
