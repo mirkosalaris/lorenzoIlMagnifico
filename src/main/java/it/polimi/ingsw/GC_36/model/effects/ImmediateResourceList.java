@@ -5,10 +5,10 @@ import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.Game;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 
-public class ImmediateResorceList implements ImmediateEffect {
+public class ImmediateResourceList implements ImmediateEffect {
 	ResourcesList resourcesList;
 
-	public ImmediateResorceList(ResourcesList resourcesList) {
+	public ImmediateResourceList(ResourcesList resourcesList) {
 		this.resourcesList = resourcesList;
 	}
 
@@ -21,7 +21,12 @@ public class ImmediateResorceList implements ImmediateEffect {
 
 	@Override
 	public void chooseOptions(ViewInterface view, Action action) {
+		// TODO impl
 
+		//view.chooseOptions(...)
+
+		System.out.println(
+				"here you'd have to choose option for immediate effect");
 	}
 
 

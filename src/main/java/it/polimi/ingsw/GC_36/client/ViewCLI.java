@@ -230,7 +230,7 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(Player newPlayer) {
+	public void update(PlayerIdentifier newPlayer) {
 		System.out.println("Current player: " + newPlayer);
 	}
 
@@ -238,8 +238,8 @@ public class ViewCLI implements ViewInterface {
 	public void update(int floorNumber, Tower tower,
 	                   DevelopmentCard developmentCard) {
 		System.out.println(
-				"floorNumber: " + floorNumber + "\n tower " + tower +
-						"\n card " + developmentCard);
+				"updateCard:\n floorNumber: " + floorNumber + "\n tower: " +
+						tower + "\n card: " + developmentCard);
 
 	}
 

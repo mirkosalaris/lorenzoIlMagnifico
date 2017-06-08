@@ -2,13 +2,12 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.ExceptionLogger;
-import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.BoardState;
-import it.polimi.ingsw.GC_36.model.GameState;
+import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.AbstractMap.SimpleEntry;
+import java.util.List;
 
 public class CommunicatorSocket implements Communicator {
 
@@ -43,8 +42,9 @@ public class CommunicatorSocket implements Communicator {
 		while (!matchEnded) {
 			// TODO manage exception: what to do in case of exception???
 			try {
-				SimpleEntry<String, Object> entry =
-						(SimpleEntry<String, Object>) objIn.readObject();
+				@SuppressWarnings("unchecked")
+				SimpleEntry<String, Object> entry = (SimpleEntry<String,
+						Object>) objIn.readObject();
 
 				handleEntry(entry);
 
@@ -64,9 +64,25 @@ public class CommunicatorSocket implements Communicator {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private void handleEntry(SimpleEntry<String, Object> entry)
 			throws IOException, ClassNotFoundException {
+
+		// used in some "case", not all
+		List<Object> params;
+
 		switch (entry.getKey()) {
+			case "exit":
+				user.exit();
+				break;
+
+			case "play":
+				Action action = (Action) entry.getValue();
+				user.play(action);
+
+				sendBack(action);
+				break;
+
 			case "fatal_error":
 				user.fatalError((String) entry.getValue());
 				matchEnded = true;
@@ -76,18 +92,45 @@ public class CommunicatorSocket implements Communicator {
 				user.update((BoardState) entry.getValue());
 				break;
 
+			case "updatePlayerState":
+				user.update((PlayerState) entry.getValue());
+				break;
+
+			case "updateActionSpace":
+				params = (List<Object>) entry.getValue();
+				ActionSpaceIds id = (ActionSpaceIds) params.get(0);
+				boolean free = (boolean) params.get(1);
+				user.update(id, free);
+				break;
+
+			case "updateFloor":
+				params = (List<Object>) entry.getValue();
+				int floorNumber = (int) params.get(0);
+				Tower tower = (Tower) params.get(1);
+				DevelopmentCard card = (DevelopmentCard) params.get(2);
+				user.update(floorNumber, tower, card);
+				break;
+
+			case "updateNewRound":
+				user.update();
+				break;
+
 			case "updateGameState":
 				user.update((GameState) entry.getValue());
 				break;
+
 			case "updateNewPeriod":
 				user.update((int) entry.getValue());
 				break;
-			case "play":
-				Action action = (Action) entry.getValue();
-				user.play(action);
 
-				sendBack(action);
+			case "updateRoundState":
+				user.update((RoundState) entry.getValue());
 				break;
+
+			case "updateCurrentPlayer":
+				user.update((PlayerIdentifier) entry.getValue());
+				break;
+
 			// TODO etc.
 			default:
 				System.out.println(
@@ -99,5 +142,6 @@ public class CommunicatorSocket implements Communicator {
 
 	private void sendBack(Action action) throws IOException {
 		objOut.writeObject(action);
+		objOut.flush();
 	}
 }

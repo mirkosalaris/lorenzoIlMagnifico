@@ -100,7 +100,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void update(Player newPlayer) {
+	public void update(PlayerIdentifier newPlayer) {
 
 	}
 

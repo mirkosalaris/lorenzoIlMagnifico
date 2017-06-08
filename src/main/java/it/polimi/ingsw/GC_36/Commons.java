@@ -73,8 +73,12 @@ public final class Commons {
 		return (ResourcesList) parser.get("personalBoard" + ordinal);
 	}
 
+
 	public Map<CardType, Deck> getDeckSet(int period) {
-		return (Map<CardType, Deck>) parser.get("deckSet" + period);
+		@SuppressWarnings("unchecked")
+		Map<CardType, Deck> map = (Map<CardType, Deck>) parser.get(
+				"deckSet" + period);
+		return map;
 	}
 
 	public Floor getAssociatedFloor(ActionSpaceIds actionSpaceId) {
@@ -90,6 +94,34 @@ public final class Commons {
 		} else {
 			return Tower.VENTURERS.getFloor(actionSpaceId.value() - 12);
 		}
+	}
+
+	public static ActionSpaceIds getAssociatedActionSpaceIds(Tower tower,
+	                                                         int floorNumber) {
+		if (floorNumber < 1 || floorNumber > 4) {
+			throw new IllegalStateException(
+					"floorNumber has to be between 1 and 4");
+		}
+
+		int offset;
+		switch (tower) {
+			case TERRITORIES:
+				offset = 0;
+				break;
+			case BUILDINGS:
+				offset = 4;
+				break;
+			case CHARACTERS:
+				offset = 8;
+				break;
+			case VENTURERS:
+				offset = 12;
+				break;
+			default:
+				throw new IllegalArgumentException("unknown Tower type");
+		}
+
+		return ActionSpaceIds.values()[offset + floorNumber];
 	}
 
 	public static boolean isFloor(ActionSpaceIds actionSpaceId) {

@@ -62,7 +62,7 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update(Player newPlayer) throws RemoteException {
+	public void update(PlayerIdentifier newPlayer) throws RemoteException {
 		user.update(newPlayer);
 	}
 

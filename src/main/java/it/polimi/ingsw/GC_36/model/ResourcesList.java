@@ -5,7 +5,8 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class ResourcesList implements Serializable {
-	private Map<ResourceType, ResourceCounter> map = new EnumMap<>(ResourceType.class);
+	private Map<ResourceType, ResourceCounter> map = new EnumMap<>(
+			ResourceType.class);
 
 	public ResourcesList() {
 		map.put(ResourceType.WOOD, new ResourceCounter(0));

@@ -98,8 +98,8 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update(Player newPlayer) {
-		sendMessage("updateCurrentPlayer", newPlayer,
+	public void update(PlayerIdentifier identifier) {
+		sendMessage("updateCurrentPlayer", identifier,
 				"cannot update new Player");
 	}
 

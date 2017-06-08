@@ -92,7 +92,7 @@ public class Round {
 
 	private void newPlayerNotify() throws RemoteException {
 		for (RoundObserver o : observers) {
-			o.update(currentPlayer);
+			o.update(currentPlayer.getIdentifier());
 		}
 	}
 }

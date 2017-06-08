@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.model.effects.ImmediateResourceList;
 import it.polimi.ingsw.GC_36.observers.BoardObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
@@ -93,7 +94,7 @@ public class Board {
 		newStateNotify();
 	}
 
-	private void initTowers() {
+	private void initTowers() throws RemoteException {
 		// distribute cards in towers
 
 		// iterate on towers
@@ -103,6 +104,10 @@ public class Board {
 			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
 				DevelopmentCard card =
 						deckSet.getDeck(tower.getCardType()).popCard();
+
+				// TODO delete next line when parser is impl
+				card = new DevelopmentCard(CardType.TERRITORY, 1, "nome", null,
+						new ImmediateResourceList(null), null);
 
 				tower.getFloor(i + 1).setDevelopmentCard(card);
 			}

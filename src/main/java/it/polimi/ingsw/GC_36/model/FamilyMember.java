@@ -2,8 +2,6 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
 
-import java.io.Serializable;
-
 public class FamilyMember {
 	private boolean Available;
 	private PlayerColor playerColor;

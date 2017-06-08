@@ -81,6 +81,7 @@ public class PeriodTest {
 		Field fieldList = period.getClass().getDeclaredField("observers");
 		fieldList.setAccessible(true);
 
+		@SuppressWarnings("unchecked")
 		Set<PeriodObserver> set = (Set<PeriodObserver>) fieldList.get(period);
 		assertTrue(set.contains(o1) && set.contains(o2));
 	}

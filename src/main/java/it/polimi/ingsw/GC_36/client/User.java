@@ -7,14 +7,16 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
+import java.util.Map;
 
 public class User extends UnicastRemoteObject implements UserInterface {
-	private transient Player player;
 	private transient ViewInterface view;
-	private transient HashMap<ActionSpaceIds, DevelopmentCard> cards;
+	private transient Map<ActionSpaceIds, DevelopmentCard> cards;
+	private PlayerIdentifier identifier;
 
 	public User(ViewInterface view) throws RemoteException {
 		this.view = view;
+		cards = new HashMap<>();
 	}
 
 	private void chooseMemberColor(Action action) {
@@ -27,8 +29,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		do {
 			id = view.chooseActionSpaceId();
 		} while (!ActionSpaceIds.checkId(id));
-		ActionSpaceIds[] actionSpaceIds = ActionSpaceIds.values();
-		ActionSpaceIds actionSpaceId = actionSpaceIds[id];
+		ActionSpaceIds actionSpaceId = ActionSpaceIds.values()[id];
 		action.setActionSpaceIds(actionSpaceId);
 		DevelopmentCard card = cards.get(actionSpaceId);
 		if (!(card == null)) {
@@ -36,9 +37,9 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		}
 		if (actionSpaceId == ActionSpaceIds.AS_COUNCIL) {
 			int choice;
-			//check the choice
+			// TODO check the choice
 			choice = view.choosePrivilege(1);
-			//check the choice
+			// TODO check the choice
 			action.putPrivilegeChoice(choice);
 
 		}
@@ -51,7 +52,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		// TODO do we really need to check here for resources of player?
 		// we don't have a reference to player!!!
 
-		ResourcesList paymentList = new ResourcesList();
+		/*ResourcesList paymentList = new ResourcesList();
 		ResourcesList actualResources = player.getPersonalBoard()
 				.getResourcesList();
 
@@ -93,6 +94,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		paymentList.set(ResourceType.FAITH_POINTS, faithPoints);
 
 		action.setPaymentList(paymentList);
+		*/
 	}
 
 	@Override
@@ -165,9 +167,9 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void update(Player newPlayer) throws RemoteException {
-		// DO NOT inform user HERE of his turn
-		if (!player.equals(newPlayer)) {
+	public void update(PlayerIdentifier newPlayer) throws RemoteException {
+		// DO NOT inform user HERE of his turn. That's the job of 'play'
+		if (!identifier.equals(newPlayer)) {
 			view.update(newPlayer);
 		}
 	}
@@ -177,7 +179,10 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	                   DevelopmentCard developmentCard) throws
 			RemoteException {
 
-		// TODO save developmentCard in cards
+		ActionSpaceIds id = Commons.getAssociatedActionSpaceIds(tower,
+				floorNumber);
+		cards.put(id, developmentCard);
+
 		view.update(floorNumber, tower, developmentCard);
 	}
 }

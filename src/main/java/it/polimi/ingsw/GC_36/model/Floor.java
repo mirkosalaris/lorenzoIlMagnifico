@@ -26,8 +26,10 @@ public class Floor {
 		return developmentCard == null;
 	}
 
-	public void setDevelopmentCard(DevelopmentCard developmentCard) {
+	public void setDevelopmentCard(DevelopmentCard developmentCard)
+			throws RemoteException {
 		this.developmentCard = developmentCard;
+		changeNotify();
 	}
 
 	public DevelopmentCard getCard() {

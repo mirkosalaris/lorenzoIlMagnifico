@@ -52,8 +52,10 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Type r to choose RMI, s to choose socket: ");
-		char choice = sc.next().charAt(0);
+		char choice;
 		do {
+			choice = sc.next().charAt(0);
+
 			if (choice == 's') {
 				communicator = new CommunicatorSocket(user);
 			} else if (choice == 'r') {
@@ -69,9 +71,11 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Type g to choose GUI, c to choose CLI: ");
-		char choice = sc.next().charAt(0);
+		char choice;
 
 		do {
+			choice = sc.next().charAt(0);
+
 			if (choice == 'c') {
 				view = new ViewCLI();
 			} else if (choice == 'g') {

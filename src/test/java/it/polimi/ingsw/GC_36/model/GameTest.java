@@ -131,6 +131,7 @@ public class GameTest {
 		final Field fieldList = game.getClass().getDeclaredField("observers");
 		fieldList.setAccessible(true);
 
+		@SuppressWarnings("unchecked")
 		Set<GameObserver> set = (Set<GameObserver>) fieldList.get(game);
 		assertTrue(set.contains(o1) && set.contains(o2));
 	}

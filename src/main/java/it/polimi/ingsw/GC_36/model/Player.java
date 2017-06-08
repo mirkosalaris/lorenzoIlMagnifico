@@ -11,6 +11,7 @@ import java.util.Set;
 
 public class Player {
 	private PlayerColor playerColor;
+	private PlayerIdentifier identifier;
 	private final Participant user;
 	private PersonalBoard personalBoard;
 	private Map<MemberColor, FamilyMember> familyMembers =
@@ -24,6 +25,9 @@ public class Player {
 
 		this.playerColor = playerColor;
 		this.user = user;
+
+		this.identifier = new PlayerIdentifier(
+				"name_of_player, fix this, in class Player");
 
 		setCurrentState(PlayerState.UNINITIALIZED);
 	}
@@ -65,6 +69,11 @@ public class Player {
 		return user;
 	}
 
+	@Override
+	public String toString() {
+		return identifier.get();
+	}
+
 	public void subscribe(PlayerObserver o) {
 		observers.add(o);
 	}
@@ -78,5 +87,9 @@ public class Player {
 	private void setCurrentState(PlayerState newState) throws RemoteException {
 		currentState = newState;
 		newStateNotify();
+	}
+
+	public PlayerIdentifier getIdentifier() {
+		return identifier;
 	}
 }

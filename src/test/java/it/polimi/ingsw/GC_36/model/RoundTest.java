@@ -116,7 +116,7 @@ public class RoundTest {
 			}
 
 			@Override
-			public void update(Player newPlayer) {
+			public void update(PlayerIdentifier newPlayer) {
 
 			}
 		};
@@ -127,7 +127,7 @@ public class RoundTest {
 			}
 
 			@Override
-			public void update(Player newPlayer) {
+			public void update(PlayerIdentifier newPlayer) {
 
 			}
 		};
@@ -137,6 +137,7 @@ public class RoundTest {
 		final Field fieldList = round.getClass().getDeclaredField("observers");
 		fieldList.setAccessible(true);
 
+		@SuppressWarnings("unchecked")
 		Set<RoundObserver> set = (Set<RoundObserver>) fieldList.get(round);
 		assertTrue(set.contains(o1) && set.contains(o2));
 	}
