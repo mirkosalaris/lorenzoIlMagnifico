@@ -175,14 +175,13 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void update(int floorNumber, Tower tower,
-	                   DevelopmentCard developmentCard) throws
-			RemoteException {
+	public void update(int floorNumber, DevelopmentCard developmentCard)
+			throws RemoteException {
 
-		ActionSpaceIds id = Commons.getAssociatedActionSpaceIds(tower,
-				floorNumber);
+		ActionSpaceIds id = Commons.getAssociatedActionSpaceIds(
+				developmentCard.getType(), floorNumber);
 		cards.put(id, developmentCard);
 
-		view.update(floorNumber, tower, developmentCard);
+		view.update(floorNumber, developmentCard);
 	}
 }

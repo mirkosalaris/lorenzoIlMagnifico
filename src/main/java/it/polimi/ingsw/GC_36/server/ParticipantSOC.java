@@ -67,11 +67,9 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update(int floorNumber, Tower tower,
-	                   DevelopmentCard developmentCard) {
+	public void update(int floorNumber, DevelopmentCard developmentCard) {
 		List<Object> obj = new ArrayList<>();
 		obj.add(floorNumber);
-		obj.add(tower);
 		obj.add(developmentCard);
 		sendMessage("updateFloor", obj, "cannot update Floor");
 	}

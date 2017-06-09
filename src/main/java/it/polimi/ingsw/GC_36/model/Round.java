@@ -56,7 +56,7 @@ public class Round {
 	private void initialize(Board board) throws RemoteException {
 		setCurrentState(RoundState.STARTING);
 
-		board.initialize(deckSet);
+		board.prepare(deckSet);
 		rollDice(board);
 	}
 

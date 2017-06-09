@@ -72,9 +72,8 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update(int floorNumber, Tower tower,
-	                   DevelopmentCard developmentCard) throws
+	public void update(int floorNumber, DevelopmentCard developmentCard) throws
 			RemoteException {
-		user.update(floorNumber, tower, developmentCard);
+		user.update(floorNumber, developmentCard);
 	}
 }

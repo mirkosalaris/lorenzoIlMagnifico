@@ -17,7 +17,7 @@ public class PersonalBoard {
 
 	public PersonalBoard(int ordinal) {
 		this.resourcesList =
-				Commons.getInstance().getInitialResources(ordinal);
+				Commons.getInitialResources(ordinal);
 
 		// create 4 empty List<DevelopmentCard>
 		map.put(CardType.TERRITORY, new ArrayList<>());

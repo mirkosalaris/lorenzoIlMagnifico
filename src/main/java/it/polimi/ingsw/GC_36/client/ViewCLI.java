@@ -235,11 +235,11 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(int floorNumber, Tower tower,
-	                   DevelopmentCard developmentCard) {
+	public void update(int floorNumber, DevelopmentCard developmentCard) {
 		System.out.println(
-				"updateCard:\n floorNumber: " + floorNumber + "\n tower: " +
-						tower + "\n card: " + developmentCard);
+				"updateCard:\n floorNumber: " + floorNumber
+						+ "\n tower: " + developmentCard.getType()
+						+ "\n card: " + developmentCard);
 
 	}
 

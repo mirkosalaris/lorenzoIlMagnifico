@@ -15,13 +15,17 @@ public class ActionSpace implements ActionSpaceInterface {
 	private Floor associatedFloor;
 	private Set<ActionSpaceObserver> observers = new HashSet<>();
 
-	public ActionSpace(ActionSpaceIds id) {
-		Commons common = Commons.getInstance();
-
+	public ActionSpace(ActionSpaceIds id, Board board) {
 		this.id = id;
-		this.requiredActionValue = common.getRequiredActionValue(id);
-		this.requiredResourcesList = common.getResources(id);
-		this.associatedFloor = common.getAssociatedFloor(id);
+		this.requiredActionValue = Commons.getRequiredActionValue(id);
+		this.requiredResourcesList = Commons.getResources(id);
+
+		Tower tower = board.getTower(id.getCardType());
+		if (tower != null) {
+			this.associatedFloor = tower.getFloor(id.getFloorNumber());
+		} else {
+			this.associatedFloor = null;
+		}
 
 		// no need to notify changes during construction
 		free = true;

@@ -2,12 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
 
-public enum Tower {
-	TERRITORIES(CardType.TERRITORY),
-	BUILDINGS(CardType.BUILDING),
-	CHARACTERS(CardType.CHARACTER),
-	VENTURERS(CardType.VENTURE);
-
+public class Tower {
 	private boolean free;
 	private CardType cardType;
 	private Floor[] floors = new Floor[Commons.NUMBER_OF_FLOORS];
@@ -26,8 +21,8 @@ public enum Tower {
 		return free;
 	}
 
-	public Floor getFloor(int piano) {
-		return floors[piano - 1];
+	public Floor getFloor(int floorNumber) {
+		return floors[floorNumber - 1];
 	}
 
 	public void occupy() {

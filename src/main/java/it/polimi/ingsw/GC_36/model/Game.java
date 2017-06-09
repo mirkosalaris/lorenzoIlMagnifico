@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.model;
 
-import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.controller.Scorer;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
@@ -20,9 +19,6 @@ public class Game {
 	private Set<GameObserver> observers = new HashSet<>();
 
 	public Game() throws RemoteException {
-		// instantiate Commons, for later use of other classes
-		Commons common = Commons.getInstance();
-
 		setCurrentState(GameState.STARTING);
 
 		board = new Board();
@@ -58,7 +54,7 @@ public class Game {
 	// TODO: test
 	public void setPlayers(Map<PlayerColor, Player> players)
 			throws IllegalStateException, RemoteException {
-		board.initPlayers(players);
+		board.setPlayers(players);
 	}
 
 	public Board getBoard() {

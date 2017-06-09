@@ -11,7 +11,7 @@ public class DeckSet {
 	Map<CardType, Deck> decks;
 
 	public DeckSet(int period) {
-		decks = Commons.getInstance().getDeckSet(period);
+		decks = Commons.getDeckSet(period);
 
 		// TODO delete when parser is implemented
 		decks = new EnumMap<>(CardType.class);

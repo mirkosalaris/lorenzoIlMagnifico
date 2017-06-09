@@ -48,7 +48,7 @@ public class Floor {
 
 	private void changeNotify() throws RemoteException {
 		for (FloorObserver o : observers) {
-			o.update(floorNumber, associatedTower, developmentCard);
+			o.update(floorNumber, developmentCard);
 		}
 	}
 }

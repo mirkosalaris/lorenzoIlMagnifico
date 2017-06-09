@@ -21,9 +21,7 @@ public final class Commons {
 	//TODO:compilare councilPrivilegeMap tramite parser
 	public static Map<Integer, ResourcesList> councilPrivilegeMap;
 
-	private final Parser parser;
-	private static ThreadLocal<Commons> threadInstance;
-
+	private static final Parser parser = new Parser(new File(COMMONS_FILE));
 
 	public ResourcesList getResourcesList(Integer integer) {
 		return councilPrivilegeMap.get(integer);
@@ -32,22 +30,7 @@ public final class Commons {
 	public static final int NUMBER_OF_PERIODS = 3;
 	public static final int NUMBER_OF_FLOORS = 4;
 
-	private Commons() {
-		parser = new Parser(new File(COMMONS_FILE));
-	}
-
-	public static Commons getInstance() {
-		if (threadInstance == null) {
-			threadInstance = new ThreadLocal<Commons>() {
-				@Override
-				protected Commons initialValue() {
-					return new Commons();
-				}
-			};
-		}
-		return threadInstance.get();
-
-	}
+	private Commons() {}
 
 	public static Map<DieColor, Die> diceInitializer() {
 		Map<DieColor, Die> dice = new EnumMap<>(DieColor.class);
@@ -58,45 +41,19 @@ public final class Commons {
 		return dice;
 	}
 
-	public static Map<ActionSpaceIds, ActionSpace> actionSpacesInitializer() {
-		Map<ActionSpaceIds, ActionSpace> map = new EnumMap<>(
-				ActionSpaceIds.class);
-
-		for (ActionSpaceIds id : ActionSpaceIds.values()) {
-			map.put(id, new ActionSpace(id));
-		}
-
-		return map;
-	}
-
-	public ResourcesList getInitialResources(int ordinal) {
+	public static ResourcesList getInitialResources(int ordinal) {
 		return (ResourcesList) parser.get("personalBoard" + ordinal);
 	}
 
 
-	public Map<CardType, Deck> getDeckSet(int period) {
+	public static Map<CardType, Deck> getDeckSet(int period) {
 		@SuppressWarnings("unchecked")
 		Map<CardType, Deck> map = (Map<CardType, Deck>) parser.get(
 				"deckSet" + period);
 		return map;
 	}
 
-	public Floor getAssociatedFloor(ActionSpaceIds actionSpaceId) {
-
-		if (actionSpaceId.value() == 0 || actionSpaceId.value() > 16) {
-			return null;
-		} else if (actionSpaceId.value() <= 4) {
-			return Tower.TERRITORIES.getFloor(actionSpaceId.value());
-		} else if (actionSpaceId.value() <= 8) {
-			return Tower.BUILDINGS.getFloor(actionSpaceId.value() - 4);
-		} else if (actionSpaceId.value() <= 12) {
-			return Tower.CHARACTERS.getFloor(actionSpaceId.value() - 8);
-		} else {
-			return Tower.VENTURERS.getFloor(actionSpaceId.value() - 12);
-		}
-	}
-
-	public static ActionSpaceIds getAssociatedActionSpaceIds(Tower tower,
+	public static ActionSpaceIds getAssociatedActionSpaceIds(CardType cardType,
 	                                                         int floorNumber) {
 		if (floorNumber < 1 || floorNumber > 4) {
 			throw new IllegalStateException(
@@ -104,17 +61,17 @@ public final class Commons {
 		}
 
 		int offset;
-		switch (tower) {
-			case TERRITORIES:
+		switch (cardType) {
+			case TERRITORY:
 				offset = 0;
 				break;
-			case BUILDINGS:
+			case BUILDING:
 				offset = 4;
 				break;
-			case CHARACTERS:
+			case CHARACTER:
 				offset = 8;
 				break;
-			case VENTURERS:
+			case VENTURE:
 				offset = 12;
 				break;
 			default:
@@ -128,7 +85,7 @@ public final class Commons {
 		return actionSpaceId.value() >= 1 && actionSpaceId.value() <= 16;
 	}
 
-	public int getRequiredActionValue(ActionSpaceIds actionSpaceId) {
+	public static int getRequiredActionValue(ActionSpaceIds actionSpaceId) {
 
 		// TODO delete this line and uncomment next line when parser is impl
 		return 0;
@@ -137,11 +94,9 @@ public final class Commons {
 		// "requiredActionValue");
 	}
 
-	public ResourcesList getResources(ActionSpaceIds actionSpaceId) {
-
+	public static ResourcesList getResources(ActionSpaceIds actionSpaceId) {
 		return (ResourcesList) parser.get("actionSpace" + actionSpaceId
-						.value(),
-				"resources");
+				.value(), "resources");
 	}
 
 	public static DieColor memberColorToDieColor(MemberColor color) {

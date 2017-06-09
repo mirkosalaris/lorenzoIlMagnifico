@@ -16,18 +16,32 @@ public class Board {
 
 	private BoardState currentState;
 
-	private Set<BoardObserver> boardObservers = new HashSet<>();
+	private Set<BoardObserver> boardObservers;
 	private Map<ActionSpaceIds, ActionSpace> actionSpaces;
+	private Map<CardType, Tower> towers;
 
 	public Board() throws RemoteException {
 		// Board is being constructed, but it WON'T be initialized after that
-		setCurrentState(BoardState.UNINITIALIZED);
-
+		boardObservers = new HashSet<>();
 		dice = Commons.diceInitializer();
-		actionSpaces = Commons.actionSpacesInitializer();
+		towers = initTowers();
+		actionSpaces = setActionSpaces();
+
+		setCurrentState(BoardState.UNINITIALIZED);
 	}
 
-	public void initPlayers(Map<PlayerColor, Player> players)
+	private Map<ActionSpaceIds, ActionSpace> setActionSpaces() {
+		Map<ActionSpaceIds, ActionSpace> map = new EnumMap<>(
+				ActionSpaceIds.class);
+
+		for (ActionSpaceIds id : ActionSpaceIds.values()) {
+			map.put(id, new ActionSpace(id, this));
+		}
+
+		return map;
+	}
+
+	public void setPlayers(Map<PlayerColor, Player> players)
 			throws IllegalStateException, RemoteException {
 		// initialize players and store them
 
@@ -50,19 +64,18 @@ public class Board {
 	}
 
 	// called before every Round
-	public void initialize(DeckSet deckSet) throws RemoteException {
+	public void prepare(DeckSet deckSet) throws RemoteException {
 		if (currentState != BoardState.UNINITIALIZED) {
 			throw new IllegalStateException(
-					"to initialize Board it has to be uninitialized");
+					"to prepare Board it has to be uninitialized");
 		}
 
-		setCurrentState(BoardState.INITIALIZING);
+		setCurrentState(BoardState.PREPARING);
 		this.deckSet = deckSet;
-		initTowers();
+		prepareFloors();
 		setCurrentState(BoardState.READY);
 	}
 
-	// TODO: test
 	public Map<DieColor, Die> getDice() {
 		return dice;
 	}
@@ -89,21 +102,27 @@ public class Board {
 		return turnOrder;
 	}
 
-	private void setCurrentState(BoardState newState) throws RemoteException {
-		this.currentState = newState;
-		newStateNotify();
+	private Map<CardType, Tower> initTowers() {
+		Map<CardType, Tower> map = new EnumMap<>(CardType.class);
+		for (CardType type : CardType.values()) {
+			Tower tower = new Tower(type);
+			map.put(type, tower);
+		}
+		return map;
 	}
 
-	private void initTowers() throws RemoteException {
+	private void prepareFloors() throws RemoteException {
 		// distribute cards in towers
 
 		// iterate on towers
-		for (Tower tower : Tower.values()) {
+
+		DevelopmentCard card;
+		for (CardType type : CardType.values()) {
+			Tower tower = towers.get(type);
 
 			// iterate on floors of tower
 			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
-				DevelopmentCard card =
-						deckSet.getDeck(tower.getCardType()).popCard();
+				card = deckSet.getDeck(type).popCard();
 
 				// TODO delete next line when parser is impl
 				card = new DevelopmentCard(CardType.TERRITORY, 1, "nome", null,
@@ -112,6 +131,11 @@ public class Board {
 				tower.getFloor(i + 1).setDevelopmentCard(card);
 			}
 		}
+	}
+
+	private void setCurrentState(BoardState newState) throws RemoteException {
+		this.currentState = newState;
+		newStateNotify();
 	}
 
 	public void subscribe(BoardObserver o) {
@@ -127,7 +151,7 @@ public class Board {
 		}
 
 		// subscribe to Floors
-		for (Tower tower : Tower.values()) {
+		for (Tower tower : towers.values()) {
 			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
 				tower.getFloor(i + 1).subscribe(o);
 			}
@@ -143,5 +167,9 @@ public class Board {
 		for (BoardObserver o : boardObservers) {
 			o.update(currentState);
 		}
+	}
+
+	public Tower getTower(CardType cardType) {
+		return towers.get(cardType);
 	}
 }

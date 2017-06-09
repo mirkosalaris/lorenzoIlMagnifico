@@ -105,8 +105,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void update(int floorNumber, Tower tower,
-	                   DevelopmentCard developmentCard) {
+	public void update(int floorNumber, DevelopmentCard developmentCard) {
 
 	}
 
