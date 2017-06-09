@@ -1,9 +1,15 @@
 package it.polimi.ingsw.GC_36.data;
 
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.model.effects.ActionSpaceModifier;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
+import it.polimi.ingsw.GC_36.model.effects.ResourceListBasedOnOwnedResources;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,6 +18,11 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static it.polimi.ingsw.GC_36.ExceptionLogger.log;
+
 
 public class Generator {
 
@@ -55,7 +66,7 @@ public class Generator {
 
 			System.out.print("Insert other requirements list?   ");
 			choose = input.nextLine();
-		} while (choose.equals("y"));
+		} while ("y".equals(choose));
 		return requirements;
 	}
 
@@ -67,11 +78,36 @@ public class Generator {
 		name = input.nextLine();
 
 		List<ResourcesList> requirements = this.buildResourcesListList();
-		ImmediateEffect immediateEffect = null;
-		PermanentEffect permanentEffect = null;
+		ImmediateEffect immediateEffect = buildImmediateEffect();
+		PermanentEffect permanentEffect = new ActionSpaceModifier();
 
 		return new DevelopmentCard(type, period, name, requirements,
 				immediateEffect, permanentEffect);
+	}
+
+	public ImmediateEffect buildImmediateEffect() {
+		ResourcesList requirements1 = new ResourcesList();
+		requirements1.set(ResourceType.WOOD, 1);
+		requirements1.set(ResourceType.STONE, 1);
+		requirements1.set(ResourceType.SERVANT, 1);
+		requirements1.set(ResourceType.COINS, 1);
+		requirements1.set(ResourceType.VICTORY_POINTS, 1);
+		requirements1.set(ResourceType.FAITH_POINTS, 1);
+		requirements1.set(ResourceType.MILITARY_POINTS, 1);
+
+		ResourcesList requirements2 = new ResourcesList();
+		requirements2.set(ResourceType.WOOD, 2);
+		requirements2.set(ResourceType.STONE, 2);
+		requirements2.set(ResourceType.SERVANT, 2);
+		requirements2.set(ResourceType.COINS, 2);
+		requirements2.set(ResourceType.VICTORY_POINTS, 2);
+		requirements2.set(ResourceType.FAITH_POINTS, 2);
+		requirements2.set(ResourceType.MILITARY_POINTS, 2);
+
+		ImmediateEffect immediateEffect = new
+				ResourceListBasedOnOwnedResources(
+				requirements1, requirements2);
+		return immediateEffect;
 	}
 
 	public List<DevelopmentCard> buildType(CardType type,
@@ -115,8 +151,7 @@ public class Generator {
 					Charset.defaultCharset());
 			System.out.println(content);
 			developmentCardList = d.buildDevelopmentCardList(content);
-			System.out.println(developmentCardList.get(0).getName().toString
-					());
+			System.out.println(developmentCardList.get(0).getName());
 		}
 		System.out.print(
 				"Do you want to insert period and type only one time? (y/n) ");
@@ -128,18 +163,18 @@ public class Generator {
 								"VENTURE\nInsert typeCard: ");
 				temp = input.nextLine();
 
-				if (temp.equals("b")) {
+				if ("b".equals(temp)) {
 					cardType1 = CardType.BUILDING;
-				} else if (temp.equals("c")) {
+				} else if ("c".equals(temp)) {
 					cardType1 = CardType.CHARACTER;
-				} else if (temp.equals("t")) {
+				} else if ("t".equals(temp)) {
 					cardType1 = CardType.TERRITORY;
-				} else if (temp.equals("v")) {
+				} else if ("v".equals(temp)) {
 					cardType1 = CardType.VENTURE;
 				}
 				System.out.print("Insert card period: ");
 				period = Integer.parseInt(input.nextLine());
-				if (onetimeinsert.equals("y")) {
+				if ("y".equals(onetimeinsert)) {
 					t = true;
 				}
 			}
@@ -148,25 +183,32 @@ public class Generator {
 			developmentCardList.add(developmentCard);
 			System.out.print("Insert other DevelopmentCard? (y/n)   ");
 			choose = input.nextLine();
-		} while (choose.equals("y"));
+		} while ("y".equals(choose));
 		serializedString = e.build(developmentCardList);
-
+		FileWriter file = null;
 		try {
-			FileWriter fileUser = new FileWriter("cards.json");
-			fileUser.write(serializedString);
-			fileUser.close();
+			file = new FileWriter("cards.json");
+			file.write(serializedString);
+
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			Logger logger = Logger.getLogger("logger");
+			logger.log(Level.SEVERE, "File cards cannot be opened", ex);
+			log(ex);
+		} finally {
+			if (file != null) {
+				file.close();
+			}
 		}
 	}
 
-	static String readFile(String path, Charset encoding)
+	static public String readFile(String path, Charset encoding)
 			throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded, encoding);
 	}
 
-	public void createDeckSetList(List<DevelopmentCard> developmentCardList) {
+	public void createDeckSetList(List<DevelopmentCard> developmentCardList)
+			throws IOException {
 		List<DevelopmentCard> developmentCardsPeriod,
 				developmentCardsPeriodType;
 		List<Map<CardType, Deck>> deckSetList = new ArrayList<>();
@@ -176,7 +218,7 @@ public class Generator {
 		for (int i = 1; i <= 3; i++) {
 			// give all card of the same period
 			developmentCardsPeriod = this.buildPeriod(i, developmentCardList);
-			Map<CardType, Deck> deckSet = new HashMap<>();
+			Map<CardType, Deck> deckSet = new EnumMap<>(CardType.class);
 			// type
 			for (CardType cardType : CardType.values()) {
 				// give card of the same period and of the same type
@@ -194,24 +236,123 @@ public class Generator {
 			deckSetList.add(deckSet);
 		}
 		String serializedString = e.build(deckSetList);
+		FileWriter file = null;
 		try {
-			FileWriter fileUser = new FileWriter("cards1.json");
-			fileUser.write(serializedString);
-			fileUser.close();
+			file = new FileWriter("cards1.json");
+			file.write(serializedString);
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			Logger logger = Logger.getLogger("logger");
+			logger.log(Level.SEVERE, "File cards cannot be opened", ex);
+			log(ex);
+		} finally {
+			if (file != null) {
+				file.close();
+			}
 		}
-
 	}
 
-	/*
-	public void buildActionSpaceN() {
+	public JsonObject buildActionSpaces() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("Insert action ID: ");
-		int actionId = Integer.parseInt(input.nextLine());
-		System.out.println("Insert bonus: ");
-		ResourcesList resourcesList = buildResourcesList();
-	}
-	*/
+		String choose;
+		int actionId = 0, floorNumber, towerNumber;
+		ResourcesList resourcesList;
 
+		Gson gson = new Gson();
+		JsonElement bonus;
+		JsonObject properties;
+		JsonArray jsonArray = new JsonArray();
+		do {
+			System.out.print("Insert action ID: ");
+			actionId = Integer.parseInt(input.nextLine());
+			System.out.println("Insert bonus ");
+			resourcesList = buildResourcesList();
+			System.out.println("Insert associated tower number: ");
+			towerNumber = Integer.parseInt(input.nextLine());
+			System.out.println("Insert associated floor number");
+			floorNumber = Integer.parseInt(input.nextLine());
+
+			bonus = gson.fromJson(gson.toJson((resourcesList)),
+					JsonElement.class);
+			properties = new JsonObject();
+			properties.addProperty("requiredActionValue", actionId);
+			properties.add("bonus", bonus);
+			properties.addProperty("towerNumber", towerNumber);
+			properties.addProperty("floorNumber", floorNumber);
+			jsonArray.add(properties);
+
+			System.out.print("Insert other action space?   ");
+			choose = input.nextLine();
+		} while ("y".equals(choose));
+		JsonObject actionSpaces = new JsonObject();
+		actionSpaces.add("actionSpaces", jsonArray);
+		return actionSpaces;
+	}
+
+	public BonusTile buildBonusTile() {
+		Scanner input = new Scanner(System.in);
+		ResourcesList harvestBonus;
+		ResourcesList productionBonus;
+		int harvestRequiredActionValue, productionRequiredActionValue;
+
+
+		System.out.println("Insert harvest required action value: ");
+		harvestRequiredActionValue = Integer.parseInt(input.nextLine());
+		System.out.println("Insert production required action value: ");
+		productionRequiredActionValue = Integer.parseInt(input.nextLine());
+		System.out.println("Insert harvest bonus ");
+		harvestBonus = buildResourcesList();
+		System.out.println("Insert production bonus ");
+		productionBonus = buildResourcesList();
+		return new BonusTile(harvestRequiredActionValue,
+				productionRequiredActionValue, harvestBonus, productionBonus);
+	}
+
+	public void createBonusTile() throws IOException {
+		Scanner input = new Scanner(System.in);
+		String choose;
+		List<BonusTile> bonusTileList = new ArrayList<>();
+
+		Encoder e = new Encoder();
+
+		do {
+			bonusTileList.add(buildBonusTile());
+			System.out.print("Insert other bonus tile?   ");
+			choose = input.nextLine();
+		} while ("y".equals(choose));
+		String serializedString = e.build(bonusTileList);
+		FileWriter file = null;
+		try {
+			file = new FileWriter("bonusTile.json");
+			file.write(serializedString);
+		} catch (IOException ex) {
+			Logger logger = Logger.getLogger("logger");
+			logger.log(Level.SEVERE, "File bonus tile cannot be opened", ex);
+			log(ex);
+		} finally {
+			if (file != null) {
+				file.close();
+			}
+		}
+	}
+
+	public JsonArray buildPersonaBoard() {
+		Scanner input = new Scanner(System.in);
+		String choose;
+		ResourcesList resourcesList;
+
+		Gson gson = new Gson();
+		JsonElement playerResourcesList;
+		JsonArray jsonArray = new JsonArray();
+		do {
+			System.out.println("Insert player resources list ");
+			resourcesList = buildResourcesList();
+			playerResourcesList = gson.fromJson(gson.toJson((resourcesList)),
+					JsonElement.class);
+			jsonArray.add(playerResourcesList);
+
+			System.out.print("Insert other personal board?   ");
+			choose = input.nextLine();
+		} while ("y".equals(choose));
+		return jsonArray;
+	}
 }

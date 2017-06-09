@@ -52,4 +52,10 @@ public class Decoder {
 				.class);
 		return deckSet;
 	}
+
+	public Object build(String serializedString) {
+		Gson gson = new Gson();
+		Object o = gson.fromJson(serializedString, Object.class);
+		return o;
+	}
 }

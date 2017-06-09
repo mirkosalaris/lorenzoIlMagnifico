@@ -6,9 +6,14 @@ public class BonusTile {
 	private ResourcesList harvestbonus;
 	private ResourcesList productionBonus;
 
-	public BonusTile(int harvest, int production) {
-		this.harvestRequiredActionValue = harvest;
-		this.productionRequiredActionValue = production;
+	public BonusTile(int harvestRequiredActionValue,
+	                 int productionRequiredActionValue,
+	                 ResourcesList harvestbonus,
+	                 ResourcesList productionBonus) {
+		this.harvestRequiredActionValue = harvestRequiredActionValue;
+		this.productionRequiredActionValue = productionRequiredActionValue;
+		this.harvestbonus = harvestbonus;
+		this.productionBonus = productionBonus;
 	}
 
 	public int getHarvestRequiredActionValue() {

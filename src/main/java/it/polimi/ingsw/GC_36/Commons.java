@@ -139,7 +139,8 @@ public final class Commons {
 
 	public ResourcesList getResources(ActionSpaceIds actionSpaceId) {
 
-		return (ResourcesList) parser.get("actionSpace" + actionSpaceId,
+		return (ResourcesList) parser.get("actionSpace" + actionSpaceId
+						.value(),
 				"resources");
 	}
 

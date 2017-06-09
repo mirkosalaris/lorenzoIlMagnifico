@@ -1,0 +1,272 @@
+[
+  {
+    "harvestRequiredActionValue": 1,
+    "productionRequiredActionValue": 1,
+    "harvestbonus": {
+      "map": {
+        "WOOD": {
+          "value": 1
+        },
+        "STONE": {
+          "value": 1
+        },
+        "SERVANT": {
+          "value": 1
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    },
+    "productionBonus": {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 2
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 1
+        }
+      }
+    }
+  },
+  {
+    "harvestRequiredActionValue": 1,
+    "productionRequiredActionValue": 1,
+    "harvestbonus": {
+      "map": {
+        "WOOD": {
+          "value": 1
+        },
+        "STONE": {
+          "value": 1
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 1
+        }
+      }
+    },
+    "productionBonus": {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 2
+        },
+        "COINS": {
+          "value": 1
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    }
+  },
+  {
+    "harvestRequiredActionValue": 1,
+    "productionRequiredActionValue": 1,
+    "harvestbonus": {
+      "map": {
+        "WOOD": {
+          "value": 1
+        },
+        "STONE": {
+          "value": 1
+        },
+        "SERVANT": {
+          "value": 1
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    },
+    "productionBonus": {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 1
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 2
+        }
+      }
+    }
+  },
+  {
+    "harvestRequiredActionValue": 1,
+    "productionRequiredActionValue": 1,
+    "harvestbonus": {
+      "map": {
+        "WOOD": {
+          "value": 1
+        },
+        "STONE": {
+          "value": 1
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 1
+        }
+      }
+    },
+    "productionBonus": {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 1
+        },
+        "COINS": {
+          "value": 2
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    }
+  },
+  {
+    "harvestRequiredActionValue": 1,
+    "productionRequiredActionValue": 1,
+    "harvestbonus": {
+      "map": {
+        "WOOD": {
+          "value": 1
+        },
+        "STONE": {
+          "value": 1
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 1
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    },
+    "productionBonus": {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 1
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 2
+        }
+      }
+    }
+  }
+]

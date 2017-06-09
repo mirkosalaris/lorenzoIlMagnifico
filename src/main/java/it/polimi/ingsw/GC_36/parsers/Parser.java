@@ -1,24 +1,38 @@
 package it.polimi.ingsw.GC_36.parsers;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Parser {
-	// TODO manage the file as a json file and to get info from it
-	File file;
+	Map<String, Object> map;
 
 	private Parser() {}
 
 	public Parser(File file) {
-		this.file = file;
+		/*if (!file.exists()) {
+			throw new IOException();
+		}*/
+		map = new HashMap<>();
 	}
 
 	public Object get(String s) {
-		// TODO impl
-		return null;
+		Integer.parseInt(s.replaceAll("[\\D]", ""));
+		if (s.contains("deckSet")) {
+			return null;
+		} else if (s.contains("personalBoard")) {
+			return null;
+		} else {
+			throw new IllegalArgumentException("Parameter not valid");
+		}
 	}
 
 	public Object get(String s1, String s2) {
-		// TODO impl
-		return null;
+		Integer.parseInt(s1.replaceAll("[\\D]", ""));
+		if (s1.contains("actionSpace")) {
+			return null;
+		} else {
+			throw new IllegalArgumentException("Parameter not valid");
+		}
 	}
 }
