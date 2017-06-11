@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import java.io.Serializable;
 import java.rmi.Remote;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Action implements Serializable, Remote {
@@ -9,8 +10,10 @@ public class Action implements Serializable, Remote {
 	private ActionSpaceIds actionSpaceIds;
 	private ResourcesList paymentList;
 	private List<Integer> councilPrivilegeList;
+	private ArrayList<ExtraAction> extraActions;
 
 	public Action() {
+		extraActions = new ArrayList<ExtraAction>();
 	}
 
 	public void setMemberColor(MemberColor MemberColor) {
@@ -56,5 +59,13 @@ public class Action implements Serializable, Remote {
 		this.memberColor = action.memberColor;
 		this.actionSpaceIds = action.actionSpaceIds;
 		this.councilPrivilegeList = action.councilPrivilegeList;
+	}
+
+	public void addExtraAction(ExtraAction extraAction) {
+		extraActions.add(extraAction);
+	}
+
+	public boolean isAvailable(ActionSpaceIds actionSpaceIds) {
+		return true;
 	}
 }

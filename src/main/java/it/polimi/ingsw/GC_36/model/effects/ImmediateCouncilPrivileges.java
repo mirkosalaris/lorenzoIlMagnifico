@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.CouncilPrivilege;
@@ -51,7 +52,7 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 
 
 	@Override
-	public void chooseOptions(ViewInterface view, Action action) {
+	public void chooseOptions(ViewInterface view, Action action, User user) {
 		int choice;
 		for (int i = 0; i < numberOfPrivileges; i++) {
 			//check if the choice is valis

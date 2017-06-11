@@ -26,22 +26,49 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	private void chooseActionSpace(Action action) {
 		int id;
+		boolean wrong = true;
+		ActionSpaceIds actionSpaceId;
 		do {
 			id = view.chooseActionSpaceId();
-		} while (!ActionSpaceIds.checkId(id));
-		ActionSpaceIds actionSpaceId = ActionSpaceIds.values()[id];
-		action.setActionSpaceIds(actionSpaceId);
-		DevelopmentCard card = cards.get(actionSpaceId);
-		if (!(card == null)) {
-			card.getImmediateEffect().chooseOptions(view, action);
+			if (ActionSpaceIds.checkId(id)) {
+				actionSpaceId = ActionSpaceIds.values()[id];
+				if (action.isAvailable(actionSpaceId)) {
+					wrong = false;
+					action.setActionSpaceIds(actionSpaceId);
+				}
+			}
+
+		} while (wrong);
+	}
+
+	private void actionSpaceHandler(Action action)
+			throws IOException, ClassNotFoundException {
+		if (Commons.isFloor(action.getActionSpaceId())) {
+			compilePaymentResourcesList(action);
+			DevelopmentCard card = cards.get(action.getActionSpaceId());
+			card.getImmediateEffect().chooseOptions(view, action, this);
 		}
-		if (actionSpaceId == ActionSpaceIds.AS_COUNCIL) {
+
+		if ((action.getActionSpaceId()) == ActionSpaceIds.AS_COUNCIL)
+
+		{
 			int choice;
 			// TODO check the choice
 			choice = view.choosePrivilege(1);
 			// TODO check the choice
 			action.putPrivilegeChoice(choice);
 
+		}
+
+		if ((action.getActionSpaceId() == ActionSpaceIds.AS_HARVEST) ||
+				(action.getActionSpaceId() == ActionSpaceIds.AS_HARVEST_BIG)) {
+			//TODO: harvest
+		}
+
+		if ((action.getActionSpaceId() == ActionSpaceIds.AS_PRODUCTION) ||
+				(action.getActionSpaceId() == ActionSpaceIds
+						.AS_PRODUCTION_BIG)) {
+			//TODO: production
 		}
 
 	}
@@ -143,9 +170,6 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		chooseMemberColor(action);
 		chooseActionSpace(action);
-		if (Commons.isFloor(action.getActionSpaceId())) {
-			compilePaymentResourcesList(action);
-		}
 	}
 
 	@Override

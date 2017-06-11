@@ -3,6 +3,7 @@ package it.polimi.ingsw.GC_36.client;
 import it.polimi.ingsw.GC_36.model.*;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class ViewCLI implements ViewInterface {
 
@@ -52,6 +53,23 @@ public class ViewCLI implements ViewInterface {
 				"4: two military points\n" +
 				"5: one faith point\n");
 		return in.nextInt();
+	}
+
+	@Override
+	public int chooseExtraActioneSpaceId(Set<ActionSpaceIds> actionSpaceIds,
+	                                     int actionValue) {
+		Scanner in = new Scanner(System.in);
+		System.out.println(
+				"You have the chance to choose another card, the choice " +
+						"doesn't include all the possible cards on the board");
+		System.out.println(
+				"Please select the associated ActionSpace from the list " +
+						"below");
+		for (ActionSpaceIds id : actionSpaceIds) {
+			System.out.println(id.value());
+		}
+		return in.nextInt();
+
 	}
 
 	@Override

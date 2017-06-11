@@ -2,6 +2,8 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
 
+import java.util.Set;
+
 public class ViewGUI implements ViewInterface {
 
 	@Override
@@ -16,6 +18,12 @@ public class ViewGUI implements ViewInterface {
 
 	@Override
 	public int choosePrivilege(int n) {
+		return 0;
+	}
+
+	@Override
+	public int chooseExtraActioneSpaceId(Set<ActionSpaceIds> actionSpaceIds,
+	                                     int actionValue) {
 		return 0;
 	}
 
