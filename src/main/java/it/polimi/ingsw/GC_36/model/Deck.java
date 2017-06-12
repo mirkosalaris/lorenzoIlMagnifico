@@ -16,12 +16,10 @@ public class Deck {
 
 	public DevelopmentCard popCard() {
 
-		// TODO uncomment when Parser is implemented
-		/*DevelopmentCard card = developmentCardList.get(developmentCardList
-		.size() - 1);
+		DevelopmentCard card = developmentCardList.get(
+				developmentCardList.size() - 1);
 		developmentCardList.remove(developmentCardList.size() - 1);
-		return card;*/
+		return card;
 
-		return null;
 	}
 }

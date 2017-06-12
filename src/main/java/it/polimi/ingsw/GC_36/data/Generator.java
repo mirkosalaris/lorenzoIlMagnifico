@@ -25,6 +25,9 @@ import static it.polimi.ingsw.GC_36.ExceptionLogger.log;
 
 
 public class Generator {
+	Encoder encoder = new Encoder();
+	Decoder decoder = new Decoder();
+	Gson gson = new Gson();
 
 	private ResourcesList buildResourcesList() {
 		Scanner input = new Scanner(System.in);
@@ -54,9 +57,9 @@ public class Generator {
 		return resourcesList;
 	}
 
-	private List<ResourcesList> buildResourcesListList() {
+	private ArrayList<ResourcesList> buildResourcesListList() {
 
-		List<ResourcesList> requirements = new ArrayList<>();
+		ArrayList<ResourcesList> requirements = new ArrayList<>();
 
 		String choose;
 		Scanner input = new Scanner(System.in);
@@ -77,7 +80,7 @@ public class Generator {
 		System.out.print("Insert name: ");
 		name = input.nextLine();
 
-		List<ResourcesList> requirements = this.buildResourcesListList();
+		ArrayList<ResourcesList> requirements = this.buildResourcesListList();
 		ImmediateEffect immediateEffect = buildImmediateEffect();
 		PermanentEffect permanentEffect = new ActionSpaceModifier();
 
@@ -144,13 +147,11 @@ public class Generator {
 		Boolean t = false;
 		List<DevelopmentCard> developmentCardList = new ArrayList<>();
 		String serializedString;
-		Encoder e = new Encoder();
-		Decoder d = new Decoder();
 		if (new File("cards.json").exists()) {
 			String content = this.readFile("cards.json",
 					Charset.defaultCharset());
 			System.out.println(content);
-			developmentCardList = d.buildDevelopmentCardList(content);
+			developmentCardList = decoder.buildDevelopmentCardList(content);
 			System.out.println(developmentCardList.get(0).getName());
 		}
 		System.out.print(
@@ -184,7 +185,7 @@ public class Generator {
 			System.out.print("Insert other DevelopmentCard? (y/n)   ");
 			choose = input.nextLine();
 		} while ("y".equals(choose));
-		serializedString = e.build(developmentCardList);
+		serializedString = encoder.build(developmentCardList);
 		FileWriter file = null;
 		try {
 			file = new FileWriter("cards.json");
@@ -212,7 +213,6 @@ public class Generator {
 		List<DevelopmentCard> developmentCardsPeriod,
 				developmentCardsPeriodType;
 		List<Map<CardType, Deck>> deckSetList = new ArrayList<>();
-		Encoder e = new Encoder();
 
 		// period
 		for (int i = 1; i <= 3; i++) {
@@ -235,10 +235,10 @@ public class Generator {
 			}
 			deckSetList.add(deckSet);
 		}
-		String serializedString = e.build(deckSetList);
+		String serializedString = encoder.build(deckSetList);
 		FileWriter file = null;
 		try {
-			file = new FileWriter("cards1.json");
+			file = new FileWriter("deckSetList.json");
 			file.write(serializedString);
 		} catch (IOException ex) {
 			Logger logger = Logger.getLogger("logger");
@@ -251,13 +251,12 @@ public class Generator {
 		}
 	}
 
-	public JsonObject buildActionSpaces() {
+	public void createActionSpaces() throws IOException {
 		Scanner input = new Scanner(System.in);
 		String choose;
 		int actionId = 0, floorNumber, towerNumber;
 		ResourcesList resourcesList;
 
-		Gson gson = new Gson();
 		JsonElement bonus;
 		JsonObject properties;
 		JsonArray jsonArray = new JsonArray();
@@ -266,8 +265,6 @@ public class Generator {
 			actionId = Integer.parseInt(input.nextLine());
 			System.out.println("Insert bonus ");
 			resourcesList = buildResourcesList();
-			System.out.println("Insert associated tower number: ");
-			towerNumber = Integer.parseInt(input.nextLine());
 			System.out.println("Insert associated floor number");
 			floorNumber = Integer.parseInt(input.nextLine());
 
@@ -276,16 +273,26 @@ public class Generator {
 			properties = new JsonObject();
 			properties.addProperty("requiredActionValue", actionId);
 			properties.add("bonus", bonus);
-			properties.addProperty("towerNumber", towerNumber);
 			properties.addProperty("floorNumber", floorNumber);
 			jsonArray.add(properties);
 
 			System.out.print("Insert other action space?   ");
 			choose = input.nextLine();
 		} while ("y".equals(choose));
-		JsonObject actionSpaces = new JsonObject();
-		actionSpaces.add("actionSpaces", jsonArray);
-		return actionSpaces;
+		String serializedString = encoder.build(jsonArray);
+		FileWriter file = null;
+		try {
+			file = new FileWriter("actionSpace.json");
+			file.write(serializedString);
+		} catch (IOException ex) {
+			Logger logger = Logger.getLogger("logger");
+			logger.log(Level.SEVERE, "File cards cannot be opened", ex);
+			log(ex);
+		} finally {
+			if (file != null) {
+				file.close();
+			}
+		}
 	}
 
 	public BonusTile buildBonusTile() {
@@ -312,14 +319,12 @@ public class Generator {
 		String choose;
 		List<BonusTile> bonusTileList = new ArrayList<>();
 
-		Encoder e = new Encoder();
-
 		do {
 			bonusTileList.add(buildBonusTile());
 			System.out.print("Insert other bonus tile?   ");
 			choose = input.nextLine();
 		} while ("y".equals(choose));
-		String serializedString = e.build(bonusTileList);
+		String serializedString = encoder.build(bonusTileList);
 		FileWriter file = null;
 		try {
 			file = new FileWriter("bonusTile.json");
@@ -335,24 +340,84 @@ public class Generator {
 		}
 	}
 
-	public JsonArray buildPersonaBoard() {
+	public void createCommons() throws IOException {
+		String serializedString;
+		JsonObject jsonObject = new JsonObject();
+		JsonElement jsonElement;
+
+		serializedString = new String(
+				Files.readAllBytes(Paths.get("deckSetList.json")),
+				Charset.defaultCharset());
+		jsonElement = gson.fromJson(serializedString,
+				JsonElement.class);
+		jsonObject.add("developmentCards", jsonElement);
+
+		serializedString = new String(
+				Files.readAllBytes(Paths.get("bonusTile.json")),
+				Charset.defaultCharset());
+		jsonElement = gson.fromJson(serializedString,
+				JsonElement.class);
+		jsonObject.add("bonusTiles", jsonElement);
+
+		serializedString = new String(
+				Files.readAllBytes(Paths.get("actionSpace.json")),
+				Charset.defaultCharset());
+		jsonElement = gson.fromJson(serializedString,
+				JsonElement.class);
+		jsonObject.add("actionSpaces", jsonElement);
+
+		serializedString = new String(
+				Files.readAllBytes(Paths.get("personalBoard.json")),
+				Charset.defaultCharset());
+		jsonElement = gson.fromJson(serializedString,
+				JsonElement.class);
+		jsonObject.add("personalBoards", jsonElement);
+
+		serializedString = encoder.build(jsonObject);
+		FileWriter file = null;
+		try {
+			file = new FileWriter("commons.json");
+			file.write(serializedString);
+		} catch (IOException ex) {
+			Logger logger = Logger.getLogger("logger");
+			logger.log(Level.SEVERE, "File cards cannot be opened", ex);
+			log(ex);
+		} finally {
+			if (file != null) {
+				file.close();
+			}
+		}
+	}
+
+	public void createPersonaBoard() throws IOException {
 		Scanner input = new Scanner(System.in);
 		String choose;
 		ResourcesList resourcesList;
 
-		Gson gson = new Gson();
-		JsonElement playerResourcesList;
-		JsonArray jsonArray = new JsonArray();
+		List<ResourcesList> resourcesListList = new ArrayList<>();
 		do {
 			System.out.println("Insert player resources list ");
 			resourcesList = buildResourcesList();
-			playerResourcesList = gson.fromJson(gson.toJson((resourcesList)),
-					JsonElement.class);
-			jsonArray.add(playerResourcesList);
+			resourcesListList.add(resourcesList);
 
 			System.out.print("Insert other personal board?   ");
 			choose = input.nextLine();
 		} while ("y".equals(choose));
-		return jsonArray;
+
+		String serializedString = encoder.build(resourcesListList);
+
+		FileWriter file = null;
+		try {
+			file = new FileWriter("personalBoard.json");
+			file.write(serializedString);
+		} catch (IOException ex) {
+			Logger logger = Logger.getLogger("logger");
+			logger.log(Level.SEVERE, "File cards cannot be opened", ex);
+			log(ex);
+		} finally {
+			if (file != null) {
+				file.close();
+			}
+		}
 	}
 }

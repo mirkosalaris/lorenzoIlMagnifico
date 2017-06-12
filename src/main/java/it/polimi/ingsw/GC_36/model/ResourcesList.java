@@ -49,6 +49,11 @@ public class ResourcesList implements Serializable {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "" + map;
+	}
+
 	// TODO
 	//public <T> T iterate(Function<ResourcesList,T> lambda) {
 

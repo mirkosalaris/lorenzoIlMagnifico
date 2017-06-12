@@ -1,6 +1,8 @@
 package it.polimi.ingsw.GC_36.model;
 
-public class ResourceCounter {
+import java.io.Serializable;
+
+public class ResourceCounter implements Serializable {
 	int value;
 
 	public ResourceCounter(int value) {
@@ -20,5 +22,8 @@ public class ResourceCounter {
 		this.value += value;
 	}
 
-
+	@Override
+	public String toString() {
+		return "" + value;
+	}
 }

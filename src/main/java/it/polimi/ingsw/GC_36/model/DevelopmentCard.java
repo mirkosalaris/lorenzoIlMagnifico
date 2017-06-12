@@ -50,4 +50,15 @@ public class DevelopmentCard implements Serializable {
 	public CardType getType() {
 		return type;
 	}
+
+	@Override
+	public String toString() {
+		return "\n\ttype=" + type +
+				"\n\tperiod=" + period +
+				"\n\tname='" + name + '\'' +
+				"\n\trequirementsList=" + requirementsList +
+				"\n\timmediateEffect=" + immediateEffect +
+				"\n\tpermanentEffect=" + permanentEffect +
+				"\n";
+	}
 }

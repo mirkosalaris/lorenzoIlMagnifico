@@ -9,7 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -35,11 +37,6 @@ public class RoundTest {
 		game.setPlayers(players);
 
 		int currentPeriod = 1;
-		CardType cardType = CardType.BUILDING;
-		List<DevelopmentCard> developmentCardList = new ArrayList<>();
-		List<Deck> deckList = new ArrayList<>();
-		deckList.add(new Deck(cardType, currentPeriod, developmentCardList));
-
 		DeckSet deckSet = new DeckSet(currentPeriod);
 		round = new Round(deckSet);
 

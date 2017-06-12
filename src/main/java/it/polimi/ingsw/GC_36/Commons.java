@@ -86,12 +86,9 @@ public final class Commons {
 	}
 
 	public static int getRequiredActionValue(ActionSpaceIds actionSpaceId) {
-
-		// TODO delete this line and uncomment next line when parser is impl
-		return 0;
-
-		// return (int) parser.get("actionSpace" + actionSpaceId,
-		// "requiredActionValue");
+		int value = (int) parser.get("actionSpace" + actionSpaceId.value(),
+				"requiredActionValue");
+		return value;
 	}
 
 	public static ResourcesList getResources(ActionSpaceIds actionSpaceId) {

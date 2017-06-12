@@ -1,7 +1,6 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
-import it.polimi.ingsw.GC_36.model.effects.ImmediateResourceList;
 import it.polimi.ingsw.GC_36.observers.BoardObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
@@ -123,10 +122,6 @@ public class Board {
 			// iterate on floors of tower
 			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
 				card = deckSet.getDeck(type).popCard();
-
-				// TODO delete next line when parser is impl
-				card = new DevelopmentCard(CardType.TERRITORY, 1, "nome", null,
-						new ImmediateResourceList(null), null);
 
 				tower.getFloor(i + 1).setDevelopmentCard(card);
 			}

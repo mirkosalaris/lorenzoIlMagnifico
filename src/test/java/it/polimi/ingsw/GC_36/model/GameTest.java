@@ -73,7 +73,7 @@ public class GameTest {
 		field.setAccessible(true);
 
 		Period oldPeriod = (Period) field.get(game);
-		game.newPeriod(0);
+		game.newPeriod(1);
 		Period currentPeriod = (Period) field.get(game);
 
 		assertNotEquals(oldPeriod, currentPeriod);
