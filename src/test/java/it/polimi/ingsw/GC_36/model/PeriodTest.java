@@ -2,6 +2,8 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewCLI;
+import it.polimi.ingsw.GC_36.controller.RoundController;
+import it.polimi.ingsw.GC_36.observers.NewRoundObserver;
 import it.polimi.ingsw.GC_36.observers.PeriodObserver;
 import it.polimi.ingsw.GC_36.server.ParticipantRMI;
 import org.junit.After;
@@ -36,6 +38,22 @@ public class PeriodTest {
 
 		DeckSet deckSet = new DeckSet(1);
 		period = new Period(1, deckSet);
+
+
+		RoundController controller = new RoundController() {
+			@Override
+			public void execute(Player player) {
+				// do nothing
+			}
+		};
+		NewRoundObserver nro = new NewRoundObserver() {
+			@Override
+			public void update(Round newRound) {
+				newRound.setController(controller);
+			}
+		};
+
+		period.subscribe(nro);
 	}
 
 	@After
@@ -54,6 +72,7 @@ public class PeriodTest {
 		Round oldRound = (Round) field.get(period);
 		period.advance();
 		Round newRound = (Round) field.get(period);
+
 		assertNotEquals(oldRound, newRound);
 	}
 

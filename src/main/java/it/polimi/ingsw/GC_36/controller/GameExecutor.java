@@ -1,28 +1,33 @@
 package it.polimi.ingsw.GC_36.controller;
 
-
 import it.polimi.ingsw.GC_36.ExceptionLogger;
+import it.polimi.ingsw.GC_36.controller.RoundController.PlayingException;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
+import it.polimi.ingsw.GC_36.observers.NewRoundObserver;
 import it.polimi.ingsw.GC_36.server.Participant;
 
 import java.io.IOException;
-import java.rmi.RemoteException;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
 
-public class GameExecutor implements Runnable {
+public class GameExecutor
+		implements Runnable, NewPeriodObserver, NewRoundObserver {
 	private Game game;
-	private Board board;
 	private Map<PlayerColor, Player> players;
 	private Set<Participant> users;
+	private RoundController roundController = new RoundController();
 
-	public GameExecutor(Set<Participant> users) throws RemoteException {
-		this.users = users;
+	public GameExecutor(Set<Participant> usersSet) throws IOException {
+		this.users = usersSet;
+
+		Participant[] usersArray = new Participant[usersSet.size() - 1];
+		usersArray = usersSet.toArray(usersArray);
 
 		players = new EnumMap<>(PlayerColor.class);
-		for (int i = 0; i < users.size(); i++) {
-			Participant u = users.iterator().next();
+		for (int i = 0; i < usersArray.length; i++) {
+			Participant u = usersArray[i];
 
 			PlayerColor color = PlayerColor.values()[i];
 			Player p = new Player(color, u);
@@ -36,67 +41,62 @@ public class GameExecutor implements Runnable {
 			game = Game.getInstance();
 
 			game.setPlayers(players);
-
 			for (Participant u : users) {
 				game.subscribe(u);
 			}
-
+			game.subscribe(this);
 
 			game.start();
 
-
-		/* // TODO
-		while (game.advanceable()) {
-			game.advance()
-				-->
-					if period.finished: newPeriod
-					elseif roundfinished: currentPeriod.newRound
-					elseif roundAdvancable: round.advance
-					elseif ...
-			game.wait()
-		}
-
-		 */
-
-
-			board = game.getBoard();
-
-			game.newPeriod(1);
-			Period period = game.getCurrentPeriod();
-			period.advance();
-			Round round = period.getCurrentRound();
-			round.advance();
-			Player player = round.getCurrentPlayer();
-			Action action = new Action();
-
-			try {
-				player.getUser().play(action);
-				System.out.println(action);
-			} catch (IOException | ClassNotFoundException e) {
-				ExceptionLogger.log(e);
-				System.out.println("Cannot let players play. Exiting");
-				closeAll();
-				// kill thread
-				return;
+			while (game.getState().equals(GameState.PLAYING)) {
+				game.advance();
 			}
 
-		} catch (IllegalStateException | RemoteException e) {
+			if (game.getState().equals(GameState.SCORING)) {
+				game.finalScoring();
+			} else {
+				throw new IllegalStateException(
+						"Game should be scoring right now");
+			}
+
+		} catch (IllegalStateException | IOException | PlayingException |
+				ClassNotFoundException e) {
 			ExceptionLogger.log(e);
+			try {
+				closeAll(e.getMessage());
+			} catch (IOException e1) {
+				ExceptionLogger.log(e1);
+			}
 
 			// kill thread
 			return;
 		}
-
-
-		// TODO input output
-
 	}
 
-	private void closeAll() throws RemoteException {
-		for (Participant u : users) {
-			u.exit();
+
+	@Override
+	public void update(Round newRound) {
+		for (Participant user : users) {
+			newRound.subscribe(user);
+		}
+		newRound.setController(roundController);
+	}
+
+	@Override
+	public void update(Period newPeriod) {
+		for (Participant user : users) {
+			newPeriod.subscribe(user);
+			newPeriod.subscribe(this);
 		}
 	}
 
+	private void closeAll() throws IOException {
+		closeAll(null);
+	}
 
+	private void closeAll(String message) throws IOException {
+		for (Player p : players.values()) {
+			p.getParticipant().exit(message);
+		}
+	}
 }

@@ -267,7 +267,7 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void exit() {
-
+	public void exit(String message) {
+		System.out.println(message);
 	}
 }

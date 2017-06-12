@@ -4,7 +4,7 @@ import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.observers.BoardObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
-import java.rmi.RemoteException;
+import java.io.IOException;
 import java.util.*;
 
 public class Board {
@@ -19,7 +19,7 @@ public class Board {
 	private Map<ActionSpaceIds, ActionSpace> actionSpaces;
 	private Map<CardType, Tower> towers;
 
-	public Board() throws RemoteException {
+	public Board() throws IOException {
 		// Board is being constructed, but it WON'T be initialized after that
 		boardObservers = new HashSet<>();
 		dice = Commons.diceInitializer();
@@ -41,7 +41,7 @@ public class Board {
 	}
 
 	public void setPlayers(Map<PlayerColor, Player> players)
-			throws IllegalStateException, RemoteException {
+			throws IllegalStateException, IOException {
 		// initialize players and store them
 
 		// initialize players
@@ -63,7 +63,7 @@ public class Board {
 	}
 
 	// called before every Round
-	public void prepare(DeckSet deckSet) throws RemoteException {
+	public void prepare(DeckSet deckSet) throws IOException {
 		if (currentState != BoardState.UNINITIALIZED) {
 			throw new IllegalStateException(
 					"to prepare Board it has to be uninitialized");
@@ -80,7 +80,7 @@ public class Board {
 	}
 
 	// called at the end of every round
-	public void clean() throws RemoteException {
+	public void clean() throws IOException {
 		// reset deckSet
 		deckSet = null;
 
@@ -110,7 +110,7 @@ public class Board {
 		return map;
 	}
 
-	private void prepareFloors() throws RemoteException {
+	private void prepareFloors() throws IOException {
 		// distribute cards in towers
 
 		// iterate on towers
@@ -128,7 +128,7 @@ public class Board {
 		}
 	}
 
-	private void setCurrentState(BoardState newState) throws RemoteException {
+	private void setCurrentState(BoardState newState) throws IOException {
 		this.currentState = newState;
 		newStateNotify();
 	}
@@ -158,7 +158,7 @@ public class Board {
 
 	}
 
-	private void newStateNotify() throws RemoteException {
+	private void newStateNotify() throws IOException {
 		for (BoardObserver o : boardObservers) {
 			o.update(currentState);
 		}

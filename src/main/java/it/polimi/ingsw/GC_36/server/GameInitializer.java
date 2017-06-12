@@ -7,7 +7,6 @@ import it.polimi.ingsw.GC_36.controller.GameExecutor;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
@@ -70,7 +69,7 @@ public class GameInitializer implements Runnable {
 		try {
 			executor = new GameExecutor(participants);
 			new Thread(executor).start();
-		} catch (RemoteException e) {
+		} catch (IOException e) {
 			System.out.println("Cannot start a new Game");
 			ExceptionLogger.log(e);
 		}

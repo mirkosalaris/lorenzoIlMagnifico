@@ -12,11 +12,12 @@ public final class Commons {
 	public static final int PORT = 7777;
 	public static final int RMI_PORT = 7070;
 
-	// TODO: change value. Now both at 1 just for testing
-	public static final int MAX_PLAYERS = 1;
-	public static final int MIN_PLAYERS = 1;
+	// TODO: change value. Now both at 2 just for testing
+	public static final int MAX_PLAYERS = 2;
+	public static final int MIN_PLAYERS = 2;
 
 	private static final String COMMONS_FILE = "commons.json";
+	public static final int ROUNDS_IN_PERIOD = 2;
 
 	//TODO:compilare councilPrivilegeMap tramite parser
 	public static Map<Integer, ResourcesList> councilPrivilegeMap;

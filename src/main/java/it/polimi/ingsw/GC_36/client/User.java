@@ -6,7 +6,7 @@ import it.polimi.ingsw.GC_36.model.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class User extends UnicastRemoteObject implements UserInterface {
@@ -16,7 +16,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	public User(ViewInterface view) throws RemoteException {
 		this.view = view;
-		cards = new HashMap<>();
+		cards = new EnumMap<>(ActionSpaceIds.class);
 	}
 
 	private void chooseMemberColor(Action action) {
@@ -125,39 +125,39 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void update() throws RemoteException {
+	public void update() throws IOException {
 		// TODO think and impl
 		view.update();
 	}
 
 	@Override
-	public void update(BoardState currentState) throws RemoteException {
+	public void update(BoardState currentState) throws IOException {
 		// TODO think and impl
 		view.update(currentState);
 	}
 
 	@Override
-	public void update(PlayerState newState) throws RemoteException {
+	public void update(PlayerState newState) throws IOException {
 		// TODO think and impl
 		view.update(newState);
 	}
 
 	@Override
 	public void update(ActionSpaceIds id, boolean free) throws
-			RemoteException {
+			IOException {
 		// TODO think and impl
 		view.update(id, free);
 	}
 
 	@Override
-	public void fatalError(String s) throws RemoteException {
+	public void fatalError(String s) throws IOException {
 		// TODO think and impl
 		view.fatalError(s);
 	}
 
 	@Override
-	public void exit() throws RemoteException {
-
+	public void exit(String message) throws IOException {
+		view.exit(message);
 	}
 
 	@Override
@@ -170,37 +170,40 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		chooseMemberColor(action);
 		chooseActionSpace(action);
+		// TODO
+		actionSpaceHandler(action);
 	}
 
 	@Override
-	public void update(GameState newState) throws RemoteException {
+	public void update(GameState newState) throws IOException {
 		// TODO think and impl
 		view.update(newState);
 	}
 
 	@Override
-	public void update(int periodNumber) throws RemoteException {
+	public void update(int periodNumber) throws IOException {
 		// TODO think and impl
 		view.update(periodNumber);
 	}
 
 	@Override
-	public void update(RoundState newState) throws RemoteException {
+	public void update(RoundState newState) throws IOException {
 		// TODO think and impl
 		view.update(newState);
 	}
 
 	@Override
-	public void update(PlayerIdentifier newPlayer) throws RemoteException {
+	public void update(PlayerIdentifier newPlayer) throws IOException {
 		// DO NOT inform user HERE of his turn. That's the job of 'play'
-		if (!identifier.equals(newPlayer)) {
+		//if (!identifier.equals(newPlayer)) {
+		if (!newPlayer.equals(identifier)) {
 			view.update(newPlayer);
 		}
 	}
 
 	@Override
 	public void update(int floorNumber, DevelopmentCard developmentCard)
-			throws RemoteException {
+			throws IOException {
 
 		ActionSpaceIds id = Commons.getAssociatedActionSpaceIds(
 				developmentCard.getType(), floorNumber);

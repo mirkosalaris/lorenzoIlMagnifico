@@ -4,7 +4,6 @@ import it.polimi.ingsw.GC_36.client.UserInterface;
 import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.IOException;
-import java.rmi.RemoteException;
 
 public class ParticipantRMI implements Participant {
 	private final UserInterface user;
@@ -14,8 +13,8 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void exit() throws RemoteException {
-		user.exit();
+	public void exit(String message) throws IOException {
+		user.exit(message);
 	}
 
 	@Override
@@ -26,54 +25,54 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update() throws RemoteException {
+	public void update() throws IOException {
 		user.update();
 	}
 
 	@Override
-	public void update(BoardState currentState) throws RemoteException {
+	public void update(BoardState currentState) throws IOException {
 		user.update(currentState);
 	}
 
 	@Override
-	public void update(PlayerState newState) throws RemoteException {
+	public void update(PlayerState newState) throws IOException {
 		user.update(newState);
 	}
 
 	@Override
 	public void update(ActionSpaceIds id, boolean free) throws
-			RemoteException {
+			IOException {
 		user.update(id, free);
 	}
 
 	@Override
-	public void update(GameState newState) throws RemoteException {
+	public void update(GameState newState) throws IOException {
 		user.update(newState);
 	}
 
 	@Override
-	public void update(int periodNumber) throws RemoteException {
+	public void update(int periodNumber) throws IOException {
 		user.update(periodNumber);
 	}
 
 	@Override
-	public void update(RoundState newState) throws RemoteException {
+	public void update(RoundState newState) throws IOException {
 		user.update(newState);
 	}
 
 	@Override
-	public void update(PlayerIdentifier newPlayer) throws RemoteException {
+	public void update(PlayerIdentifier newPlayer) throws IOException {
 		user.update(newPlayer);
 	}
 
 	@Override
-	public void fatalError(String s) throws RemoteException {
+	public void fatalError(String s) throws IOException {
 		user.fatalError(s);
 	}
 
 	@Override
 	public void update(int floorNumber, DevelopmentCard developmentCard) throws
-			RemoteException {
+			IOException {
 		user.update(floorNumber, developmentCard);
 	}
 }

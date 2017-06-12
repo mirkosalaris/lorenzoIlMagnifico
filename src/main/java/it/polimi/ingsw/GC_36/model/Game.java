@@ -1,11 +1,15 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.ExceptionLogger;
+import it.polimi.ingsw.GC_36.controller.RoundController.PlayingException;
 import it.polimi.ingsw.GC_36.controller.Scorer;
+import it.polimi.ingsw.GC_36.model.Period.PeriodTerminatedException;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
+import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
 
-import java.rmi.RemoteException;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -17,8 +21,11 @@ public class Game {
 	private Period currentPeriod;
 
 	private Set<GameObserver> observers = new HashSet<>();
+	private Set<NewPeriodObserver> newPeriodObservers = new HashSet<>();
 
-	public Game() throws RemoteException {
+	private int currentPeriodNumber = 0;
+
+	public Game() throws IOException {
 		setCurrentState(GameState.STARTING);
 
 		board = new Board();
@@ -35,7 +42,7 @@ public class Game {
 
 					try {
 						return new Game();
-					} catch (RemoteException e) {
+					} catch (IOException e) {
 						ExceptionLogger.log(e);
 						return null;
 					}
@@ -46,14 +53,13 @@ public class Game {
 			if (threadInstance.get() == null) {
 				throw new IllegalStateException("cannot instantiate Game");
 			}
-			//throw new IllegalStateException("No game instance exists");
 		}
 		return threadInstance.get();
 	}
 
 	// TODO: test
 	public void setPlayers(Map<PlayerColor, Player> players)
-			throws IllegalStateException, RemoteException {
+			throws IllegalStateException, IOException {
 		board.setPlayers(players);
 	}
 
@@ -65,10 +71,25 @@ public class Game {
 		return currentPeriod;
 	}
 
-	public void newPeriod(int periodNumber) throws RemoteException {
-		// TODO how do we check that this method will be called just three
-		// times?
+	// TODO test
+	public void advance()
+			throws IOException, PlayingException, ClassNotFoundException {
+		try {
+			if (currentPeriod == null) {
+				throw new IllegalStateException("There is no period");
+			}
+			currentPeriod.advance();
+		} catch (PeriodTerminatedException e) {
+			if (currentPeriodNumber < Commons.NUMBER_OF_PERIODS) {
+				currentPeriodNumber += 1;
+				newPeriod(currentPeriodNumber);
+			} else { // Game is finished, so now...
+				setCurrentState(GameState.SCORING);
+			}
+		}
+	}
 
+	private void newPeriod(int periodNumber) throws IOException {
 		DeckSet deckSet = new DeckSet(periodNumber);
 		currentPeriod = new Period(periodNumber, deckSet);
 
@@ -79,7 +100,7 @@ public class Game {
 		return currentState;
 	}
 
-	public void start() throws RemoteException {
+	public void start() throws IOException {
 		play();
 	}
 
@@ -92,17 +113,22 @@ public class Game {
 		board.subscribe(o);
 	}
 
-	private void play() throws RemoteException {
+	public void subscribe(NewPeriodObserver o) {
+		newPeriodObservers.add(o);
+	}
+
+	private void play() throws IOException {
 		setCurrentState(GameState.PLAYING);
+		newPeriod(++currentPeriodNumber);
 	}
 
 	private void setCurrentState(GameState currentState)
-			throws RemoteException {
+			throws IOException {
 		this.currentState = currentState;
 		newStateNotify();
 	}
 
-	private void finalScoring() throws RemoteException {
+	public void finalScoring() throws IOException {
 		setCurrentState(GameState.SCORING);
 
 		// TODO: impl the action to communicate the winner
@@ -111,15 +137,18 @@ public class Game {
 		setCurrentState(GameState.FINISHED);
 	}
 
-	private void newStateNotify() throws RemoteException {
+	private void newStateNotify() throws IOException {
 		for (GameObserver o : observers) {
 			o.update(currentState);
 		}
 	}
 
-	private void newPeriodNotify() throws RemoteException {
+	private void newPeriodNotify() throws IOException {
 		for (GameObserver o : observers) {
 			o.update(currentPeriod.getPeriodNumber());
+		}
+		for (NewPeriodObserver o : newPeriodObservers) {
+			o.update(currentPeriod);
 		}
 	}
 }

@@ -9,10 +9,10 @@ import java.rmi.RemoteException;
 
 public interface Participant extends ModelObserver, Remote {
 
-	void fatalError(String s) throws RemoteException;
+	void fatalError(String s) throws IOException;
 
 	void play(Action action)
 			throws RemoteException, IOException, ClassNotFoundException;
 
-	void exit() throws RemoteException;
+	void exit(String message) throws IOException;
 }

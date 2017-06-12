@@ -51,14 +51,14 @@ public class Main {
 		Communicator communicator = null;
 
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Type r to choose RMI, s to choose socket: ");
 		char choice;
 		do {
+			System.out.print("Type r to choose RMI, s to choose socket: ");
 			choice = sc.next().charAt(0);
 
-			if (choice == 's') {
+			if (choice == 's' || choice == 'S') {
 				communicator = new CommunicatorSocket(user);
-			} else if (choice == 'r') {
+			} else if (choice == 'r' || choice == 'R') {
 				communicator = new CommunicatorRMI(user);
 			}
 		} while (communicator == null);
@@ -70,15 +70,15 @@ public class Main {
 		ViewInterface view = null;
 
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Type g to choose GUI, c to choose CLI: ");
 		char choice;
 
 		do {
+			System.out.print("Type g to choose GUI, c to choose CLI: ");
 			choice = sc.next().charAt(0);
 
-			if (choice == 'c') {
+			if (choice == 'c' || choice == 'C') {
 				view = new ViewCLI();
-			} else if (choice == 'g') {
+			} else if (choice == 'g' || choice == 'G') {
 				view = new ViewGUI();
 			}
 		} while (view == null);

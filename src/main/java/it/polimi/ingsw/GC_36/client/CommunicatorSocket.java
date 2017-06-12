@@ -73,7 +73,8 @@ public class CommunicatorSocket implements Communicator {
 
 		switch (entry.getKey()) {
 			case "exit":
-				user.exit();
+				user.exit((String) entry.getValue());
+				matchEnded = true;
 				break;
 
 			case "play":

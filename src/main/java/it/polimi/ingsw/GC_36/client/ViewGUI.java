@@ -123,7 +123,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void exit() {
+	public void exit(String message) {
 
 	}
 }

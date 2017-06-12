@@ -1,8 +1,10 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.controller.RoundController;
+import it.polimi.ingsw.GC_36.controller.RoundController.PlayingException;
 import it.polimi.ingsw.GC_36.observers.RoundObserver;
 
-import java.rmi.RemoteException;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,9 +13,10 @@ public class Round {
 	private RoundState currentState;
 	private Player currentPlayer;
 	private Set<RoundObserver> observers = new HashSet<>();
+	private RoundController controller;
 
 	public Round(DeckSet deckSet)
-			throws IllegalStateException, RemoteException {
+			throws IllegalStateException, IOException {
 		this.deckSet = deckSet;
 
 		// Game is a Thread-Singleton
@@ -21,7 +24,9 @@ public class Round {
 		initialize(board);
 	}
 
-	public void advance() throws RemoteException {
+	public void advance()
+			throws IOException, RoundTerminatedException, PlayingException,
+			ClassNotFoundException {
 		// every time this get called, it checks if there's a new player and
 		// if there's one set it to currentPlayer. When there is no more
 		// player the turn is finished so it perform final operations
@@ -29,7 +34,8 @@ public class Round {
 		if (currentState == RoundState.STARTING) {
 			setCurrentState(RoundState.PLAYING);
 		} else if (currentState != RoundState.PLAYING) {
-			throw new IllegalStateException("Can't advance a finished round");
+			throw new RoundTerminatedException(
+					"Can't advance a finished Round");
 		}
 
 		Board board = Game.getInstance().getBoard();
@@ -37,6 +43,7 @@ public class Round {
 		if (turnOrder.hasNext()) {
 			Player player = turnOrder.getNextPlayer();
 			setCurrentPlayer(player);
+			controller.execute(player);
 		} else {
 			setCurrentState(RoundState.FINALIZING);
 			adjustTurnOrder(board);
@@ -49,11 +56,15 @@ public class Round {
 		return currentPlayer;
 	}
 
+	public void setController(RoundController controller) {
+		this.controller = controller;
+	}
+
 	public void subscribe(RoundObserver observer) {
 		observers.add(observer);
 	}
 
-	private void initialize(Board board) throws RemoteException {
+	private void initialize(Board board) throws IOException {
 		setCurrentState(RoundState.STARTING);
 
 		board.prepare(deckSet);
@@ -68,31 +79,44 @@ public class Round {
 		board.getTurnOrder().adjust();
 	}
 
-	private void cleanBoard(Board board) throws RemoteException {
+	private void cleanBoard(Board board) throws IOException {
 		board.clean();
 	}
 
 	private void setCurrentState(RoundState currentState)
-			throws RemoteException {
+			throws IOException {
 		this.currentState = currentState;
 		newStateNotify();
 	}
 
 	private void setCurrentPlayer(Player currentPlayer) throws
-			RemoteException {
+			IOException {
 		this.currentPlayer = currentPlayer;
 		newPlayerNotify();
 	}
 
-	private void newStateNotify() throws RemoteException {
+	private void newStateNotify() throws IOException {
 		for (RoundObserver o : observers) {
 			o.update(currentState);
 		}
 	}
 
-	private void newPlayerNotify() throws RemoteException {
+	private void newPlayerNotify() throws IOException {
 		for (RoundObserver o : observers) {
 			o.update(currentPlayer.getIdentifier());
+		}
+	}
+
+	/**
+	 * Called when trying to advance a Round already terminated
+	 */
+	public class RoundTerminatedException extends Exception {
+		public RoundTerminatedException() {
+			super();
+		}
+
+		public RoundTerminatedException(String message) {
+			super(message);
 		}
 	}
 }

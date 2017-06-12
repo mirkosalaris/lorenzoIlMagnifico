@@ -5,10 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 public class TurnOrder {
-	private List<Player> players;
+	private final Map<PlayerColor, Player> fullMap;
+	private List<Player> players = new ArrayList<>();
 
 	public TurnOrder(Map<PlayerColor, Player> players) {
-		this.players = new ArrayList<>(players.values());
+		fullMap = players;
+		// TODO from 0 to number of family members...
+		for (int i = 0; i < 4; i++) {
+			this.players.addAll(fullMap.values());
+		}
 	}
 
 	public boolean hasNext() {
@@ -22,9 +27,12 @@ public class TurnOrder {
 	}
 
 	public void adjust() {
+
 		// TODO
 
 		// board.getActionSpaces().get(Commons.COUNCIL_ACTION_SPACE);
 		// calculate new turn order
+
+		players = new ArrayList<>(fullMap.values());
 	}
 }

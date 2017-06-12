@@ -26,8 +26,8 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void exit() {
-		sendMessage("exit", "Cannot send exit message to user");
+	public void exit(String message) throws IOException {
+		sendMessage("exit", message, "Cannot send exit message to user");
 	}
 
 
@@ -42,24 +42,24 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void fatalError(String s) {
+	public void fatalError(String s) throws IOException {
 		sendMessage("fatal_error", s, "Cannot send error to user");
 	}
 
 	@Override
-	public void update(BoardState currentState) {
+	public void update(BoardState currentState) throws IOException {
 		sendMessage("updateBoardState", currentState,
 				"cannot update Board State");
 	}
 
 	@Override
-	public void update(PlayerState newState) {
+	public void update(PlayerState newState) throws IOException {
 		sendMessage("updatePlayerState", newState,
 				"cannot update Player State");
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, boolean free) {
+	public void update(ActionSpaceIds id, boolean free) throws IOException {
 		List<Object> obj = new ArrayList<>();
 		obj.add(id);
 		obj.add(free);
@@ -67,7 +67,8 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update(int floorNumber, DevelopmentCard developmentCard) {
+	public void update(int floorNumber, DevelopmentCard developmentCard)
+			throws IOException {
 		List<Object> obj = new ArrayList<>();
 		obj.add(floorNumber);
 		obj.add(developmentCard);
@@ -75,37 +76,38 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update() {
+	public void update() throws IOException {
 		sendMessage("updateNewRound", "cannot update new Round");
 	}
 
 	@Override
-	public void update(GameState newState) {
+	public void update(GameState newState) throws IOException {
 		sendMessage("updateGameState", newState, "cannot update GameState");
 	}
 
 	@Override
-	public void update(int periodNumber) {
+	public void update(int periodNumber) throws IOException {
 		sendMessage("updateNewPeriod", periodNumber,
 				"cannot update new Period");
 	}
 
 	@Override
-	public void update(RoundState newState) {
+	public void update(RoundState newState) throws IOException {
 		sendMessage("updateRoundState", newState, "cannot update RoundState");
 	}
 
 	@Override
-	public void update(PlayerIdentifier identifier) {
+	public void update(PlayerIdentifier identifier) throws IOException {
 		sendMessage("updateCurrentPlayer", identifier,
 				"cannot update new Player");
 	}
 
-	private void sendMessage(String type, String error) {
+	private void sendMessage(String type, String error) throws IOException {
 		sendMessage(type, null, error);
 	}
 
-	private void sendMessage(String type, Object obj, String error) {
+	private void sendMessage(String type, Object obj, String error)
+			throws IOException {
 		SimpleEntry<String, Object> entry;
 		entry = new SimpleEntry<>(type, obj);
 		try {
@@ -114,6 +116,7 @@ public class ParticipantSOC implements Participant {
 		} catch (IOException e) {
 			System.err.println(error);
 			ExceptionLogger.log(e);
+			throw e;
 		}
 	}
 

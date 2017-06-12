@@ -1,6 +1,8 @@
 package it.polimi.ingsw.GC_36.model;
 
-public class PlayerIdentifier {
+import java.io.Serializable;
+
+public class PlayerIdentifier implements Serializable {
 	String identifier;
 
 	public PlayerIdentifier(String identifier) {

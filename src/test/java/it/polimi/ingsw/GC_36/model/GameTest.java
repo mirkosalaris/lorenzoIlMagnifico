@@ -12,7 +12,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GameTest {
 	Game game;
@@ -63,20 +64,6 @@ public class GameTest {
 		field.setAccessible(true);
 		assertEquals("currentPeriod retrieved in wrong way", field.get(game),
 				game.getCurrentPeriod());
-	}
-
-	@Test
-	public void newPeriod() throws Exception {
-		// check if the currentPeriod change for real
-
-		final Field field = game.getClass().getDeclaredField("currentPeriod");
-		field.setAccessible(true);
-
-		Period oldPeriod = (Period) field.get(game);
-		game.newPeriod(1);
-		Period currentPeriod = (Period) field.get(game);
-
-		assertNotEquals(oldPeriod, currentPeriod);
 	}
 
 	@Test
@@ -202,64 +189,4 @@ public class GameTest {
 
 		assertTrue(updatedCounter.size() == 1);
 	}
-
-	@Test
-	public void newPeriodNotifyCalled() throws Exception {
-		// check if newPeriodNotify is being called correctly
-
-		// at the end both cells have to be true
-		Boolean obValue[] = new Boolean[2];
-
-		GameObserver o1 = new GameObserver() {
-			@Override
-			public void update(GameState newState) {}
-
-			@Override
-			public void update(int periodNumber) {obValue[0] = true;}
-		};
-		GameObserver o2 = new GameObserver() {
-			@Override
-			public void update(GameState newState) {}
-
-			@Override
-			public void update(int periodNumber) {obValue[1] = true;}
-		};
-
-		game.subscribe(o1);
-		game.subscribe(o2);
-
-		game.newPeriod(1);
-
-		assertTrue(obValue[0]);
-		assertTrue(obValue[1]);
-	}
-
-	@Test
-	public void newPeriodNotifyCalledJustOnce() throws Exception {
-		// check if the notify is called just once per each observer
-
-		// can't use a simple counter because it must be final. So our counter
-		// is a List and his size is the counter value
-		List<Integer> updatedCounter = new ArrayList<>();
-
-		GameObserver o1 = new GameObserver() {
-			@Override
-			public void update(GameState newState) {}
-
-			@Override
-			public void update(int periodNumber) {
-				updatedCounter.add(0);
-			}
-
-		};
-
-		game.subscribe(o1);
-		game.subscribe(o1);
-		game.subscribe(o1);
-
-		game.newPeriod(1);
-
-		assertTrue(updatedCounter.size() == 1);
-	}
-
 }

@@ -2,7 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.observers.ActionSpaceObserver;
 
-import java.rmi.RemoteException;
+import java.io.IOException;
 
 public interface ActionSpaceInterface {
 	boolean isAvailable();
@@ -17,7 +17,7 @@ public interface ActionSpaceInterface {
 
 	void subscribe(ActionSpaceObserver o);
 
-	void reset() throws RemoteException;
+	void reset() throws IOException;
 
 	ActionSpaceIds getId();
 }
