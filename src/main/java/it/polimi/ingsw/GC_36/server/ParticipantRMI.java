@@ -13,8 +13,8 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void exit(String message) throws IOException {
-		user.exit(message);
+	public void fatalError(String s) throws IOException {
+		user.fatalError(s);
 	}
 
 	@Override
@@ -22,6 +22,16 @@ public class ParticipantRMI implements Participant {
 			ClassNotFoundException {
 		user.play(action);
 		// TODO impl
+	}
+
+	@Override
+	public void exit(String message) throws IOException {
+		user.exit(message);
+	}
+
+	@Override
+	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+		user.setIdentifier(identifier);
 	}
 
 	@Override
@@ -63,11 +73,6 @@ public class ParticipantRMI implements Participant {
 	@Override
 	public void update(PlayerIdentifier newPlayer) throws IOException {
 		user.update(newPlayer);
-	}
-
-	@Override
-	public void fatalError(String s) throws IOException {
-		user.fatalError(s);
 	}
 
 	@Override

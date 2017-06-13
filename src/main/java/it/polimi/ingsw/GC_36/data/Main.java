@@ -19,7 +19,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static it.polimi.ingsw.GC_36.ExceptionLogger.log;
+import static it.polimi.ingsw.GC_36.utils.ExceptionLogger.log;
 import static java.nio.charset.Charset.defaultCharset;
 
 public class Main {

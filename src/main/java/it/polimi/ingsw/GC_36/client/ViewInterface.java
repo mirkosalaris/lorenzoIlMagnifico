@@ -37,5 +37,5 @@ public interface ViewInterface extends Participant {
 
 	int selectNumberOfFaithPoints();
 
-	void start();
+	void show(String message);
 }

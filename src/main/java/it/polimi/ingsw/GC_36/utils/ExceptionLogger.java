@@ -1,4 +1,4 @@
-package it.polimi.ingsw.GC_36;
+package it.polimi.ingsw.GC_36.utils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

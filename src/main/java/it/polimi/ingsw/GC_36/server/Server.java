@@ -1,7 +1,7 @@
 package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.Commons;
-import it.polimi.ingsw.GC_36.ExceptionLogger;
+import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;
 import java.net.ServerSocket;

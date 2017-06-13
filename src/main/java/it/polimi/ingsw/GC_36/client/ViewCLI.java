@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
@@ -93,21 +94,21 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public int selectNumberOfVictoryPoints() {
-		int victoryPoints;
+	public int selectNumberOfWoods() {
+		int woods;
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many victory points do you want to use? Keep " +
-							"attention to specify not more victory points " +
+					"how many woods do you want to use? Keep attention to " +
+							"specify not more woods than you got or less " +
 							"than" +
-							" you got or less than 0");
+							" " +
+							"0");
 
-			victoryPoints = in.nextInt();
-		} while (victoryPoints >= 0);
-		return victoryPoints;
+			woods = in.nextInt();
+		} while (woods >= 0);
+		return woods;
 	}
-
 
 	@Override
 	public int selectNumberOfStones() {
@@ -159,20 +160,19 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public int selectNumberOfWoods() {
-		int woods;
+	public int selectNumberOfVictoryPoints() {
+		int victoryPoints;
 		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
-					"how many woods do you want to use? Keep attention to " +
-							"specify not more woods than you got or less " +
+					"how many victory points do you want to use? Keep " +
+							"attention to specify not more victory points " +
 							"than" +
-							" " +
-							"0");
+							" you got or less than 0");
 
-			woods = in.nextInt();
-		} while (woods >= 0);
-		return woods;
+			victoryPoints = in.nextInt();
+		} while (victoryPoints >= 0);
+		return victoryPoints;
 	}
 
 	@Override
@@ -211,8 +211,29 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void start() {
-		System.out.println("Welcome, enjoy the game");
+	public void show(String message) {
+		System.out.println(message);
+	}
+
+	@Override
+	public void fatalError(String s) {
+		System.out.println("fatal error: " + s);
+
+	}
+
+	@Override
+	public void play(Action action) {
+		System.out.println("\n\nNow it's your turn");
+	}
+
+	@Override
+	public void exit(String message) {
+		System.out.println(message);
+	}
+
+	@Override
+	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+		System.out.println("Your identifier is " + identifier.get());
 	}
 
 	@Override
@@ -228,7 +249,6 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public void update(PlayerState newState) {
 		System.out.println("new Player State: " + newState);
-
 	}
 
 	@Override
@@ -241,12 +261,6 @@ public class ViewCLI implements ViewInterface {
 		}
 
 		System.out.flush();
-	}
-
-	@Override
-	public void fatalError(String s) {
-		System.out.println("fatal error: " + s);
-
 	}
 
 	@Override
@@ -269,7 +283,7 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public void update(PlayerIdentifier newPlayer) {
-		System.out.println("Current player: " + newPlayer);
+		System.out.println("Current player: " + newPlayer.get());
 	}
 
 	@Override
@@ -279,15 +293,5 @@ public class ViewCLI implements ViewInterface {
 						+ "\n tower: " + developmentCard.getType()
 						+ "\n Development Card: " + developmentCard);
 
-	}
-
-	@Override
-	public void play(Action action) {
-
-	}
-
-	@Override
-	public void exit(String message) {
-		System.out.println(message);
 	}
 }

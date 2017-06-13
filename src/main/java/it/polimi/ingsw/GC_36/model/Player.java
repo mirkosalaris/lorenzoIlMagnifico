@@ -21,13 +21,13 @@ public class Player {
 
 	public Player(PlayerColor playerColor, Participant participant)
 			throws IOException {
-		// TODO
 
 		this.playerColor = playerColor;
 		this.participant = participant;
 
-		this.identifier = new PlayerIdentifier(
-				"name_of_player, fix this, in class Player");
+		this.identifier = new PlayerIdentifier(playerColor.toString());
+
+		participant.setIdentifier(this.identifier);
 
 		setCurrentState(PlayerState.UNINITIALIZED);
 	}

@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -71,7 +72,27 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void start() {
+	public void show(String message) {
+
+	}
+
+	@Override
+	public void fatalError(String s) {
+
+	}
+
+	@Override
+	public void play(Action action) {
+
+	}
+
+	@Override
+	public void exit(String message) {
+
+	}
+
+	@Override
+	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
 
 	}
 
@@ -92,11 +113,6 @@ public class ViewGUI implements ViewInterface {
 
 	@Override
 	public void update(ActionSpaceIds id, boolean free) {
-
-	}
-
-	@Override
-	public void fatalError(String s) {
 
 	}
 
@@ -122,16 +138,6 @@ public class ViewGUI implements ViewInterface {
 
 	@Override
 	public void update(int floorNumber, DevelopmentCard developmentCard) {
-
-	}
-
-	@Override
-	public void play(Action action) {
-
-	}
-
-	@Override
-	public void exit(String message) {
 
 	}
 }

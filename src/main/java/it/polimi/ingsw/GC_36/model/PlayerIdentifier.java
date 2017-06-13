@@ -12,4 +12,16 @@ public class PlayerIdentifier implements Serializable {
 	public String get() {
 		return identifier;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		PlayerIdentifier that = (PlayerIdentifier) o;
+
+		return this.identifier != null
+				? this.identifier.equals(that.identifier)
+				: that.identifier == null;
+	}
 }

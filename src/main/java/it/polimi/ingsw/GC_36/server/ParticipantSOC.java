@@ -1,10 +1,12 @@
 package it.polimi.ingsw.GC_36.server;
 
-import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
-import java.io.*;
-import java.net.Socket;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,23 +15,20 @@ public class ParticipantSOC implements Participant {
 	private ObjectOutputStream objOut;
 	private ObjectInputStream objIn;
 
-	public ParticipantSOC(Socket socket) throws IOException {
+	public ParticipantSOC(Pair<ObjectInputStream, ObjectOutputStream> pair)
+			throws IOException {
 
-		objOut = new ObjectOutputStream(
-				new BufferedOutputStream(socket.getOutputStream()));
-
-		// send the header (to avoid input hanging on client)
+		objOut = pair.getSecond();
+		// to be sure to send the header (to avoid input hanging on client)
 		objOut.flush();
 
-		objIn = new ObjectInputStream(
-				new BufferedInputStream(socket.getInputStream()));
+		objIn = pair.getFirst();
 	}
 
 	@Override
-	public void exit(String message) throws IOException {
-		sendMessage("exit", message, "Cannot send exit message to user");
+	public void fatalError(String s) throws IOException {
+		sendMessage("fatal_error", s, "Cannot send error to user");
 	}
-
 
 	@Override
 	public void play(Action action)
@@ -41,9 +40,15 @@ public class ParticipantSOC implements Participant {
 		action.copyFrom(retrievedAction);
 	}
 
+
 	@Override
-	public void fatalError(String s) throws IOException {
-		sendMessage("fatal_error", s, "Cannot send error to user");
+	public void exit(String message) throws IOException {
+		sendMessage("exit", message, "Cannot send exit message to user");
+	}
+
+	@Override
+	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+		sendMessage("identifier", identifier, "Error in sending identifier");
 	}
 
 	@Override

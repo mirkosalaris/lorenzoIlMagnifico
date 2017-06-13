@@ -22,6 +22,106 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		cards = new EnumMap<>(ActionSpaceIds.class);
 	}
 
+	@Override
+	public void fatalError(String s) throws IOException {
+		// TODO think and impl
+		view.fatalError(s);
+	}
+
+	@Override
+	public void play(Action action)
+			throws IOException, ClassNotFoundException {
+		// this change action through setter. It's to be this way for safety:
+		// there can't be a way to construct a new Action. The user has to use
+		// the one passed
+
+		view.play(action);
+
+		chooseMemberColor(action);
+		chooseActionSpace(action);
+		compilePaymentResourcesList(action);
+		actionSpaceHandler(action);
+	}
+
+	@Override
+	public void exit(String message) throws IOException {
+		view.exit(message);
+	}
+
+	@Override
+	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+		this.identifier = identifier;
+		view.setIdentifier(identifier);
+	}
+
+	@Override
+	public void update() throws IOException {
+		// TODO think and impl
+		view.update();
+	}
+
+	@Override
+	public void update(BoardState currentState) throws IOException {
+		// TODO think and impl
+		view.update(currentState);
+	}
+
+	@Override
+	public void update(PlayerState newState) throws IOException {
+		// TODO think and impl
+		view.update(newState);
+	}
+
+	@Override
+	public void update(ActionSpaceIds id, boolean free) throws
+			IOException {
+		// TODO think and impl
+		view.update(id, free);
+	}
+
+	@Override
+	public void update(GameState newState) throws IOException {
+		// TODO think and impl
+		view.update(newState);
+	}
+
+	@Override
+	public void update(int periodNumber) throws IOException {
+		// TODO think and impl
+		view.update(periodNumber);
+	}
+
+	@Override
+	public void update(RoundState newState) throws IOException {
+		// TODO think and impl
+		view.update(newState);
+	}
+
+	@Override
+	public void update(PlayerIdentifier newPlayer) throws IOException {
+		// DO NOT inform user HERE of his turn. That's the job of 'play'
+		//if (!identifier.equals(newPlayer)) {
+		if (!newPlayer.equals(identifier)) {
+			view.update(newPlayer);
+		}
+	}
+
+	@Override
+	public void update(int floorNumber, DevelopmentCard developmentCard)
+			throws IOException {
+
+		ActionSpaceIds id = Commons.getAssociatedActionSpaceIds(
+				developmentCard.getType(), floorNumber);
+		cards.put(id, developmentCard);
+
+		view.update(floorNumber, developmentCard);
+	}
+
+	@Override
+	public void show(String message) {
+		view.show(message);
+	}
+
 	private void chooseMemberColor(Action action) {
 		MemberColor memberColor = view.chooseMemberColor();
 		action.setMemberColor(memberColor);
@@ -133,93 +233,5 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		action.setPaymentList(paymentList);
 		*/
-	}
-
-	@Override
-	public void update() throws IOException {
-		// TODO think and impl
-		view.update();
-	}
-
-	@Override
-	public void update(BoardState currentState) throws IOException {
-		// TODO think and impl
-		view.update(currentState);
-	}
-
-	@Override
-	public void update(PlayerState newState) throws IOException {
-		// TODO think and impl
-		view.update(newState);
-	}
-
-	@Override
-	public void update(ActionSpaceIds id, boolean free) throws
-			IOException {
-		// TODO think and impl
-		view.update(id, free);
-	}
-
-	@Override
-	public void fatalError(String s) throws IOException {
-		// TODO think and impl
-		view.fatalError(s);
-	}
-
-	@Override
-	public void exit(String message) throws IOException {
-		view.exit(message);
-	}
-
-	@Override
-	public void play(Action action)
-			throws IOException, ClassNotFoundException {
-
-		// this change action through setter. It's to be this way for safety:
-		// there can't be a way to construct a new Action. The user has to use
-		// the one passed
-
-		chooseMemberColor(action);
-		chooseActionSpace(action);
-		compilePaymentResourcesList(action);
-		actionSpaceHandler(action);
-	}
-
-	@Override
-	public void update(GameState newState) throws IOException {
-		// TODO think and impl
-		view.update(newState);
-	}
-
-	@Override
-	public void update(int periodNumber) throws IOException {
-		// TODO think and impl
-		view.update(periodNumber);
-	}
-
-	@Override
-	public void update(RoundState newState) throws IOException {
-		// TODO think and impl
-		view.update(newState);
-	}
-
-	@Override
-	public void update(PlayerIdentifier newPlayer) throws IOException {
-		// DO NOT inform user HERE of his turn. That's the job of 'play'
-		//if (!identifier.equals(newPlayer)) {
-		if (!newPlayer.equals(identifier)) {
-			view.update(newPlayer);
-		}
-	}
-
-	@Override
-	public void update(int floorNumber, DevelopmentCard developmentCard)
-			throws IOException {
-
-		ActionSpaceIds id = Commons.getAssociatedActionSpaceIds(
-				developmentCard.getType(), floorNumber);
-		cards.put(id, developmentCard);
-
-		view.update(floorNumber, developmentCard);
 	}
 }

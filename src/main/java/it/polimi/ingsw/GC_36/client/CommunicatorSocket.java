@@ -1,8 +1,8 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
-import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.*;
 import java.net.Socket;
@@ -25,8 +25,9 @@ public class CommunicatorSocket implements Communicator {
 	public void connect() throws IOException {
 
 		socket = new Socket(Commons.HOST, Commons.PORT);
-		System.out.println("Connection established\n");
+		user.show("Connection established\n");
 
+		user.show("listening...");
 
 		objOut = new ObjectOutputStream(
 				new BufferedOutputStream(socket.getOutputStream()));
@@ -37,10 +38,8 @@ public class CommunicatorSocket implements Communicator {
 
 	@Override
 	public void start() throws ClassNotFoundException, IOException {
-		System.out.println("listening...");
 
 		while (!matchEnded) {
-			// TODO manage exception: what to do in case of exception???
 			try {
 				@SuppressWarnings("unchecked")
 				SimpleEntry<String, Object> entry = (SimpleEntry<String,
@@ -72,8 +71,12 @@ public class CommunicatorSocket implements Communicator {
 		List<Object> params;
 
 		switch (entry.getKey()) {
-			case "exit":
-				user.exit((String) entry.getValue());
+			case "show":
+				user.show((String) entry.getValue());
+				break;
+
+			case "fatal_error":
+				user.fatalError((String) entry.getValue());
 				matchEnded = true;
 				break;
 
@@ -84,9 +87,13 @@ public class CommunicatorSocket implements Communicator {
 				sendBack(action);
 				break;
 
-			case "fatal_error":
-				user.fatalError((String) entry.getValue());
+			case "exit":
+				user.exit((String) entry.getValue());
 				matchEnded = true;
+				break;
+
+			case "identifier":
+				user.setIdentifier((PlayerIdentifier) entry.getValue());
 				break;
 
 			case "updateBoardState":

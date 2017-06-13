@@ -1,6 +1,6 @@
 package it.polimi.ingsw.GC_36.client;
 
-import it.polimi.ingsw.GC_36.ExceptionLogger;
+import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
@@ -31,14 +31,6 @@ public class Main {
 			System.exit(1);
 		}
 
-		view.start();
-
-		try {
-			communicator.start();
-		} catch (IOException | ClassNotFoundException e) {
-			ExceptionLogger.log(e);
-		}
-
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -49,7 +41,6 @@ public class Main {
 				}
 			}
 		}).start();
-
 	}
 
 	private static Communicator chooseCommunicator(User user) {

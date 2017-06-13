@@ -1,30 +1,35 @@
 package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.Commons;
-import it.polimi.ingsw.GC_36.ExceptionLogger;
 import it.polimi.ingsw.GC_36.client.UserInterface;
 import it.polimi.ingsw.GC_36.controller.GameExecutor;
+import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.rmi.RemoteException;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
 public class GameInitializer implements Runnable {
 
-	private final BlockingQueue<Socket> sockets;
+	private final BlockingQueue<Pair<ObjectInputStream, ObjectOutputStream>>
+			sockets;
 	private final BlockingQueue<UserInterface> users;
 
-	public GameInitializer(BlockingQueue<Socket> sockets,
-	                       BlockingQueue<UserInterface> users) {
+	public GameInitializer(
+			BlockingQueue<Pair<ObjectInputStream, ObjectOutputStream>> sockets,
+			BlockingQueue<UserInterface> users) {
 		this.sockets = sockets;
 		this.users = users;
 	}
 
 	@Override
 	public void run() {
-		// TODO: introduce a 'timer' to let MIN_PLAYERS to play
 		Set<Participant> participants = new HashSet<>();
 		boolean full = false;
 		while (!full) {
@@ -32,7 +37,15 @@ public class GameInitializer implements Runnable {
 
 			if (!sockets.isEmpty()) {
 				try {
-					participants.add(new ParticipantSOC(sockets.take()));
+					ObjectOutputStream objOut;
+					Pair<ObjectInputStream, ObjectOutputStream> pair =
+							sockets.take();
+					participants.add(new ParticipantSOC(pair));
+
+					objOut = pair.getSecond();
+					SimpleEntry<String, Object> obj = new SimpleEntry<>("show",
+							"Welcome, enjoy the game");
+					objOut.writeObject(obj);
 
 					if (participants.size() >= Commons.MAX_PLAYERS) {
 						full = true;
@@ -51,12 +64,15 @@ public class GameInitializer implements Runnable {
 
 			if (!users.isEmpty() && !full) {
 				try {
-					participants.add(new ParticipantRMI(users.take()));
+					UserInterface user = users.take();
+					participants.add(new ParticipantRMI(user));
+
+					user.show("Welcome, enjoy the game");
 
 					if (participants.size() >= Commons.MAX_PLAYERS) {
 						full = true;
 					}
-				} catch (InterruptedException e) {
+				} catch (InterruptedException | RemoteException e) {
 					ExceptionLogger.log(e);
 					System.err.println(
 							"Cannot take an element from users set");
