@@ -4,13 +4,12 @@ import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.Game;
-import it.polimi.ingsw.GC_36.model.Player;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
 import java.util.HashMap;
 
-public class ResourcesConverting implements PermanentEffect {
+public class ResourcesConverting extends PermanentEffect {
 	ResourcesList fromResourcesList, toResourcesList;
 	HashMap<Integer, ResourcesList> fromResourcesListOptions;
 	HashMap<Integer, ResourcesList> toResourcesListOptions;
@@ -64,15 +63,5 @@ public class ResourcesConverting implements PermanentEffect {
 
 	}
 
-	@Override
-	public boolean isDoable(int requiredActionValue, Action action) {
-		int ActionValue;
-		Player player = Game.getInstance().getCurrentPeriod().getCurrentRound()
-				.getCurrentPlayer();
-		ActionValue = action.getActionValue(player);
-		if (ActionValue >= requiredActionValue)
-			return true;
-		else
-			return false;
-	}
+
 }

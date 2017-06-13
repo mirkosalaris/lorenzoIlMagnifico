@@ -5,7 +5,7 @@ import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
-public class HarvestWorkValueModifier implements PermanentEffect {
+public class HarvestWorkValueModifier extends PermanentEffect {
 	@Override
 	public void applyEffect(Action action) {
 

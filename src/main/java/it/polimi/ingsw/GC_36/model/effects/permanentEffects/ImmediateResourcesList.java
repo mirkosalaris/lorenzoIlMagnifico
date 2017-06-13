@@ -5,7 +5,7 @@ import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
-public class ImmediateResourcesList implements PermanentEffect {
+public class ImmediateResourcesList extends PermanentEffect {
 	//effetto delle territory/building cards che da al player una resourcesList
 	//l'effetto viene attivato se il valore dell'azione e' sufficiente
 	CardType associatedCardType;
@@ -43,14 +43,5 @@ public class ImmediateResourcesList implements PermanentEffect {
 
 	}
 
-	public boolean isDoable(int requiredActionValue, Action action) {
-		int ActionValue;
-		Player player = Game.getInstance().getCurrentPeriod().getCurrentRound()
-				.getCurrentPlayer();
-		ActionValue = action.getActionValue(player);
-		if (ActionValue >= requiredActionValue)
-			return true;
-		else
-			return false;
-	}
+
 }

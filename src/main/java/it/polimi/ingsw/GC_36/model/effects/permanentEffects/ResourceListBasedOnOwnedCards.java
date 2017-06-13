@@ -5,7 +5,7 @@ import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
-public class ResourceListBasedOnOwnedCards implements PermanentEffect {
+public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 	private ResourcesList resourcesList;
 	private CardType cardType;
 	private int requiredActionValue;
@@ -51,15 +51,5 @@ public class ResourceListBasedOnOwnedCards implements PermanentEffect {
 
 	}
 
-	@Override
-	public boolean isDoable(int requiredActionValue, Action action) {
-		int ActionValue;
-		Player player = Game.getInstance().getCurrentPeriod().getCurrentRound()
-				.getCurrentPlayer();
-		ActionValue = action.getActionValue(player);
-		if (ActionValue >= requiredActionValue)
-			return true;
-		else
-			return false;
-	}
+
 }

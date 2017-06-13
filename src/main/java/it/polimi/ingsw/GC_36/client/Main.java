@@ -33,6 +33,11 @@ public class Main {
 
 		view.start();
 
+		try {
+			communicator.start();
+		} catch (IOException | ClassNotFoundException e) {
+			ExceptionLogger.log(e);
+		}
 
 		new Thread(new Runnable() {
 			@Override

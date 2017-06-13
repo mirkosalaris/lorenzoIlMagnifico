@@ -62,7 +62,7 @@ public enum ActionSpaceIds {
 	}
 
 	public static boolean checkId(int id) {
-		return (id >= maxValue || id <= minValue);
+		return (id <= maxValue && id >= minValue);
 	}
 
 	public boolean isInFloor() {
@@ -84,8 +84,8 @@ public enum ActionSpaceIds {
 	}
 
 	private static void setMax(int value) {
-		if (first || value < maxValue) {
-			minValue = value;
+		if (first || value > maxValue) {
+			maxValue = value;
 		}
 	}
 
