@@ -7,11 +7,14 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 public class User extends UnicastRemoteObject implements UserInterface {
 	private transient ViewInterface view;
 	private transient Map<ActionSpaceIds, DevelopmentCard> cards;
+	private transient Map<CardType, List<DevelopmentCard>> ownedCards;
+
 	private PlayerIdentifier identifier;
 
 	public User(ViewInterface view) throws RemoteException {
@@ -69,6 +72,14 @@ public class User extends UnicastRemoteObject implements UserInterface {
 				(action.getActionSpaceId() == ActionSpaceIds
 						.AS_PRODUCTION_BIG)) {
 			//TODO: production
+			//scorre la lista di carte territorio del player e chiama la
+			// chooseoption che si occupa di salvare la scelta nella action
+			List<DevelopmentCard> terrytoriCards = ownedCards.get(
+					CardType.BUILDING);
+			for (int i = 0; i < terrytoriCards.size(); i++) {
+				terrytoriCards.get(i).getPermanentEffect().chooseOption(view,
+						action, this);
+			}
 		}
 
 	}
@@ -170,7 +181,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		chooseMemberColor(action);
 		chooseActionSpace(action);
-		// TODO
+		compilePaymentResourcesList(action);
 		actionSpaceHandler(action);
 	}
 

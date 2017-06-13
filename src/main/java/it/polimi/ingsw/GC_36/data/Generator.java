@@ -6,10 +6,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.polimi.ingsw.GC_36.model.*;
-import it.polimi.ingsw.GC_36.model.effects.ActionSpaceModifier;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
-import it.polimi.ingsw.GC_36.model.effects.ResourceListBasedOnOwnedResources;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects
+		.ResourceListBasedOnOwnedResources;
+import it.polimi.ingsw.GC_36.model.effects.permanentEffects.ActionSpaceModifier;
 
 import java.io.File;
 import java.io.FileWriter;

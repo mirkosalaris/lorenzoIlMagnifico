@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
 
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -70,6 +71,25 @@ public class ViewCLI implements ViewInterface {
 		}
 		return in.nextInt();
 
+	}
+
+	@Override
+	public int chooseConvertingMethod(
+			HashMap<Integer, ResourcesList> fromResourcesListOptions,
+			HashMap<Integer, ResourcesList> toResorcesListOptions) {
+		int choice;
+		//elenca le opzioni
+		for (Integer i : fromResourcesListOptions.keySet()) {
+			System.out.println("Option number" + i);
+			System.out.println("pay:");
+			System.out.println(fromResourcesListOptions.get(i).toString());
+			System.out.println("get:");
+			System.out.println(toResorcesListOptions.get(i).toString());
+		}
+		Scanner in = new Scanner(System.in);
+		System.out.println("Please specify the options");
+		choice = in.nextInt();
+		return choice;
 	}
 
 	@Override

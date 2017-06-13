@@ -92,4 +92,9 @@ public class Player {
 	public PlayerIdentifier getIdentifier() {
 		return identifier;
 	}
+
+	public int getFamilyMemberValue(MemberColor memberColor) {
+		int value = familyMembers.get(memberColor).getValue();
+		return value;
+	}
 }

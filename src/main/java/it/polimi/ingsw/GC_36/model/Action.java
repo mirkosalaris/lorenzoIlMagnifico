@@ -11,9 +11,11 @@ public class Action implements Serializable, Remote {
 	private ResourcesList paymentList;
 	private List<Integer> councilPrivilegeList;
 	private ArrayList<ExtraAction> extraActions;
+	private ArrayList<Integer> productionChoice;
 
 	public Action() {
 		extraActions = new ArrayList<ExtraAction>();
+		productionChoice = new ArrayList<>();
 	}
 
 	public void setMemberColor(MemberColor MemberColor) {
@@ -67,5 +69,21 @@ public class Action implements Serializable, Remote {
 
 	public boolean isAvailable(ActionSpaceIds actionSpaceIds) {
 		return true;
+	}
+
+	public void addProductionChoise(Integer choice) {
+		productionChoice.add(choice);
+	}
+
+	public int getActionValue(Player player) {
+		int memberValue = player.getFamilyMemberValue(memberColor);
+		int numOfServants = paymentList.get(ResourceType.SERVANT).getValue();
+		return memberValue + numOfServants;
+	}
+
+	public int getProductionChoise() {
+		int choise = productionChoice.get(0);
+		productionChoice.remove(0);
+		return choise;
 	}
 }

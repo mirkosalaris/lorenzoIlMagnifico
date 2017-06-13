@@ -1,10 +1,13 @@
-package it.polimi.ingsw.GC_36.model.effects;
+package it.polimi.ingsw.GC_36.model.effects.immediateEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionSpaceIds;
+import it.polimi.ingsw.GC_36.model.ExtraAction;
+import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
+import java.io.IOException;
 import java.util.Set;
 
 public class ExtraTurnTower implements ImmediateEffect {
@@ -22,10 +25,15 @@ public class ExtraTurnTower implements ImmediateEffect {
 	}
 
 	@Override
-	public void chooseOptions(ViewInterface view, Action action, User user) {
-
-
+	public void chooseOptions(ViewInterface view, Action action, User user)
+			throws IOException, ClassNotFoundException {
+		ExtraAction extraAction = new ExtraAction(actionSpaces);
+		user.play(extraAction);
+		action.addExtraAction(extraAction);
 	}
 
 
 }
+
+
+

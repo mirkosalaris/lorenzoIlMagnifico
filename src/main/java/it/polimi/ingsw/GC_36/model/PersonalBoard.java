@@ -44,4 +44,7 @@ public class PersonalBoard {
 		return bonusTile;
 	}
 
+	public Map<CardType, List<DevelopmentCard>> getMap() {
+		return map;
+	}
 }
