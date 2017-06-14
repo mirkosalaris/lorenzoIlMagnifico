@@ -68,7 +68,17 @@ public class ParticipantSOC implements Participant {
 		List<Object> obj = new ArrayList<>();
 		obj.add(id);
 		obj.add(free);
-		sendMessage("updateActionSpace", obj, "cannot update ActionSpace");
+		sendMessage("updateActionSpaceFree", obj, "cannot update ActionSpace");
+	}
+
+	@Override
+	public void update(ActionSpaceIds id, PlayerColor playerColor)
+			throws IOException {
+		List<Object> obj = new ArrayList<>();
+		obj.add(id);
+		obj.add(playerColor);
+		sendMessage("updateActionSpacePlayer", obj,
+				"cannot update ActionSpace");
 	}
 
 	@Override

@@ -56,6 +56,12 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
+	public void update(ActionSpaceIds id, PlayerColor playerColor)
+			throws IOException {
+		user.update(id, playerColor);
+	}
+
+	@Override
 	public void update(GameState newState) throws IOException {
 		user.update(newState);
 	}

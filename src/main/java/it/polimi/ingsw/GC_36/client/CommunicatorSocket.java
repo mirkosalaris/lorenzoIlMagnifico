@@ -104,11 +104,18 @@ public class CommunicatorSocket implements Communicator {
 				user.update((PlayerState) entry.getValue());
 				break;
 
-			case "updateActionSpace":
+			case "updateActionSpaceFree":
 				params = (List<Object>) entry.getValue();
 				ActionSpaceIds id = (ActionSpaceIds) params.get(0);
 				boolean free = (boolean) params.get(1);
 				user.update(id, free);
+				break;
+
+			case "updateActionSpacePlayer":
+				params = (List<Object>) entry.getValue();
+				ActionSpaceIds asId = (ActionSpaceIds) params.get(0);
+				PlayerColor playerColor = (PlayerColor) params.get(1);
+				user.update(asId, playerColor);
 				break;
 
 			case "updateFloor":

@@ -14,6 +14,7 @@ import java.util.Map;
 public class User extends UnicastRemoteObject implements UserInterface {
 	private transient ViewInterface view;
 	private transient Map<ActionSpaceIds, DevelopmentCard> cards;
+	private transient Map<ActionSpaceIds, List<PlayerColor>> actionSpaces;
 	private transient Map<CardType, List<DevelopmentCard>> ownedCards;
 
 	private PlayerIdentifier identifier;
@@ -22,6 +23,8 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	public User(ViewInterface view) throws RemoteException {
 		this.view = view;
 		cards = new EnumMap<>(ActionSpaceIds.class);
+		actionSpaces = new EnumMap<>(ActionSpaceIds.class);
+		ownedCards = new EnumMap<>(CardType.class);
 	}
 
 	@Override
@@ -58,7 +61,8 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void update() throws IOException {
-		// TODO think and impl
+		// a new round has started
+		roundReset();
 		view.update();
 	}
 
@@ -79,6 +83,12 @@ public class User extends UnicastRemoteObject implements UserInterface {
 			IOException {
 		// TODO think and impl
 		view.update(id, free);
+	}
+
+	@Override
+	public void update(ActionSpaceIds id, PlayerColor playerColor)
+			throws IOException {
+		view.update(id, playerColor);
 	}
 
 	@Override
@@ -255,5 +265,10 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		action.setPaymentList(paymentList);
 		*/
+	}
+
+	private void roundReset() {
+		cards.clear();
+		actionSpaces.clear();
 	}
 }

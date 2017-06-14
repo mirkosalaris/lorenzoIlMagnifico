@@ -43,8 +43,8 @@ public class FamilyMember {
 		return playerColor;
 	}
 
-	public DieColor getDieColor() {
-		return die.getDieColor();
+	public MemberColor getColor() {
+		return memberColor;
 	}
 }
 

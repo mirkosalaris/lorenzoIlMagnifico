@@ -86,13 +86,13 @@ public final class Commons {
 		return actionSpaceId.value() >= 1 && actionSpaceId.value() <= 16;
 	}
 
-	public static int getRequiredActionValue(ActionSpaceIds actionSpaceId) {
+	public static int getASRequiredActionValue(ActionSpaceIds actionSpaceId) {
 		int value = (int) parser.get("actionSpace" + actionSpaceId.value(),
 				"requiredActionValue");
 		return value;
 	}
 
-	public static ResourcesList getResources(ActionSpaceIds actionSpaceId) {
+	public static ResourcesList getASresources(ActionSpaceIds actionSpaceId) {
 		return (ResourcesList) parser.get("actionSpace" + actionSpaceId
 				.value(), "resources");
 	}
@@ -107,5 +107,10 @@ public final class Commons {
 	}
 
 
+	public static boolean getASIsSingle(ActionSpaceIds actionSpaceIds) {
+		// TODO @antonino
+		return true;
+		//return parser.get("actionSpace" + actionSpaceId.value(), "isSingle");
+	}
 }
 

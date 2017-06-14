@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import java.io.Serializable;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ResourcesList implements Serializable {
@@ -47,6 +48,14 @@ public class ResourcesList implements Serializable {
 		for (ResourceType key : this.map.keySet()) {
 			this.get(key).subtract(resources.get(key).getValue());
 		}
+	}
+
+	public ResourcesList copy() {
+		// returns a copy of the current resourcesList
+
+		ResourcesList newResourcesList = new ResourcesList();
+		newResourcesList.map = new HashMap<>(this.map);
+		return newResourcesList;
 	}
 
 	@Override

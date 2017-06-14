@@ -259,8 +259,13 @@ public class ViewCLI implements ViewInterface {
 		} else {
 			System.out.print("is not free\n");
 		}
+	}
 
-		System.out.flush();
+	@Override
+	public void update(ActionSpaceIds id, PlayerColor playerColor)
+			throws IOException {
+		System.out.println(
+				"Player " + playerColor + " has entered " + id.name());
 	}
 
 	@Override

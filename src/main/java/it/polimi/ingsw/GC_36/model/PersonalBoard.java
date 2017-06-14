@@ -27,7 +27,8 @@ public class PersonalBoard {
 	}
 
 	public ResourcesList getResourcesList() {
-		return resourcesList;
+		// return a copy
+		return resourcesList.copy();
 	}
 
 	public void addResources(ResourcesList resources) throws IOException {
@@ -42,7 +43,7 @@ public class PersonalBoard {
 
 	public void payResources(ResourcesList resources)
 			throws InsufficientResourcesException, IOException {
-		// TODO: change it to actually check
+
 		if (resourcesList.checkEnoughResources(resources)) {
 			resourcesList.subtractResources(resources);
 		} else {
@@ -72,7 +73,7 @@ public class PersonalBoard {
 
 	private void resourcesNotify() throws IOException {
 		for (PersonalBoardObserver o : observers) {
-			o.update(resourcesList);
+			o.update(resourcesList.copy());
 		}
 	}
 

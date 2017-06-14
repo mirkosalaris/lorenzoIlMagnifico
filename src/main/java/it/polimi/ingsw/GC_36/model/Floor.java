@@ -32,9 +32,10 @@ public class Floor {
 		changeNotify();
 	}
 
-	public DevelopmentCard getCard() {
+	public DevelopmentCard takeCard() throws IOException {
 		DevelopmentCard card = developmentCard;
 		developmentCard = null;
+		changeNotify(); // it will notify <floorNumber - null>
 		return card;
 	}
 
