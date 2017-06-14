@@ -5,6 +5,8 @@ import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.rmi.RemoteException;
+
 public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 	private ResourcesList resourcesList;
 	private CardType cardType;
@@ -25,8 +27,8 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 
 	@Override
 	public void applyEffect(Action action) {
-		//prende una scelta nulla da productionChoise
-		action.getProductionChoise();
+		//prende una scelta nulla da productionChoice
+		action.getProductionChoice();
 		if (isDoable(requiredActionValue, action)) {
 			//TODO:check
 			//conta le carte di quel tipo possedute
@@ -44,10 +46,12 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 	}
 
 	@Override
-	public void chooseOption(ViewInterface view, Action action, User user) {
+	public void chooseOption(ViewInterface view,
+	                         ActionInterface actionInterface, User user)
+			throws RemoteException {
 		//non fa niente
-		// deve aggiungere un elemento nullo in action.productionChoise
-		action.addProductionChoise(null);
+		// deve aggiungere un elemento nullo in action.productionChoice
+		actionInterface.addProductionChoice(null);
 
 	}
 

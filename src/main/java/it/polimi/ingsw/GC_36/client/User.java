@@ -29,7 +29,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void play(Action action)
+	public void play(ActionInterface action)
 			throws IOException, ClassNotFoundException {
 		// this change action through setter. It's to be this way for safety:
 		// there can't be a way to construct a new Action. The user has to use
@@ -122,12 +122,14 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		view.show(message);
 	}
 
-	private void chooseMemberColor(Action action) {
+	private void chooseMemberColor(ActionInterface actionInterface)
+			throws RemoteException {
 		MemberColor memberColor = view.chooseMemberColor();
-		action.setMemberColor(memberColor);
+		actionInterface.setMemberColor(memberColor);
 	}
 
-	private void chooseActionSpace(Action action) {
+	private void chooseActionSpace(ActionInterface action)
+			throws RemoteException {
 		int id;
 		boolean wrong = true;
 		ActionSpaceIds actionSpaceId;
@@ -144,7 +146,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		} while (wrong);
 	}
 
-	private void actionSpaceHandler(Action action)
+	private void actionSpaceHandler(ActionInterface action)
 			throws IOException, ClassNotFoundException {
 		if (Commons.isFloor(action.getActionSpaceId())) {
 			compilePaymentResourcesList(action);
@@ -184,7 +186,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	}
 
-	private void compilePaymentResourcesList(Action action) {
+	private void compilePaymentResourcesList(ActionInterface actionInterface) {
 		// TODO auto-compilation for simple cases?
 
 		// TODO do we really need to check here for resources of player?

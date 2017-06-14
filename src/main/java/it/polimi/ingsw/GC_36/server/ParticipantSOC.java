@@ -31,12 +31,12 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void play(Action action)
+	public void play(ActionInterface action)
 			throws IOException, ClassNotFoundException {
 
 		sendMessage("play", action, "Error in making user play");
 
-		Action retrievedAction = (Action) objIn.readObject();
+		ActionInterface retrievedAction = (ActionInterface) objIn.readObject();
 		action.copyFrom(retrievedAction);
 	}
 

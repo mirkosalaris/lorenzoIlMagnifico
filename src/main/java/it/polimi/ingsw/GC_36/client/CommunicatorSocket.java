@@ -81,7 +81,7 @@ public class CommunicatorSocket implements Communicator {
 				break;
 
 			case "play":
-				Action action = (Action) entry.getValue();
+				ActionInterface action = (ActionInterface) entry.getValue();
 				user.play(action);
 
 				sendBack(action);
@@ -147,8 +147,8 @@ public class CommunicatorSocket implements Communicator {
 		}
 	}
 
-	private void sendBack(Action action) throws IOException {
-		objOut.writeObject(action);
+	private void sendBack(ActionInterface actionInterface) throws IOException {
+		objOut.writeObject(actionInterface);
 		objOut.flush();
 	}
 }

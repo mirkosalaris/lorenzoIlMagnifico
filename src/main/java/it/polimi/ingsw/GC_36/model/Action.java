@@ -1,11 +1,11 @@
 package it.polimi.ingsw.GC_36.model;
 
-import java.io.Serializable;
-import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Action implements Serializable, Remote {
+public class Action extends UnicastRemoteObject implements ActionInterface {
 	private MemberColor memberColor;
 	private ActionSpaceIds actionSpaceIds;
 	private ResourcesList paymentList;
@@ -13,23 +13,27 @@ public class Action implements Serializable, Remote {
 	private ArrayList<ExtraAction> extraActions;
 	private ArrayList<Integer> productionChoice;
 
-	public Action() {
+	public Action() throws RemoteException {
 		extraActions = new ArrayList<ExtraAction>();
 		productionChoice = new ArrayList<>();
 	}
 
+	@Override
 	public void setMemberColor(MemberColor MemberColor) {
 		this.memberColor = MemberColor;
 	}
 
+	@Override
 	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds) {
 		this.actionSpaceIds = actionSpaceIds;
 	}
 
+	@Override
 	public void setPaymentList(ResourcesList resourcesList) {
 		this.paymentList = resourcesList;
 	}
 
+	@Override
 	public void setCouncilPrivilegeList(List<Integer> privilegeList) {
 		this.councilPrivilegeList = privilegeList;
 	}
@@ -39,6 +43,7 @@ public class Action implements Serializable, Remote {
 		//TODO:associated test replacing getFamilyMemberTest
 	}
 
+	@Override
 	public ActionSpaceIds getActionSpaceId() {
 		return actionSpaceIds;
 	}
@@ -47,31 +52,37 @@ public class Action implements Serializable, Remote {
 		return paymentList;
 	}
 
+	@Override
 	public void putPrivilegeChoice(int choice) {
 		councilPrivilegeList.add(choice);
 	}
 
+	@Override
 	public List<Integer> getCouncilPrivilegeList() {
 		return councilPrivilegeList;
 	}
 
-	public void copyFrom(Action action) {
+	@Override
+	public void copyFrom(ActionInterface action) {
 		// TODO test if constraints are the same between this and action
-
-		this.memberColor = action.memberColor;
-		this.actionSpaceIds = action.actionSpaceIds;
-		this.councilPrivilegeList = action.councilPrivilegeList;
+		Action original = (Action) action;
+		this.memberColor = original.memberColor;
+		this.actionSpaceIds = original.actionSpaceIds;
+		this.councilPrivilegeList = original.councilPrivilegeList;
 	}
 
+	@Override
 	public void addExtraAction(ExtraAction extraAction) {
 		extraActions.add(extraAction);
 	}
 
+	@Override
 	public boolean isAvailable(ActionSpaceIds actionSpaceIds) {
 		return true;
 	}
 
-	public void addProductionChoise(Integer choice) {
+	@Override
+	public void addProductionChoice(Integer choice) {
 		productionChoice.add(choice);
 	}
 
@@ -81,9 +92,9 @@ public class Action implements Serializable, Remote {
 		return memberValue + numOfServants;
 	}
 
-	public int getProductionChoise() {
-		int choise = productionChoice.get(0);
+	public int getProductionChoice() {
+		int choice = productionChoice.get(0);
 		productionChoice.remove(0);
-		return choise;
+		return choice;
 	}
 }

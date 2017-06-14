@@ -18,7 +18,7 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void play(Action action) throws IOException,
+	public void play(ActionInterface action) throws IOException,
 			ClassNotFoundException {
 		user.play(action);
 		// TODO impl

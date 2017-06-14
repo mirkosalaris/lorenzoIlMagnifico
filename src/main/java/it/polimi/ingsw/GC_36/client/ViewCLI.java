@@ -222,7 +222,7 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void play(Action action) {
+	public void play(ActionInterface action) {
 		System.out.println("\n\nNow it's your turn");
 	}
 

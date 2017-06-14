@@ -1,6 +1,6 @@
 package it.polimi.ingsw.GC_36.server;
 
-import it.polimi.ingsw.GC_36.model.Action;
+import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.PlayerIdentifier;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
@@ -12,7 +12,7 @@ public interface Participant extends ModelObserver, Remote {
 
 	void fatalError(String s) throws IOException;
 
-	void play(Action action)
+	void play(ActionInterface action)
 			throws RemoteException, IOException, ClassNotFoundException;
 
 	void exit(String message) throws IOException;

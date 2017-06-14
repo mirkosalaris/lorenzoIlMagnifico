@@ -5,6 +5,8 @@ import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.rmi.RemoteException;
+
 public class ImmediateResourcesList extends PermanentEffect {
 	//effetto delle territory/building cards che da al player una resourcesList
 	//l'effetto viene attivato se il valore dell'azione e' sufficiente
@@ -22,24 +24,26 @@ public class ImmediateResourcesList extends PermanentEffect {
 	@Override
 	public void applyEffect(Action action) {
 		//TODO:implements
-		//se building prende la scelta (nulla) da productionChoise
+		//se building prende la scelta (nulla) da productionChoice
 		if (associatedCardType == CardType.BUILDING)
-			action.getProductionChoise();
+			action.getProductionChoice();
 
 		Player player = Game.getInstance().getCurrentPeriod().getCurrentRound()
 				.getCurrentPlayer();
 		if (isDoable(requiredActionValue, action)) {
-			//aggiungi le risorse al player
+			// add resources to player
 			player.getPersonalBoard().addResources(resourcesList);
 		}
 
 	}
 
 	@Override
-	public void chooseOption(ViewInterface view, Action action, User user) {
-		//se di tipo building aggiunge una scelta nulla a productionChoise
+	public void chooseOption(ViewInterface view,
+	                         ActionInterface actionInterface, User user)
+			throws RemoteException {
+		//se di tipo building aggiunge una scelta nulla a productionChoice
 		if (associatedCardType.equals(CardType.BUILDING))
-			action.addProductionChoise(null);
+			actionInterface.addProductionChoice(null);
 
 	}
 

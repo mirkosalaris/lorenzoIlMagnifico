@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model;
 
+import java.rmi.RemoteException;
 import java.util.Set;
 
 public class ExtraAction extends Action {
@@ -12,7 +13,8 @@ public class ExtraAction extends Action {
 
 	private Set<ActionSpaceIds> actionSpacesIds;
 
-	public ExtraAction(Set<ActionSpaceIds> actionSpaceIds) {
+	public ExtraAction(Set<ActionSpaceIds> actionSpaceIds)
+			throws RemoteException {
 		this.actionSpacesIds = actionSpaceIds;
 	}
 

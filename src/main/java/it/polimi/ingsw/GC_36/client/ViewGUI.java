@@ -82,7 +82,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void play(Action action) {
+	public void play(ActionInterface action) {
 
 	}
 

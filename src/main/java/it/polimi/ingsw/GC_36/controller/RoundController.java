@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.controller;
 
 import it.polimi.ingsw.GC_36.model.Action;
+import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.Player;
 
 import java.io.IOException;
@@ -11,9 +12,10 @@ public class RoundController {
 
 	public void execute(Player player) throws PlayingException {
 		this.player = player;
-		Action action = new Action();
 
+		ActionInterface action = null;
 		try {
+			action = new Action();
 			player.getParticipant().play(action);
 		} catch (IOException | ClassNotFoundException e) {
 			throw new PlayingException(

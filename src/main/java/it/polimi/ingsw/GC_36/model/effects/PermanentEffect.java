@@ -3,17 +3,20 @@ package it.polimi.ingsw.GC_36.model.effects;
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
+import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.Game;
 import it.polimi.ingsw.GC_36.model.Player;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 
 public abstract class PermanentEffect implements Serializable {
 
 	public abstract void applyEffect(Action action);
 
-	public abstract void chooseOption(ViewInterface view, Action action,
-	                                  User user);
+	public abstract void chooseOption(ViewInterface view, ActionInterface
+			actionInterface,
+	                                  User user) throws RemoteException;
 
 	public boolean isDoable(int requiredActionValue, Action action) {
 		int ActionValue;
