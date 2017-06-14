@@ -2,12 +2,12 @@ package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
-import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.ActionInterface;
-import it.polimi.ingsw.GC_36.model.Game;
-import it.polimi.ingsw.GC_36.model.ResourcesList;
+import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
+import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
+import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 
@@ -34,20 +34,23 @@ public class ResourcesConverting extends PermanentEffect {
 	}
 
 	@Override
-	public void applyEffect(Action action) {
-		//TODO:deve andare a controllare quale sia la scelta del client
+	public void applyEffect(Action action)
+			throws EffectApplyingException {
 		int choice = action.getProductionChoice();
 		fromResourcesList = fromResourcesListOptions.get(choice);
 		toResourcesList = toResourcesListOptions.get(choice);
-		//if isDoable
+
 		if (isDoable(requiredActionValue, action)) {
 			// toglie a player la prima lista e aggiunge la seconda
-			Game.getInstance().getCurrentPeriod().getCurrentRound()
-					.getCurrentPlayer().getPersonalBoard().payResources(
-					this.fromResourcesList);
-			Game.getInstance().getCurrentPeriod().getCurrentRound()
-					.getCurrentPlayer().getPersonalBoard().addResources(
-					this.toResourcesList);
+			PersonalBoard personalBoard = Game.getInstance().getCurrentPeriod
+					().getCurrentRound().getCurrentPlayer().getPersonalBoard();
+			try {
+				personalBoard.payResources(this.fromResourcesList);
+				personalBoard.addResources(this.toResourcesList);
+			} catch (InsufficientResourcesException | IOException e) {
+				throw new EffectApplyingException(e);
+			}
+
 		}
 	}
 

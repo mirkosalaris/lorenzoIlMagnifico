@@ -2,9 +2,11 @@ package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
+import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 public class ResourceListBasedOnOwnedCards extends PermanentEffect {
@@ -26,21 +28,25 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 	}
 
 	@Override
-	public void applyEffect(Action action) {
+	public void applyEffect(Action action)
+			throws EffectApplyingException {
 		//prende una scelta nulla da productionChoice
 		action.getProductionChoice();
 		if (isDoable(requiredActionValue, action)) {
 			//TODO:check
 			//conta le carte di quel tipo possedute
 			//dai al player resourceList x numero di carte
+			PersonalBoard personalBoard = Game.getInstance().getCurrentPeriod()
+					.getCurrentRound().getCurrentPlayer().getPersonalBoard();
+
 			int numberOfCards;
-			Player player = Game.getInstance().getCurrentPeriod()
-					.getCurrentRound().getCurrentPlayer();
-			numberOfCards = player.getPersonalBoard().getMap().get(cardType)
-					.size();
-			for (int i = 0; i < numberOfCards; i++) {
-				player.getPersonalBoard().addResources(
-						resourcesList);
+			numberOfCards = personalBoard.getCards(cardType).size();
+			try {
+				for (int i = 0; i < numberOfCards; i++) {
+					personalBoard.addResources(resourcesList);
+				}
+			} catch (IOException e) {
+				throw new EffectApplyingException(e);
 			}
 		}
 	}

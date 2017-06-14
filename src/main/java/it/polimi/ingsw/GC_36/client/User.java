@@ -6,6 +6,7 @@ import it.polimi.ingsw.GC_36.model.*;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	private transient Map<CardType, List<DevelopmentCard>> ownedCards;
 
 	private PlayerIdentifier identifier;
+	private ResourcesList ownedResources;
 
 	public User(ViewInterface view) throws RemoteException {
 		this.view = view;
@@ -118,8 +120,26 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
+	public void update(DevelopmentCard card) throws IOException {
+		ownedCards.get(card.getType()).add(card);
+		view.update(card);
+	}
+
+	@Override
+	public void update(ResourcesList resourcesList) throws IOException {
+		ownedResources = resourcesList;
+		view.update(ownedResources);
+	}
+
+	@Override
 	public void show(String message) {
 		view.show(message);
+	}
+
+	@Override
+	public List<DevelopmentCard> getCards(CardType type) {
+		// return a COPY of the list
+		return new ArrayList<>(ownedCards.get(type));
 	}
 
 	private void chooseMemberColor(ActionInterface actionInterface)

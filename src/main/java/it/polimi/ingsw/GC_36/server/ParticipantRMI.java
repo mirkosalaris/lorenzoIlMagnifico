@@ -80,4 +80,14 @@ public class ParticipantRMI implements Participant {
 			IOException {
 		user.update(floorNumber, developmentCard);
 	}
+
+	@Override
+	public void update(DevelopmentCard card) throws IOException {
+		user.update(card);
+	}
+
+	@Override
+	public void update(ResourcesList resourcesList) throws IOException {
+		user.update(resourcesList);
+	}
 }

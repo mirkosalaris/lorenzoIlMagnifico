@@ -3,9 +3,11 @@ package it.polimi.ingsw.GC_36.model.effects.immediateEffects;
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
+import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.List;
@@ -26,7 +28,8 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	//check sulle scelte
 	//le aggiunge alla personal board altrimenti throw exception
 	@Override
-	public void applyEffect(Action action) throws IllegalStateException {
+	public void applyEffect(Action action)
+			throws IllegalStateException, EffectApplyingException {
 		if (!numberOfPrivileges.equals(
 				action.getCouncilPrivilegeList().size()))
 			//TODO:eccezione
@@ -41,9 +44,13 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 					ResourcesList favor = councilPrivilege.getResourcesList(
 							action.getCouncilPrivilegeList().get(key));
 
-					Game.getInstance().getCurrentPeriod().getCurrentRound()
-							.getCurrentPlayer().getPersonalBoard()
-							.addResources(favor);
+					try {
+						Game.getInstance().getCurrentPeriod().getCurrentRound()
+								.getCurrentPlayer().getPersonalBoard()
+								.addResources(favor);
+					} catch (IOException e) {
+						throw new EffectApplyingException(e);
+					}
 				}
 			}
 

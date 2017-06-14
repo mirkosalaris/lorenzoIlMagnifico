@@ -5,6 +5,7 @@ public interface ModelObserver
 		BoardObserver,
 		FloorObserver,
 		PlayerObserver,
+		PersonalBoardObserver,
 		GameObserver,
 		PeriodObserver,
 		RoundObserver {

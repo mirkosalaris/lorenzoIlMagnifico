@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import it.polimi.ingsw.GC_36.data.Decoder;
 import it.polimi.ingsw.GC_36.data.Encoder;
+import it.polimi.ingsw.GC_36.exception.ParsingException;
 import it.polimi.ingsw.GC_36.model.BonusTile;
 import it.polimi.ingsw.GC_36.model.CardType;
 import it.polimi.ingsw.GC_36.model.Deck;
@@ -32,7 +33,7 @@ public class Parser {
 					Files.readAllBytes(Paths.get
 							(file.getPath())), Charset.defaultCharset());
 		} catch (IOException e) {
-			throw new Error(e);
+			throw new ParsingException(e);
 		}
 	}
 

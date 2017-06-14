@@ -138,6 +138,14 @@ public class CommunicatorSocket implements Communicator {
 				user.update((PlayerIdentifier) entry.getValue());
 				break;
 
+			case "updateOwnedCards":
+				user.update((DevelopmentCard) entry.getValue());
+				break;
+
+			case "updateOwnedResources":
+				user.update((ResourcesList) entry.getValue());
+				break;
+
 			// TODO etc.
 			default:
 				System.out.println(

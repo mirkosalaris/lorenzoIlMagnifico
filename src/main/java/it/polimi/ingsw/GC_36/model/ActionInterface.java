@@ -1,10 +1,11 @@
 package it.polimi.ingsw.GC_36.model;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
-public interface ActionInterface extends Remote {
+public interface ActionInterface extends Serializable, Remote {
 	void setMemberColor(MemberColor MemberColor) throws RemoteException;
 
 	void setActionSpaceIds(ActionSpaceIds actionSpaceIds)

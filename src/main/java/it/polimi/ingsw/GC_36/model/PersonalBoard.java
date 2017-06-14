@@ -1,19 +1,19 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
+import it.polimi.ingsw.GC_36.observers.PersonalBoardObserver;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 public class PersonalBoard {
 
 	private ResourcesList resourcesList;
 	private BonusTile bonusTile; // TODO use it
-	Map<CardType, List<DevelopmentCard>> map =
+	private Map<CardType, List<DevelopmentCard>> map =
 			new EnumMap<>(CardType.class);
-
+	private Set<PersonalBoardObserver> observers = new HashSet<>();
 
 	public PersonalBoard(int ordinal) {
 		this.resourcesList =
@@ -30,21 +30,50 @@ public class PersonalBoard {
 		return resourcesList;
 	}
 
-	public void addResources(ResourcesList resources) {
+	public void addResources(ResourcesList resources) throws IOException {
 		resourcesList.addResources(resources);
+		resourcesNotify();
 	}
 
-	public void payResources(ResourcesList resources) {
+	public void addCard(DevelopmentCard card) throws IOException {
+		map.get(card.getType()).add(card);
+		newCardNotify(card);
+	}
+
+	public void payResources(ResourcesList resources)
+			throws InsufficientResourcesException, IOException {
 		// TODO: change it to actually check
-		resourcesList.checkEnoughResources(resources);
-		resourcesList.subtractResources(resources);
+		if (resourcesList.checkEnoughResources(resources)) {
+			resourcesList.subtractResources(resources);
+		} else {
+			throw new InsufficientResourcesException();
+		}
+		resourcesNotify();
 	}
 
 	public BonusTile getBonusTile() {
 		return bonusTile;
 	}
 
-	public Map<CardType, List<DevelopmentCard>> getMap() {
-		return map;
+	public List<DevelopmentCard> getCards(CardType type) {
+		// return a COPY of the list
+		return new ArrayList<>(map.get(type));
 	}
+
+	public void subscribe(PersonalBoardObserver o) {
+		observers.add(o);
+	}
+
+	private void newCardNotify(DevelopmentCard card) throws IOException {
+		for (PersonalBoardObserver o : observers) {
+			o.update(card);
+		}
+	}
+
+	private void resourcesNotify() throws IOException {
+		for (PersonalBoardObserver o : observers) {
+			o.update(resourcesList);
+		}
+	}
+
 }

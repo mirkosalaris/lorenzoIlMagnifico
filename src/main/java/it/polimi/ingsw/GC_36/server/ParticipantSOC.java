@@ -107,9 +107,21 @@ public class ParticipantSOC implements Participant {
 				"cannot update new Player");
 	}
 
+	@Override
+	public void update(DevelopmentCard card) throws IOException {
+		sendMessage("updateOwnedCards", card, "cannot update new Card");
+	}
+
+	@Override
+	public void update(ResourcesList resourcesList) throws IOException {
+		sendMessage("updateOwnedResources", resourcesList,
+				"cannot update owned resources");
+	}
+
 	private void sendMessage(String type, String error) throws IOException {
 		sendMessage(type, null, error);
 	}
+
 
 	private void sendMessage(String type, Object obj, String error)
 			throws IOException {

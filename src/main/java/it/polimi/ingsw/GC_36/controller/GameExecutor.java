@@ -1,6 +1,6 @@
 package it.polimi.ingsw.GC_36.controller;
 
-import it.polimi.ingsw.GC_36.controller.RoundController.PlayingException;
+import it.polimi.ingsw.GC_36.exception.PlayingException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
 import it.polimi.ingsw.GC_36.observers.NewRoundObserver;

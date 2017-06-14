@@ -2,9 +2,11 @@ package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
+import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 public class ImmediateResourcesList extends PermanentEffect {
@@ -22,7 +24,7 @@ public class ImmediateResourcesList extends PermanentEffect {
 	}
 
 	@Override
-	public void applyEffect(Action action) {
+	public void applyEffect(Action action) throws EffectApplyingException {
 		//TODO:implements
 		//se building prende la scelta (nulla) da productionChoice
 		if (associatedCardType == CardType.BUILDING)
@@ -32,7 +34,11 @@ public class ImmediateResourcesList extends PermanentEffect {
 				.getCurrentPlayer();
 		if (isDoable(requiredActionValue, action)) {
 			// add resources to player
-			player.getPersonalBoard().addResources(resourcesList);
+			try {
+				player.getPersonalBoard().addResources(resourcesList);
+			} catch (IOException e) {
+				throw new EffectApplyingException(e);
+			}
 		}
 
 	}

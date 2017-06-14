@@ -6,8 +6,8 @@ public class CouncilPrivilege {
 
 	Map<Integer, ResourcesList> map;
 
-	public CouncilPrivilege(Map<Integer, ResourcesList> councilPrivelemap) {
-		map = councilPrivelemap;
+	public CouncilPrivilege(Map<Integer, ResourcesList> councilPrivilegeMap) {
+		map = councilPrivilegeMap;
 	}
 
 	public ResourcesList getResourcesList(Integer integer) {

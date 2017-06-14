@@ -140,4 +140,14 @@ public class ViewGUI implements ViewInterface {
 	public void update(int floorNumber, DevelopmentCard developmentCard) {
 
 	}
+
+	@Override
+	public void update(DevelopmentCard card) throws IOException {
+
+	}
+
+	@Override
+	public void update(ResourcesList resourcesList) {
+
+	}
 }

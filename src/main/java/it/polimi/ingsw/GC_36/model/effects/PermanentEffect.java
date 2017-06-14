@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model.effects;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
+import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.Game;
@@ -12,7 +13,8 @@ import java.rmi.RemoteException;
 
 public abstract class PermanentEffect implements Serializable {
 
-	public abstract void applyEffect(Action action);
+	public abstract void applyEffect(Action action)
+			throws EffectApplyingException;
 
 	public abstract void chooseOption(ViewInterface view, ActionInterface
 			actionInterface,

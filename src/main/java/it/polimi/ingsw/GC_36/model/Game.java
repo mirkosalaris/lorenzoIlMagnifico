@@ -1,8 +1,8 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
-import it.polimi.ingsw.GC_36.controller.RoundController.PlayingException;
 import it.polimi.ingsw.GC_36.controller.Scorer;
+import it.polimi.ingsw.GC_36.exception.PlayingException;
 import it.polimi.ingsw.GC_36.model.Period.PeriodTerminatedException;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;

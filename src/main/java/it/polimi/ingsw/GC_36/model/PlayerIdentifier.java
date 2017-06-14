@@ -24,4 +24,9 @@ public class PlayerIdentifier implements Serializable {
 				? this.identifier.equals(that.identifier)
 				: that.identifier == null;
 	}
+
+	@Override
+	public int hashCode() {
+		return this.identifier != null ? this.identifier.hashCode() : 0;
+	}
 }

@@ -294,4 +294,14 @@ public class ViewCLI implements ViewInterface {
 						+ "\n Development Card: " + developmentCard);
 
 	}
+
+	@Override
+	public void update(DevelopmentCard card) throws IOException {
+		System.out.println("You have a new card:\n" + card);
+	}
+
+	@Override
+	public void update(ResourcesList resourcesList) throws IOException {
+		System.out.println("Your current resources are: " + resourcesList);
+	}
 }

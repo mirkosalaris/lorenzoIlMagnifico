@@ -2,11 +2,14 @@ package it.polimi.ingsw.GC_36.model.effects.immediateEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
+import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.Game;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
+
+import java.io.IOException;
 
 public class ImmediateResourceList implements ImmediateEffect {
 	ResourcesList resourcesList;
@@ -16,10 +19,15 @@ public class ImmediateResourceList implements ImmediateEffect {
 	}
 
 	@Override
-	public void applyEffect(Action action) throws IllegalStateException {
-		Game.getInstance().getCurrentPeriod().getCurrentRound()
-				.getCurrentPlayer().getPersonalBoard().addResources(
-				this.resourcesList);
+	public void applyEffect(Action action)
+			throws IllegalStateException, EffectApplyingException {
+		try {
+			Game.getInstance().getCurrentPeriod().getCurrentRound()
+					.getCurrentPlayer().getPersonalBoard().addResources(
+					this.resourcesList);
+		} catch (IOException e) {
+			throw new EffectApplyingException(e);
+		}
 	}
 
 	@Override

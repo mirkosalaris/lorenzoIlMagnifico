@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.observers.ModelObserver;
 import it.polimi.ingsw.GC_36.observers.PlayerObserver;
 import it.polimi.ingsw.GC_36.server.Participant;
 
@@ -76,6 +77,11 @@ public class Player {
 
 	public void subscribe(PlayerObserver o) {
 		observers.add(o);
+	}
+
+	public void subscribe(ModelObserver o) {
+		observers.add(o);
+		personalBoard.subscribe(o);
 	}
 
 	private void newStateNotify() throws IOException {
