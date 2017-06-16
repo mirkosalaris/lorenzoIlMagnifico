@@ -11,7 +11,13 @@ public interface ActionInterface extends Serializable, Remote {
 	void setActionSpaceIds(ActionSpaceIds actionSpaceIds)
 			throws RemoteException;
 
-	void setPaymentList(ResourcesList resourcesList) throws RemoteException;
+	void setCardPaymentOptions(int choice);
+
+	int getCardPaymentOption();
+
+	ExtraAction getExtraAction();
+
+	void setActionValueIncrement(int increment);
 
 	void setCouncilPrivilegeList(List<Integer> privilegeList)
 			throws RemoteException;
@@ -24,7 +30,7 @@ public interface ActionInterface extends Serializable, Remote {
 
 	public void copyFrom(ActionInterface original) throws RemoteException;
 
-	void addExtraAction(ExtraAction extraAction) throws RemoteException;
+	void setExtraAction(ExtraAction extraAction) throws RemoteException;
 
 	boolean isAvailable(ActionSpaceIds actionSpaceIds) throws RemoteException;
 

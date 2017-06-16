@@ -61,9 +61,9 @@ public class Player {
 		return personalBoard;
 	}
 
-	public FamilyMember[] getAvailableFamilyMembers() {
-		//TODO
-		return null;
+	public Map<MemberColor, FamilyMember> getFamilyMembers() {
+
+		return familyMembers;
 	}
 
 	public Participant getParticipant() {
@@ -102,5 +102,20 @@ public class Player {
 	public int getFamilyMemberValue(MemberColor memberColor) {
 		int value = familyMembers.get(memberColor).getValue();
 		return value;
+	}
+
+	public boolean canEnter(Tower tower) {
+		for (FamilyMember member : familyMembers.values()) {
+			if (member.getColor() != MemberColor.UNCOLORED) {
+				ActionSpace as = Game.getInstance().getBoard().getActionSpace(
+						member.getLocation());
+				if (as.getAssociatedFloor().getAssociatedTower().equals(
+						tower)) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 }

@@ -31,7 +31,7 @@ public class ExtraTurnTower implements ImmediateEffect {
 			throws IOException, ClassNotFoundException {
 		ExtraAction extraAction = new ExtraAction(actionSpaces);
 		user.play(extraAction);
-		action.addExtraAction(extraAction);
+		action.setExtraAction(extraAction);
 	}
 
 

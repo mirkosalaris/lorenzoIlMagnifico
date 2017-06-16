@@ -79,6 +79,10 @@ public class Board {
 		return dice;
 	}
 
+	public ActionSpace getActionSpace(ActionSpaceIds id){
+		return actionSpaces.get(id);
+	}
+
 	// called at the end of every round
 	public void clean() throws IOException {
 		// reset deckSet

@@ -14,7 +14,7 @@ public class ActionSpace {
 	private ActionSpaceIds id;
 	private boolean free;
 	private int requiredActionValue;
-	private ResourcesList requiredResourcesList;
+	private ResourcesList bonus;
 	private Floor associatedFloor;
 	private List<FamilyMember> familyMembers = new ArrayList<>();
 	private Set<ActionSpaceObserver> observers = new HashSet<>();
@@ -22,8 +22,10 @@ public class ActionSpace {
 	public ActionSpace(ActionSpaceIds id, Board board) {
 		this.id = id;
 		this.requiredActionValue = Commons.getASRequiredActionValue(id);
-		this.requiredResourcesList = Commons.getASresources(id);
 		this.isSingle = Commons.getASIsSingle(id);
+		this.requiredActionValue = Commons.getASRequiredActionValue(id);
+		this.bonus = Commons.getASresources(id);
+
 		Tower tower = board.getTower(id.getCardType());
 		if (tower != null) {
 			this.associatedFloor = tower.getFloor(id.getFloorNumber());
@@ -52,8 +54,8 @@ public class ActionSpace {
 		return requiredActionValue;
 	}
 
-	public ResourcesList getRequiredResourcesList() {
-		return requiredResourcesList;
+	public ResourcesList getBonus() {
+		return bonus;
 	}
 
 	public boolean isInTower() {

@@ -47,9 +47,13 @@ public class Floor {
 		observers.add(o);
 	}
 
+	public DevelopmentCard readAssociatedCard(){
+		return developmentCard;
+	}
 	private void changeNotify() throws IOException {
 		for (FloorObserver o : observers) {
 			o.update(floorNumber, developmentCard);
 		}
 	}
+
 }

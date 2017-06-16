@@ -21,6 +21,8 @@ public class RoundController {
 		}
 
 		// TODO check action
+		System.out.println("finito");
+		System.out.println(action);
 	}
 
 }

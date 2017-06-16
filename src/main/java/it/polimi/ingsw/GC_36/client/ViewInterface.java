@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.ActionSpaceIds;
+import it.polimi.ingsw.GC_36.model.DevelopmentCard;
 import it.polimi.ingsw.GC_36.model.MemberColor;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.server.Participant;
@@ -12,6 +13,8 @@ public interface ViewInterface extends Participant {
 
 	MemberColor chooseMemberColor();
 
+	int setActionValueIncrement();
+
 	int chooseActionSpaceId();
 
 	int choosePrivilege(int n);
@@ -22,6 +25,7 @@ public interface ViewInterface extends Participant {
 	int chooseConvertingMethod(
 			HashMap<Integer, ResourcesList> fromResourcesListOptions,
 			HashMap<Integer, ResourcesList> toResorcesListOptions);
+	int chooseCardPaymentOptions(DevelopmentCard card);
 
 	int selectNumberOfWoods();
 

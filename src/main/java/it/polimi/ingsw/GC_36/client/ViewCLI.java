@@ -38,6 +38,30 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
+	public int setActionValueIncrement() {
+		Scanner in = new Scanner(System.in);
+		String answer;
+		boolean wrong = true;
+		int servants = 0;
+		do {
+			System.out.println(
+					"Do you want to use servants to increment your " +
+							"actionValue? yes or no");
+			answer = new String(in.nextLine());
+			if (answer.equals("no"))
+				wrong=false;
+			if (answer.equals("yes")) {
+				System.out.println("How much servants do you want to use?");
+				servants = in.nextInt();
+				if (servants >= 0)
+					wrong = false;
+
+			}
+		} while (wrong);
+		return servants;
+	}
+
+	@Override
 	public int chooseActionSpaceId() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Please select the ActionSpace specifying the ID");
@@ -91,6 +115,20 @@ public class ViewCLI implements ViewInterface {
 		System.out.println("Please specify the options");
 		choice = in.nextInt();
 		return choice;
+	}
+
+	@Override
+	public int chooseCardPaymentOptions(DevelopmentCard card) {
+		Scanner in=new Scanner(System.in);
+		ResourcesList resourcesList;
+		System.out.println("Please select the payment option of the card");
+		for(int i=1; i<=card.getRequirements().size(); i++) {
+			System.out.println("option " + i+ ": ");
+			resourcesList = card.getRequirements().get(i - 1);
+			System.out.println(resourcesList.toString());
+		}
+		int choice=in.nextInt()-1;
+		 return choice;
 	}
 
 	@Override

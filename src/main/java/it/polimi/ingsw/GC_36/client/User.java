@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.IOException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		chooseMemberColor(action);
 		chooseActionSpace(action);
-		compilePaymentResourcesList(action);
+		chooseCardPaymentOptions(action);
 		actionSpaceHandler(action);
 	}
 
@@ -179,7 +180,6 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	private void actionSpaceHandler(ActionInterface action)
 			throws IOException, ClassNotFoundException {
 		if (Commons.isFloor(action.getActionSpaceId())) {
-			compilePaymentResourcesList(action);
 			DevelopmentCard card = cards.get(action.getActionSpaceId());
 			card.getImmediateEffect().chooseOptions(view, action, this);
 		}
@@ -216,59 +216,25 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	}
 
-	private void compilePaymentResourcesList(ActionInterface actionInterface) {
-		// TODO auto-compilation for simple cases?
-
-		// TODO do we really need to check here for resources of player?
-		// we don't have a reference to player!!!
-
-		/*ResourcesList paymentList = new ResourcesList();
-		ResourcesList actualResources = player.getPersonalBoard()
-				.getResourcesList();
-
-		int woods, stones, coins, servants, victoryPoints, militaryPoints,
-				faithPoints;
-		do {
-			woods = view.selectNumberOfWoods();
-		} while (woods > actualResources.get(ResourceType.WOOD).getValue());
-
-		do {
-			stones = view.selectNumberOfStones();
-		} while (stones > actualResources.get(ResourceType.STONE).getValue());
-		do {
-			servants = view.selectNumberOfServants();
-		} while (servants >
-				actualResources.get(ResourceType.SERVANT).getValue());
-		do {
-			coins = view.selectNumberOfCoins();
-		} while (coins > actualResources.get(ResourceType.COINS).getValue());
-		do {
-			victoryPoints = view.selectNumberOfVictoryPoints();
-		} while (victoryPoints >
-				actualResources.get(ResourceType.VICTORY_POINTS).getValue());
-		do {
-			militaryPoints = view.selectNumberOfMilitaryPoints();
-		} while (militaryPoints >
-				actualResources.get(ResourceType.MILITARY_POINTS).getValue());
-		do {
-			faithPoints = view.selectNumberOfFaithPoints();
-		} while (faithPoints >
-				actualResources.get(ResourceType.FAITH_POINTS).getValue());
-
-		paymentList.set(ResourceType.WOOD, woods);
-		paymentList.set(ResourceType.STONE, stones);
-		paymentList.set(ResourceType.SERVANT, servants);
-		paymentList.set(ResourceType.COINS, coins);
-		paymentList.set(ResourceType.VICTORY_POINTS, victoryPoints);
-		paymentList.set(ResourceType.MILITARY_POINTS, militaryPoints);
-		paymentList.set(ResourceType.FAITH_POINTS, faithPoints);
-
-		action.setPaymentList(paymentList);
-		*/
-	}
-
 	private void roundReset() {
 		cards.clear();
 		actionSpaces.clear();
 	}
+
+	private void setActionValueIncrement(ActionInterface action) {
+		int increment;
+		increment = view.setActionValueIncrement();
+		action.setActionValueIncrement(increment);
+	}
+
+	private void chooseCardPaymentOptions(ActionInterface action) throws RemoteException {
+		//accede alla carta, elenca le opzioni dipagamento al user e salva la
+		// scelta
+		DevelopmentCard card=cards.get(action.getActionSpaceId());
+		int choice=view.chooseCardPaymentOptions(card);
+		//setta in action la scelta
+		action.setCardPaymentOptions(choice);
+
+	}
+
 }

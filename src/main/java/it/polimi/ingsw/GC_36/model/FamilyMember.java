@@ -3,10 +3,10 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Commons;
 
 public class FamilyMember {
-	private boolean Available;
 	private PlayerColor playerColor;
 	private MemberColor memberColor;
 	private Die die;
+	private ActionSpaceIds location;
 
 	public FamilyMember(PlayerColor playerColor, MemberColor memberColor)
 			throws IllegalStateException {
@@ -28,15 +28,15 @@ public class FamilyMember {
 	}
 
 	public boolean isAvailable() {
-		return Available;
+		return location == null;
 	}
 
 	public void setAvailable() {
-		this.Available = true;
+		location = null;
 	}
 
-	public void setUsed() {
-		this.Available = false;
+	public void setLocation(ActionSpaceIds location) {
+		this.location = location;
 	}
 
 	public PlayerColor getPlayerColor() {
@@ -45,6 +45,10 @@ public class FamilyMember {
 
 	public MemberColor getColor() {
 		return memberColor;
+	}
+
+	public ActionSpaceIds getLocation() {
+		return location;
 	}
 }
 

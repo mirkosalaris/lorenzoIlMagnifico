@@ -14,6 +14,11 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
+	public int setActionValueIncrement() {
+		return 0;
+	}
+
+	@Override
 	public int chooseActionSpaceId() {
 		return 0;
 	}
@@ -33,6 +38,11 @@ public class ViewGUI implements ViewInterface {
 	public int chooseConvertingMethod(
 			HashMap<Integer, ResourcesList> fromResourcesListOptions,
 			HashMap<Integer, ResourcesList> toResorcesListOptions) {
+		return 0;
+	}
+
+	@Override
+	public int chooseCardPaymentOptions(DevelopmentCard card) {
 		return 0;
 	}
 

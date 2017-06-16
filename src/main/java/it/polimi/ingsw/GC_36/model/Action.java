@@ -8,13 +8,14 @@ import java.util.List;
 public class Action extends UnicastRemoteObject implements ActionInterface {
 	private MemberColor memberColor;
 	private ActionSpaceIds actionSpaceIds;
-	private ResourcesList paymentList;
+	private int actionValueIncrement;
+	private int cardPaymentOptions; //parte da zero
 	private List<Integer> councilPrivilegeList;
-	private ArrayList<ExtraAction> extraActions;
+	private ExtraAction extraAction;
 	private ArrayList<Integer> productionChoice;
 
 	public Action() throws RemoteException {
-		extraActions = new ArrayList<ExtraAction>();
+
 		productionChoice = new ArrayList<>();
 	}
 
@@ -29,8 +30,18 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
-	public void setPaymentList(ResourcesList resourcesList) {
-		this.paymentList = resourcesList;
+	public void setCardPaymentOptions(int choice){
+		cardPaymentOptions=choice;
+	}
+
+	@Override
+	public int getCardPaymentOption() {
+		return cardPaymentOptions;
+	}
+
+	public void setActionValueIncrement(int increment){
+		this.actionValueIncrement=increment;
+
 	}
 
 	@Override
@@ -46,10 +57,6 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	@Override
 	public ActionSpaceIds getActionSpaceId() {
 		return actionSpaceIds;
-	}
-
-	public ResourcesList getPaymentList() {
-		return paymentList;
 	}
 
 	@Override
@@ -72,8 +79,8 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
-	public void addExtraAction(ExtraAction extraAction) {
-		extraActions.add(extraAction);
+	public void setExtraAction(ExtraAction extraAction) {
+		this.extraAction=extraAction;
 	}
 
 	@Override
@@ -87,14 +94,35 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	public int getActionValue(Player player) {
-		int memberValue = player.getFamilyMemberValue(memberColor);
-		int numOfServants = paymentList.get(ResourceType.SERVANT).getValue();
-		return memberValue + numOfServants;
+		int memberValue=getMemberValue(player);
+		return memberValue + actionValueIncrement;
 	}
 
 	public int getProductionChoice() {
 		int choice = productionChoice.get(0);
 		productionChoice.remove(0);
 		return choice;
+	}
+
+	public int getMemberValue(Player player){
+		int memberValue = player.getFamilyMemberValue(memberColor);
+		return memberValue;
+	}
+
+	public int getActionValueIncrement(){
+		return actionValueIncrement;
+	}
+	@Override
+	public String toString() {
+		return "Action{" +
+				"memberColor=" + memberColor +
+				", actionSpaceIds=" + actionSpaceIds +
+				", councilPrivilegeList=" + councilPrivilegeList +
+				", extraActions=" + extraAction +
+				", productionChoice=" + productionChoice +
+				'}';
+	}
+	public ExtraAction getExtraAction(){
+		return extraAction;
 	}
 }
