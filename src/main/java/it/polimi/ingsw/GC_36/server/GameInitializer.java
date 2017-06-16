@@ -32,9 +32,12 @@ public class GameInitializer implements Runnable {
 	public void run() {
 		Set<Participant> participants = new HashSet<>();
 		boolean full = false;
-		while (!full) {
-			// TODO: bug. If we enter this loop with sockets and users empty..?
 
+		if (sockets.size() + users.size() < Commons.MIN_PLAYERS) {
+			throw new IllegalStateException("too few users to start a game");
+		}
+
+		while (!full) {
 			if (!sockets.isEmpty()) {
 				try {
 					ObjectOutputStream objOut;
@@ -78,6 +81,10 @@ public class GameInitializer implements Runnable {
 							"Cannot take an element from users set");
 					Thread.currentThread().interrupt();
 				}
+			}
+
+			if (users.isEmpty() && sockets.isEmpty()) {
+				full = true;
 			}
 		}
 
