@@ -3,9 +3,9 @@ package it.polimi.ingsw.GC_36.model;
 import java.util.List;
 
 public class Deck {
-	CardType type;
-	int period;
-	List<DevelopmentCard> developmentCardList;
+	private CardType type;
+	private int period;
+	private List<DevelopmentCard> developmentCardList;
 
 	public Deck(CardType type, int period,
 	            List<DevelopmentCard> developmentCardList) {

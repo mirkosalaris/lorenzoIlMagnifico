@@ -1,17 +1,17 @@
 package it.polimi.ingsw.GC_36.model;
 
-import java.util.Map;
+import it.polimi.ingsw.GC_36.Commons;
 
-public class CouncilPrivilege {
+public enum CouncilPrivilege {
+	STONE_WOOD(0), SERVANTS(1), COINS(2), MILITARY(3), FAITH(4);
+	ResourcesList resources;
 
-	Map<Integer, ResourcesList> map;
-
-	public CouncilPrivilege(Map<Integer, ResourcesList> councilPrivilegeMap) {
-		map = councilPrivilegeMap;
+	CouncilPrivilege(int value) {
+		this.resources = Commons.getPrivilege(value);
 	}
 
-	public ResourcesList getResourcesList(Integer integer) {
-		return map.get(integer);
+	public ResourcesList getResources() {
+		return new ResourcesList(resources);
 	}
 
 }

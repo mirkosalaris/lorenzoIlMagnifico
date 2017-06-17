@@ -19,6 +19,14 @@ public class ResourcesList implements Serializable {
 		map.put(ResourceType.MILITARY_POINTS, new ResourceCounter(0));
 	}
 
+	public ResourcesList(ResourcesList resources) {
+		this();
+		for (ResourceType type : ResourceType.values()) {
+			this.set(type, resources.get(type).getValue());
+
+		}
+	}
+
 	public ResourceCounter get(ResourceType r) {
 		return map.get(r);
 	}

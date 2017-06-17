@@ -8,7 +8,7 @@
           {
             "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -35,12 +35,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -67,12 +99,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -99,12 +163,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -131,135 +227,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -268,9 +268,9 @@
         "period": 1,
         "developmentCardList": [
           {
-            "type": "BUILDING",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -297,12 +297,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -329,12 +361,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -361,12 +425,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -393,135 +489,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -530,9 +530,9 @@
         "period": 1,
         "developmentCardList": [
           {
-            "type": "CHARACTER",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -559,12 +559,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -591,12 +623,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -623,12 +687,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -655,135 +751,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -792,9 +792,9 @@
         "period": 1,
         "developmentCardList": [
           {
-            "type": "VENTURE",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -821,12 +821,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -853,12 +885,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -885,12 +949,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
+            "type": "TERRITORY",
             "period": 1,
-            "name": "Commercial Hub",
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -917,135 +1013,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 1,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       }
@@ -1057,8 +1057,8 @@
         "developmentCardList": [
           {
             "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1085,12 +1085,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1117,12 +1149,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1149,12 +1213,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1181,135 +1277,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -1318,9 +1318,9 @@
         "period": 2,
         "developmentCardList": [
           {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1347,12 +1347,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1379,12 +1411,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1411,12 +1475,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1443,135 +1539,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -1580,9 +1580,9 @@
         "period": 2,
         "developmentCardList": [
           {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1609,12 +1609,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1641,12 +1673,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1673,12 +1737,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1705,135 +1801,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -1842,9 +1842,9 @@
         "period": 2,
         "developmentCardList": [
           {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1871,12 +1871,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1903,12 +1935,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1935,12 +1999,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -1967,135 +2063,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 2,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       }
@@ -2107,8 +2107,8 @@
         "developmentCardList": [
           {
             "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2135,12 +2135,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2167,12 +2199,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2199,12 +2263,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2231,135 +2327,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "TERRITORY",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -2368,9 +2368,9 @@
         "period": 3,
         "developmentCardList": [
           {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2397,12 +2397,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2429,12 +2461,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2461,12 +2525,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2493,135 +2589,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "BUILDING",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -2630,9 +2630,9 @@
         "period": 3,
         "developmentCardList": [
           {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2659,12 +2659,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2691,12 +2723,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2723,12 +2787,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2755,135 +2851,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "CHARACTER",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       },
@@ -2892,9 +2892,9 @@
         "period": 3,
         "developmentCardList": [
           {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2921,12 +2921,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2953,12 +2985,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -2985,12 +3049,44 @@
                   }
                 }
               }
-            ]
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
+                  }
+                }
+              }
+            }
           },
           {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
+            "type": "TERRITORY",
+            "period": 1,
+            "name": "CommercialHub",
             "requirementsList": [
               {
                 "map": {
@@ -3017,135 +3113,39 @@
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
+            ],
+            "immediateEffect": {
+              "effectType": "ImmediateCouncilPrivilege",
+              "effectBody": {
+                "fromResourceType": "WOOD",
+                "fromResourceValue": 1,
+                "toResourcesList": {
+                  "map": {
+                    "WOOD": {
+                      "value": 1
+                    },
+                    "STONE": {
+                      "value": 1
+                    },
+                    "SERVANT": {
+                      "value": 1
+                    },
+                    "COINS": {
+                      "value": 1
+                    },
+                    "VICTORY_POINTS": {
+                      "value": 1
+                    },
+                    "FAITH_POINTS": {
+                      "value": 1
+                    },
+                    "MILITARY_POINTS": {
+                      "value": 1
+                    }
                   }
                 }
               }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "type": "VENTURE",
-            "period": 3,
-            "name": "Commercial Hub",
-            "requirementsList": [
-              {
-                "map": {
-                  "WOOD": {
-                    "value": 0
-                  },
-                  "STONE": {
-                    "value": 0
-                  },
-                  "SERVANT": {
-                    "value": 0
-                  },
-                  "COINS": {
-                    "value": 0
-                  },
-                  "VICTORY_POINTS": {
-                    "value": 0
-                  },
-                  "FAITH_POINTS": {
-                    "value": 0
-                  },
-                  "MILITARY_POINTS": {
-                    "value": 0
-                  }
-                }
-              }
-            ]
+            }
           }
         ]
       }
@@ -3425,7 +3425,7 @@
   ],
   "actionSpaces": [
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3451,39 +3451,41 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3509,39 +3511,41 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3567,39 +3571,72 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
+    },
+
+    {
+      "requiredActionValue": 0,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 1
+          },
+          "STONE": {
+            "value": 1
+          },
+          "SERVANT": {
+            "value": 1
+          },
+          "COINS": {
+            "value": 1
+          },
+          "VICTORY_POINTS": {
+            "value": 1
+          },
+          "FAITH_POINTS": {
+            "value": 1
+          },
+          "MILITARY_POINTS": {
+            "value": 1
+          }
+        }
+      },
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3625,39 +3662,41 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3683,39 +3722,72 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
+    },
+
+    {
+      "requiredActionValue": 0,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 1
+          },
+          "STONE": {
+            "value": 1
+          },
+          "SERVANT": {
+            "value": 1
+          },
+          "COINS": {
+            "value": 1
+          },
+          "VICTORY_POINTS": {
+            "value": 1
+          },
+          "FAITH_POINTS": {
+            "value": 1
+          },
+          "MILITARY_POINTS": {
+            "value": 1
+          }
+        }
+      },
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3741,39 +3813,41 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3799,39 +3873,72 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
+    },
+
+    {
+      "requiredActionValue": 0,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 1
+          },
+          "STONE": {
+            "value": 1
+          },
+          "SERVANT": {
+            "value": 1
+          },
+          "COINS": {
+            "value": 1
+          },
+          "VICTORY_POINTS": {
+            "value": 1
+          },
+          "FAITH_POINTS": {
+            "value": 1
+          },
+          "MILITARY_POINTS": {
+            "value": 1
+          }
+        }
+      },
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3857,39 +3964,41 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3915,39 +4024,72 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
+    },
+
+    {
+      "requiredActionValue": 0,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 1
+          },
+          "STONE": {
+            "value": 1
+          },
+          "SERVANT": {
+            "value": 1
+          },
+          "COINS": {
+            "value": 1
+          },
+          "VICTORY_POINTS": {
+            "value": 1
+          },
+          "FAITH_POINTS": {
+            "value": 1
+          },
+          "MILITARY_POINTS": {
+            "value": 1
+          }
+        }
+      },
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -3973,39 +4115,41 @@
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 2,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 2
           },
           "STONE": {
-            "value": 1
+            "value": 2
           },
           "SERVANT": {
-            "value": 1
+            "value": 2
           },
           "COINS": {
-            "value": 1
+            "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 2
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 2
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 2
           }
         }
       },
-      "floorNumber": 1
+      "floorNumber": 2,
+      "isSingle": false
     },
     {
-      "requiredActionValue": 1,
+      "requiredActionValue": 0,
       "bonus": {
         "map": {
           "WOOD": {
@@ -4031,123 +4175,8 @@
           }
         }
       },
-      "floorNumber": 1
-    },
-    {
-      "requiredActionValue": 1,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1
-    },
-    {
-      "requiredActionValue": 1,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1
-    },
-    {
-      "requiredActionValue": 1,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1
-    },
-    {
-      "requiredActionValue": 1,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1
+      "floorNumber": 1,
+      "isSingle": true
     }
   ],
   "personalBoards": [
@@ -4245,6 +4274,133 @@
         },
         "FAITH_POINTS": {
           "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    }
+  ],
+  "councilPrivileges": [
+    {
+      "map": {
+        "WOOD": {
+          "value": 1
+        },
+        "STONE": {
+          "value": 1
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    },
+    {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 2
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    },
+    {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 2
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 0
+        }
+      }
+    },
+    {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 0
+        },
+        "MILITARY_POINTS": {
+          "value": 2
+        }
+      }
+    },
+    {
+      "map": {
+        "WOOD": {
+          "value": 0
+        },
+        "STONE": {
+          "value": 0
+        },
+        "SERVANT": {
+          "value": 0
+        },
+        "COINS": {
+          "value": 0
+        },
+        "VICTORY_POINTS": {
+          "value": 0
+        },
+        "FAITH_POINTS": {
+          "value": 1
         },
         "MILITARY_POINTS": {
           "value": 0

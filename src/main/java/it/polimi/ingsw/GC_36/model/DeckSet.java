@@ -9,12 +9,12 @@ public class DeckSet {
 	Map<CardType, Deck> decks;
 
 	public DeckSet(int period) {
-
 		decks = Commons.getDeckSet(period);
 		this.period = period;
 	}
 
 	public Deck getDeck(CardType cardType) {
-		return decks.get(cardType);
+		Deck deck = decks.get(cardType);
+		return deck;
 	}
 }

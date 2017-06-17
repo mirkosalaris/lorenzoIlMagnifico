@@ -108,11 +108,13 @@ public final class Commons {
 		return map.get(color);
 	}
 
-
 	public static boolean getASIsSingle(ActionSpaceIds actionSpaceIds) {
-		// TODO @antonino
-		return true;
-		//return parser.get("actionSpace" + actionSpaceId.value(), "isSingle");
+		return (boolean) parser.get("actionSpace" + actionSpaceIds.value(),
+				"isSingle");
+	}
+
+	public static ResourcesList getPrivilege(int id) {
+		return (ResourcesList) parser.get("councilPrivilege" + id);
 	}
 }
 

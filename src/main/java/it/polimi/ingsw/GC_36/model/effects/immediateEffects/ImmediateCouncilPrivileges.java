@@ -15,7 +15,7 @@ import java.util.List;
 public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	private boolean mustDiffer;
 	private Integer numberOfPrivileges;
-	private CouncilPrivilege councilPrivilege;
+	//private CouncilPrivilege councilPrivilege;
 
 	public ImmediateCouncilPrivileges(Integer numberOfPrivileges,
 	                                  boolean mustDiffer) {
@@ -24,9 +24,9 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	}
 
 
-	//accetta le n scelte
-	//check sulle scelte
-	//le aggiunge alla personal board altrimenti throw exception
+	// accept n choices
+	// check choices
+	// add choices to personaBoard, otherwise throw EffectApplyingException(e)
 	@Override
 	public void applyEffect(Action action, Player player)
 			throws IllegalStateException, EffectApplyingException {
@@ -38,10 +38,10 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 
 				//TODO:mossa non valida
 			} else {
-				//aggiungi risorse
+				// add resources
 				for (Integer key : action.getCouncilPrivilegeList()) {
 
-					ResourcesList favor = councilPrivilege.getResourcesList(
+					ResourcesList favor = Commons.getPrivilege(
 							action.getCouncilPrivilegeList().get(key));
 
 					try {
@@ -54,7 +54,6 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 
 	}
 
-
 	@Override
 	public void chooseOptions(ViewInterface view, ActionInterface action,
 	                          User user)
@@ -64,7 +63,7 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 			//check if the choice is valid
 			do {
 				choice = view.choosePrivilege(i + 1);
-			} while (!Isvalid(
+			} while (!isvalid(
 					choice) || (mustDiffer && action.getCouncilPrivilegeList()
 					.contains(
 							choice)));
@@ -79,8 +78,8 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 
 	}
 
-	private boolean Isvalid(int choice) {
-		return (choice >= 0 && choice < Commons.councilPrivilegeMap.size());
+	private boolean isvalid(int choice) {
+		return (choice >= 0 && choice < CouncilPrivilege.values().length - 1);
 	}
 
 
