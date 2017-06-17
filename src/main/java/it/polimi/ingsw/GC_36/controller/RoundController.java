@@ -2,26 +2,37 @@ package it.polimi.ingsw.GC_36.controller;
 
 import it.polimi.ingsw.GC_36.exception.PlayingException;
 import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.Player;
 
 import java.io.IOException;
 
 public class RoundController {
 
+	private final ActionExecutor executor;
+
+	public RoundController() {
+		executor = new ActionExecutor();
+	}
+
 	public void execute(Player player) throws PlayingException {
 
-		ActionInterface action = null;
+		Action action = null;
 		try {
-			action = new Action();
-			player.getParticipant().play(action);
+			boolean executed = false;
+
+			do {
+				action = new Action();
+				player.getParticipant().play(action);
+				executed = executor.execute(action);
+			} while (!executed);
+
+
 		} catch (IOException | ClassNotFoundException e) {
 			throw new PlayingException(
 					"An error occurred during turn of player " + player, e);
 		}
 
-		// TODO check action
-		System.out.println("finito");
+		// TODO delete
 		System.out.println(action);
 	}
 

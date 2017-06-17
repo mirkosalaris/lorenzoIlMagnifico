@@ -1,74 +1,80 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
-import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 
+/**
+ * Permanent effect of Building cards, so this is for production
+ */
 public class ResourcesConverting extends PermanentEffect {
-	ResourcesList fromResourcesList, toResourcesList;
-	HashMap<Integer, ResourcesList> fromResourcesListOptions;
-	HashMap<Integer, ResourcesList> toResourcesListOptions;
+	private final HashMap<Integer, Pair<ResourcesList, ResourcesList>> options;
 	private int requiredActionValue;
 
-	//effetto permanente delle building cards quindi legato alla produzione
+	/**
+	 * @param requiredActionValue
+	 * 		the required action value, int, to execute the effect
+	 * @param options
+	 * 		the map of options for converting resources
+	 */
+	public ResourcesConverting(
+			int requiredActionValue,
+			HashMap<Integer, Pair<ResourcesList, ResourcesList>> options) {
 
-	// il costruttore accetta due hashmap, la chiave rappresenta il numero
-	// della scelta, il valore rappresenta rispettivamente la lista da pagare
-	// e quella che
-	// si ottiene
-	public ResourcesConverting(int requiredActionValue,
-	                           HashMap<Integer, ResourcesList>
-			                           fromResourcesListOptions,
-	                           HashMap<Integer, ResourcesList>
-			                           toResourcesListOptions) {
-		this.fromResourcesListOptions = fromResourcesListOptions;
-		this.toResourcesListOptions = toResourcesListOptions;
+		this.options = options;
 		this.requiredActionValue = requiredActionValue;
 	}
 
 	@Override
-	public void applyEffect(Action action)
+	public void applyEffect(Action action, Player player)
 			throws EffectApplyingException {
 		int choice = action.getProductionChoice();
-		fromResourcesList = fromResourcesListOptions.get(choice);
-		toResourcesList = toResourcesListOptions.get(choice);
+		ResourcesList payResourcesList = options.get(choice).getFirst();
+		ResourcesList addResourcesList = options.get(choice).getSecond();
 
 		if (isDoable(requiredActionValue, action)) {
-			// toglie a player la prima lista e aggiunge la seconda
-			PersonalBoard personalBoard = Game.getInstance().getCurrentPeriod
-					().getCurrentRound().getCurrentPlayer().getPersonalBoard();
+			// pay the first list and add the second
+			PersonalBoard personalBoard = player.getPersonalBoard();
 			try {
-				personalBoard.payResources(this.fromResourcesList);
-				personalBoard.addResources(this.toResourcesList);
+				personalBoard.payResources(payResourcesList);
+				personalBoard.addResources(addResourcesList);
 			} catch (InsufficientResourcesException | IOException e) {
 				throw new EffectApplyingException(e);
 			}
-
 		}
 	}
 
+	/**
+	 * Show to user the options and store it
+	 *
+	 * @param view
+	 * 		the view to invoke to ask for input
+	 * @param action
+	 * 		the action to modify
+	 * @throws RemoteException
+	 */
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface actionInterface, User user)
+	                         ActionInterface action)
 			throws RemoteException {
-		//elenca al player le varie opzioni
-		//memorizza l'intero associato alla scelta
 		Integer choice;
-		choice = view.chooseConvertingMethod(fromResourcesListOptions,
-				toResourcesListOptions);
-		//mette in action.productionChoice la scelta
-		//TODO:check sulla scelta
-		actionInterface.addProductionChoice(choice);
+		do {
+			// pass a copy
+			choice = view.chooseConvertingMethod(new HashMap<>(options));
+		} while (!checkChoice(choice));
 
-
+		action.addProductionChoice(choice);
 	}
 
+	private boolean checkChoice(int choice) {
+		return (choice >= 0 && choice < options.size());
+	}
 
 }

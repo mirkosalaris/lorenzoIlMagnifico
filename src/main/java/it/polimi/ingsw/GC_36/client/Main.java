@@ -13,8 +13,6 @@ public class Main {
 	private Main() {}
 
 	public static void main(String[] args) throws RemoteException {
-		// TODO impl
-
 		ExceptionLogger.setDebug();
 
 		ViewInterface view = chooseView();

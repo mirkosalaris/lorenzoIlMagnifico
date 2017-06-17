@@ -61,9 +61,15 @@ public class Player {
 		return personalBoard;
 	}
 
-	public Map<MemberColor, FamilyMember> getFamilyMembers() {
+	public FamilyMember getFamilyMember(MemberColor color) {
+		// return a copy
+		return familyMembers.get(color).copy();
+	}
 
-		return familyMembers;
+	public void roundReset() {
+		for (FamilyMember member : familyMembers.values()) {
+			member.reset();
+		}
 	}
 
 	public Participant getParticipant() {
@@ -97,11 +103,6 @@ public class Player {
 
 	public PlayerIdentifier getIdentifier() {
 		return identifier;
-	}
-
-	public int getFamilyMemberValue(MemberColor memberColor) {
-		int value = familyMembers.get(memberColor).getValue();
-		return value;
 	}
 
 	public boolean canEnter(Tower tower) {

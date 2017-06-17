@@ -19,7 +19,7 @@ public final class Commons {
 	public static final int ROUNDS_IN_PERIOD = 2;
 
 	// TODO, increase the timer.
-	public static final long STARTING_MATCH_TIMER = 10000;
+	public static final long STARTING_MATCH_TIMER = 3000;
 
 	//TODO:compilare councilPrivilegeMap tramite parser
 	public static Map<Integer, ResourcesList> councilPrivilegeMap;
@@ -94,9 +94,9 @@ public final class Commons {
 		return value;
 	}
 
-	public static ResourcesList getASresources(ActionSpaceIds actionSpaceId) {
+	public static ResourcesList getASBonus(ActionSpaceIds actionSpaceId) {
 		return (ResourcesList) parser.get("actionSpace" + actionSpaceId
-				.value(), "resources");
+				.value(), "bonus");
 	}
 
 	public static DieColor memberColorToDieColor(MemberColor color) {

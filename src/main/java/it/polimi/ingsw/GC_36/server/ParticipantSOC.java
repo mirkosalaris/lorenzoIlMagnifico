@@ -140,6 +140,7 @@ public class ParticipantSOC implements Participant {
 		try {
 			objOut.writeObject(entry);
 			objOut.flush();
+			objOut.reset(); // needed to avoid optimization by reference
 		} catch (IOException e) {
 			System.err.println(error);
 			ExceptionLogger.log(e);

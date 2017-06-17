@@ -52,9 +52,15 @@ public class ResourcesList implements Serializable {
 
 	public ResourcesList copy() {
 		// returns a copy of the current resourcesList
+		Map<ResourceType, ResourceCounter> mapCopy = new HashMap<>();
+
+		for (Map.Entry<ResourceType, ResourceCounter> entry : map.entrySet()) {
+			mapCopy.put(entry.getKey(),
+					new ResourceCounter(entry.getValue().getValue()));
+		}
 
 		ResourcesList newResourcesList = new ResourcesList();
-		newResourcesList.map = new HashMap<>(this.map);
+		newResourcesList.map = mapCopy;
 		return newResourcesList;
 	}
 

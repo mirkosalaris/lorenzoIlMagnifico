@@ -39,7 +39,7 @@ public class Tower {
 		return cardType;
 	}
 
-	public ResourcesList getTax(){
+	public ResourcesList getTax() {
 		return tax;
 	}
 }

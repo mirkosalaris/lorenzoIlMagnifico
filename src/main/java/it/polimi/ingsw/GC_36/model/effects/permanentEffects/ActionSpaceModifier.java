@@ -1,20 +1,20 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
-import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionInterface;
+import it.polimi.ingsw.GC_36.model.Player;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
 public class ActionSpaceModifier extends PermanentEffect {
 
 	@Override
-	public void applyEffect(Action action) {
+	public void applyEffect(Action action, Player player) {
 	}
 
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface actionInterface, User user) {
+	                         ActionInterface action) {
 
 	}
 

@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
-import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.Action;
@@ -13,12 +12,11 @@ import java.rmi.RemoteException;
 
 public abstract class PermanentEffect implements Serializable {
 
-	public abstract void applyEffect(Action action)
+	public abstract void applyEffect(Action action, Player player)
 			throws EffectApplyingException;
 
 	public abstract void chooseOption(ViewInterface view, ActionInterface
-			actionInterface,
-	                                  User user) throws RemoteException;
+			action) throws RemoteException;
 
 	public boolean isDoable(int requiredActionValue, Action action) {
 		int ActionValue;

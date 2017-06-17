@@ -28,7 +28,7 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	//check sulle scelte
 	//le aggiunge alla personal board altrimenti throw exception
 	@Override
-	public void applyEffect(Action action)
+	public void applyEffect(Action action, Player player)
 			throws IllegalStateException, EffectApplyingException {
 		if (!numberOfPrivileges.equals(
 				action.getCouncilPrivilegeList().size()))
@@ -45,9 +45,7 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 							action.getCouncilPrivilegeList().get(key));
 
 					try {
-						Game.getInstance().getCurrentPeriod().getCurrentRound()
-								.getCurrentPlayer().getPersonalBoard()
-								.addResources(favor);
+						player.getPersonalBoard().addResources(favor);
 					} catch (IOException e) {
 						throw new EffectApplyingException(e);
 					}

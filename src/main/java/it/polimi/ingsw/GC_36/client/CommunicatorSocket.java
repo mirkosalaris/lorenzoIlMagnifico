@@ -153,7 +153,7 @@ public class CommunicatorSocket implements Communicator {
 				user.update((ResourcesList) entry.getValue());
 				break;
 
-			// TODO etc.
+			// TODO check if this is all
 			default:
 				System.out.println(
 						"Cannot retrieve information correctly from network:" +

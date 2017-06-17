@@ -5,8 +5,9 @@ import it.polimi.ingsw.GC_36.model.DevelopmentCard;
 import it.polimi.ingsw.GC_36.model.MemberColor;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.server.Participant;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public interface ViewInterface extends Participant {
@@ -19,12 +20,12 @@ public interface ViewInterface extends Participant {
 
 	int choosePrivilege(int n);
 
-	int chooseExtraActioneSpaceId(Set<ActionSpaceIds> actionSpaceIds,
-	                              int actionValue);
+	int chooseExtraActionSpaceId(Set<ActionSpaceIds> actionSpaceIds,
+	                             int actionValue);
 
 	int chooseConvertingMethod(
-			HashMap<Integer, ResourcesList> fromResourcesListOptions,
-			HashMap<Integer, ResourcesList> toResorcesListOptions);
+			Map<Integer, Pair<ResourcesList, ResourcesList>> options);
+
 	int chooseCardPaymentOptions(DevelopmentCard card);
 
 	int selectNumberOfWoods();

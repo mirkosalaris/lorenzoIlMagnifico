@@ -70,8 +70,8 @@ public class Parser {
 		int id = Integer.parseInt(s1.replaceAll("[\\D]", ""));
 		if (s1.contains("actionSpace") && s2.contains("requiredActionValue")) {
 			return this.actionSpace.get(id).get("requiredActionValue");
-		} else if (s1.contains("actionSpace") && s2.contains("resources")) {
-			return this.actionSpace.get(id).get("resources");
+		} else if (s1.contains("actionSpace") && s2.contains("bonus")) {
+			return this.actionSpace.get(id).get("bonus");
 		} else {
 			throw new IllegalArgumentException("Parameter not valid");
 		}

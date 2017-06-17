@@ -1,9 +1,10 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -49,7 +50,7 @@ public class ViewCLI implements ViewInterface {
 							"actionValue? yes or no");
 			answer = new String(in.nextLine());
 			if (answer.equals("no"))
-				wrong=false;
+				wrong = false;
 			if (answer.equals("yes")) {
 				System.out.println("How much servants do you want to use?");
 				servants = in.nextInt();
@@ -82,8 +83,8 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public int chooseExtraActioneSpaceId(Set<ActionSpaceIds> actionSpaceIds,
-	                                     int actionValue) {
+	public int chooseExtraActionSpaceId(Set<ActionSpaceIds> actionSpaceIds,
+	                                    int actionValue) {
 		Scanner in = new Scanner(System.in);
 		System.out.println(
 				"You have the chance to choose another card, the choice " +
@@ -100,35 +101,33 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public int chooseConvertingMethod(
-			HashMap<Integer, ResourcesList> fromResourcesListOptions,
-			HashMap<Integer, ResourcesList> toResorcesListOptions) {
-		int choice;
-		//elenca le opzioni
-		for (Integer i : fromResourcesListOptions.keySet()) {
+			Map<Integer, Pair<ResourcesList, ResourcesList>> options) {
+		// show the various options
+
+		for (Integer i : options.keySet()) {
 			System.out.println("Option number" + i);
 			System.out.println("pay:");
-			System.out.println(fromResourcesListOptions.get(i).toString());
+			System.out.println(options.get(i).getFirst());
 			System.out.println("get:");
-			System.out.println(toResorcesListOptions.get(i).toString());
+			System.out.println(options.get(i).getSecond());
 		}
 		Scanner in = new Scanner(System.in);
 		System.out.println("Please specify the options");
-		choice = in.nextInt();
-		return choice;
+		return in.nextInt();
 	}
 
 	@Override
 	public int chooseCardPaymentOptions(DevelopmentCard card) {
-		Scanner in=new Scanner(System.in);
+		Scanner in = new Scanner(System.in);
 		ResourcesList resourcesList;
 		System.out.println("Please select the payment option of the card");
-		for(int i=1; i<=card.getRequirements().size(); i++) {
-			System.out.println("option " + i+ ": ");
+		for (int i = 1; i <= card.getRequirements().size(); i++) {
+			System.out.println("option " + i + ": ");
 			resourcesList = card.getRequirements().get(i - 1);
 			System.out.println(resourcesList.toString());
 		}
-		int choice=in.nextInt()-1;
-		 return choice;
+		int choice = in.nextInt() - 1;
+		return choice;
 	}
 
 	@Override

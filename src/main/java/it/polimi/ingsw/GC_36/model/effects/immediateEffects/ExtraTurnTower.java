@@ -2,10 +2,7 @@ package it.polimi.ingsw.GC_36.model.effects.immediateEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
-import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.ActionInterface;
-import it.polimi.ingsw.GC_36.model.ActionSpaceIds;
-import it.polimi.ingsw.GC_36.model.ExtraAction;
+import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
 import java.io.IOException;
@@ -21,7 +18,7 @@ public class ExtraTurnTower implements ImmediateEffect {
 	}
 
 	@Override
-	public void applyEffect(Action action) {
+	public void applyEffect(Action action, Player player) {
 
 	}
 

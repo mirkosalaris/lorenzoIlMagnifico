@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
+import java.util.Random;
+
 public class Die {
 
 	private DieColor dieColor;
@@ -19,7 +21,10 @@ public class Die {
 		return value;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void roll() {
+		Random rnd = new Random();
+
+		// a value between 0 and 6 inclusive
+		this.value = rnd.nextInt(6) + 1;
 	}
 }

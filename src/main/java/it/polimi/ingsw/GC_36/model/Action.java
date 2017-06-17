@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.exception.NotAvailableException;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -25,13 +27,14 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
-	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds) {
+	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds)
+			throws NotAvailableException {
 		this.actionSpaceIds = actionSpaceIds;
 	}
 
 	@Override
-	public void setCardPaymentOptions(int choice){
-		cardPaymentOptions=choice;
+	public void setCardPaymentOptions(int choice) {
+		cardPaymentOptions = choice;
 	}
 
 	@Override
@@ -39,8 +42,9 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		return cardPaymentOptions;
 	}
 
-	public void setActionValueIncrement(int increment){
-		this.actionValueIncrement=increment;
+	@Override
+	public void setActionValueIncrement(int increment) {
+		this.actionValueIncrement = increment;
 
 	}
 
@@ -49,6 +53,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		this.councilPrivilegeList = privilegeList;
 	}
 
+	@Override
 	public MemberColor getMemberColor() {
 		return memberColor;
 		//TODO:associated test replacing getFamilyMemberTest
@@ -76,11 +81,15 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		this.memberColor = original.memberColor;
 		this.actionSpaceIds = original.actionSpaceIds;
 		this.councilPrivilegeList = original.councilPrivilegeList;
+		this.actionValueIncrement = original.actionValueIncrement;
+		this.cardPaymentOptions = original.cardPaymentOptions;
+		this.extraAction = original.extraAction;
+		this.productionChoice = original.productionChoice;
 	}
 
 	@Override
 	public void setExtraAction(ExtraAction extraAction) {
-		this.extraAction=extraAction;
+		this.extraAction = extraAction;
 	}
 
 	@Override
@@ -93,36 +102,39 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		productionChoice.add(choice);
 	}
 
+	@Override
 	public int getActionValue(Player player) {
-		int memberValue=getMemberValue(player);
+		int memberValue = player.getFamilyMember(memberColor).getValue();
 		return memberValue + actionValueIncrement;
 	}
 
+	@Override
 	public int getProductionChoice() {
 		int choice = productionChoice.get(0);
 		productionChoice.remove(0);
 		return choice;
 	}
 
-	public int getMemberValue(Player player){
-		int memberValue = player.getFamilyMemberValue(memberColor);
-		return memberValue;
-	}
-
-	public int getActionValueIncrement(){
+	@Override
+	public int getActionValueIncrement() {
 		return actionValueIncrement;
 	}
+
+	@Override
+	public ExtraAction getExtraAction() {
+		return extraAction;
+	}
+
 	@Override
 	public String toString() {
 		return "Action{" +
 				"memberColor=" + memberColor +
 				", actionSpaceIds=" + actionSpaceIds +
+				", actionValueIncrement=" + actionValueIncrement +
+				", cardPaymentOptions=" + cardPaymentOptions +
 				", councilPrivilegeList=" + councilPrivilegeList +
-				", extraActions=" + extraAction +
+				", extraAction=" + extraAction +
 				", productionChoice=" + productionChoice +
 				'}';
-	}
-	public ExtraAction getExtraAction(){
-		return extraAction;
 	}
 }

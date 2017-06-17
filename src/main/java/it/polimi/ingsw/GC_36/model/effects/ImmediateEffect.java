@@ -5,13 +5,14 @@ import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionInterface;
+import it.polimi.ingsw.GC_36.model.Player;
 
 import java.io.IOException;
 import java.io.Serializable;
 
 
 public interface ImmediateEffect extends Serializable {
-	void applyEffect(Action action)
+	void applyEffect(Action action, Player player)
 			throws IllegalStateException, EffectApplyingException;
 
 	void chooseOptions(ViewInterface view, ActionInterface action, User user)

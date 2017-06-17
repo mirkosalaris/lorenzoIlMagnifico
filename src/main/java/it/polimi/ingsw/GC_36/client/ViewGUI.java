@@ -1,9 +1,10 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class ViewGUI implements ViewInterface {
@@ -29,15 +30,14 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public int chooseExtraActioneSpaceId(Set<ActionSpaceIds> actionSpaceIds,
-	                                     int actionValue) {
+	public int chooseExtraActionSpaceId(Set<ActionSpaceIds> actionSpaceIds,
+	                                    int actionValue) {
 		return 0;
 	}
 
 	@Override
 	public int chooseConvertingMethod(
-			HashMap<Integer, ResourcesList> fromResourcesListOptions,
-			HashMap<Integer, ResourcesList> toResorcesListOptions) {
+			Map<Integer, Pair<ResourcesList, ResourcesList>> options) {
 		return 0;
 	}
 

@@ -20,6 +20,23 @@ public class FamilyMember {
 		}
 	}
 
+	private FamilyMember() {}
+
+
+	/**
+	 * Method used the produce a copy
+	 */
+	public FamilyMember copy() {
+		FamilyMember copy = new FamilyMember();
+
+		copy.playerColor = this.playerColor;
+		copy.memberColor = this.memberColor;
+		copy.die = this.die;
+		copy.location = this.location;
+
+		return copy;
+	}
+
 	public int getValue() {
 		if (die == null)
 			return 1;
@@ -31,7 +48,7 @@ public class FamilyMember {
 		return location == null;
 	}
 
-	public void setAvailable() {
+	public void reset() {
 		location = null;
 	}
 

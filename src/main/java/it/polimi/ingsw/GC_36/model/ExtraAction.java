@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.exception.NotAvailableException;
+
 import java.rmi.RemoteException;
 import java.util.Set;
 
@@ -19,10 +21,12 @@ public class ExtraAction extends Action {
 	}
 
 	@Override
-	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds) {
-		//if
+	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds)
+			throws NotAvailableException {
+		if (!isAvailable(actionSpaceIds)) {
+			throw new NotAvailableException();
+		}
 		super.setActionSpaceIds(actionSpaceIds);
-		// else
 
 	}
 

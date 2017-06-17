@@ -1,10 +1,11 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.exception.NotAvailableException;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -45,7 +46,10 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		chooseMemberColor(action);
 		chooseActionSpace(action);
-		chooseCardPaymentOptions(action);
+		setActionValueIncrement(action);
+		if (action.getActionSpaceId().isInFloor()) {
+			chooseCardPaymentOptions(action);
+		}
 		actionSpaceHandler(action);
 	}
 
@@ -132,6 +136,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void update(DevelopmentCard card) throws IOException {
+		// TODO @mirko the list does not exist, nullPointerException
 		ownedCards.get(card.getType()).add(card);
 		view.update(card);
 	}
@@ -166,11 +171,18 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		ActionSpaceIds actionSpaceId;
 		do {
 			id = view.chooseActionSpaceId();
+
 			if (ActionSpaceIds.checkId(id)) {
 				actionSpaceId = ActionSpaceIds.values()[id];
+
 				if (action.isAvailable(actionSpaceId)) {
 					wrong = false;
-					action.setActionSpaceIds(actionSpaceId);
+					try {
+						action.setActionSpaceIds(actionSpaceId);
+					} catch (NotAvailableException e) {
+						ExceptionLogger.log(e);
+						wrong = true;
+					}
 				}
 			}
 
@@ -210,7 +222,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 					CardType.BUILDING);
 			for (int i = 0; i < terrytoriCards.size(); i++) {
 				terrytoriCards.get(i).getPermanentEffect().chooseOption(view,
-						action, this);
+						action);
 			}
 		}
 
@@ -221,18 +233,31 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		actionSpaces.clear();
 	}
 
-	private void setActionValueIncrement(ActionInterface action) {
+	private void setActionValueIncrement(ActionInterface action)
+			throws RemoteException {
 		int increment;
 		increment = view.setActionValueIncrement();
 		action.setActionValueIncrement(increment);
 	}
 
-	private void chooseCardPaymentOptions(ActionInterface action) throws RemoteException {
-		//accede alla carta, elenca le opzioni dipagamento al user e salva la
-		// scelta
-		DevelopmentCard card=cards.get(action.getActionSpaceId());
-		int choice=view.chooseCardPaymentOptions(card);
-		//setta in action la scelta
+	/**
+	 * Access the card chosen by the user and ask him/her to make a payment
+	 * choice, if there's a choice to make
+	 *
+	 * @param action
+	 * 		from where to take info and where to store new info
+	 * @throws RemoteException
+	 */
+	private void chooseCardPaymentOptions(ActionInterface action)
+			throws RemoteException {
+		// take the card from the local Map<ActionSpaceIds, Cards>
+		DevelopmentCard card = cards.get(action.getActionSpaceId());
+		int choice;
+		choice = card.getRequirements().size() > 1
+				? view.chooseCardPaymentOptions(card)
+				: 0;
+
+		// store in action the choice
 		action.setCardPaymentOptions(choice);
 
 	}

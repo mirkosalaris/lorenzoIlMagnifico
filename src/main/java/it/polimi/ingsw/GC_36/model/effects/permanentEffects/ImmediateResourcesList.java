@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
-import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.*;
@@ -9,10 +8,12 @@ import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
+/**
+ * PermanentEffect associated with buildings card, that gives to player some
+ * resources for each card of a particular type
+ */
 public class ImmediateResourcesList extends PermanentEffect {
-	//effetto delle territory/building cards che da al player una resourcesList
-	//l'effetto viene attivato se il valore dell'azione e' sufficiente
-	CardType associatedCardType;
+	private CardType associatedCardType;
 	private ResourcesList resourcesList;
 	private int requiredActionValue;
 
@@ -24,14 +25,13 @@ public class ImmediateResourcesList extends PermanentEffect {
 	}
 
 	@Override
-	public void applyEffect(Action action) throws EffectApplyingException {
+	public void applyEffect(Action action, Player player)
+			throws EffectApplyingException {
 		//TODO:implements
 		//se building prende la scelta (nulla) da productionChoice
 		if (associatedCardType == CardType.BUILDING)
 			action.getProductionChoice();
 
-		Player player = Game.getInstance().getCurrentPeriod().getCurrentRound()
-				.getCurrentPlayer();
 		if (isDoable(requiredActionValue, action)) {
 			// add resources to player
 			try {
@@ -45,12 +45,16 @@ public class ImmediateResourcesList extends PermanentEffect {
 
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface actionInterface, User user)
+	                         ActionInterface action)
 			throws RemoteException {
-		//se di tipo building aggiunge una scelta nulla a productionChoice
-		if (associatedCardType.equals(CardType.BUILDING))
-			actionInterface.addProductionChoice(null);
+		// when the cardType is BUILDING we have to add a null production
+		// choice
+		// into action to avoid broking the sequence of choices of building's
+		// card
 
+		if (associatedCardType.equals(CardType.BUILDING)) {
+			action.addProductionChoice(null);
+		}
 	}
 
 

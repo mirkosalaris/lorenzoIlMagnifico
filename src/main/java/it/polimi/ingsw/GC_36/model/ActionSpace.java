@@ -24,7 +24,7 @@ public class ActionSpace {
 		this.requiredActionValue = Commons.getASRequiredActionValue(id);
 		this.isSingle = Commons.getASIsSingle(id);
 		this.requiredActionValue = Commons.getASRequiredActionValue(id);
-		this.bonus = Commons.getASresources(id);
+		this.bonus = Commons.getASBonus(id);
 
 		Tower tower = board.getTower(id.getCardType());
 		if (tower != null) {
@@ -40,10 +40,11 @@ public class ActionSpace {
 	public void occupy(FamilyMember member) {
 		if (free) {
 			familyMembers.add(member);
+			member.setLocation(this.id);
 			if (isSingle) {
 				free = false;
 			}
-		}
+		} // TODO @mirko and if is not free
 	}
 
 	public boolean isAvailable() {

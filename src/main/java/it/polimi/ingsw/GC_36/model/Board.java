@@ -79,7 +79,7 @@ public class Board {
 		return dice;
 	}
 
-	public ActionSpace getActionSpace(ActionSpaceIds id){
+	public ActionSpace getActionSpace(ActionSpaceIds id) {
 		return actionSpaces.get(id);
 	}
 
@@ -170,5 +170,11 @@ public class Board {
 
 	public Tower getTower(CardType cardType) {
 		return towers.get(cardType);
+	}
+
+	public void rollDice() {
+		for (Die die : dice.values()) {
+			die.roll();
+		}
 	}
 }

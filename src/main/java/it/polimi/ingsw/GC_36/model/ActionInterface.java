@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.exception.NotAvailableException;
+
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -9,18 +11,24 @@ public interface ActionInterface extends Serializable, Remote {
 	void setMemberColor(MemberColor MemberColor) throws RemoteException;
 
 	void setActionSpaceIds(ActionSpaceIds actionSpaceIds)
-			throws RemoteException;
+			throws RemoteException, NotAvailableException;
 
-	void setCardPaymentOptions(int choice);
+	void setCardPaymentOptions(int choice) throws RemoteException;
 
-	int getCardPaymentOption();
+	int getCardPaymentOption() throws RemoteException;
 
-	ExtraAction getExtraAction();
+	int getActionValue(Player player) throws RemoteException;
 
-	void setActionValueIncrement(int increment);
+	int getProductionChoice() throws RemoteException;
+
+	int getActionValueIncrement() throws RemoteException;
+
+	void setActionValueIncrement(int increment) throws RemoteException;
 
 	void setCouncilPrivilegeList(List<Integer> privilegeList)
 			throws RemoteException;
+
+	public MemberColor getMemberColor() throws RemoteException;
 
 	ActionSpaceIds getActionSpaceId() throws RemoteException;
 
@@ -35,4 +43,6 @@ public interface ActionInterface extends Serializable, Remote {
 	boolean isAvailable(ActionSpaceIds actionSpaceIds) throws RemoteException;
 
 	void addProductionChoice(Integer choice) throws RemoteException;
+
+	ExtraAction getExtraAction() throws RemoteException;
 }

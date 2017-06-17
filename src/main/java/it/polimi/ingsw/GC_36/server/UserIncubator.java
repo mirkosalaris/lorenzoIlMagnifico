@@ -84,7 +84,7 @@ public class UserIncubator extends UnicastRemoteObject
 			if (timerTask != null) {
 				long s = (timerTask.scheduledExecutionTime() - System
 						.currentTimeMillis()) / 1000;
-				user.show(s+ " seconds to auto play");
+				user.show(s + " seconds to auto play");
 			}
 		}
 	}

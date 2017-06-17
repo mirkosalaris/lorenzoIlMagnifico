@@ -68,11 +68,7 @@ public class Round {
 		setCurrentState(RoundState.STARTING);
 
 		board.prepare(deckSet);
-		rollDice(board);
-	}
-
-	private void rollDice(Board board) {
-		// TODO impl
+		board.rollDice();
 	}
 
 	private void adjustTurnOrder(Board board) {
