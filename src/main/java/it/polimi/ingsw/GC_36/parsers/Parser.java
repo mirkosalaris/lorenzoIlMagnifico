@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -73,7 +74,13 @@ public class Parser {
 		}
 		int value = Integer.parseInt(s.replaceAll("[\\D]", ""));
 		if (s.contains("deckSet")) {
-			return this.deckSetList.get(value - 1);
+			// return a copy
+			Map<CardType, Deck> decks = this.deckSetList.get(value - 1);
+			Map<CardType, Deck> newDecks = new HashMap<>();
+			for (Map.Entry<CardType, Deck> entry : decks.entrySet()) {
+				newDecks.put(entry.getKey(), entry.getValue().copy());
+			}
+			return newDecks;
 		} else if (s.contains("bonusTile")) {
 			return this.bonusTiles.get(value - 1);
 		} else if (s.contains("personalBoard")) {
