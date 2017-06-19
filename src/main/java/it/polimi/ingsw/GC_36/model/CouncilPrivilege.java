@@ -11,7 +11,7 @@ public enum CouncilPrivilege {
 	}
 
 	public ResourcesList getResources() {
-		return new ResourcesList(resources);
+		return resources.copy();
 	}
 
 }

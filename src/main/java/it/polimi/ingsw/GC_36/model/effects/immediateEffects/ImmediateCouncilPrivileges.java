@@ -63,7 +63,7 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 			//check if the choice is valid
 			do {
 				choice = view.choosePrivilege(i + 1);
-			} while (!isvalid(
+			} while (!isValid(
 					choice) || (mustDiffer && action.getCouncilPrivilegeList()
 					.contains(
 							choice)));
@@ -78,7 +78,7 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 
 	}
 
-	private boolean isvalid(int choice) {
+	private boolean isValid(int choice) {
 		return (choice >= 0 && choice < CouncilPrivilege.values().length - 1);
 	}
 

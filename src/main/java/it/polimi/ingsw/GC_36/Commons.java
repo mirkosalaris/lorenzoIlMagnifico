@@ -26,6 +26,10 @@ public final class Commons {
 
 	private static final Parser parser = new Parser(new File(COMMONS_FILE));
 
+	public static ResourcesList getTax() {
+		return (ResourcesList) parser.get("tax");
+	}
+
 	public ResourcesList getResourcesList(Integer integer) {
 		return councilPrivilegeMap.get(integer);
 	}
@@ -40,7 +44,6 @@ public final class Commons {
 		dice.put(DieColor.BLACK, new Die(DieColor.BLACK));
 		dice.put(DieColor.ORANGE, new Die(DieColor.ORANGE));
 		dice.put(DieColor.WHITE, new Die(DieColor.WHITE));
-
 		return dice;
 	}
 

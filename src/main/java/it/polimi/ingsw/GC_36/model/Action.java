@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.exception.NotAvailableException;
 
 import java.rmi.RemoteException;
@@ -136,5 +137,47 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 				", extraAction=" + extraAction +
 				", productionChoice=" + productionChoice +
 				'}';
+	}
+
+	/**
+	 * compile the whole list of resources to pay, taking into account tower
+	 * taxes, development card, increased action value.
+	 * NB: this does not take into account the ExtraAction!
+	 *
+	 * @return the resourcesList to pay
+	 */
+	public ResourcesList compilePaymentList() {
+		ResourcesList paymentList = new ResourcesList();
+		ActionSpaceIds id = this.actionSpaceIds;
+
+
+		if (Commons.isFloor(id)) {
+			Tower tower = Game.getInstance().getBoard().getActionSpace(
+					id).getAssociatedFloor().getAssociatedTower();
+
+			if (!(tower.isFree())) {
+				// the tower is not free, pay the tax
+				paymentList.addResources(tower.getTax());
+			}
+			DevelopmentCard card = Game.getInstance().getBoard()
+					.getActionSpace(
+							id).getAssociatedFloor().readAssociatedCard();
+
+			// get from action the user's choice on how to pay the card
+			int choice = cardPaymentOptions;
+
+			// take the resourcesList associated with the user's choice
+			ResourcesList cardPayment = card.getRequirements().get(choice);
+
+			// add to the payment list
+			paymentList.addResources(cardPayment);
+		}
+
+		// pay the extra servants used to increase the action value
+		ResourcesList actionValuePayment = new ResourcesList();
+		actionValuePayment.set(ResourceType.SERVANT, actionValueIncrement);
+		paymentList.addResources(actionValuePayment);
+
+		return paymentList;
 	}
 }

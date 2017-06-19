@@ -2,10 +2,7 @@ package it.polimi.ingsw.GC_36.model.effects;
 
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
-import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.ActionInterface;
-import it.polimi.ingsw.GC_36.model.Game;
-import it.polimi.ingsw.GC_36.model.Player;
+import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
@@ -29,4 +26,6 @@ public abstract class PermanentEffect implements Serializable {
 			return false;
 	}
 
+	public abstract boolean check(Action action, ResourcesList
+			playerResources);
 }

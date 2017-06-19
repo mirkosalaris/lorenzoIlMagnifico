@@ -3,7 +3,12 @@ package it.polimi.ingsw.GC_36.data;
 
 import com.google.gson.*;
 import it.polimi.ingsw.GC_36.model.*;
-import it.polimi.ingsw.GC_36.model.effects.immediateEffects.*;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects
+		.ImmediateCouncilPrivileges;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects
+		.ImmediateResourceList;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects
+		.ResourceListBasedOnOwnedResources;
 import it.polimi.ingsw.GC_36.model.effects.permanentEffects.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
@@ -87,10 +92,13 @@ public class Generator {
 		System.out.print("Insert name: ");
 		name = input.nextLine();
 		devCard.addProperty("name", name);
-
-		List<ResourcesList> requirements = this.buildResourcesListList();
-		devCard.add("requirementsList",
-				gson.fromJson(gson.toJson(requirements), JsonElement.class));
+		System.out.println("Is it need requirements: ");
+		if ("y".equals(input.nextLine())) {
+			List<ResourcesList> requirements = this.buildResourcesListList();
+			devCard.add("requirementsList",
+					gson.fromJson(gson.toJson(requirements),
+							JsonElement.class));
+		}
 
 		JsonObject immediateEffect = buildImmediateEffect();
 		devCard.add("immediateEffect", immediateEffect);
@@ -120,9 +128,6 @@ public class Generator {
 			System.out.println(content);
 			developmentCardList = new JsonParser().parse(
 					content).getAsJsonArray();
-			System.out.println(developmentCardList.get(0).getAsJsonObject()
-					.get(
-							"name").getAsString());
 		}
 		System.out.print(
 				"Do you want to insert period and type only one time? (y/n) ");
@@ -159,7 +164,7 @@ public class Generator {
 		serializedString = encoder.serialize(developmentCardList);
 		FileWriter file = null;
 		try {
-			file = new FileWriter("cards.json", true);
+			file = new FileWriter("cards.json");
 			file.write(serializedString);
 
 		} catch (IOException ex) {
@@ -250,9 +255,9 @@ public class Generator {
 	public void createActionSpaces() throws IOException {
 		Scanner input = new Scanner(System.in);
 		String choose;
-		int actionId = 0, floorNumber, towerNumber;
+		int actionId = 0, floorNumber, requiredActionValue;
 		boolean isSingle;
-		ResourcesList resourcesList;
+		ResourcesList resourcesList = null;
 
 		JsonElement bonus;
 		JsonObject properties;
@@ -260,8 +265,13 @@ public class Generator {
 		do {
 			System.out.print("Insert action ID: ");
 			actionId = Integer.parseInt(input.nextLine());
-			System.out.println("Insert bonus ");
-			resourcesList = buildResourcesList();
+			System.out.print("Insert required action value: ");
+			requiredActionValue = Integer.parseInt(input.nextLine());
+			System.out.print("Bonus? ");
+			if ("y".equals(input.nextLine())) {
+				System.out.println("Insert bonus ");
+				resourcesList = buildResourcesList();
+			}
 			System.out.println("Insert associated floor number");
 			floorNumber = Integer.parseInt(input.nextLine());
 			System.out.println("Insert if is it single: (y/n)");
@@ -270,7 +280,8 @@ public class Generator {
 			bonus = gson.fromJson(gson.toJson(resourcesList),
 					JsonElement.class);
 			properties = new JsonObject();
-			properties.addProperty("requiredActionValue", actionId);
+			properties.addProperty("actionId", actionId);
+			properties.addProperty("requiredActionValue", requiredActionValue);
 			properties.add("bonus", bonus);
 			properties.addProperty("floorNumber", floorNumber);
 			properties.addProperty("isSingle", isSingle);
@@ -466,38 +477,31 @@ public class Generator {
 		}
 	}
 
+	public ImmediateResourceList buildImmediateResourceListImm() {
+		Scanner input = new Scanner(System.in);
+		String temp;
+
+		System.out.println("Insert resourcesList: ");
+		ResourcesList resourcesList = buildResourcesList();
+
+		return new ImmediateResourceList(resourcesList);
+	}
+
 	public JsonObject buildImmediateEffect() {
 		Scanner input = new Scanner(System.in);
 
 		System.out.println(
-				"\n\t1. ExtraProduction\n\t2. ExtraTurnHarvest\n\t3. " +
+				"ImmediateEffect: \n\t1. ExtraProduction\n\t2. " +
+						"ExtraTurnHarvest\n\t3. " +
 						"ExtraTurnTower\n\t4. ImmediateCouncilPrivileges\n\t5." +
 						" ImmediateResourcesList\n\t6. " +
-						"ResourceListBasedOnOwedResources");
+						"ResourceListBasedOnOwedResources\nInsert:");
 		JsonObject jsonObject = new JsonObject();
 		int choose = Integer.parseInt(input.nextLine());
 		switch (choose) {
-			case 1:
-				jsonObject.addProperty("EffectType",
-						"ExtraProduction");
-				jsonObject.add("EffectBody", gson.fromJson(
-						gson.toJson(buildExtraProduction()),
-						JsonElement.class));
-				return jsonObject;
-			case 2:
-				jsonObject.addProperty("EffectType",
-						"ExtraTurnHarvest");
-				jsonObject.add("EffectBody", gson.fromJson(
-						gson.toJson(buildExtraTurnHarvest()),
-						JsonElement.class));
-				return jsonObject;
-			case 3:
-				jsonObject.addProperty("EffectType",
-						"ExtraTurnTower");
-				jsonObject.add("EffectBody", gson.fromJson(
-						gson.toJson(buildExtraTurnTower()),
-						JsonElement.class));
-				return jsonObject;
+			case 0:
+				return null;
+
 			case 4:
 				jsonObject.addProperty("EffectType",
 						"ImmediateCouncilPrivileges");
@@ -509,7 +513,7 @@ public class Generator {
 				jsonObject.addProperty("EffectType",
 						"ImmediateResourceList");
 				jsonObject.add("EffectBody", gson.fromJson(
-						gson.toJson(buildImmediateResourceListPerm()),
+						gson.toJson(buildImmediateResourceListImm()),
 						JsonElement.class));
 				return jsonObject;
 			case 6:
@@ -600,46 +604,22 @@ public class Generator {
 		return actionSpaces;
 	}
 
-	public ExtraProduction buildExtraProduction() {
-		return new ExtraProduction(buildActionSpaces());
-	}
-
-	public ExtraTurnHarvest buildExtraTurnHarvest() {
-		return new ExtraTurnHarvest(buildActionSpaces());
-	}
-
-	public ExtraTurnTower buildExtraTurnTower() {
-		Scanner input = new Scanner(System.in);
-		Set<ActionSpaceIds> actionSpaces = buildActionSpaces();
-		System.out.println("Insert action value: ");
-		int actionValue = Integer.parseInt(input.nextLine());
-		return new ExtraTurnTower(actionSpaces, actionValue);
-	}
-
-	public ImmediateResourceList buildImmediateResourceListImm() {
-		Scanner input = new Scanner(System.in);
-		String temp;
-
-		System.out.println("Insert resourcesList: ");
-		ResourcesList resourcesList = buildResourcesList();
-
-		return new ImmediateResourceList(resourcesList);
-	}
-
 	private JsonObject buildPermanentEffect() {
 		Scanner input = new Scanner(System.in);
 
 		System.out.println(
-				"\n\t1. ActionSpaceModifier\n\t2. " +
+				"Permanent Effect:\n\t1. ActionSpaceModifier\n\t2. " +
 						"CardRequirementsModifier\n\t3. " +
 						"HarvestWorkValueModifier\n\t4. " +
 						"ImmediateResourcesList\n\t5. " +
 						"ProductionWorkValueModifier\n\t6. " +
 						"ResourcesListBaseOnOwnedCards\n\t7. " +
-						"ResourcesConverting");
+						"ResourcesConverting\nInsert:");
 		JsonObject jsonObject = new JsonObject();
 		int choose = Integer.parseInt(input.nextLine());
 		switch (choose) {
+			case 0:
+				return null;
 			case 1:
 				jsonObject.addProperty("EffectType",
 						"ActionSpaceModifier");
@@ -719,7 +699,8 @@ public class Generator {
 	}
 
 	private CardRequirementsModifier buildCardRequirementsModifier() {
-		return new CardRequirementsModifier();
+		return null;
+		//return new CardRequirementsModifier();
 	}
 
 	private HarvestWorkValueModifier buildHarvestWorkValueModifier() {
@@ -737,19 +718,15 @@ public class Generator {
 		ResourcesList resourcesList2 = buildResourcesList();
 		System.out.println("Insert required action value: ");
 		int requiredActionValue = Integer.parseInt(input.nextLine());
-		System.out.println("Insert integer: ");
-		int tmp = Integer.parseInt(input.nextLine());
 		Pair pair = new Pair(resourcesList1, resourcesList2);
 		HashMap<Integer, Pair<ResourcesList, ResourcesList>> option = new
 				HashMap<>();
 		int count = 0;
-		String choice;
 		do {
 			option.put(count, pair);
 			count++;
 			System.out.println("Insert another pair?");
-			choice = input.nextLine();
-		} while ("y".equals(choice));
+		} while ("y".equals(input.nextLine()));
 		return new ResourcesConverting(requiredActionValue, option);
 	}
 

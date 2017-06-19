@@ -8,7 +8,12 @@ import it.polimi.ingsw.GC_36.model.DevelopmentCard;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
-import it.polimi.ingsw.GC_36.model.effects.immediateEffects.*;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects
+		.ImmediateCouncilPrivileges;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects
+		.ImmediateResourceList;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects
+		.ResourceListBasedOnOwnedResources;
 import it.polimi.ingsw.GC_36.model.effects.permanentEffects.*;
 
 import java.util.ArrayList;
@@ -44,12 +49,7 @@ public class Converter {
 	                                              String effectBody) {
 		Decoder decoder = new Decoder();
 		switch (effectType) {
-			case "ExtraProduction":
-				return decoder.deserialize(effectBody, ExtraProduction.class);
-			case "ExtraTurnHarvest":
-				return decoder.deserialize(effectBody, ExtraTurnHarvest.class);
-			case "ExtraTurnTower":
-				return decoder.deserialize(effectBody, ExtraTurnTower.class);
+
 			case "ImmediateCouncilPrivilege":
 				return decoder.deserialize(effectBody,
 						ImmediateCouncilPrivileges.class);

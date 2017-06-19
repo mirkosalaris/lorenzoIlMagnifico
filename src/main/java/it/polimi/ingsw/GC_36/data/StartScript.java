@@ -1,9 +1,6 @@
 package it.polimi.ingsw.GC_36.data;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
@@ -23,8 +20,8 @@ import java.util.logging.Logger;
 import static it.polimi.ingsw.GC_36.utils.ExceptionLogger.log;
 import static java.nio.charset.Charset.defaultCharset;
 
-public class Main {
-	private Main() {}
+public class StartScript {
+	private StartScript() {}
 
 	public static void main(String[] args) throws IOException {
 		Generator g = new Generator();
@@ -185,6 +182,25 @@ public class Main {
 						d.deserialize(serializedString, JsonObject.class));
 				System.out.println(e.serialize(dv));
 				//g.buildResourceListBasedOnOwnedResources();
+				break;
+			case 11:
+				g.createDevelopmentCard();
+				break;
+			case 12:
+				g.createActionSpaces();
+				break;
+			case 13:
+				g.createCommons();
+				break;
+			case 14:
+				if (new File("cards.json").exists()) {
+					String content = g.readFile("cards.json",
+							Charset.defaultCharset());
+					JsonArray devCardList = new JsonParser().parse(
+							content).getAsJsonArray();
+					g.createDeckSetList(devCardList);
+
+				}
 				break;
 		}
 	}

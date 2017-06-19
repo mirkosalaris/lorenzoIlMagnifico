@@ -8,20 +8,20 @@ import java.util.List;
 public class Checker {
 	private Action action;
 
-	public boolean check(Action action, ResourcesList paymentList) {
+	public boolean check(Action action) {
 		Player player = Game.getInstance().getCurrentPeriod()
 				.getCurrentRound().getCurrentPlayer();
 		ResourcesList playerResources = player.getPersonalBoard()
 				.getResourcesList();
 
-		return check(action, paymentList, playerResources);
+		return check(action, playerResources);
 	}
 
-	private boolean check(Action action, ResourcesList paymentList,
-	                      ResourcesList playerResources) {
+	private boolean check(Action action, ResourcesList playerResources) {
 		Player player = Game.getInstance().getCurrentPeriod()
 				.getCurrentRound().getCurrentPlayer();
 		ActionSpaceIds id = action.getActionSpaceId();
+		ResourcesList paymentList = action.compilePaymentList();
 
 		//check if familyMember is available
 		if (!checkFamilyMember(action.getMemberColor(), player)) {
@@ -93,8 +93,9 @@ public class Checker {
 				.getCards(CardType.BUILDING);
 		for (DevelopmentCard card : buildingsCard) {
 			// TODO @antonino
-			//if (!card.getPermanentEffect().check(action, playerResources))
-			//	return false;
+			if (!card.getPermanentEffect().check(action, playerResources)) {
+				//	return false;
+			}
 
 		}
 		return true;

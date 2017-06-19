@@ -16,6 +16,7 @@ public class Tower {
 
 		for (int i = 0; i < floors.length; i++) {
 			floors[i] = new Floor(this, i + 1);
+			tax = Commons.getTax();
 		}
 	}
 

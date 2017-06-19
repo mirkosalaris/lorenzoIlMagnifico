@@ -57,5 +57,10 @@ public class ImmediateResourcesList extends PermanentEffect {
 		}
 	}
 
+	@Override
+	public boolean check(Action action, ResourcesList playerResources) {
+		return false;
+	}
+
 
 }

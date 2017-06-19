@@ -40,7 +40,8 @@ public class Decoder {
 	public List<Map<String, Object>> buildActionSpace(String
 			                                                  serializedString) {
 		int requiredActionValue, floorNumber;
-		ResourcesList bonus;
+		boolean isSingle;
+		ResourcesList bonus = null;
 		JsonArray jsonArray = new JsonParser().parse(
 				serializedString).getAsJsonArray();
 		List<Map<String, Object>> list = new ArrayList<>();
@@ -48,21 +49,33 @@ public class Decoder {
 			Map<String, Object> map = new HashMap<>();
 			requiredActionValue = jsonArray.get(i).getAsJsonObject().get(
 					"requiredActionValue").getAsInt();
-			bonus = this.deserialize(gson.toJson(
-					jsonArray.get(i).getAsJsonObject().get(
-							"bonus").getAsJsonObject()), ResourcesList.class);
+			if (jsonArray.get(i).getAsJsonObject().has(
+					"bonus")) {
+				bonus = this.deserialize(gson.toJson(
+						jsonArray.get(i).getAsJsonObject().get(
+								"bonus").getAsJsonObject()),
+						ResourcesList.class);
+			}
 			floorNumber = jsonArray.get(i).getAsJsonObject().get(
 					"floorNumber").getAsInt();
+			isSingle = jsonArray.get(i).getAsJsonObject().get(
+					"isSingle").getAsBoolean();
 
 			map.put("requiredActionValue", requiredActionValue);
 			map.put("bonus", bonus);
 			map.put("floorNumber", floorNumber);
+			map.put("isSingle", isSingle);
 			list.add(map);
 		}
 		return list;
 	}
 
-	public List<ResourcesList> buildPersonalBoardList(String serializedString) {
+	public ResourcesList buildTax(String serializeString) {
+		return this.deserialize(serializeString, ResourcesList.class);
+	}
+
+	public List<ResourcesList> buildPersonalBoardList(String
+			                                                  serializedString) {
 		JsonArray jsonArray = new JsonParser().parse(
 				serializedString).getAsJsonArray();
 		List<ResourcesList> resourcesListList = new ArrayList<>();
@@ -108,5 +121,6 @@ public class Decoder {
 		}.getType();
 		return new Gson().fromJson(serializedString, collectionType);
 	}
+
 
 }

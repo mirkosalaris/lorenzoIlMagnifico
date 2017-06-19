@@ -3425,757 +3425,428 @@
   ],
   "actionSpaces": [
     {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-    {
-      "requiredActionValue": 2,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 2
-          },
-          "STONE": {
-            "value": 2
-          },
-          "SERVANT": {
-            "value": 2
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 2
-          },
-          "FAITH_POINTS": {
-            "value": 2
-          },
-          "MILITARY_POINTS": {
-            "value": 2
-          }
-        }
-      },
-      "floorNumber": 2,
+      "actionId": 0,
+      "requiredActionValue": 1,
+      "floorNumber": 0,
       "isSingle": false
     },
     {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
+      "actionId": 1,
+      "requiredActionValue": 1,
       "floorNumber": 1,
       "isSingle": true
     },
     {
-      "requiredActionValue": 2,
+      "actionId": 2,
+      "requiredActionValue": 3,
+      "floorNumber": 2,
+      "isSingle": true
+    },
+    {
+      "actionId": 3,
+      "requiredActionValue": 5,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 1
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "floorNumber": 3,
+      "isSingle": true
+    },
+    {
+      "actionId": 4,
+      "requiredActionValue": 7,
       "bonus": {
         "map": {
           "WOOD": {
             "value": 2
           },
           "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "floorNumber": 4,
+      "isSingle": true
+    },
+    {
+      "actionId": 5,
+      "requiredActionValue": 1,
+      "floorNumber": 1,
+      "isSingle": true
+    },
+    {
+      "actionId": 6,
+      "requiredActionValue": 3,
+      "floorNumber": 2,
+      "isSingle": true
+    },
+    {
+      "actionId": 7,
+      "requiredActionValue": 5,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 1
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "floorNumber": 3,
+      "isSingle": true
+    },
+    {
+      "actionId": 8,
+      "requiredActionValue": 7,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
             "value": 2
           },
           "SERVANT": {
-            "value": 2
+            "value": 0
           },
           "COINS": {
-            "value": 2
+            "value": 0
           },
           "VICTORY_POINTS": {
-            "value": 2
+            "value": 0
           },
           "FAITH_POINTS": {
-            "value": 2
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "floorNumber": 4,
+      "isSingle": true
+    },
+    {
+      "actionId": 9,
+      "requiredActionValue": 1,
+      "floorNumber": 1,
+      "isSingle": true
+    },
+    {
+      "actionId": 10,
+      "requiredActionValue": 3,
+      "floorNumber": 2,
+      "isSingle": true
+    },
+    {
+      "actionId": 11,
+      "requiredActionValue": 5,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 1
+          }
+        }
+      },
+      "floorNumber": 3,
+      "isSingle": true
+    },
+    {
+      "actionId": 12,
+      "requiredActionValue": 7,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
           },
           "MILITARY_POINTS": {
             "value": 2
           }
         }
       },
+      "floorNumber": 4,
+      "isSingle": true
+    },
+    {
+      "actionId": 13,
+      "requiredActionValue": 1,
+      "floorNumber": 1,
+      "isSingle": true
+    },
+    {
+      "actionId": 14,
+      "requiredActionValue": 3,
       "floorNumber": 2,
+      "isSingle": true
+    },
+    {
+      "actionId": 15,
+      "requiredActionValue": 5,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 1
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "floorNumber": 3,
+      "isSingle": true
+    },
+    {
+      "actionId": 16,
+      "requiredActionValue": 7,
+      "bonus": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 2
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "floorNumber": 4,
+      "isSingle": true
+    },
+    {
+      "actionId": 17,
+      "requiredActionValue": 1,
+      "floorNumber": 0,
+      "isSingle": true
+    },
+    {
+      "actionId": 18,
+      "requiredActionValue": 1,
+      "floorNumber": 0,
       "isSingle": false
     },
     {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
+      "actionId": 19,
+      "requiredActionValue": 1,
+      "floorNumber": 0,
       "isSingle": true
     },
     {
-      "requiredActionValue": 2,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 2
-          },
-          "STONE": {
-            "value": 2
-          },
-          "SERVANT": {
-            "value": 2
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 2
-          },
-          "FAITH_POINTS": {
-            "value": 2
-          },
-          "MILITARY_POINTS": {
-            "value": 2
-          }
-        }
-      },
-      "floorNumber": 2,
+      "actionId": 20,
+      "requiredActionValue": 1,
+      "floorNumber": 0,
       "isSingle": false
     },
     {
-      "requiredActionValue": 0,
+      "actionId": 21,
+      "requiredActionValue": 1,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 1
+            "value": 0
           },
           "STONE": {
-            "value": 1
+            "value": 0
           },
           "SERVANT": {
-            "value": 1
+            "value": 0
           },
           "COINS": {
-            "value": 1
+            "value": 5
           },
           "VICTORY_POINTS": {
-            "value": 1
+            "value": 0
           },
           "FAITH_POINTS": {
-            "value": 1
+            "value": 0
           },
           "MILITARY_POINTS": {
-            "value": 1
+            "value": 0
           }
         }
       },
-      "floorNumber": 1,
+      "floorNumber": 0,
       "isSingle": true
     },
     {
-      "requiredActionValue": 2,
+      "actionId": 22,
+      "requiredActionValue": 1,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 2
+            "value": 0
           },
           "STONE": {
-            "value": 2
+            "value": 0
           },
           "SERVANT": {
-            "value": 2
+            "value": 5
           },
           "COINS": {
-            "value": 2
+            "value": 0
           },
           "VICTORY_POINTS": {
-            "value": 2
+            "value": 0
           },
           "FAITH_POINTS": {
-            "value": 2
+            "value": 0
           },
           "MILITARY_POINTS": {
-            "value": 2
+            "value": 0
           }
         }
       },
-      "floorNumber": 2,
-      "isSingle": false
-    },
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
+      "floorNumber": 0,
       "isSingle": true
     },
     {
-      "requiredActionValue": 2,
+      "actionId": 23,
+      "requiredActionValue": 1,
       "bonus": {
         "map": {
           "WOOD": {
-            "value": 2
+            "value": 0
           },
           "STONE": {
-            "value": 2
+            "value": 0
           },
           "SERVANT": {
-            "value": 2
+            "value": 0
           },
           "COINS": {
             "value": 2
           },
           "VICTORY_POINTS": {
-            "value": 2
+            "value": 0
           },
           "FAITH_POINTS": {
-            "value": 2
+            "value": 0
           },
           "MILITARY_POINTS": {
-            "value": 2
+            "value": 3
           }
         }
       },
-      "floorNumber": 2,
-      "isSingle": false
-    },
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
+      "floorNumber": 0,
       "isSingle": true
     },
     {
-      "requiredActionValue": 2,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 2
-          },
-          "STONE": {
-            "value": 2
-          },
-          "SERVANT": {
-            "value": 2
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 2
-          },
-          "FAITH_POINTS": {
-            "value": 2
-          },
-          "MILITARY_POINTS": {
-            "value": 2
-          }
-        }
-      },
-      "floorNumber": 2,
-      "isSingle": false
-    },
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-    {
-      "requiredActionValue": 2,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 2
-          },
-          "STONE": {
-            "value": 2
-          },
-          "SERVANT": {
-            "value": 2
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 2
-          },
-          "FAITH_POINTS": {
-            "value": 2
-          },
-          "MILITARY_POINTS": {
-            "value": 2
-          }
-        }
-      },
-      "floorNumber": 2,
-      "isSingle": false
-    },
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-    {
-      "requiredActionValue": 2,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 2
-          },
-          "STONE": {
-            "value": 2
-          },
-          "SERVANT": {
-            "value": 2
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 2
-          },
-          "FAITH_POINTS": {
-            "value": 2
-          },
-          "MILITARY_POINTS": {
-            "value": 2
-          }
-        }
-      },
-      "floorNumber": 2,
-      "isSingle": false
-    },
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-    {
-      "requiredActionValue": 2,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 2
-          },
-          "STONE": {
-            "value": 2
-          },
-          "SERVANT": {
-            "value": 2
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 2
-          },
-          "FAITH_POINTS": {
-            "value": 2
-          },
-          "MILITARY_POINTS": {
-            "value": 2
-          }
-        }
-      },
-      "floorNumber": 2,
-      "isSingle": false
-    },
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
-      "isSingle": true
-    },
-    {
-      "requiredActionValue": 2,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 2
-          },
-          "STONE": {
-            "value": 2
-          },
-          "SERVANT": {
-            "value": 2
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 2
-          },
-          "FAITH_POINTS": {
-            "value": 2
-          },
-          "MILITARY_POINTS": {
-            "value": 2
-          }
-        }
-      },
-      "floorNumber": 2,
-      "isSingle": false
-    },
-    {
-      "requiredActionValue": 0,
-      "bonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 1
-          },
-          "VICTORY_POINTS": {
-            "value": 1
-          },
-          "FAITH_POINTS": {
-            "value": 1
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      },
-      "floorNumber": 1,
+      "actionId": 24,
+      "requiredActionValue": 1,
+      "floorNumber": 0,
       "isSingle": true
     }
   ],

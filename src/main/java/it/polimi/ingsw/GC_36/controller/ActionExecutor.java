@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.controller;
 
-import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
 import it.polimi.ingsw.GC_36.model.*;
@@ -18,7 +17,7 @@ public class ActionExecutor {
 
 	public boolean execute(Action action) {
 		// we should pass a copy of paymentList, but we don't use it anymore
-		if (!checker.check(action, compilePaymentList(action))) {
+		if (!checker.check(action)) {
 			return false;
 		}
 
@@ -28,14 +27,14 @@ public class ActionExecutor {
 	private boolean execute(Action action, boolean alreadyChecked) {
 		// TODO: manage action value. How do we take into account penalties?
 
-		ResourcesList paymentList = compilePaymentList(action);
+		ResourcesList paymentList = action.compilePaymentList();
 		/* NB: there's no way to 'share' the paymentList between the two
 		execute() methods, because this method is called even for extraTurn,
 		and the paymentList would be different.
 		 */
 
 		if (!alreadyChecked) {
-			if (!checker.check(action, compilePaymentList(action).copy())) {
+			if (!checker.check(action)) {
 				return false;
 			}
 		}
@@ -82,51 +81,6 @@ public class ActionExecutor {
 		}
 
 		return true;
-	}
-
-	/**
-	 * compile the whole list of resources to pay, taking into account tower
-	 * taxes, development card, increased action value.
-	 * NB: this does not take into account the ExtraAction!
-	 *
-	 * @param action
-	 * 		the user's action
-	 * @return the resourcesList to pay
-	 */
-	private ResourcesList compilePaymentList(Action action) {
-		ResourcesList paymentList = new ResourcesList();
-		ActionSpaceIds id = action.getActionSpaceId();
-
-
-		if (Commons.isFloor(id)) {
-			Tower tower = Game.getInstance().getBoard().getActionSpace(
-					id).getAssociatedFloor().getAssociatedTower();
-
-			if (!(tower.isFree())) {
-				// the tower is not free, pay the tax
-				paymentList.addResources(tower.getTax());
-			}
-			DevelopmentCard card = Game.getInstance().getBoard()
-					.getActionSpace(
-							id).getAssociatedFloor().readAssociatedCard();
-
-			// get from action the user's choice on how to pay the card
-			int choice = action.getCardPaymentOption();
-
-			// take the resourcesList associated with the user's choice
-			ResourcesList cardPayment = card.getRequirements().get(choice);
-
-			// add to the payment list
-			paymentList.addResources(cardPayment);
-		}
-
-		// pay the extra servants used to increase the action value
-		ResourcesList actionValuePayment = new ResourcesList();
-		actionValuePayment.set(ResourceType.SERVANT,
-				action.getActionValueIncrement());
-		paymentList.addResources(actionValuePayment);
-
-		return paymentList;
 	}
 
 	private boolean isProduction(ActionSpace actionSpace) {

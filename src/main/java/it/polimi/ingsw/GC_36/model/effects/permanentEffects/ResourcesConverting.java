@@ -73,6 +73,11 @@ public class ResourcesConverting extends PermanentEffect {
 		action.addProductionChoice(choice);
 	}
 
+	@Override
+	public boolean check(Action action, ResourcesList playerResources) {
+		return false;
+	}
+
 	private boolean checkChoice(int choice) {
 		return (choice >= 0 && choice < options.size());
 	}

@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.Player;
+import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
 public class ProductionWorkValueModifier extends PermanentEffect {
@@ -20,6 +21,11 @@ public class ProductionWorkValueModifier extends PermanentEffect {
 
 	@Override
 	public boolean isDoable(int requiredActionValue, Action action) {
+		return false;
+	}
+
+	@Override
+	public boolean check(Action action, ResourcesList playerResources) {
 		return false;
 	}
 }

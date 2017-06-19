@@ -68,5 +68,10 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 
 	}
 
+	@Override
+	public boolean check(Action action, ResourcesList playerResources) {
+		return false;
+	}
+
 
 }
