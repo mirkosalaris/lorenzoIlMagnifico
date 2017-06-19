@@ -100,6 +100,13 @@ public class CommunicatorSocket implements Communicator {
 				user.update((BoardState) entry.getValue());
 				break;
 
+			case "changeDie":
+				params = (List<Object>) entry.getValue();
+				DieColor color = (DieColor) params.get(0);
+				int value = (int) params.get(1);
+				user.update(color, value);
+				break;
+
 			case "updatePlayerState":
 				user.update((PlayerState) entry.getValue());
 				break;

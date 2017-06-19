@@ -117,6 +117,11 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
+	public void update(DieColor dieColor, int value) throws IOException {
+
+	}
+
+	@Override
 	public void update(PlayerState newState) {
 
 	}

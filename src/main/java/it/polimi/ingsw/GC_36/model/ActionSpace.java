@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
 import it.polimi.ingsw.GC_36.observers.ActionSpaceObserver;
 
 import java.io.IOException;
@@ -37,14 +38,18 @@ public class ActionSpace {
 		free = true;
 	}
 
-	public void occupy(FamilyMember member) {
+	public void occupy(FamilyMember member)
+			throws NotCorrectlyCheckedException {
 		if (free) {
 			familyMembers.add(member);
 			member.setLocation(this.id);
 			if (isSingle) {
 				free = false;
 			}
-		} // TODO @mirko and if is not free
+		} else {
+			throw new NotCorrectlyCheckedException(
+					"ActionSpace is not available");
+		}
 	}
 
 	public boolean isAvailable() {

@@ -284,6 +284,12 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
+	public void update(DieColor dieColor, int value) throws IOException {
+		System.out.println("new Die value:\n"
+				+ "\tdie color: " + dieColor + ", new value: " + value);
+	}
+
+	@Override
 	public void update(PlayerState newState) {
 		System.out.println("new Player State: " + newState);
 	}

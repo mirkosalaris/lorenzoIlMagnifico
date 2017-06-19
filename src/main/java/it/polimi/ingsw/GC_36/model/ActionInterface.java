@@ -25,16 +25,13 @@ public interface ActionInterface extends Serializable, Remote {
 
 	void setActionValueIncrement(int increment) throws RemoteException;
 
-	void setCouncilPrivilegeList(List<Integer> privilegeList)
-			throws RemoteException;
-
 	public MemberColor getMemberColor() throws RemoteException;
 
 	ActionSpaceIds getActionSpaceId() throws RemoteException;
 
 	void putPrivilegeChoice(int choice) throws RemoteException;
 
-	List<Integer> getCouncilPrivilegeList() throws RemoteException;
+	List<CouncilPrivilege> getCouncilPrivilegeList() throws RemoteException;
 
 	public void copyFrom(ActionInterface original) throws RemoteException;
 

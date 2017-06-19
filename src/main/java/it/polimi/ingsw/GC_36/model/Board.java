@@ -70,8 +70,11 @@ public class Board {
 		}
 
 		setCurrentState(BoardState.PREPARING);
+
 		this.deckSet = deckSet;
 		prepareFloors();
+		rollDice();
+
 		setCurrentState(BoardState.READY);
 	}
 
@@ -103,6 +106,43 @@ public class Board {
 
 	public TurnOrder getTurnOrder() {
 		return turnOrder;
+	}
+
+	public Tower getTower(CardType cardType) {
+		return towers.get(cardType);
+	}
+
+	public void rollDice() throws IOException {
+		for (Die die : dice.values()) {
+			die.roll();
+		}
+
+		changeDieNotify();
+	}
+
+	public void subscribe(BoardObserver o) {
+		boardObservers.add(o);
+	}
+
+	public void subscribe(ModelObserver o) {
+		boardObservers.add(o);
+
+		// subscribe to actionSpaces
+		for (ActionSpace as : actionSpaces.values()) {
+			as.subscribe(o);
+		}
+
+		// subscribe to Floors
+		for (Tower tower : towers.values()) {
+			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
+				tower.getFloor(i + 1).subscribe(o);
+			}
+		}
+
+		for (Player p : players.values()) {
+			p.subscribe(o);
+		}
+
 	}
 
 	private Map<CardType, Tower> initTowers() {
@@ -137,44 +177,21 @@ public class Board {
 		newStateNotify();
 	}
 
-	public void subscribe(BoardObserver o) {
-		boardObservers.add(o);
-	}
-
-	public void subscribe(ModelObserver o) {
-		boardObservers.add(o);
-
-		// subscribe to actionSpaces
-		for (ActionSpace as : actionSpaces.values()) {
-			as.subscribe(o);
-		}
-
-		// subscribe to Floors
-		for (Tower tower : towers.values()) {
-			for (int i = 0; i < Commons.NUMBER_OF_FLOORS; i++) {
-				tower.getFloor(i + 1).subscribe(o);
-			}
-		}
-
-		for (Player p : players.values()) {
-			p.subscribe(o);
-		}
-
-	}
-
 	private void newStateNotify() throws IOException {
 		for (BoardObserver o : boardObservers) {
 			o.update(currentState);
 		}
 	}
 
-	public Tower getTower(CardType cardType) {
-		return towers.get(cardType);
+	private void changeDieNotify() throws IOException {
+		for (BoardObserver o : boardObservers) {
+			for (Die die : dice.values()) {
+				o.update(die.getDieColor(), die.getValue());
+			}
+		}
 	}
 
-	public void rollDice() {
-		for (Die die : dice.values()) {
-			die.roll();
-		}
+	public Map<PlayerColor, Player> getPlayers() {
+		return players;
 	}
 }

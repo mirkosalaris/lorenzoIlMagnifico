@@ -13,13 +13,22 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	private ActionSpaceIds actionSpaceIds;
 	private int actionValueIncrement;
 	private int cardPaymentOptions; //parte da zero
-	private List<Integer> councilPrivilegeList;
+	private List<CouncilPrivilege> councilPrivilegeList;
 	private ExtraAction extraAction;
 	private ArrayList<Integer> productionChoice;
+	private int baseActionValue;
+	private ResourcesList discount;
 
 	public Action() throws RemoteException {
-
 		productionChoice = new ArrayList<>();
+		councilPrivilegeList = new ArrayList<>();
+	}
+
+	public Action(int baseActionValue, ResourcesList discount)
+			throws RemoteException {
+		this();
+		this.baseActionValue = baseActionValue;
+		this.discount = discount;
 	}
 
 	@Override
@@ -50,11 +59,6 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
-	public void setCouncilPrivilegeList(List<Integer> privilegeList) {
-		this.councilPrivilegeList = privilegeList;
-	}
-
-	@Override
 	public MemberColor getMemberColor() {
 		return memberColor;
 		//TODO:associated test replacing getFamilyMemberTest
@@ -67,11 +71,11 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 
 	@Override
 	public void putPrivilegeChoice(int choice) {
-		councilPrivilegeList.add(choice);
+		councilPrivilegeList.add(CouncilPrivilege.values()[choice]);
 	}
 
 	@Override
-	public List<Integer> getCouncilPrivilegeList() {
+	public List<CouncilPrivilege> getCouncilPrivilegeList() {
 		return councilPrivilegeList;
 	}
 
@@ -106,7 +110,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	@Override
 	public int getActionValue(Player player) {
 		int memberValue = player.getFamilyMember(memberColor).getValue();
-		return memberValue + actionValueIncrement;
+		return baseActionValue + memberValue + actionValueIncrement;
 	}
 
 	@Override
@@ -150,7 +154,6 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		ResourcesList paymentList = new ResourcesList();
 		ActionSpaceIds id = this.actionSpaceIds;
 
-
 		if (Commons.isFloor(id)) {
 			Tower tower = Game.getInstance().getBoard().getActionSpace(
 					id).getAssociatedFloor().getAssociatedTower();
@@ -178,6 +181,14 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		actionValuePayment.set(ResourceType.SERVANT, actionValueIncrement);
 		paymentList.addResources(actionValuePayment);
 
+		if (discount != null) {
+			paymentList.applyDiscount(discount);
+		}
+
 		return paymentList;
+	}
+
+	public int getBaseActionValue() {
+		return baseActionValue;
 	}
 }

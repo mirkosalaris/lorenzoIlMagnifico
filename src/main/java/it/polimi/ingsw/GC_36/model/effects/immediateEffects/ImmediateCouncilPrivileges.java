@@ -1,6 +1,5 @@
 package it.polimi.ingsw.GC_36.model.effects.immediateEffects;
 
-import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
@@ -39,10 +38,9 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 				//TODO:mossa non valida
 			} else {
 				// add resources
-				for (Integer key : action.getCouncilPrivilegeList()) {
+				for (CouncilPrivilege key : action.getCouncilPrivilegeList()) {
 
-					ResourcesList favor = Commons.getPrivilege(
-							action.getCouncilPrivilegeList().get(key));
+					ResourcesList favor = key.getResources();
 
 					try {
 						player.getPersonalBoard().addResources(favor);
@@ -72,10 +70,9 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 		}
 	}
 
-	private boolean allDifferent(List<Integer> list) {
-		HashSet<Integer> set = new HashSet<>(list);
+	private boolean allDifferent(List<CouncilPrivilege> list) {
+		HashSet<CouncilPrivilege> set = new HashSet<>(list);
 		return list.size() == set.size();
-
 	}
 
 	private boolean isValid(int choice) {

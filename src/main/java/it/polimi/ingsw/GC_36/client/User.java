@@ -8,10 +8,7 @@ import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class User extends UnicastRemoteObject implements UserInterface {
 	private transient ViewInterface view;
@@ -27,6 +24,10 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		cards = new EnumMap<>(ActionSpaceIds.class);
 		actionSpaces = new EnumMap<>(ActionSpaceIds.class);
 		ownedCards = new EnumMap<>(CardType.class);
+
+		for (CardType type : CardType.values()) {
+			ownedCards.put(type, new ArrayList<>());
+		}
 	}
 
 	@Override
@@ -46,6 +47,17 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		chooseMemberColor(action);
 		chooseActionSpace(action);
+		setActionValueIncrement(action);
+		if (action.getActionSpaceId().isInFloor()) {
+			chooseCardPaymentOptions(action);
+		}
+		actionSpaceHandler(action);
+	}
+
+	public void play(ExtraAction action)
+			throws IOException, ClassNotFoundException {
+
+		chooseActionSpace(action, action.getActionSpacesIds());
 		setActionValueIncrement(action);
 		if (action.getActionSpaceId().isInFloor()) {
 			chooseCardPaymentOptions(action);
@@ -75,6 +87,11 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	public void update(BoardState currentState) throws IOException {
 		// TODO think and impl
 		view.update(currentState);
+	}
+
+	public void update(DieColor dieColor, int value) throws IOException {
+		// TODO think and impl
+		view.update(dieColor, value);
 	}
 
 	@Override
@@ -136,7 +153,6 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void update(DevelopmentCard card) throws IOException {
-		// TODO @mirko the list does not exist, nullPointerException
 		ownedCards.get(card.getType()).add(card);
 		view.update(card);
 	}
@@ -165,6 +181,12 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	private void chooseActionSpace(ActionInterface action)
+			throws RemoteException {
+		chooseActionSpace(action, null);
+	}
+
+	private void chooseActionSpace(ActionInterface action,
+	                               Set<ActionSpaceIds> actionSpaces)
 			throws RemoteException {
 		int id;
 		boolean wrong = true;

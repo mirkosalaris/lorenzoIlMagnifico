@@ -10,9 +10,7 @@ import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Game {
 	private static ThreadLocal<Game> threadInstance = null;
@@ -131,8 +129,10 @@ public class Game {
 	public void finalScoring() throws IOException {
 		setCurrentState(GameState.SCORING);
 
-		// TODO: impl the action to communicate the winner
-		Scorer.calculate();
+		List<Player> playerList = new ArrayList<>(board.getPlayers().values());
+		List<Player> playersWinningList = Scorer.calculate(playerList);
+
+		// TODO @mirko: impl the action to communicate the winner
 
 		setCurrentState(GameState.FINISHED);
 	}

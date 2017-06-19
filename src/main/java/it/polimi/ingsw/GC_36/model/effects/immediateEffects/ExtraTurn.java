@@ -26,10 +26,15 @@ public class ExtraTurn implements ImmediateEffect {
 	public void chooseOptions(ViewInterface view, ActionInterface action,
 	                          User user)
 			throws IOException, ClassNotFoundException {
-		ExtraAction extraAction = new ExtraAction(actionSpaces);
+		// TODO @antonino: change null to a real discount
+		ExtraAction extraAction =
+				new ExtraAction(actionSpaces, baseActionValue, null);
 		user.play(extraAction);
 		action.setExtraAction(extraAction);
 	}
 
 
 }
+
+
+

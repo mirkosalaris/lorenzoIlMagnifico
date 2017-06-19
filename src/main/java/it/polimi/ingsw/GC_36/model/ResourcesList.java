@@ -1,5 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
+import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
+
 import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -45,8 +47,32 @@ public class ResourcesList implements Serializable {
 	}
 
 	public void subtractResources(ResourcesList resources) {
-		for (ResourceType key : this.map.keySet()) {
-			this.get(key).subtract(resources.get(key).getValue());
+		try {
+			for (ResourceType key : this.map.keySet()) {
+				this.get(key).subtract(resources.get(key).getValue());
+			}
+		} catch (InsufficientResourcesException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void applyDiscount(ResourcesList discount) {
+		try {
+			for (ResourceType key : this.map.keySet()) {
+				int value = this.get(key).getValue();
+				int discountedValue = discount.get(key).getValue();
+
+				if (value > discountedValue) {
+					// apply the discount
+					this.get(key).subtract(discountedValue);
+				} else {
+					// set it to zero
+					this.get(key).subtract(value);
+				}
+			}
+		} catch (InsufficientResourcesException e) {
+			// this should not happen, never
+			throw new IllegalStateException("cannot apply discount", e);
 		}
 	}
 

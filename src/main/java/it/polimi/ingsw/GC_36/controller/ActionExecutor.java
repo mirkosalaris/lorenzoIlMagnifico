@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.controller;
 
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
+import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
 import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.IOException;
@@ -68,7 +69,12 @@ public class ActionExecutor {
 				executeHarvest(action, player);
 			}
 
-			// TODO @mirko council privileges
+			for (CouncilPrivilege privilege : action.getCouncilPrivilegeList
+					()) {
+				player.getPersonalBoard().addResources(
+						privilege.getResources());
+			}
+
 
 			Action extraAction = action.getExtraAction();
 			if (extraAction != null) {
@@ -76,7 +82,7 @@ public class ActionExecutor {
 			}
 
 		} catch (InsufficientResourcesException | EffectApplyingException |
-				IOException e) {
+				NotCorrectlyCheckedException | IOException e) {
 			throw new IllegalStateException(e);
 		}
 

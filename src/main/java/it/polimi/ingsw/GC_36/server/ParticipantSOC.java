@@ -57,6 +57,13 @@ public class ParticipantSOC implements Participant {
 				"cannot update Board State");
 	}
 
+	public void update(DieColor dieColor, int value) throws IOException {
+		List<Object> obj = new ArrayList<>();
+		obj.add(dieColor);
+		obj.add(value);
+		sendMessage("changeDie", obj, "cannot update Die");
+	}
+
 	@Override
 	public void update(PlayerState newState) throws IOException {
 		sendMessage("updatePlayerState", newState,
