@@ -8,6 +8,7 @@ import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
 import java.util.*;
@@ -127,12 +128,11 @@ public class Game {
 	}
 
 	public void finalScoring() throws IOException {
-		setCurrentState(GameState.SCORING);
-
 		List<Player> playerList = new ArrayList<>(board.getPlayers().values());
-		List<Player> playersWinningList = Scorer.calculate(playerList);
+		List<Pair<PlayerIdentifier, Integer>> playersWinningList =
+				Scorer.calculate(playerList);
 
-		// TODO @mirko: impl the action to communicate the winner
+		finalScoreNotify(playersWinningList);
 
 		setCurrentState(GameState.FINISHED);
 	}
@@ -149,6 +149,14 @@ public class Game {
 		}
 		for (NewPeriodObserver o : newPeriodObservers) {
 			o.update(currentPeriod);
+		}
+	}
+
+	private void finalScoreNotify(
+			List<Pair<PlayerIdentifier, Integer>> playersWinningList)
+			throws IOException {
+		for (GameObserver o : observers) {
+			o.update(new ArrayList<>(playersWinningList));
 		}
 	}
 }

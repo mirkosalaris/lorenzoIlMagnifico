@@ -10,8 +10,8 @@ import java.util.*;
 public class PersonalBoard {
 
 	private ResourcesList resourcesList;
-	private BonusTile bonusTile; // TODO use it
-	private Map<CardType, List<DevelopmentCard>> map =
+	private BonusTile bonusTile;
+	private Map<CardType, List<DevelopmentCard>> cards =
 			new EnumMap<>(CardType.class);
 	private Set<PersonalBoardObserver> observers = new HashSet<>();
 
@@ -19,11 +19,13 @@ public class PersonalBoard {
 		this.resourcesList =
 				Commons.getInitialResources(ordinal);
 
+		bonusTile = Commons.getBonusTile(ordinal);
+
 		// create 4 empty List<DevelopmentCard>
-		map.put(CardType.TERRITORY, new ArrayList<>());
-		map.put(CardType.BUILDING, new ArrayList<>());
-		map.put(CardType.CHARACTER, new ArrayList<>());
-		map.put(CardType.VENTURE, new ArrayList<>());
+		cards.put(CardType.TERRITORY, new ArrayList<>());
+		cards.put(CardType.BUILDING, new ArrayList<>());
+		cards.put(CardType.CHARACTER, new ArrayList<>());
+		cards.put(CardType.VENTURE, new ArrayList<>());
 	}
 
 	public ResourcesList getResourcesList() {
@@ -36,8 +38,48 @@ public class PersonalBoard {
 		resourcesNotify();
 	}
 
+
+	/**
+	 * Check if you can add a card of the specified type
+	 *
+	 * @param type
+	 * 		the type of card to add
+	 * @return null if you can't add a card of the specified type, a
+	 * resourcesList required otherwise
+	 */
+	public ResourcesList canAddCard(CardType type) {
+		ResourcesList required = new ResourcesList();
+
+		int ownedCardsOfType = cards.get(type).size();
+		if (!(ownedCardsOfType < 6)) {
+			return null;
+		}
+
+		if (CardType.TERRITORY.equals(type)) {
+			switch (ownedCardsOfType) {
+				case 2:
+					required.set(ResourceType.MILITARY_POINTS, 3);
+					break;
+				case 3:
+					required.set(ResourceType.MILITARY_POINTS, 7);
+					break;
+				case 4:
+					required.set(ResourceType.MILITARY_POINTS, 12);
+					break;
+				case 5:
+					required.set(ResourceType.MILITARY_POINTS, 18);
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		return required;
+	}
+
 	public void addCard(DevelopmentCard card) throws IOException {
-		map.get(card.getType()).add(card);
+		cards.get(card.getType()).add(card);
 		newCardNotify(card);
 	}
 
@@ -58,7 +100,7 @@ public class PersonalBoard {
 
 	public List<DevelopmentCard> getCards(CardType type) {
 		// return a COPY of the list
-		return new ArrayList<>(map.get(type));
+		return new ArrayList<>(cards.get(type));
 	}
 
 	public void subscribe(PersonalBoardObserver o) {

@@ -8,15 +8,16 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public final class Commons {
+	private static final String COMMONS_FILE = "commons.json";
 	public static final String HOST = "localhost";
 	public static final int PORT = 7777;
 	public static final int RMI_PORT = 7070;
 
 	public static final int MAX_PLAYERS = 4;
 	public static final int MIN_PLAYERS = 2;
-
-	private static final String COMMONS_FILE = "commons.json";
 	public static final int ROUNDS_IN_PERIOD = 2;
+	public static final int NUMBER_OF_PERIODS = 3;
+	public static final int NUMBER_OF_FLOORS = 4;
 
 	// TODO, increase the timer.
 	public static final long STARTING_MATCH_TIMER = 3000;
@@ -33,9 +34,6 @@ public final class Commons {
 	public ResourcesList getResourcesList(Integer integer) {
 		return councilPrivilegeMap.get(integer);
 	}
-
-	public static final int NUMBER_OF_PERIODS = 3;
-	public static final int NUMBER_OF_FLOORS = 4;
 
 	private Commons() {}
 
@@ -118,6 +116,10 @@ public final class Commons {
 
 	public static ResourcesList getPrivilege(int id) {
 		return (ResourcesList) parser.get("councilPrivilege" + id);
+	}
+
+	public static BonusTile getBonusTile(int ordinal) {
+		return (BonusTile) parser.get("bonusTile" + ordinal);
 	}
 }
 

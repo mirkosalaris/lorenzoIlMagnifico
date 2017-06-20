@@ -3,7 +3,7 @@ package it.polimi.ingsw.GC_36.client;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -63,9 +63,14 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public int chooseActionSpaceId() {
+	public int chooseActionSpaceId(Set<ActionSpaceIds> actionSpaceIds) {
 		Scanner in = new Scanner(System.in);
-		System.out.println("Please select the ActionSpace specifying the ID");
+		System.out.println("Please select an ActionSpace specifying the ID:");
+		if (actionSpaceIds != null) {
+			for (ActionSpaceIds id : actionSpaceIds) {
+				System.out.print(id.value() + ", ");
+			}
+		}
 		return in.nextInt();
 	}
 
@@ -80,23 +85,6 @@ public class ViewCLI implements ViewInterface {
 				"3: two military points\n" +
 				"4: one faith point\n");
 		return in.nextInt();
-	}
-
-	@Override
-	public int chooseExtraActionSpaceId(Set<ActionSpaceIds> actionSpaceIds,
-	                                    int actionValue) {
-		Scanner in = new Scanner(System.in);
-		System.out.println(
-				"You have the chance to choose another card, the choice " +
-						"doesn't include all the possible cards on the board");
-		System.out.println(
-				"Please select the associated ActionSpace from the list " +
-						"below");
-		for (ActionSpaceIds id : actionSpaceIds) {
-			System.out.println(id.value());
-		}
-		return in.nextInt();
-
 	}
 
 	@Override
@@ -155,7 +143,7 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+	public void setIdentifier(PlayerIdentifier identifier) {
 		System.out.println("Your identifier is " + identifier.get());
 	}
 
@@ -170,7 +158,7 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(DieColor dieColor, int value) throws IOException {
+	public void update(DieColor dieColor, int value) {
 		System.out.println("new Die value:\n"
 				+ "\tdie color: " + dieColor + ", new value: " + value);
 	}
@@ -191,8 +179,7 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor)
-			throws IOException {
+	public void update(ActionSpaceIds id, PlayerColor playerColor) {
 		System.out.println(
 				"Player " + playerColor + " has entered " + id.name());
 	}
@@ -207,6 +194,20 @@ public class ViewCLI implements ViewInterface {
 	public void update(int periodNumber) {
 		System.out.println("A new Period has started");
 
+	}
+
+	@Override
+	public void update(List<Pair<PlayerIdentifier, Integer>>
+			                   winningOrderList) {
+		System.out.println("The winner is "
+				+ winningOrderList.get(0).getFirst() + " with "
+				+ winningOrderList.get(0).getSecond() + " points");
+		winningOrderList.remove(0);
+
+		for (Pair<PlayerIdentifier, Integer> pair : winningOrderList) {
+			System.out.println("Player " + pair.getFirst()
+					+ " got " + pair.getSecond() + " victory points");
+		}
 	}
 
 	@Override
@@ -230,12 +231,12 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(DevelopmentCard card) throws IOException {
+	public void update(DevelopmentCard card) {
 		System.out.println("You have a new card:\n" + card);
 	}
 
 	@Override
-	public void update(ResourcesList resourcesList) throws IOException {
+	public void update(ResourcesList resourcesList) {
 		System.out.println("Your current resources are: " + resourcesList);
 	}
 }

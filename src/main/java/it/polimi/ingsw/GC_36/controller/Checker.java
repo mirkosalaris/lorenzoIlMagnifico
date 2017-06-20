@@ -63,14 +63,28 @@ public class Checker {
 		ActionSpaceIds id = action.getActionSpaceId();
 
 		if (Commons.isFloor(id)) {
-			Tower tower = Game.getInstance().getBoard().getActionSpace(
-					id).getAssociatedFloor().getAssociatedTower();
+			ActionSpace actionSpace = Game.getInstance().getBoard()
+					.getActionSpace(id);
+			Tower tower =
+					actionSpace.getAssociatedFloor().getAssociatedTower();
 
 			// check if the player can enter in the tower
 			if (!(action.getMemberColor() == MemberColor.UNCOLORED)) {
 				if (!player.canEnter(tower)) {
 					return false;
 				}
+			}
+
+			// check if the personal board can accept the associated card
+			CardType cardType = actionSpace.getAssociatedFloor()
+					.readAssociatedCard().getType();
+			// required is null if the player can't add the card
+			ResourcesList required = player.getPersonalBoard().canAddCard(
+					cardType);
+			if (required == null || !player.getPersonalBoard()
+					.getResourcesList()
+					.checkEnoughResources(required)) {
+				return false;
 			}
 		}
 

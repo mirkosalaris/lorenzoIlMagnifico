@@ -94,7 +94,6 @@ public class UserIncubator extends UnicastRemoteObject
 	 * @return true if a new game has started, false otherwise
 	 */
 	private synchronized boolean incrementTotal() {
-		// TODO: introduce a 'timer' to let MIN_PLAYERS to play
 		total += 1;
 		if (total == Commons.MAX_PLAYERS) {
 			if (timerTask != null) {

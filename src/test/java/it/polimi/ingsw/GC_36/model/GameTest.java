@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewCLI;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.server.ParticipantRMI;
+import it.polimi.ingsw.GC_36.utils.Pair;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -103,6 +104,12 @@ public class GameTest {
 
 			@Override
 			public void update(int periodNumber) {}
+
+			@Override
+			public void update(
+					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
+
+			}
 		};
 		GameObserver o2 = new GameObserver() {
 			@Override
@@ -110,6 +117,12 @@ public class GameTest {
 
 			@Override
 			public void update(int periodNumber) {}
+
+			@Override
+			public void update(
+					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
+
+			}
 		};
 
 		game.subscribe(o1);
@@ -136,6 +149,12 @@ public class GameTest {
 
 			@Override
 			public void update(int periodNumber) {}
+
+			@Override
+			public void update(
+					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
+
+			}
 		};
 		GameObserver o2 = new GameObserver() {
 			@Override
@@ -143,6 +162,12 @@ public class GameTest {
 
 			@Override
 			public void update(int periodNumber) {}
+
+			@Override
+			public void update(
+					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
+
+			}
 		};
 
 		game.subscribe(o1);
@@ -174,6 +199,12 @@ public class GameTest {
 
 			@Override
 			public void update(int periodNumber) {}
+
+			@Override
+			public void update(
+					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
+
+			}
 
 		};
 

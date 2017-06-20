@@ -86,7 +86,7 @@ public class Parser {
 		} else if (s.contains("personalBoard")) {
 			return this.personalBoardList.get(value - 1);
 		} else if (s.contains("councilPrivilege")) {
-			return this.councilPrivileges.get(value - 1);
+			return this.councilPrivileges.get(value);
 		} else {
 			throw new IllegalArgumentException("Parameter not valid");
 		}

@@ -24,6 +24,8 @@ public class RoundController {
 				action = new Action();
 				player.getParticipant().play(action);
 				executed = executor.execute(action);
+				// TODO: send 'error' to player
+				// (s)he has to know if (s)he had done something wrong
 			} while (!executed);
 
 

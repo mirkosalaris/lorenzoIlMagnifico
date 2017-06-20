@@ -2,8 +2,10 @@ package it.polimi.ingsw.GC_36.server;
 
 import it.polimi.ingsw.GC_36.client.UserInterface;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ParticipantRMI implements Participant {
 	private final UserInterface user;
@@ -21,7 +23,6 @@ public class ParticipantRMI implements Participant {
 	public void play(ActionInterface action) throws IOException,
 			ClassNotFoundException {
 		user.play(action);
-		// TODO impl
 	}
 
 	@Override
@@ -74,6 +75,12 @@ public class ParticipantRMI implements Participant {
 	@Override
 	public void update(int periodNumber) throws IOException {
 		user.update(periodNumber);
+	}
+
+	@Override
+	public void update(List<Pair<PlayerIdentifier, Integer>> winningOrderList)
+			throws IOException {
+		user.update(winningOrderList);
 	}
 
 	@Override

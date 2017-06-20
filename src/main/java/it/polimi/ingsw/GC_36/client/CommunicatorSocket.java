@@ -3,6 +3,7 @@ package it.polimi.ingsw.GC_36.client;
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.*;
 import java.net.Socket;
@@ -142,6 +143,12 @@ public class CommunicatorSocket implements Communicator {
 
 			case "updateNewPeriod":
 				user.update((int) entry.getValue());
+				break;
+
+			case "finalScore":
+				user.update(
+						(List<Pair<PlayerIdentifier, Integer>>) entry
+								.getValue());
 				break;
 
 			case "updateRoundState":

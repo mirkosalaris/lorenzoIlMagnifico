@@ -16,12 +16,9 @@ public interface ViewInterface extends Participant {
 
 	int setActionValueIncrement();
 
-	int chooseActionSpaceId();
+	int chooseActionSpaceId(Set<ActionSpaceIds> actionSpaceIds);
 
 	int choosePrivilege(int n);
-
-	int chooseExtraActionSpaceId(Set<ActionSpaceIds> actionSpaceIds,
-	                             int actionValue);
 
 	int chooseConvertingMethod(
 			Map<Integer, Pair<ResourcesList, ResourcesList>> options);

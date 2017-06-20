@@ -10,9 +10,6 @@ public interface RoundObserver {
 
 	void update(RoundState newState) throws RemoteException, IOException;
 
-	// TODO: vulnerability. We are giving observer the reference to player!!!
-	//	void update(Player newPlayer) throws RemoteException;
-
 	void update(PlayerIdentifier identifier)
 			throws RemoteException, IOException;
 

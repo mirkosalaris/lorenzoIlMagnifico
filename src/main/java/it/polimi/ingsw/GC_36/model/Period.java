@@ -41,7 +41,6 @@ public class Period {
 				newRound();
 
 				// TODO impl
-				startedRounds += 1;
 			} else {
 				throw new PeriodTerminatedException(
 						"The period can't advance because it's finished");
@@ -55,6 +54,7 @@ public class Period {
 
 	private void newRound() throws IOException {
 		currentRound = new Round(deckSet);
+		startedRounds += 1;
 		newRoundNotify();
 	}
 

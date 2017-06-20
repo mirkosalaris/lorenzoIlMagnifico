@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.exception.NotAvailableException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -115,14 +116,23 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void update(GameState newState) throws IOException {
-		// TODO think and impl
+		if (GameState.FINISHED.equals(newState)) {
+			System.exit(0);
+		}
 		view.update(newState);
+
 	}
 
 	@Override
 	public void update(int periodNumber) throws IOException {
 		// TODO think and impl
 		view.update(periodNumber);
+	}
+
+	@Override
+	public void update(List<Pair<PlayerIdentifier, Integer>> winningOrderList)
+			throws IOException {
+		view.update(winningOrderList);
 	}
 
 	@Override
@@ -192,7 +202,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		boolean wrong = true;
 		ActionSpaceIds actionSpaceId;
 		do {
-			id = view.chooseActionSpaceId();
+			id = view.chooseActionSpaceId(actionSpaces);
 
 			if (ActionSpaceIds.checkId(id)) {
 				actionSpaceId = ActionSpaceIds.values()[id];

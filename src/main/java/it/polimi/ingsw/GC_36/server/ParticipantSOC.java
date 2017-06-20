@@ -114,6 +114,12 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
+	public void update(List<Pair<PlayerIdentifier, Integer>> winningOrderList)
+			throws IOException {
+		sendMessage("finalScore", winningOrderList, "cannot send final score");
+	}
+
+	@Override
 	public void update(RoundState newState) throws IOException {
 		sendMessage("updateRoundState", newState, "cannot update RoundState");
 	}

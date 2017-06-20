@@ -179,7 +179,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 			// take the resourcesList associated with the user's choice
 			Pair<ResourcesList, ResourcesList> cardPayment = card
 					.getRequirements().get(
-					choice);
+							choice);
 
 			// add to the payment list
 			paymentList.getFirst().addResources(cardPayment.getFirst());

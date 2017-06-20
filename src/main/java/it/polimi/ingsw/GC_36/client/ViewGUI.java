@@ -3,7 +3,7 @@ package it.polimi.ingsw.GC_36.client;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,7 +20,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public int chooseActionSpaceId() {
+	public int chooseActionSpaceId(Set<ActionSpaceIds> actionSpaceIds) {
 		return 0;
 	}
 
@@ -29,11 +29,6 @@ public class ViewGUI implements ViewInterface {
 		return 0;
 	}
 
-	@Override
-	public int chooseExtraActionSpaceId(Set<ActionSpaceIds> actionSpaceIds,
-	                                    int actionValue) {
-		return 0;
-	}
 
 	@Override
 	public int chooseConvertingMethod(
@@ -68,7 +63,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+	public void setIdentifier(PlayerIdentifier identifier) {
 
 	}
 
@@ -83,7 +78,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void update(DieColor dieColor, int value) throws IOException {
+	public void update(DieColor dieColor, int value) {
 
 	}
 
@@ -98,8 +93,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor)
-			throws IOException {
+	public void update(ActionSpaceIds id, PlayerColor playerColor) {
 
 	}
 
@@ -110,6 +104,12 @@ public class ViewGUI implements ViewInterface {
 
 	@Override
 	public void update(int periodNumber) {
+
+	}
+
+	@Override
+	public void update(List<Pair<PlayerIdentifier, Integer>>
+			                   winningOrderList) {
 
 	}
 
@@ -129,7 +129,7 @@ public class ViewGUI implements ViewInterface {
 	}
 
 	@Override
-	public void update(DevelopmentCard card) throws IOException {
+	public void update(DevelopmentCard card) {
 
 	}
 

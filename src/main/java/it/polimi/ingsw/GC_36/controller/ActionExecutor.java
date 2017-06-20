@@ -27,7 +27,6 @@ public class ActionExecutor {
 	}
 
 	private boolean execute(Action action, boolean alreadyChecked) {
-		// TODO: manage action value. How do we take into account penalties?
 
 		Pair<ResourcesList, ResourcesList> paymentList = action
 				.compilePaymentList();
@@ -55,12 +54,15 @@ public class ActionExecutor {
 			// member.setLocation is invoked by actionSpace.occupy()
 			actionSpace.occupy(member);
 
-			player.getPersonalBoard().addResources(actionSpace.getBonus());
+			if (actionSpace.getBonus() != null) {
+				player.getPersonalBoard().addResources(actionSpace.getBonus());
+			}
 			if (actionSpace.isInTower()) {
 				DevelopmentCard card =
 						actionSpace.getAssociatedFloor().takeCard();
 
 				card.getImmediateEffect().applyEffect(action, player);
+				player.getPersonalBoard().addCard(card);
 			}
 
 			if (isProduction(actionSpace)) {
@@ -120,7 +122,8 @@ public class ActionExecutor {
 	}
 
 	private void executeHarvest(Action action, Player player)
-			throws EffectApplyingException, IOException, NotCorrectlyCheckedException {
+			throws EffectApplyingException, IOException,
+			NotCorrectlyCheckedException {
 		// add bonus tile resources
 		BonusTile bonusTile = player.getPersonalBoard().getBonusTile();
 		player.getPersonalBoard().addResources(bonusTile.getHarvestBonus());
