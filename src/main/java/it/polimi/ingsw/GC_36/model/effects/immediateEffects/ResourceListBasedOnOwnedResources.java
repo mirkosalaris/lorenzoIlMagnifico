@@ -6,6 +6,8 @@ import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
+import java.io.IOException;
+
 public class ResourceListBasedOnOwnedResources implements ImmediateEffect {
 	private ResourceType fromResourceType;
 	private int fromResourceValue;
@@ -37,8 +39,10 @@ public class ResourceListBasedOnOwnedResources implements ImmediateEffect {
 
 	@Override
 	public void chooseOptions(ViewInterface view, ActionInterface action,
-	                          User user) {
+	                          User user)
+			throws IOException, ClassNotFoundException {
 
 	}
 
 }
+

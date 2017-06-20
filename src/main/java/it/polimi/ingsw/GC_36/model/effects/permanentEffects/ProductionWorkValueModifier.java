@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionInterface;
@@ -15,7 +16,7 @@ public class ProductionWorkValueModifier extends PermanentEffect {
 
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface action) {
+	                         ActionInterface action, User user) {
 
 	}
 

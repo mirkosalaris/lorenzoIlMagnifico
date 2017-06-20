@@ -30,6 +30,7 @@ public class ExtraTurn implements ImmediateEffect {
 		ExtraAction extraAction =
 				new ExtraAction(actionSpaces, baseActionValue, null);
 		user.play(extraAction);
+
 		action.setExtraAction(extraAction);
 	}
 

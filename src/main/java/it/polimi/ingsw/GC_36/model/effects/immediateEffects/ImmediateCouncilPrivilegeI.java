@@ -3,6 +3,7 @@ package it.polimi.ingsw.GC_36.model.effects.immediateEffects;
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
+import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
@@ -11,12 +12,11 @@ import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.List;
 
-public class ImmediateCouncilPrivileges implements ImmediateEffect {
+public class ImmediateCouncilPrivilegeI implements ImmediateEffect {
 	private boolean mustDiffer;
 	private Integer numberOfPrivileges;
-	//private CouncilPrivilege councilPrivilege;
 
-	public ImmediateCouncilPrivileges(Integer numberOfPrivileges,
+	public ImmediateCouncilPrivilegeI(Integer numberOfPrivileges,
 	                                  boolean mustDiffer) {
 		this.numberOfPrivileges = numberOfPrivileges;
 		this.mustDiffer = mustDiffer;
@@ -28,28 +28,30 @@ public class ImmediateCouncilPrivileges implements ImmediateEffect {
 	// add choices to personaBoard, otherwise throw EffectApplyingException(e)
 	@Override
 	public void applyEffect(Action action, Player player)
-			throws IllegalStateException, EffectApplyingException {
+			throws IllegalStateException, EffectApplyingException,
+			NotCorrectlyCheckedException {
 		if (!numberOfPrivileges.equals(
-				action.getCouncilPrivilegeList().size()))
-			//TODO:eccezione
-			if ((mustDiffer) && (!allDifferent(
-					action.getCouncilPrivilegeList()))) {
+				action.getCouncilPrivilegeList().size())) {
+			throw new NotCorrectlyCheckedException(
+					"number of selected privileges is wrong");
+		}
+		if ((mustDiffer) && (!allDifferent(
+				action.getCouncilPrivilegeList()))) {
+			throw new NotCorrectlyCheckedException(
+					"privilege are not different");
+		} else {
+			// add resources
+			for (CouncilPrivilege key : action.getCouncilPrivilegeList()) {
 
-				//TODO:mossa non valida
-			} else {
-				// add resources
-				for (CouncilPrivilege key : action.getCouncilPrivilegeList()) {
+				ResourcesList favor = key.getResources();
 
-					ResourcesList favor = key.getResources();
-
-					try {
-						player.getPersonalBoard().addResources(favor);
-					} catch (IOException e) {
-						throw new EffectApplyingException(e);
-					}
+				try {
+					player.getPersonalBoard().addResources(favor);
+				} catch (IOException e) {
+					throw new EffectApplyingException(e);
 				}
 			}
-
+		}
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.GC_36.data;
+/*package it.polimi.ingsw.GC_36.data;
 
 import com.google.gson.*;
 import it.polimi.ingsw.GC_36.model.*;
@@ -44,7 +44,7 @@ public class StartScript {
 		Gson gson=new Gson();
 		String s=gson.toJson(jsonObject);
 		System.out.println(s);
-		*/
+
 		//g.createBonusTile();
 		//g.createDevelopmentCard();
 		JsonElement jsonElement;
@@ -208,5 +208,5 @@ public class StartScript {
 		File fileProva=new File("commons.json");
 		byte[] encoded = Files.readAllBytes(Paths.get(fileProva.getPath()));
 		return new String(encoded, encoding);
-		*/
-}
+
+}*/

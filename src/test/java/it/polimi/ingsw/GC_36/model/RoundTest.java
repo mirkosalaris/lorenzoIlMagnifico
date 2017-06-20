@@ -91,8 +91,6 @@ public class RoundTest {
 						"FINISHED",
 				RoundState.FINISHED,
 				field2.get(round));*/
-
-
 	}
 
 	@Test(expected = Round.RoundTerminatedException.class)

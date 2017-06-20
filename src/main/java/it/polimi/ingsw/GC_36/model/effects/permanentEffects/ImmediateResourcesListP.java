@@ -13,13 +13,13 @@ import java.rmi.RemoteException;
  * PermanentEffect associated with buildings card, that gives to player some
  * resources for each card of a particular type
  */
-public class ImmediateResourcesList extends PermanentEffect {
+public class ImmediateResourcesListP extends PermanentEffect {
 	private CardType associatedCardType;
 	private ResourcesList resourcesList;
 	private int requiredActionValue;
 
-	public ImmediateResourcesList(ResourcesList resourcesList,
-	                              int requiredActionValue, CardType type) {
+	public ImmediateResourcesListP(ResourcesList resourcesList,
+	                               int requiredActionValue, CardType type) {
 		this.resourcesList = resourcesList;
 		this.requiredActionValue = requiredActionValue;
 		this.associatedCardType = type;
@@ -28,8 +28,8 @@ public class ImmediateResourcesList extends PermanentEffect {
 	@Override
 	public void applyEffect(Action action, Player player)
 			throws EffectApplyingException {
-		//TODO:implements
-		//se building prende la scelta (nulla) da productionChoice
+
+		//if building take choice (or null)from productionChoice
 		if (associatedCardType == CardType.BUILDING)
 			action.getProductionChoice();
 

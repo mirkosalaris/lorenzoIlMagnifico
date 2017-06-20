@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
@@ -18,16 +19,16 @@ public class ResourcesConverting extends PermanentEffect {
 	private final HashMap<Integer, Pair<ResourcesList, ResourcesList>> options;
 	private int requiredActionValue;
 
+
 	/**
 	 * @param requiredActionValue
 	 * 		the required action value, int, to execute the effect
 	 * @param options
 	 * 		the map of options for converting resources
 	 */
-	public ResourcesConverting(
-			int requiredActionValue,
-			HashMap<Integer, Pair<ResourcesList, ResourcesList>> options) {
-
+	public ResourcesConverting(int requiredActionValue,
+	                           HashMap<Integer, Pair<ResourcesList,
+			                           ResourcesList>> options) {
 		this.options = options;
 		this.requiredActionValue = requiredActionValue;
 	}
@@ -62,14 +63,13 @@ public class ResourcesConverting extends PermanentEffect {
 	 */
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface action)
+	                         ActionInterface action, User user)
 			throws RemoteException {
 		Integer choice;
 		do {
 			// pass a copy
 			choice = view.chooseConvertingMethod(new HashMap<>(options));
 		} while (!checkChoice(choice));
-
 		action.addProductionChoice(choice);
 	}
 

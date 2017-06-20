@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
 import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,7 +29,8 @@ public class ActionExecutor {
 	private boolean execute(Action action, boolean alreadyChecked) {
 		// TODO: manage action value. How do we take into account penalties?
 
-		ResourcesList paymentList = action.compilePaymentList();
+		Pair<ResourcesList, ResourcesList> paymentList = action
+				.compilePaymentList();
 		/* NB: there's no way to 'share' the paymentList between the two
 		execute() methods, because this method is called even for extraTurn,
 		and the paymentList would be different.
@@ -48,7 +50,7 @@ public class ActionExecutor {
 				.getActionSpace(action.getActionSpaceId());
 
 		try {
-			player.getPersonalBoard().payResources(paymentList);
+			player.getPersonalBoard().payResources(paymentList.getSecond());
 
 			// member.setLocation is invoked by actionSpace.occupy()
 			actionSpace.occupy(member);
@@ -102,7 +104,8 @@ public class ActionExecutor {
 	}
 
 	private void executeProduction(Action action, Player player)
-			throws EffectApplyingException, IOException {
+			throws EffectApplyingException, IOException,
+			NotCorrectlyCheckedException {
 		// add bonus tile resources
 		BonusTile bonusTile = player.getPersonalBoard().getBonusTile();
 		player.getPersonalBoard().addResources(bonusTile.getProductionBonus());
@@ -117,7 +120,7 @@ public class ActionExecutor {
 	}
 
 	private void executeHarvest(Action action, Player player)
-			throws EffectApplyingException, IOException {
+			throws EffectApplyingException, IOException, NotCorrectlyCheckedException {
 		// add bonus tile resources
 		BonusTile bonusTile = player.getPersonalBoard().getBonusTile();
 		player.getPersonalBoard().addResources(bonusTile.getHarvestBonus());

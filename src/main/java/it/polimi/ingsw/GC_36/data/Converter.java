@@ -9,12 +9,13 @@ import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
-		.ImmediateCouncilPrivileges;
+		.ImmediateCouncilPrivilegeI;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
-		.ImmediateResourceList;
+		.ImmediateResourcesListI;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
 		.ResourceListBasedOnOwnedResources;
 import it.polimi.ingsw.GC_36.model.effects.permanentEffects.*;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -52,10 +53,10 @@ public class Converter {
 
 			case "ImmediateCouncilPrivilege":
 				return decoder.deserialize(effectBody,
-						ImmediateCouncilPrivileges.class);
-			case "ImmediateResourceList":
+						ImmediateCouncilPrivilegeI.class);
+			case "ImmediateResourcesListI":
 				return decoder.deserialize(effectBody,
-						ImmediateResourceList.class);
+						ImmediateResourcesListI.class);
 			case "ResourceListBasedOnOwnedResources":
 				return decoder.deserialize(effectBody,
 						ResourceListBasedOnOwnedResources.class);
@@ -77,9 +78,9 @@ public class Converter {
 			case "HarvestWorkValueModifier":
 				return decoder.deserialize(effectBody,
 						HarvestWorkValueModifier.class);
-			case "ImmediateResourcesList":
+			case "ImmediateResourcesListP":
 				return decoder.deserialize(effectBody,
-						ImmediateResourcesList.class);
+						ImmediateResourcesListP.class);
 			case "ProductionWorkValueModifier":
 				return decoder.deserialize(effectBody,
 						ProductionWorkValueModifier.class);
@@ -104,13 +105,14 @@ public class Converter {
 		List<ResourcesList> requirementsList = decoder
 				.deserializeResourcesListList(new Encoder().serialize(
 						developmentCard.get("requirementsList")));
+		List<Pair<ResourcesList, ResourcesList>> rl = new ArrayList<>();
 		JsonObject effectObj = developmentCard.get(
 				"immediateEffect").getAsJsonObject();
 		ImmediateEffect immediateEffect = convertImmediateEffect(
 				effectObj.get("effectType").getAsString(),
 				new Encoder().serialize(effectObj.get("effectBody")));
 		PermanentEffect permanentEffect = null;
-		return new DevelopmentCard(cardType, period, name, requirementsList,
+		return new DevelopmentCard(cardType, period, name, rl,
 				immediateEffect, permanentEffect);
 	}
 

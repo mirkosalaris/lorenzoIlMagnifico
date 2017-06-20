@@ -239,7 +239,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 					CardType.TERRITORY);
 			for (int i = 0; i < terrytoriCards.size(); i++) {
 				terrytoriCards.get(i).getPermanentEffect().chooseOption(view,
-						action);
+						action, this);
 			}
 		}
 
@@ -253,10 +253,9 @@ public class User extends UnicastRemoteObject implements UserInterface {
 					CardType.BUILDING);
 			for (int i = 0; i < buildingCards.size(); i++) {
 				buildingCards.get(i).getPermanentEffect().chooseOption(view,
-						action);
+						action, this);
 			}
 		}
-
 	}
 
 	private void roundReset() {

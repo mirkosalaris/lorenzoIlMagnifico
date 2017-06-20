@@ -119,12 +119,14 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public int chooseCardPaymentOptions(DevelopmentCard card) {
 		Scanner in = new Scanner(System.in);
-		ResourcesList resourcesList;
+		Pair<ResourcesList, ResourcesList> resourcesList;
 		System.out.println("Please select the payment option of the card");
 		for (int i = 1; i <= card.getRequirements().size(); i++) {
 			System.out.println("option " + i + ": ");
 			resourcesList = card.getRequirements().get(i - 1);
-			System.out.println(resourcesList.toString());
+			System.out.println(
+					"\tRequired: " + resourcesList.getFirst() + "\n\tTo Pay: "
+							+ resourcesList.getSecond());
 		}
 		int choice = in.nextInt() - 1;
 		return choice;

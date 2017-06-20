@@ -1,13 +1,30 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
-import it.polimi.ingsw.GC_36.model.Action;
-import it.polimi.ingsw.GC_36.model.ActionInterface;
-import it.polimi.ingsw.GC_36.model.Player;
-import it.polimi.ingsw.GC_36.model.ResourcesList;
+import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 
+import java.util.Set;
+
 public class ActionSpaceModifier extends PermanentEffect {
+	private Set<ActionSpaceIds> actionSpaceIdsSet;
+	private Integer actionValue;
+	private boolean denyBonus;
+	private boolean pass;
+
+	public ActionSpaceModifier(
+			Set<ActionSpaceIds> actionSpaceIdsSet, Integer actionValue,
+			boolean denyBonus, boolean pass) {
+		this.actionSpaceIdsSet = actionSpaceIdsSet;
+		this.actionValue = actionValue;
+		this.denyBonus = denyBonus;
+		this.pass = pass;
+	}
+
+	public ActionSpaceModifier(boolean denyBonus) {
+		this.denyBonus = denyBonus;
+	}
 
 	@Override
 	public void applyEffect(Action action, Player player) {
@@ -15,7 +32,7 @@ public class ActionSpaceModifier extends PermanentEffect {
 
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface action) {
+	                         ActionInterface action, User user) {
 
 	}
 

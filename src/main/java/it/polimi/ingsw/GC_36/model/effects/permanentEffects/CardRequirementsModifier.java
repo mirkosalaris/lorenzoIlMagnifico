@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
@@ -7,10 +8,19 @@ import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 public class CardRequirementsModifier extends PermanentEffect {
 	private CardType type;
 	private int actionValueModifier;
+	private ResourcesList discount;
+
+	public CardRequirementsModifier(CardType type, int actionValueModifier,
+	                                ResourcesList discount) {
+		this.type = type;
+		this.actionValueModifier = actionValueModifier;
+		this.discount = discount;
+	}
 
 	public CardRequirementsModifier(CardType type, int actionValueModifier) {
 		this.type = type;
 		this.actionValueModifier = actionValueModifier;
+
 	}
 
 	@Override
@@ -20,7 +30,7 @@ public class CardRequirementsModifier extends PermanentEffect {
 
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface action) {
+	                         ActionInterface action, User user) {
 		// TODO
 	}
 

@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.exception.NotAvailableException;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -150,8 +151,13 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	 *
 	 * @return the resourcesList to pay
 	 */
-	public ResourcesList compilePaymentList() {
-		ResourcesList paymentList = new ResourcesList();
+	public Pair<ResourcesList, ResourcesList> compilePaymentList() {
+		ResourcesList requirements = new ResourcesList();
+		ResourcesList payments = new ResourcesList();
+
+		Pair<ResourcesList, ResourcesList> paymentList = new Pair<>(
+				requirements, payments);
+
 		ActionSpaceIds id = this.actionSpaceIds;
 
 		if (Commons.isFloor(id)) {
@@ -160,7 +166,8 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 
 			if (!(tower.isFree())) {
 				// the tower is not free, pay the tax
-				paymentList.addResources(tower.getTax());
+				paymentList.getFirst().addResources(tower.getTax());
+				paymentList.getSecond().addResources(tower.getTax());
 			}
 			DevelopmentCard card = Game.getInstance().getBoard()
 					.getActionSpace(
@@ -170,19 +177,24 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 			int choice = cardPaymentOptions;
 
 			// take the resourcesList associated with the user's choice
-			ResourcesList cardPayment = card.getRequirements().get(choice);
+			Pair<ResourcesList, ResourcesList> cardPayment = card
+					.getRequirements().get(
+					choice);
 
 			// add to the payment list
-			paymentList.addResources(cardPayment);
+			paymentList.getFirst().addResources(cardPayment.getFirst());
+			paymentList.getSecond().addResources(cardPayment.getSecond());
 		}
 
 		// pay the extra servants used to increase the action value
 		ResourcesList actionValuePayment = new ResourcesList();
 		actionValuePayment.set(ResourceType.SERVANT, actionValueIncrement);
-		paymentList.addResources(actionValuePayment);
+		paymentList.getFirst().addResources(actionValuePayment);
+		paymentList.getSecond().addResources(actionValuePayment);
 
 		if (discount != null) {
-			paymentList.applyDiscount(discount);
+			paymentList.getFirst().addResources(discount);
+			paymentList.getSecond().addResources(discount);
 		}
 
 		return paymentList;

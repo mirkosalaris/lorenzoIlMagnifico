@@ -1,19 +1,21 @@
 package it.polimi.ingsw.GC_36.model.effects;
 
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
+import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
 import it.polimi.ingsw.GC_36.model.*;
 
+import java.io.IOException;
 import java.io.Serializable;
-import java.rmi.RemoteException;
 
 public abstract class PermanentEffect implements Serializable {
 
 	public abstract void applyEffect(Action action, Player player)
-			throws EffectApplyingException;
+			throws EffectApplyingException, NotCorrectlyCheckedException;
 
 	public abstract void chooseOption(ViewInterface view, ActionInterface
-			action) throws RemoteException;
+			action, User user) throws IOException, ClassNotFoundException;
 
 	public boolean isDoable(int requiredActionValue, Action action) {
 		int ActionValue;

@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.controller;
 
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class Checker {
 		Player player = Game.getInstance().getCurrentPeriod()
 				.getCurrentRound().getCurrentPlayer();
 		ActionSpaceIds id = action.getActionSpaceId();
-		ResourcesList paymentList = action.compilePaymentList();
+		Pair<ResourcesList, ResourcesList> paymentList = action
+				.compilePaymentList();
 
 		//check if familyMember is available
 		if (!checkFamilyMember(action.getMemberColor(), player)) {
@@ -32,10 +34,10 @@ public class Checker {
 		if (!checkActionSpace(action, player))
 			return false;
 
-		if (!playerResources.checkEnoughResources(paymentList)) {
+		if (!playerResources.checkEnoughResources(paymentList.getFirst())) {
 			return false;
 		}
-		playerResources.subtractResources(paymentList);
+		playerResources.subtractResources(paymentList.getSecond());
 
 		if (isProduction(id)) {
 			if (!checkProduction(action, playerResources, player))

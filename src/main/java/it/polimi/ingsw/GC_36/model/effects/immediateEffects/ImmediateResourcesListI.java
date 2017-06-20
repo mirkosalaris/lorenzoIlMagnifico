@@ -11,10 +11,10 @@ import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
 import java.io.IOException;
 
-public class ImmediateResourceList implements ImmediateEffect {
+public class ImmediateResourcesListI implements ImmediateEffect {
 	ResourcesList resourcesList;
 
-	public ImmediateResourceList(ResourcesList resourcesList) {
+	public ImmediateResourcesListI(ResourcesList resourcesList) {
 		this.resourcesList = resourcesList;
 	}
 
@@ -30,9 +30,13 @@ public class ImmediateResourceList implements ImmediateEffect {
 
 	@Override
 	public void chooseOptions(ViewInterface view, ActionInterface action,
-	                          User user) {
-		;
+	                          User user)
+			throws IOException, ClassNotFoundException {
+		// TODO impl
+		//penso non debba fare niente
+		//view.chooseOptions(...)
+
+		//System.out.println(
+		//		"here you'd have to choose option for immediate effect");
 	}
-
-
 }

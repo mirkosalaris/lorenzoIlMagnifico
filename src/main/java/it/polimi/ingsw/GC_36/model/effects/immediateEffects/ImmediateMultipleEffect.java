@@ -12,10 +12,10 @@ import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import java.io.IOException;
 import java.util.List;
 
-public class MultipleEffect implements ImmediateEffect {
+public class ImmediateMultipleEffect implements ImmediateEffect {
 	private List<ImmediateEffect> effects;
 
-	public MultipleEffect(List<ImmediateEffect> effects) {
+	public ImmediateMultipleEffect(List<ImmediateEffect> effects) {
 		this.effects = effects;
 	}
 

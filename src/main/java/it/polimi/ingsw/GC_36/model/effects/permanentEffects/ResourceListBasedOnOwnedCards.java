@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.*;
@@ -60,7 +61,7 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 
 	@Override
 	public void chooseOption(ViewInterface view,
-	                         ActionInterface action)
+	                         ActionInterface action, User user)
 			throws RemoteException {
 		//non fa niente
 		// deve aggiungere un elemento nullo in action.productionChoice

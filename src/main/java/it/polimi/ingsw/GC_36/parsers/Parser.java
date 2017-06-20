@@ -21,12 +21,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Parser {
-	List<Map<CardType, Deck>> deckSetList;
-	List<BonusTile> bonusTiles;
-	List<Map<String, Object>> actionSpace;
-	List<ResourcesList> personalBoardList;
-	List<ResourcesList> councilPrivileges;
-	ResourcesList tax;
+	private List<Map<CardType, Deck>> deckSetList;
+	private List<BonusTile> bonusTiles;
+	private List<Map<String, Object>> actionSpace;
+	private List<ResourcesList> personalBoardList;
+	private List<ResourcesList> councilPrivileges;
+	private ResourcesList tax;
 
 	public Parser(File file) {
 		String serializedString;
@@ -84,7 +84,7 @@ public class Parser {
 		} else if (s.contains("bonusTile")) {
 			return this.bonusTiles.get(value - 1);
 		} else if (s.contains("personalBoard")) {
-			return this.personalBoardList.get(value); //TODO check -1
+			return this.personalBoardList.get(value - 1);
 		} else if (s.contains("councilPrivilege")) {
 			return this.councilPrivileges.get(value - 1);
 		} else {
@@ -101,7 +101,7 @@ public class Parser {
 			} else if (s2.contains("bonus")) {
 				return this.actionSpace.get(id).get("bonus");
 			} else if (s2.contains("isSingle")) {
-				return "yes".equals(this.actionSpace.get(id).get("isSingle"));
+				return this.actionSpace.get(id).get("isSingle");
 			} else {
 				throw new IllegalArgumentException("Parameter not valid");
 			}

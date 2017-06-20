@@ -1,12 +1,12 @@
-package it.polimi.ingsw.GC_36.data;
+/*package it.polimi.ingsw.GC_36.data;
 
 
 import com.google.gson.*;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
-		.ImmediateCouncilPrivileges;
+.ImmediateCouncilPrivileges;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
-		.ImmediateResourceList;
+.ImmediateResourceList;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
 		.ResourceListBasedOnOwnedResources;
 import it.polimi.ingsw.GC_36.model.effects.permanentEffects.*;
@@ -493,9 +493,9 @@ public class Generator {
 		System.out.println(
 				"ImmediateEffect: \n\t1. ExtraProduction\n\t2. " +
 						"ExtraTurnHarvest\n\t3. " +
-						"ExtraTurnTower\n\t4. " +
-						"ImmediateCouncilPrivileges\n\t5." +
-						" ImmediateResourcesList\n\t6. " +
+						"ExtraTurnTower\n\t4.
+						ImmediateCouncilPrivileges\n\t5." +
+						" EarnResourcesList\n\t6. " +
 						"ResourceListBasedOnOwedResources\nInsert:");
 		JsonObject jsonObject = new JsonObject();
 		int choose = Integer.parseInt(input.nextLine());
@@ -612,7 +612,7 @@ public class Generator {
 				"Permanent Effect:\n\t1. ActionSpaceModifier\n\t2. " +
 						"CardRequirementsModifier\n\t3. " +
 						"HarvestWorkValueModifier\n\t4. " +
-						"ImmediateResourcesList\n\t5. " +
+						"EarnResourcesList\n\t5. " +
 						"ProductionWorkValueModifier\n\t6. " +
 						"ResourcesListBaseOnOwnedCards\n\t7. " +
 						"ResourcesConverting\nInsert:");
@@ -644,7 +644,7 @@ public class Generator {
 				return jsonObject;
 			case 4:
 				jsonObject.addProperty("EffectType",
-						"ImmediateResourcesList");
+						"EarnResourcesList");
 				jsonObject.add("EffectBody", gson.fromJson(
 						gson.toJson(buildImmediateResourceListPerm()),
 						JsonElement.class));
@@ -719,7 +719,8 @@ public class Generator {
 		ResourcesList resourcesList2 = buildResourcesList();
 		System.out.println("Insert required action value: ");
 		int requiredActionValue = Integer.parseInt(input.nextLine());
-		Pair pair = new Pair(resourcesList1, resourcesList2);
+		Pair<ResourcesList, ResourcesList> pair = new Pair<>(resourcesList1,
+		resourcesList2);
 		HashMap<Integer, Pair<ResourcesList, ResourcesList>> option = new
 				HashMap<>();
 		int count = 0;
@@ -736,7 +737,7 @@ public class Generator {
 		return new ActionSpaceModifier();
 	}
 
-	public ImmediateResourcesList buildImmediateResourceListPerm() {
+	public EarnResourcesList buildImmediateResourceListPerm() {
 		Scanner input = new Scanner(System.in);
 
 		CardType cardType = null;
@@ -758,7 +759,8 @@ public class Generator {
 		System.out.println("Insert requiredActionValue: ");
 		int requiredActionValue = Integer.parseInt(input.nextLine());
 
-		return new ImmediateResourcesList(resourcesList, requiredActionValue,
+		return new EarnResourcesList(resourcesList, requiredActionValue,
 				cardType);
 	}
 }
+*/

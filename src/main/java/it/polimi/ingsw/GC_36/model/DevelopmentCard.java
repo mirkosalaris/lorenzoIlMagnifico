@@ -2,6 +2,7 @@ package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,18 +12,19 @@ public class DevelopmentCard implements Serializable {
 	private CardType type;
 	private int period;
 	private String name;
-	private List<ResourcesList> requirementsList;
+	private List<Pair<ResourcesList, ResourcesList>> requirements;
 	private ImmediateEffect immediateEffect;
 	private PermanentEffect permanentEffect;
 
 	public DevelopmentCard(CardType type, int period, String name,
-	                       List<ResourcesList> requirementsList,
+	                       List<Pair<ResourcesList, ResourcesList>>
+			                       requirements,
 	                       ImmediateEffect immediateEffect,
 	                       PermanentEffect permanentEffect) {
 		this.type = type;
 		this.period = period;
 		this.name = name;
-		this.requirementsList = requirementsList;
+		this.requirements = requirements;
 		this.immediateEffect = immediateEffect;
 		this.permanentEffect = permanentEffect;
 	}
@@ -31,8 +33,8 @@ public class DevelopmentCard implements Serializable {
 		return name;
 	}
 
-	public List<ResourcesList> getRequirements() {
-		return requirementsList;
+	public List<Pair<ResourcesList, ResourcesList>> getRequirements() {
+		return requirements;
 	}
 
 	public ImmediateEffect getImmediateEffect() {
@@ -56,7 +58,7 @@ public class DevelopmentCard implements Serializable {
 		return "\n\ttype=" + type +
 				"\n\tperiod=" + period +
 				"\n\tname='" + name + '\'' +
-				"\n\trequirementsList=" + requirementsList +
+				"\n\trequirementsList=" + requirements +
 				"\n\timmediateEffect=" + immediateEffect +
 				"\n\tpermanentEffect=" + permanentEffect +
 				"\n";
