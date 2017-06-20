@@ -46,40 +46,6 @@ public class ViewGUI implements ViewInterface {
 		return 0;
 	}
 
-	@Override
-	public int selectNumberOfWoods() {
-		return 0;
-	}
-
-	@Override
-	public int selectNumberOfStones() {
-		return 0;
-	}
-
-	@Override
-	public int selectNumberOfServants() {
-		return 0;
-	}
-
-	@Override
-	public int selectNumberOfCoins() {
-		return 0;
-	}
-
-	@Override
-	public int selectNumberOfVictoryPoints() {
-		return 0;
-	}
-
-	@Override
-	public int selectNumberOfMilitaryPoints() {
-		return 0;
-	}
-
-	@Override
-	public int selectNumberOfFaithPoints() {
-		return 0;
-	}
 
 	@Override
 	public void show(String message) {

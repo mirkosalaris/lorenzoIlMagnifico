@@ -222,28 +222,37 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		{
 			int choice;
-			// TODO check the choice
-			choice = view.choosePrivilege(1);
-			// TODO check the choice
+			do {
+				choice = view.choosePrivilege(1);
+			} while ((choice < 0) || (choice > (CouncilPrivilege.values()
+					.length - 1)));
 			action.putPrivilegeChoice(choice);
 
 		}
 
 		if ((action.getActionSpaceId() == ActionSpaceIds.AS_HARVEST) ||
 				(action.getActionSpaceId() == ActionSpaceIds.AS_HARVEST_BIG)) {
-			//TODO: harvest
+			//invokes the chooseoption method for each territory card of the
+			// player
+			//to save the choice
+			List<DevelopmentCard> terrytoriCards = ownedCards.get(
+					CardType.TERRITORY);
+			for (int i = 0; i < terrytoriCards.size(); i++) {
+				terrytoriCards.get(i).getPermanentEffect().chooseOption(view,
+						action);
+			}
 		}
 
 		if ((action.getActionSpaceId() == ActionSpaceIds.AS_PRODUCTION) ||
 				(action.getActionSpaceId() == ActionSpaceIds
 						.AS_PRODUCTION_BIG)) {
-			//TODO: production
-			//scorre la lista di carte territorio del player e chiama la
-			// chooseoption che si occupa di salvare la scelta nella action
-			List<DevelopmentCard> terrytoriCards = ownedCards.get(
+			//invokes the chooseoption method for each building card of the
+			// player
+			//to save the choice
+			List<DevelopmentCard> buildingCards = ownedCards.get(
 					CardType.BUILDING);
-			for (int i = 0; i < terrytoriCards.size(); i++) {
-				terrytoriCards.get(i).getPermanentEffect().chooseOption(view,
+			for (int i = 0; i < buildingCards.size(); i++) {
+				buildingCards.get(i).getPermanentEffect().chooseOption(view,
 						action);
 			}
 		}

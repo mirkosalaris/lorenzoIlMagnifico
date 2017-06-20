@@ -493,7 +493,8 @@ public class Generator {
 		System.out.println(
 				"ImmediateEffect: \n\t1. ExtraProduction\n\t2. " +
 						"ExtraTurnHarvest\n\t3. " +
-						"ExtraTurnTower\n\t4. ImmediateCouncilPrivileges\n\t5." +
+						"ExtraTurnTower\n\t4. " +
+						"ImmediateCouncilPrivileges\n\t5." +
 						" ImmediateResourcesList\n\t6. " +
 						"ResourceListBasedOnOwedResources\nInsert:");
 		JsonObject jsonObject = new JsonObject();

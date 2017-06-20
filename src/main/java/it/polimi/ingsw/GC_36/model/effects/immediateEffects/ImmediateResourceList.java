@@ -31,12 +31,7 @@ public class ImmediateResourceList implements ImmediateEffect {
 	@Override
 	public void chooseOptions(ViewInterface view, ActionInterface action,
 	                          User user) {
-		// TODO impl
-		//penso non debba fare niente
-		//view.chooseOptions(...)
-
-		//System.out.println(
-		//		"here you'd have to choose option for immediate effect");
+		;
 	}
 
 

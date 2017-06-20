@@ -28,19 +28,5 @@ public interface ViewInterface extends Participant {
 
 	int chooseCardPaymentOptions(DevelopmentCard card);
 
-	int selectNumberOfWoods();
-
-	int selectNumberOfStones();
-
-	int selectNumberOfServants();
-
-	int selectNumberOfCoins();
-
-	int selectNumberOfVictoryPoints();
-
-	int selectNumberOfMilitaryPoints();
-
-	int selectNumberOfFaithPoints();
-
 	void show(String message);
 }
