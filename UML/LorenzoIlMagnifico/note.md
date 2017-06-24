@@ -1,3 +1,9 @@
+# TODO
+* implement EffectManager as a decorator "manager" that is able to apply 
+	decorator to all classes
+* Discuss observer pattern for MVC
+* discuss on where to put Scorer
+
 # Open problems
 * How to implement actionHandler pairings with actionSpace
 	- we could instantiate an actionHandler for each actionSpace,
@@ -9,6 +15,8 @@
 		Moreover we have to manage production and harvest.
 * immediate effects sometimes are resourcesList, sometimes a new card. How do we
 	model them?
+* how to model yellow and green permanent effect
+
 	
 # New ideas
 * what if we add an OptionListManager, whose work is to merge options and so on?
@@ -25,26 +33,29 @@
 > this is a class, one instance for each actual game. 
 	
 	+run():
-		the only public method. This starts the game calling all other
-		method of the class
+		This starts the game calling all the private methods of the class
+
+	~getBoardInstance():
+	    return the reference to Board
+	    
 	-initialize():
 		* creates an instance of the model, instantiating Board and then
 			calling board.initialize().
 		* creates an instance of ModelCommunicator and save into it the
 			instance of the board
 	-play():
-		start the game logic, instantiating period by period
+		start the game logic. Instatiate period by period getting the deckset 
+		through Board, calling board.getDeckSet(periodNumber) 
+                                       		
 	-finalScoring():
-		this is called at the end of the game to know the winner
+		this is called at the end of the game. It invokes Scorer
 
 ## Period
 > a class instantiated by game and characterized by a periodNumber
 
-	Constructor: accept a periodNumber
+	Constructor: accept a periodNumber and a DeckSet
 
 	+start():
-		gets the deckset through ModelCommunicator and Board, calling 
-		board.getDeckSet(periodNumber)
 		create two instances of Round, passing them the deckSet.
 		Then it invokes round.startRound()
 
@@ -60,9 +71,6 @@
 		get a reference to board and then, through board, to deckSet
 		dice, turnOrder.
 	
-	-allocateCards(deckSet):
-		takes 4 cards from each deck of the deckSet calling
-		getTYPEDeck and using the method deck.popCard()
 	-rollDice(Die[n]):
 		call roll() on each die.
 	-executeRound():
@@ -72,22 +80,9 @@
 		}
 		NB: turnOrder is taken through ModelCommunicator and Board
 	-adjustTurnOrder(turnOrder):
-		it simply calls turnOrder.adjustTurnOrder()
+		it simply calls turnOrder.adjust()
 	-cleanBoard(board)
 		this will call board.clean()
-
-## TurnOrder
-> contains an ordered set of players. This set represents the whole round, so, 
-> for instance, with 4 players this is a 16 items set; with 2 players this is a 
-> 8 items set.
-
-	+hasNext()
-		return true if there's still someone that has to play,
-		false otherwise
-	+getNextPlayer()
-		return the next player who has to play
-	+setNewOrder(orderedPlayers[n])
-		it simply calls turnOrder.setNewOrder(orderedPlayers[n])
 	
 ## TurnExecutor (static)
 > execute a turn of a certain player
@@ -125,6 +120,11 @@
 		this apply effects on things not related to single players (like
 		turnOrder)
 
+## Scorer
+> has methods to calculate the final scoring of players
+    +calculate(board):
+        check for every player his resources etc...
+        Return pairs of player-total points
 
 # Model package
 > contains the data. The main class is "Board" which contains a reference to
@@ -137,11 +137,18 @@
 > directly from this class)
 
 	TODO: Constructor: accept info about the game, like number of player etc.
-	
-	+initialize()
-		create an instance of every referentiable model's class
+		Then it creates an instance of all direct associated classes and
+		in doing this, it executes all things needed in the preparation
+		of game (like giving resources to players)
+
+	+initialize(periodNumber)
+		this call allocateCards, passing it the deckSet got from the
+		periodNumber.
+	-allocateCards(deckSet):
+		takes 4 cards from each deck of the deckSet calling
+		getTYPEDeck and using the method deck.popCard()
 	+clean()
-		reset the board cleaning actionSpaces and towers
+		reset the board, cleaning actionSpaces and towers
 	+getDeckSet(periodNumber)
 		return the deckSet corresponding to periodNumber
 	+getTurnOrder()
@@ -178,7 +185,7 @@
 ## Die
 > represents a single die
 
-	Constructor: accept a string 'color'
+	Constructor: accept a DieColor
 	
 	+getColor()
 		return the color (as string)
@@ -186,6 +193,10 @@
 		return the associated value
 	+setValue()
 		store the new value
+		
+## DieColor
+> enum that represents possible value of colors for dice
+    Three instances: BLACK, WHITE, ORANGE
 	
 ## DeckSet
 > it is a set of decks. This set is related to a certain period, but the deckset
@@ -194,6 +205,19 @@
 	getTerritoriesDeck()
 		return the associated territories deck
 	...()
+
+## TurnOrder
+> contains an ordered set of players. This set represents the whole round, so, 
+> for instance, with 4 players this is a 16 items set; with 2 players this is a 
+> 8 items set.
+
+	+hasNext()
+		return true if there's still someone that has to play,
+		false otherwise
+	+getNextPlayer()
+		return the next player who has to play
+	+adjust()
+		calculate the new order and store it
 
 ## Deck
 > it contains a set of development cards
@@ -247,6 +271,12 @@
 ## Tower
 > represents a tower. This is an enumeration with 4 instances.
 
+	Constructor: accept a cardExtractor (tower is an enum, so the it is
+		passed at compile time)
+
+	+allocateCards(deckSet)
+		call cardExtractor.pop(deckSet) four times and store the result
+		in the floors
 	+isFree()
 		return true if the tower is not already occupied
 	~reset()
@@ -282,10 +312,23 @@
 		in order: coins, stone, wood, servant, victory points, military
 		points, faith points
 	+get(Coins/Stone/Wood/Servant)Counter()
-		return an integer
+		return resourceCounter
 	+get(Victory/Military/Faith)Points()
-		return an integer
+		return a resourceCounter
 
+## ResourceCounter
+> it is a counter for any type of resource that can be represented as integer:
+> 	coins, stone, wood, servant, vicotry points, military points, faith p.
+> Actually this is just a counter, the 'type' is not stored anywhere inside
+	
+	Constructor: accept an integer value
+	
+	+getValue()
+		return the value, as integer
+	+pay(amount)
+		reduce the value of the counter by 'amount'
+	+add(amount)
+		increase the value of the counter by 'amount'
 
 
 
