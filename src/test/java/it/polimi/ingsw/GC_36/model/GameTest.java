@@ -1,7 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
 import it.polimi.ingsw.GC_36.client.User;
-import it.polimi.ingsw.GC_36.client.ViewCLI;
+import it.polimi.ingsw.GC_36.client.view.ViewCLI;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.server.ParticipantRMI;
 import it.polimi.ingsw.GC_36.utils.Pair;

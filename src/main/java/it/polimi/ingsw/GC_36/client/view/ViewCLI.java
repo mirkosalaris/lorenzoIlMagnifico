@@ -1,4 +1,4 @@
-package it.polimi.ingsw.GC_36.client;
+package it.polimi.ingsw.GC_36.client.view;
 
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.Pair;

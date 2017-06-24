@@ -1,7 +1,7 @@
 package it.polimi.ingsw.GC_36.model.effects.permanentEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
-import it.polimi.ingsw.GC_36.client.ViewInterface;
+import it.polimi.ingsw.GC_36.client.view.ViewInterface;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 

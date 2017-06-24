@@ -1,5 +1,8 @@
 package it.polimi.ingsw.GC_36.client;
 
+import it.polimi.ingsw.GC_36.client.view.ViewCLI;
+import it.polimi.ingsw.GC_36.client.view.ViewGUI;
+import it.polimi.ingsw.GC_36.client.view.ViewInterface;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;

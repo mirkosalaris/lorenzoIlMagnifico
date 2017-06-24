@@ -1,4 +1,4 @@
-package it.polimi.ingsw.GC_36.client;
+package it.polimi.ingsw.GC_36.client.view;
 
 import it.polimi.ingsw.GC_36.model.ActionSpaceIds;
 import it.polimi.ingsw.GC_36.model.DevelopmentCard;

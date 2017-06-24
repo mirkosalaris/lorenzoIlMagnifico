@@ -11,11 +11,12 @@ public class LeaderCard {
 	private LeaderEffect effect;
 
 	public LeaderCard(String name, ResourcesList requiredResources,
-	                  Map<CardType, Integer> requiredCards, LeaderEffect effect) {
+	                  Map<CardType, Integer> requiredCards,
+	                  LeaderEffect effect) {
 		this.name = name;
 		this.requiredResources = requiredResources;
 		this.requiredCards = requiredCards;
-		this.effect=effect;
+		this.effect = effect;
 	}
 
 	private boolean canUse(Player player) {
@@ -38,7 +39,7 @@ public class LeaderCard {
 		return true;
 	}
 
-	public LeaderEffect getEffect(){
+	public LeaderEffect getEffect() {
 		return effect;
 	}
 

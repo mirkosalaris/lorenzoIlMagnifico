@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.client;
 
 import it.polimi.ingsw.GC_36.Commons;
+import it.polimi.ingsw.GC_36.client.view.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.NotAvailableException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;

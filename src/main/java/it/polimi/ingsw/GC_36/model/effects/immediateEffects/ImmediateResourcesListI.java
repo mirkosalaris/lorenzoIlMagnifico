@@ -1,7 +1,7 @@
 package it.polimi.ingsw.GC_36.model.effects.immediateEffects;
 
 import it.polimi.ingsw.GC_36.client.User;
-import it.polimi.ingsw.GC_36.client.ViewInterface;
+import it.polimi.ingsw.GC_36.client.view.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.model.Action;
 import it.polimi.ingsw.GC_36.model.ActionInterface;
