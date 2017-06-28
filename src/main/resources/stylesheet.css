@@ -1,0 +1,5 @@
+.changeScene {
+    -fx-border-radius: 25px;
+    -fx-background-color: rgba(148, 91, 59, 0.9);
+    -fx-alignment: top-right;
+}

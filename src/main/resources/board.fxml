@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.112"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="it.polimi.ingsw.GC_36.client.view.BoardController">
+    <stylesheets>
+        <URL value="@stylesheet.css"/>
+    </stylesheets>
+
+    <GridPane prefHeight="650.0" prefWidth="900.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0"
+                               minWidth="900.0" prefWidth="900.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="600.0" minHeight="600.0"
+                            prefHeight="600.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0"
+                            vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <children>
+            <Button mnemonicParsing="false" onAction="#toPersonalBoardBTNClick"
+                    styleClass="changeScene" text="Personal Board"
+                    GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
+            <ScrollPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0"
+                        minWidth="900.0" prefHeight="600.0" prefWidth="900.0">
+                <ImageView fx:id="boardImage" fitHeight="600.0"
+                           onScroll="#boardZoom" preserveRatio="true">
+                    <image>
+                        <Image url="@images/board.jpg"/>
+                    </image>
+                </ImageView>
+            </ScrollPane>
+        </children>
+    </GridPane>
+</AnchorPane>

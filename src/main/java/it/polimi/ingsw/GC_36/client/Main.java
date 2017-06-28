@@ -22,7 +22,7 @@ public class Main {
 
 		User user = new User(view);
 
-		communicator = chooseCommunicator(user);
+		communicator = view.chooseCommunicator(user);
 
 		try {
 			communicator.connect();
@@ -42,25 +42,6 @@ public class Main {
 				}
 			}
 		}).start();
-	}
-
-	private static Communicator chooseCommunicator(User user) {
-		Communicator communicator = null;
-
-		Scanner sc = new Scanner(System.in);
-		char choice;
-		do {
-			System.out.print("Type r to choose RMI, s to choose socket: ");
-			choice = sc.next().charAt(0);
-
-			if (choice == 's' || choice == 'S') {
-				communicator = new CommunicatorSocket(user);
-			} else if (choice == 'r' || choice == 'R') {
-				communicator = new CommunicatorRMI(user);
-			}
-		} while (communicator == null);
-
-		return communicator;
 	}
 
 	private static ViewInterface chooseView() {

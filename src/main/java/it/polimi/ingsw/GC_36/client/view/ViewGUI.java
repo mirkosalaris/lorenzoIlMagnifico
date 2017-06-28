@@ -1,13 +1,22 @@
 package it.polimi.ingsw.GC_36.client.view;
 
+import it.polimi.ingsw.GC_36.client.Communicator;
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ViewGUI implements ViewInterface {
+public class ViewGUI extends Application implements ViewInterface {
+	private BoardController boardCtrl;
+	private PersonalBoardController personalBoardCtrl;
 
 	@Override
 	public MemberColor chooseMemberColor() {
@@ -45,6 +54,17 @@ public class ViewGUI implements ViewInterface {
 	@Override
 	public void show(String message) {
 
+	}
+
+	@Override
+	public void start() {
+		String args = "";
+		launch(args);
+	}
+
+	@Override
+	public Communicator chooseCommunicator(User user) {
+		return null;
 	}
 
 	@Override
@@ -136,5 +156,34 @@ public class ViewGUI implements ViewInterface {
 	@Override
 	public void update(ResourcesList resourcesList) {
 
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		System.out.println("loading...");
+
+		FXMLLoader loader;
+
+		URL resource;
+		resource = getClass().getClassLoader().getResource("board.fxml");
+
+		loader = new FXMLLoader(resource);
+		Parent boardRoot = loader.load();
+		boardCtrl = loader.getController();
+
+		resource = getClass().getClassLoader().getResource(
+				"personalBoard.fxml");
+
+		loader = new FXMLLoader(resource);
+		Parent pbRoot = loader.load();
+		personalBoardCtrl = loader.getController();
+
+		boardCtrl.initialize(primaryStage, boardRoot, personalBoardCtrl);
+		personalBoardCtrl.initialize(primaryStage, pbRoot, boardCtrl);
+
+		boardCtrl.display();
+		primaryStage.setResizable(false);
+
+		primaryStage.show();
 	}
 }

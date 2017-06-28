@@ -1,5 +1,9 @@
 package it.polimi.ingsw.GC_36.client.view;
 
+import it.polimi.ingsw.GC_36.client.Communicator;
+import it.polimi.ingsw.GC_36.client.CommunicatorRMI;
+import it.polimi.ingsw.GC_36.client.CommunicatorSocket;
+import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
@@ -124,6 +128,31 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public void show(String message) {
 		System.out.println(message);
+	}
+
+	@Override
+	public void start() {
+
+	}
+
+	@Override
+	public Communicator chooseCommunicator(User user) {
+		Communicator communicator = null;
+
+		Scanner sc = new Scanner(System.in);
+		char choice;
+		do {
+			System.out.print("Type r to choose RMI, s to choose socket: ");
+			choice = sc.next().charAt(0);
+
+			if (choice == 's' || choice == 'S') {
+				communicator = new CommunicatorSocket(user);
+			} else if (choice == 'r' || choice == 'R') {
+				communicator = new CommunicatorRMI(user);
+			}
+		} while (communicator == null);
+
+		return communicator;
 	}
 
 	@Override
