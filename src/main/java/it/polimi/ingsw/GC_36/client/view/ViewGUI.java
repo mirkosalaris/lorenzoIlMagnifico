@@ -7,6 +7,7 @@ import it.polimi.ingsw.GC_36.utils.Pair;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -15,8 +16,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class ViewGUI extends Application implements ViewInterface {
-	private BoardController boardCtrl;
-	private PersonalBoardController personalBoardCtrl;
+	private GuiController ctrl;
 
 	@Override
 	public MemberColor chooseMemberColor() {
@@ -168,20 +168,12 @@ public class ViewGUI extends Application implements ViewInterface {
 		resource = getClass().getClassLoader().getResource("board.fxml");
 
 		loader = new FXMLLoader(resource);
-		Parent boardRoot = loader.load();
-		boardCtrl = loader.getController();
+		Parent root = loader.load();
+		ctrl = loader.getController();
 
-		resource = getClass().getClassLoader().getResource(
-				"personalBoard.fxml");
+		primaryStage.setTitle("Lorenzo Il Magnifico");
+		primaryStage.setScene(new Scene(root));
 
-		loader = new FXMLLoader(resource);
-		Parent pbRoot = loader.load();
-		personalBoardCtrl = loader.getController();
-
-		boardCtrl.initialize(primaryStage, boardRoot, personalBoardCtrl);
-		personalBoardCtrl.initialize(primaryStage, pbRoot, boardCtrl);
-
-		boardCtrl.display();
 		primaryStage.setResizable(false);
 
 		primaryStage.show();

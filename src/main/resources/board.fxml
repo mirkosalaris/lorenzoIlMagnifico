@@ -1,42 +1,312 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.112"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="801.0" prefWidth="1069.0"
+            xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="it.polimi.ingsw.GC_36.client.view.BoardController">
+            fx:controller="it.polimi.ingsw.GC_36.client.view.GuiController">
     <stylesheets>
         <URL value="@stylesheet.css"/>
     </stylesheets>
 
-    <GridPane prefHeight="650.0" prefWidth="900.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0"
-                               minWidth="900.0" prefWidth="900.0"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="600.0" minHeight="600.0"
-                            prefHeight="600.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0"
-                            vgrow="SOMETIMES"/>
-        </rowConstraints>
-        <children>
-            <Button mnemonicParsing="false" onAction="#toPersonalBoardBTNClick"
-                    styleClass="changeScene" text="Personal Board"
-                    GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
-            <ScrollPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0"
-                        minWidth="900.0" prefHeight="600.0" prefWidth="900.0">
-                <ImageView fx:id="boardImage" fitHeight="600.0"
-                           onScroll="#boardZoom" preserveRatio="true">
-                    <image>
-                        <Image url="@images/board.jpg"/>
-                    </image>
-                </ImageView>
-            </ScrollPane>
-        </children>
-    </GridPane>
+    <children>
+        <ImageView fx:id="boardImage" fitWidth="510.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/board.jpg"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="bonusTile" fitWidth="42.0" layoutX="520.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/bonusTile.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="personalBoardImage" fitWidth="510.0" layoutX="562.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/personalBoard.jpg"/>
+            </image>
+        </ImageView>
+
+        <ImageView fitHeight="292.0" fitWidth="551.0" layoutX="520.0"
+                   layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/wallpaper.jpeg"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="g" fitHeight="150.0" fitWidth="62.0" layoutX="14.0"
+                   layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+
+        <ImageView fx:id="v1" fitHeight="150.0" fitWidth="62.0" layoutX="572.0"
+                   layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="v2" fitHeight="150.0" fitWidth="62.0" layoutX="656.0"
+                   layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="v3" fitHeight="150.0" fitWidth="62.0" layoutX="734.0"
+                   layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="v4" fitHeight="150.0" fitWidth="62.0" layoutX="824.0"
+                   layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="v5" fitHeight="150.0" fitWidth="62.0" layoutX="905.0"
+                   layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="v6" fitHeight="150.0" fitWidth="62.0" layoutX="985.0"
+                   layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+
+        <ImageView fx:id="y1" fitHeight="150.0" fitWidth="62.0" layoutX="572.0"
+                   layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="y2" fitHeight="150.0" fitWidth="62.0" layoutX="656.0"
+                   layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="y3" fitHeight="150.0" fitWidth="62.0" layoutX="734.0"
+                   layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="y4" fitHeight="150.0" fitWidth="62.0" layoutX="824.0"
+                   layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="y5" fitHeight="150.0" fitWidth="62.0" layoutX="905.0"
+                   layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="y6" fitHeight="150.0" fitWidth="62.0" layoutX="985.0"
+                   layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+
+        <ImageView fx:id="b1" fitHeight="150.0" fitWidth="62.0" layoutX="572.0"
+                   layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="b2" fitHeight="150.0" fitWidth="62.0" layoutX="656.0"
+                   layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="b3" fitHeight="150.0" fitWidth="62.0" layoutX="734.0"
+                   layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="b4" fitHeight="150.0" fitWidth="62.0" layoutX="824.0"
+                   layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="b5" fitHeight="150.0" fitWidth="62.0" layoutX="905.0"
+                   layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="b6" fitHeight="150.0" fitWidth="62.0" layoutX="985.0"
+                   layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+
+        <ImageView fx:id="g1" fitHeight="150.0" fitWidth="62.0" layoutX="572.0"
+                   layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cards/devcards_f_en_c_1.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="194.0" fitWidth="551.0" layoutX="521.0"
+                   layoutY="605.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/wallpaper2.jpeg"/>
+            </image>
+        </ImageView>
+
+
+        <Button fx:id="4" layoutX="79.0" layoutY="44.0" mnemonicParsing="false"
+                opacity="0.40" prefHeight="50" prefWidth="50"
+                styleClass="actionSpaceButton"/>
+        <Button fx:id="3" layoutX="79.0" layoutY="155.0" mnemonicParsing="false"
+                opacity="0.40" prefHeight="50" prefWidth="50"
+                styleClass="actionSpaceButton"/>
+        <Button fx:id="2" layoutX="79.0" layoutY="270.0" mnemonicParsing="false"
+                opacity="0.40" prefHeight="50" prefWidth="50"
+                styleClass="actionSpaceButton"/>
+        <Button fx:id="1" layoutX="79.0" layoutY="385.0" mnemonicParsing="false"
+                opacity="0.40" prefHeight="50" prefWidth="50"
+                styleClass="actionSpaceButton"/>
+
+        <Button fx:id="8" layoutX="202.0" layoutY="44.0" mnemonicParsing="false"
+                opacity="0.40" prefHeight="50" prefWidth="50"
+                styleClass="actionSpaceButton"/>
+        <Button fx:id="7" layoutX="202.0" layoutY="155.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="6" layoutX="202.0" layoutY="270.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="5" layoutX="202.0" layoutY="385.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+
+        <Button fx:id="12" layoutX="326.0" layoutY="44.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="11" layoutX="326.0" layoutY="155.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="10" layoutX="326.0" layoutY="270.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="9" layoutX="326.0" layoutY="385.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+
+        <Button fx:id="16" layoutX="447.0" layoutY="44.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="15" layoutX="447.0" layoutY="155.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="14" layoutX="447.0" layoutY="270.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="13" layoutX="447.0" layoutY="385.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+
+        <Button fx:id="0" layoutX="265.0" layoutY="475.0"
+                mnemonicParsing="false" opacity="0.50" prefHeight="70"
+                prefWidth="160"/>
+
+        <Button fx:id="17" layoutX="7" layoutY="658" mnemonicParsing="false"
+                opacity="0.40" prefHeight="50" prefWidth="50"
+                styleClass="actionSpaceButton"/>
+        <Button fx:id="19" layoutX="7" layoutY="728" mnemonicParsing="false"
+                opacity="0.40" prefHeight="50" prefWidth="50"
+                styleClass="actionSpaceButton"/>
+
+        <Button fx:id="18" layoutX="75.0" layoutY="658.0"
+                mnemonicParsing="false" opacity="0.50" prefHeight="50"
+                prefWidth="130"/>
+        <Button fx:id="20" layoutX="75.0" layoutY="728.0"
+                mnemonicParsing="false" opacity="0.50" prefHeight="50"
+                prefWidth="130"/>
+        <Button fx:id="21" layoutX="307.0" layoutY="649.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="22" layoutX="364.0" layoutY="648.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="23" layoutX="419.0" layoutY="661.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+        <Button fx:id="24" layoutX="463.0" layoutY="703.0"
+                mnemonicParsing="false" opacity="0.40" prefHeight="50"
+                prefWidth="50" styleClass="actionSpaceButton"/>
+
+        <Label fx:id="BLACK" layoutX="310.0" layoutY="744.0" text="0"
+               textFill="#000000">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+        <Label fx:id="WHITE" layoutX="369.0" layoutY="744.0" text="0"
+               textFill="#000000">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+        <Label fx:id="ORANGE" layoutX="428.0" layoutY="744.0" text="0"
+               textFill="#000000">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+
+        <Label fx:id="victoryPoints" layoutX="796.0" layoutY="673.0" text="-"
+               textFill="#000000">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+        <Label fx:id="faithPoints" layoutX="796.0" layoutY="622.0" text="-"
+               textFill="#000000">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+        <Label fx:id="militaryPoints" layoutX="796.0" layoutY="727.0" text="-"
+               textFill="#000000">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+
+        <Label layoutX="536.0" layoutY="622.0" text="Victory Points">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+        <Label layoutX="535.0" layoutY="677.0" text="Faith Points">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+        <Label layoutX="532.0" layoutY="727.0" text="Military Points">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </Label>
+
+    </children>
 </AnchorPane>

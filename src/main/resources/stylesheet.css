@@ -1,5 +1,9 @@
 .changeScene {
     -fx-border-radius: 25px;
-    -fx-background-color: rgba(148, 91, 59, 0.9);
+    -fx-background-color: rgba(100, 148, 64, 0.9);
     -fx-alignment: top-right;
+}
+
+.actionSpaceButton {
+    -fx-background-radius: 50%;
 }
