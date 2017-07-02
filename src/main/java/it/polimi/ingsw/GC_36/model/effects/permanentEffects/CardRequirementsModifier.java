@@ -41,6 +41,6 @@ public class CardRequirementsModifier extends PermanentEffect {
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
-		return false;
+		return true;
 	}
 }

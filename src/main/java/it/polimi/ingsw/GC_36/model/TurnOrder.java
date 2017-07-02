@@ -5,34 +5,44 @@ import java.util.List;
 import java.util.Map;
 
 public class TurnOrder {
-	private final Map<PlayerColor, Player> fullMap;
-	private List<Player> players = new ArrayList<>();
+	private List<Player> playersOrder = new ArrayList<>();
+	private List<Player> nextPlayersOrder = new ArrayList<>();
+	//lastOrder in needed to calculate the nextplayersOrder
+	private List<Player> lastOrder = new ArrayList<>();
 
 	public TurnOrder(Map<PlayerColor, Player> players) {
-		fullMap = players;
-		// TODO from 0 to number of family members...
-		for (int i = 0; i < 4; i++) {
-			this.players.addAll(fullMap.values());
+		for (int i = 0; i < MemberColor.values().length; i++) {
+			this.playersOrder.addAll(players.values());
+			this.lastOrder.addAll(players.values());
 		}
 	}
 
 	public boolean hasNext() {
-		return !players.isEmpty();
+		return !playersOrder.isEmpty();
 	}
 
 	public Player getNextPlayer() {
-		Player player = players.get(0);
-		players.remove(0);
+		Player player = playersOrder.get(0);
+		playersOrder.remove(0);
 		return player;
 	}
 
 	public void adjust() {
 
-		// TODO
+		//set the playersOrder for the next turn
 
-		// board.getActionSpaces().get(Commons.COUNCIL_ACTION_SPACE);
-		// calculate new turn order
+		for (Player player : lastOrder) {
+			if (!nextPlayersOrder.contains(player))
+				nextPlayersOrder.add(player);
+		}
 
-		players = new ArrayList<>(fullMap.values());
+		playersOrder = new ArrayList<>(nextPlayersOrder);
+		lastOrder = new ArrayList<>(nextPlayersOrder);
+		nextPlayersOrder.clear();
 	}
+
+	public void addPlayer(Player player) {
+		nextPlayersOrder.add(player);
+	}
+
 }

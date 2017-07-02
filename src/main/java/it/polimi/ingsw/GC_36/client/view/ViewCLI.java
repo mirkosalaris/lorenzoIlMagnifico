@@ -25,16 +25,16 @@ public class ViewCLI implements ViewInterface {
 							"Enter");
 			String color;
 			color = in.nextLine();
-			if (color.equals("ORANGE")) {
+			if (color.equalsIgnoreCase("ORANGE")) {
 				memberColor = MemberColor.ORANGE;
 			}
-			if (color.equals("BLACK")) {
+			if (color.equalsIgnoreCase("BLACK")) {
 				memberColor = MemberColor.BLACK;
 			}
-			if (color.equals("WHITE")) {
+			if (color.equalsIgnoreCase("WHITE")) {
 				memberColor = MemberColor.WHITE;
 			}
-			if (color.equals("UNCOLORED")) {
+			if (color.equalsIgnoreCase("UNCOLORED")) {
 				memberColor = MemberColor.UNCOLORED;
 			}
 		} while (memberColor == null);
@@ -53,9 +53,9 @@ public class ViewCLI implements ViewInterface {
 					"Do you want to use servants to increment your " +
 							"actionValue? yes or no");
 			answer = new String(in.nextLine());
-			if (answer.equals("no"))
+			if (answer.equalsIgnoreCase("no"))
 				wrong = false;
-			if (answer.equals("yes")) {
+			if (answer.equalsIgnoreCase("yes")) {
 				System.out.println("How much servants do you want to use?");
 				servants = in.nextInt();
 				if (servants >= 0)

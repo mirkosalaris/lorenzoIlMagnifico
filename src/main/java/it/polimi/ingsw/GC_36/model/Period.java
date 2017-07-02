@@ -40,7 +40,7 @@ public class Period {
 			if (startedRounds < Commons.ROUNDS_IN_PERIOD) {
 				newRound();
 
-				// TODO impl
+
 			} else {
 				throw new PeriodTerminatedException(
 						"The period can't advance because it's finished");

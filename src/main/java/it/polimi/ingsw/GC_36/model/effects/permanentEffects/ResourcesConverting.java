@@ -75,7 +75,13 @@ public class ResourcesConverting extends PermanentEffect {
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
-		return false;
+		int choice = action.getProductionChoice();
+		ResourcesList payResourcesList = options.get(choice).getFirst();
+		if (!playerResources.checkEnoughResources(payResourcesList)) {
+			return false;
+		}
+		playerResources.subtractResources(payResourcesList);
+		return true;
 	}
 
 	private boolean checkChoice(int choice) {

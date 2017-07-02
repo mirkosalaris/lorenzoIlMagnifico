@@ -108,9 +108,8 @@ public class Checker {
 		List<DevelopmentCard> buildingsCard = player.getPersonalBoard()
 				.getCards(CardType.BUILDING);
 		for (DevelopmentCard card : buildingsCard) {
-			// TODO @antonino
 			if (!card.getPermanentEffect().check(action, playerResources)) {
-				//	return false;
+				return false;
 			}
 
 		}

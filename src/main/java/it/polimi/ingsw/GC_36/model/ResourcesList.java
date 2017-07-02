@@ -95,7 +95,7 @@ public class ResourcesList implements Serializable {
 		return "" + map;
 	}
 
-	// TODO
+	// TODO @mirko
 	//public <T> T iterate(Function<ResourcesList,T> lambda) {
 
 

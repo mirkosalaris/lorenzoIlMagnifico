@@ -63,7 +63,7 @@ public class Player {
 
 	public FamilyMember getFamilyMember(MemberColor color) {
 		// return a copy
-		return familyMembers.get(color).copy();
+		return familyMembers.get(color);
 	}
 
 	public void roundReset() {

@@ -94,7 +94,7 @@ public class Board {
 		// reset all actionSpaces
 		for (ActionSpace as : actionSpaces.values()) {
 			// TODO: uncomment when Parser implemented
-			// as.reset();
+			as.reset();
 		}
 
 		setCurrentState(BoardState.UNINITIALIZED);

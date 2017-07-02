@@ -62,7 +62,6 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	@Override
 	public MemberColor getMemberColor() {
 		return memberColor;
-		//TODO:associated test replacing getFamilyMemberTest
 	}
 
 	@Override
@@ -82,15 +81,16 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 
 	@Override
 	public void copyFrom(ActionInterface action) {
-		// TODO test if constraints are the same between this and action
 		Action original = (Action) action;
 		this.memberColor = original.memberColor;
 		this.actionSpaceIds = original.actionSpaceIds;
-		this.councilPrivilegeList = original.councilPrivilegeList;
 		this.actionValueIncrement = original.actionValueIncrement;
 		this.cardPaymentOptions = original.cardPaymentOptions;
+		this.councilPrivilegeList = original.councilPrivilegeList;
 		this.extraAction = original.extraAction;
 		this.productionChoice = original.productionChoice;
+		this.baseActionValue = original.baseActionValue;
+		this.discount = original.discount;
 	}
 
 	@Override
@@ -193,8 +193,8 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		paymentList.getSecond().addResources(actionValuePayment);
 
 		if (discount != null) {
-			paymentList.getFirst().addResources(discount);
-			paymentList.getSecond().addResources(discount);
+			paymentList.getFirst().applyDiscount(discount);
+			paymentList.getSecond().applyDiscount(discount);
 		}
 
 		return paymentList;

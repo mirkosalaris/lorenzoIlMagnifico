@@ -56,6 +56,6 @@ public class ImmediateCouncilPrivilegeP extends PermanentEffect {
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
-		return false;
+		return true;
 	}
 }

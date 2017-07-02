@@ -60,7 +60,7 @@ public class ImmediateResourcesListP extends PermanentEffect {
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
-		return false;
+		return true;
 	}
 
 

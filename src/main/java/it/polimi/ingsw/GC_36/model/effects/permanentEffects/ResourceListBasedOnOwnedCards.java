@@ -41,10 +41,10 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 		// sequence, and if we don't access them we broke the sequence
 
 		action.getProductionChoice();
+
 		if (isDoable(requiredActionValue, action)) {
-			//TODO:check
-			//conta le carte di quel tipo possedute
-			//dai al player resourceList x numero di carte
+			//count the number of owned cards
+			//give to player resourcesList x number of cards
 			PersonalBoard personalBoard = player.getPersonalBoard();
 
 			int numberOfCards;
@@ -71,7 +71,7 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
-		return false;
+		return true;
 	}
 
 
