@@ -5,10 +5,7 @@ import it.polimi.ingsw.GC_36.observers.PlayerObserver;
 import it.polimi.ingsw.GC_36.server.Participant;
 
 import java.io.IOException;
-import java.util.EnumMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Player {
 	private PlayerColor playerColor;
@@ -19,6 +16,7 @@ public class Player {
 			new EnumMap<>(MemberColor.class);
 	private PlayerState currentState;
 	private Set<PlayerObserver> observers = new HashSet<>();
+	private List<LeaderCard> leaderCards = new ArrayList<>();
 
 	public Player(PlayerColor playerColor, Participant participant)
 			throws IOException {
@@ -56,6 +54,9 @@ public class Player {
 		setCurrentState(PlayerState.WAITING);
 	}
 
+	public void setBonusTile(BonusTileId id) {
+		personalBoard.setBonusTile(id);
+	}
 
 	public PersonalBoard getPersonalBoard() {
 		return personalBoard;
@@ -67,6 +68,7 @@ public class Player {
 	}
 
 	public void roundReset() {
+		// TODO @mirko how it is that this is never invoked?
 		for (FamilyMember member : familyMembers.values()) {
 			member.reset();
 		}
@@ -90,17 +92,6 @@ public class Player {
 		personalBoard.subscribe(o);
 	}
 
-	private void newStateNotify() throws IOException {
-		for (PlayerObserver o : observers) {
-			o.update(currentState);
-		}
-	}
-
-	private void setCurrentState(PlayerState newState) throws IOException {
-		currentState = newState;
-		newStateNotify();
-	}
-
 	public PlayerIdentifier getIdentifier() {
 		return identifier;
 	}
@@ -118,5 +109,24 @@ public class Player {
 		}
 
 		return true;
+	}
+
+	public void addLeaderCard(LeaderCard card) {
+		leaderCards.add(card);
+	}
+
+	public ArrayList<LeaderCard> getLeaderCards() {
+		return new ArrayList<>(leaderCards);
+	}
+
+	private void newStateNotify() throws IOException {
+		for (PlayerObserver o : observers) {
+			o.update(currentState);
+		}
+	}
+
+	private void setCurrentState(PlayerState newState) throws IOException {
+		currentState = newState;
+		newStateNotify();
 	}
 }

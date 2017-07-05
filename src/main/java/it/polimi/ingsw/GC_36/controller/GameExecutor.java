@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.controller;
 
 import it.polimi.ingsw.GC_36.exception.PlayingException;
+import it.polimi.ingsw.GC_36.exception.SetupException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
 import it.polimi.ingsw.GC_36.observers.NewRoundObserver;
@@ -8,6 +9,7 @@ import it.polimi.ingsw.GC_36.server.Participant;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,36 +17,45 @@ import java.util.Set;
 public class GameExecutor
 		implements Runnable, NewPeriodObserver, NewRoundObserver {
 	private Game game;
+	private GameMode mode;
 	private Map<PlayerColor, Player> players;
-	private Set<Participant> users;
+	private Set<Participant> participants;
 	private RoundController roundController = new RoundController();
 
 	public GameExecutor(Set<Participant> usersSet) throws IOException {
-		this.users = usersSet;
+		this(usersSet, GameMode.STANDARD);
+	}
 
-		Participant[] usersArray = new Participant[usersSet.size() - 1];
-		usersArray = usersSet.toArray(usersArray);
+	public GameExecutor(Set<Participant> participants, GameMode mode)
+			throws IOException {
+		this.participants = participants;
+		this.mode = mode;
+
+		Participant[] participantsArray =
+				new Participant[participants.size() - 1];
+		participantsArray = participants.toArray(participantsArray);
 
 		players = new EnumMap<>(PlayerColor.class);
-		for (int i = 0; i < usersArray.length; i++) {
-			Participant u = usersArray[i];
+		for (int i = 0; i < participantsArray.length; i++) {
+			Participant p = participantsArray[i];
 
 			PlayerColor color = PlayerColor.values()[i];
-			Player p = new Player(color, u);
-			players.put(color, p);
+			Player player = new Player(color, p);
+			players.put(color, player);
 		}
 	}
 
 	@Override
 	public void run() {
 		try {
-			game = Game.getInstance();
+			game = new Game(mode);
 
 			game.setPlayers(players);
-			for (Participant u : users) {
-				game.subscribe(u);
-			}
 			game.subscribe(this);
+
+			GameSetupper setupper = new GameSetupper(
+					new ArrayList<>(players.values()), mode);
+			setupper.setup();
 
 			game.start();
 
@@ -60,7 +71,7 @@ public class GameExecutor
 			}
 
 		} catch (IllegalStateException | IOException | PlayingException |
-				ClassNotFoundException e) {
+				ClassNotFoundException | SetupException e) {
 			ExceptionLogger.log(e);
 			try {
 				closeAll(e.getMessage());
@@ -76,7 +87,7 @@ public class GameExecutor
 
 	@Override
 	public void update(Round newRound) {
-		for (Participant user : users) {
+		for (Participant user : participants) {
 			newRound.subscribe(user);
 		}
 		newRound.setController(roundController);
@@ -84,7 +95,7 @@ public class GameExecutor
 
 	@Override
 	public void update(Period newPeriod) {
-		for (Participant user : users) {
+		for (Participant user : participants) {
 			newPeriod.subscribe(user);
 			newPeriod.subscribe(this);
 		}

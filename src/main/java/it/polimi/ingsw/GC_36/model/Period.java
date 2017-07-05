@@ -37,10 +37,9 @@ public class Period {
 			}
 			currentRound.advance();
 		} catch (RoundTerminatedException e) {
+			notifyTerminatedRound();
 			if (startedRounds < Commons.ROUNDS_IN_PERIOD) {
 				newRound();
-
-
 			} else {
 				throw new PeriodTerminatedException(
 						"The period can't advance because it's finished");
@@ -67,11 +66,14 @@ public class Period {
 	}
 
 	private void newRoundNotify() throws IOException {
-		for (PeriodObserver o : observers) {
-			o.update();
-		}
 		for (NewRoundObserver o : newRoundObservers) {
 			o.update(currentRound);
+		}
+	}
+
+	private void notifyTerminatedRound() throws IOException {
+		for (PeriodObserver o : observers) {
+			o.terminatedRound();
 		}
 	}
 

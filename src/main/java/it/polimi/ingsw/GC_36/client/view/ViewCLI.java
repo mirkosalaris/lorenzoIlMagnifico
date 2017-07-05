@@ -7,17 +7,19 @@ import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
 public class ViewCLI implements ViewInterface {
+	private Scanner in;
+
+	public ViewCLI() {
+		in = new Scanner(System.in);
+	}
 
 	@Override
 	public MemberColor chooseMemberColor() {
 		MemberColor memberColor = null;
-		Scanner in = new Scanner(System.in);
 		do {
 			System.out.println(
 					"Please select the family member specifying the color: " +
@@ -44,7 +46,6 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public int setActionValueIncrement() {
-		Scanner in = new Scanner(System.in);
 		String answer;
 		boolean wrong = true;
 		int servants = 0;
@@ -52,12 +53,13 @@ public class ViewCLI implements ViewInterface {
 			System.out.println(
 					"Do you want to use servants to increment your " +
 							"actionValue? yes or no");
-			answer = new String(in.nextLine());
+			answer = in.nextLine();
 			if (answer.equalsIgnoreCase("no"))
 				wrong = false;
 			if (answer.equalsIgnoreCase("yes")) {
 				System.out.println("How much servants do you want to use?");
 				servants = in.nextInt();
+				in.nextLine(); // consume line
 				if (servants >= 0)
 					wrong = false;
 
@@ -68,19 +70,19 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public int chooseActionSpaceId(Set<ActionSpaceIds> actionSpaceIds) {
-		Scanner in = new Scanner(System.in);
 		System.out.println("Please select an ActionSpace specifying the ID:");
 		if (actionSpaceIds != null) {
 			for (ActionSpaceIds id : actionSpaceIds) {
 				System.out.print(id.value() + ", ");
 			}
 		}
-		return in.nextInt();
+		int value = in.nextInt();
+		in.nextLine(); // consume line
+		return value;
 	}
 
 	@Override
 	public int choosePrivilege(int n) {
-		Scanner in = new Scanner(System.in);
 		System.out.println("choice number " + n);
 		System.out.println("Please specify how to convert your privilege:\n" +
 				"0: one wood & one stone\n" +
@@ -88,7 +90,9 @@ public class ViewCLI implements ViewInterface {
 				"2: two coins\n" +
 				"3: two military points\n" +
 				"4: one faith point\n");
-		return in.nextInt();
+		int value = in.nextInt();
+		in.nextLine(); // consume line
+		return value;
 	}
 
 	@Override
@@ -103,14 +107,14 @@ public class ViewCLI implements ViewInterface {
 			System.out.println("get:");
 			System.out.println(options.get(i).getSecond());
 		}
-		Scanner in = new Scanner(System.in);
 		System.out.println("Please specify the options");
-		return in.nextInt();
+		int value = in.nextInt();
+		in.nextLine(); // consume line
+		return value;
 	}
 
 	@Override
 	public int chooseCardPaymentOptions(DevelopmentCard card) {
-		Scanner in = new Scanner(System.in);
 		Pair<ResourcesList, ResourcesList> resourcesList;
 		System.out.println("Please select the payment option of the card");
 		for (int i = 1; i <= card.getRequirements().size(); i++) {
@@ -121,6 +125,7 @@ public class ViewCLI implements ViewInterface {
 							+ resourcesList.getSecond());
 		}
 		int choice = in.nextInt() - 1;
+		in.nextLine(); // consume line
 		return choice;
 	}
 
@@ -139,11 +144,10 @@ public class ViewCLI implements ViewInterface {
 	public Communicator chooseCommunicator(User user) {
 		Communicator communicator = null;
 
-		Scanner sc = new Scanner(System.in);
 		char choice;
 		do {
 			System.out.print("Type r to choose RMI, s to choose socket: ");
-			choice = sc.next().charAt(0);
+			choice = in.nextLine().charAt(0);
 
 			if (choice == 's' || choice == 'S') {
 				communicator = new CommunicatorSocket(user);
@@ -156,6 +160,18 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
+	public GameMode chooseMode() {
+		System.out.print("Do you want to play advanced mode (Yes/No)? ");
+		System.out.flush();
+
+		if (in.nextLine().equalsIgnoreCase("yes")) {
+			return GameMode.ADVANCED;
+		} else {
+			return GameMode.STANDARD;
+		}
+	}
+
+	@Override
 	public void fatalError(String s) {
 		System.out.println("fatal error: " + s);
 
@@ -163,7 +179,7 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public void play(ActionInterface action) {
-		System.out.println("\n\nNow it's your turn");
+		// don't need to do anything
 	}
 
 	@Override
@@ -177,8 +193,93 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update() {
-		System.out.println("A new Round has started");
+	public int chooseLeaderCard(List<LeaderCard> leaderCards)
+			throws IOException, ClassNotFoundException {
+		System.out.println("Choose a leader card from the following list:\n");
+
+		return chooseFromList(leaderCards);
+	}
+
+	private <E> int chooseFromList(List<E> list) {
+		// it never returns null if 'cancel' is set to null
+		return chooseFromList(list, null);
+	}
+
+	/**
+	 * Let the user choose between elements of a list typing an integer or a
+	 * string 'cancel'
+	 *
+	 * @param list
+	 * 		the list of element
+	 * @param cancel
+	 * 		the string to type to not choose.
+	 * @param <E>
+	 * @return the choice of the user. Null if no choice is made. Never returns
+	 * null if 'cancel' is null
+	 */
+	private <E> Integer chooseFromList(List<E> list, String cancel) {
+		boolean wrong = true;
+		boolean canceled = false;
+		int choice = 0;
+
+		do {
+			// print the alternatives
+			for (int i = 0; i <= list.size() - 1; i++) {
+				System.out.println(i + ") " + list.get(i));
+			}
+
+			String typed = in.nextLine();
+
+			if (typed.matches("^-?\\d+$")) {
+				// is it an integer?
+
+				choice = Integer.parseInt(typed);
+				if (choice >= 0 && choice <= list.size() - 1) {
+					wrong = false;
+				}
+			} else if (cancel != null) {
+				// maybe is a 'cancel' String
+
+				if (typed.equalsIgnoreCase(cancel)) {
+					wrong = false;
+					canceled = true;
+				}
+			}
+		} while (wrong);
+
+		return (canceled) ? null : choice;
+	}
+
+	@Override
+	public LeaderCard useCard(List<LeaderCard> cardsAvailable)
+			throws IOException, ClassNotFoundException {
+		System.out.println(
+				"If you want to use a card choose one of the following, " +
+						"otherwise type 'no':");
+		Integer choice = chooseFromList(cardsAvailable, "no");
+		if (choice == null) {
+			return null;
+		} else {
+			// don't check if choice is in bound because it is guaranteed to be
+			// right by 'chooseFromList'
+			return cardsAvailable.get(choice);
+		}
+	}
+
+	@Override
+	public int chooseBonusTile()
+			throws IOException, ClassNotFoundException {
+		System.out.println("Choose a bonus tile from the following list:\n");
+		List<BonusTileId> tiles =
+				new ArrayList<>(Arrays.asList(BonusTileId.values()));
+		tiles.remove(BonusTileId.DEFAULT);
+
+		return chooseFromList(tiles);
+	}
+
+	@Override
+	public void terminatedRound() {
+		System.out.println("The round is terminated");
 	}
 
 	@Override
@@ -242,7 +343,6 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public void update(RoundState newState) {
 		System.out.println("new Round State: " + newState);
-
 	}
 
 	@Override

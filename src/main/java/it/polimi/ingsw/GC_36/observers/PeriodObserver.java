@@ -5,6 +5,6 @@ import java.rmi.RemoteException;
 
 public interface PeriodObserver {
 
-	void update() throws RemoteException, IOException;
+	void terminatedRound() throws RemoteException, IOException;
 
 }

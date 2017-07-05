@@ -82,7 +82,7 @@ public class Parser {
 			}
 			return newDecks;
 		} else if (s.contains("bonusTile")) {
-			return this.bonusTiles.get(value - 1);
+			return this.bonusTiles.get(value);
 		} else if (s.contains("personalBoard")) {
 			return this.personalBoardList.get(value - 1);
 		} else if (s.contains("councilPrivilege")) {

@@ -22,8 +22,8 @@ public class Checker {
 		Player player = Game.getInstance().getCurrentPeriod()
 				.getCurrentRound().getCurrentPlayer();
 		ActionSpaceIds id = action.getActionSpaceId();
-		Pair<ResourcesList, ResourcesList> paymentList = action
-				.compilePaymentList();
+		Pair<ResourcesList, ResourcesList> paymentList =
+				action.compilePaymentList();
 
 		//check if familyMember is available
 		if (!checkFamilyMember(action.getMemberColor(), player)) {

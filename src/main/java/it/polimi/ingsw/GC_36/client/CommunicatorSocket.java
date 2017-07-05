@@ -72,6 +72,10 @@ public class CommunicatorSocket implements Communicator {
 		List<Object> params;
 
 		switch (entry.getKey()) {
+			case "chooseMode":
+				sendBack(user.chooseMode());
+				break;
+
 			case "show":
 				user.show((String) entry.getValue());
 				break;
@@ -95,6 +99,20 @@ public class CommunicatorSocket implements Communicator {
 
 			case "identifier":
 				user.setIdentifier((PlayerIdentifier) entry.getValue());
+				break;
+
+			case "chooseLeaderCard":
+				sendBack(user.chooseLeaderCard(
+						(List<LeaderCard>) entry.getValue()));
+				break;
+
+			case "useCard":
+				sendBack(user.useCard(
+						(List<LeaderCard>) entry.getValue()));
+				break;
+
+			case "chooseBonusTile":
+				sendBack(user.chooseBonusTile());
 				break;
 
 			case "updateBoardState":
@@ -133,8 +151,8 @@ public class CommunicatorSocket implements Communicator {
 				user.update(floorNumber, card);
 				break;
 
-			case "updateNewRound":
-				user.update();
+			case "terminatedRound":
+				user.terminatedRound();
 				break;
 
 			case "updateGameState":
@@ -176,8 +194,8 @@ public class CommunicatorSocket implements Communicator {
 		}
 	}
 
-	private void sendBack(ActionInterface actionInterface) throws IOException {
-		objOut.writeObject(actionInterface);
+	private void sendBack(Object obj) throws IOException {
+		objOut.writeObject(obj);
 		objOut.flush();
 	}
 }

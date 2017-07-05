@@ -2,10 +2,7 @@ package it.polimi.ingsw.GC_36.client.view;
 
 import it.polimi.ingsw.GC_36.client.Communicator;
 import it.polimi.ingsw.GC_36.client.User;
-import it.polimi.ingsw.GC_36.model.ActionSpaceIds;
-import it.polimi.ingsw.GC_36.model.DevelopmentCard;
-import it.polimi.ingsw.GC_36.model.MemberColor;
-import it.polimi.ingsw.GC_36.model.ResourcesList;
+import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.server.Participant;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
@@ -32,4 +29,6 @@ public interface ViewInterface extends Participant {
 	void start();
 
 	Communicator chooseCommunicator(User user);
+
+	GameMode chooseMode();
 }

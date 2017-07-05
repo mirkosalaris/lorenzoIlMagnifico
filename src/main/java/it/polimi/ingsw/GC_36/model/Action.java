@@ -19,6 +19,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	private ArrayList<Integer> productionChoice;
 	private int baseActionValue;
 	private ResourcesList discount;
+	private List<LeaderCard> leaderCards;
 
 	public Action() throws RemoteException {
 		productionChoice = new ArrayList<>();
@@ -132,6 +133,12 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
+	public List<LeaderCard> getLeaderCards() throws RemoteException {
+		// return a copy
+		return new ArrayList<>(leaderCards);
+	}
+
+	@Override
 	public String toString() {
 		return "Action{" +
 				"memberColor=" + memberColor +
@@ -178,8 +185,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 
 			// take the resourcesList associated with the user's choice
 			Pair<ResourcesList, ResourcesList> cardPayment = card
-					.getRequirements().get(
-							choice);
+					.getRequirements().get(choice);
 
 			// add to the payment list
 			paymentList.getFirst().addResources(cardPayment.getFirst());
@@ -202,5 +208,9 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 
 	public int getBaseActionValue() {
 		return baseActionValue;
+	}
+
+	public void setLeaderCards(List<LeaderCard> leaderCards) {
+		this.leaderCards = leaderCards;
 	}
 }

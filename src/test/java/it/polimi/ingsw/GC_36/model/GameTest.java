@@ -10,8 +10,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,7 +23,7 @@ public class GameTest {
 
 	@Before
 	public void setUp() throws Exception {
-		game = Game.getInstance();
+		game = new Game();
 
 		Map<PlayerColor, Player> players = new HashMap<>();
 
@@ -34,16 +36,16 @@ public class GameTest {
 		players.put(PlayerColor.BLUE, player2);
 
 		game.setPlayers(players);
+		player1.init(new PersonalBoard(1));
+		player2.init(new PersonalBoard(2));
+
+		game.subscribe(player1.getParticipant());
+		game.subscribe(player2.getParticipant());
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		// reset threadInstance to be able to instantiate game again
 
-		Field field = game.getClass().getDeclaredField("threadInstance");
-		field.setAccessible(true);
-
-		field.set(game, null);
 	}
 
 	@Test
@@ -134,90 +136,5 @@ public class GameTest {
 		@SuppressWarnings("unchecked")
 		Set<GameObserver> set = (Set<GameObserver>) fieldList.get(game);
 		assertTrue(set.contains(o1) && set.contains(o2));
-	}
-
-	@Test
-	public void newStateNotifyCalled() throws Exception {
-		// check if newStateNotify is being called correctly
-
-		// at the end both cells have to be true
-		Boolean obValue[] = new Boolean[2];
-
-		GameObserver o1 = new GameObserver() {
-			@Override
-			public void update(GameState newState) {obValue[0] = true;}
-
-			@Override
-			public void update(int periodNumber) {}
-
-			@Override
-			public void update(
-					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
-
-			}
-		};
-		GameObserver o2 = new GameObserver() {
-			@Override
-			public void update(GameState newState) {obValue[1] = true;}
-
-			@Override
-			public void update(int periodNumber) {}
-
-			@Override
-			public void update(
-					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
-
-			}
-		};
-
-		game.subscribe(o1);
-		game.subscribe(o2);
-
-		Method method = game.getClass().getDeclaredMethod("setCurrentState",
-				GameState.class);
-		method.setAccessible(true);
-
-		method.invoke(game, GameState.FINISHED);
-
-		assertTrue(obValue[0]);
-		assertTrue(obValue[1]);
-	}
-
-	@Test
-	public void newStateNotifyCalledJustOnce() throws Exception {
-		// check if the notify is called just once per each observer
-
-		// can't use a simple counter because it must be final. So our counter
-		// is a List and his size is the counter value
-		List<Integer> updatedCounter = new ArrayList<>();
-
-		GameObserver o1 = new GameObserver() {
-			@Override
-			public void update(GameState newState) {
-				updatedCounter.add(0);
-			}
-
-			@Override
-			public void update(int periodNumber) {}
-
-			@Override
-			public void update(
-					List<Pair<PlayerIdentifier, Integer>> winningOrderList) {
-
-			}
-
-		};
-
-		game.subscribe(o1);
-		game.subscribe(o1);
-		game.subscribe(o1);
-
-		Method method = game.getClass().getDeclaredMethod("setCurrentState",
-				GameState.class);
-		method.setAccessible(true);
-
-		method.invoke(game, GameState.FINISHED);
-
-		assertTrue(updatedCounter.size() == 1);
 	}
 }

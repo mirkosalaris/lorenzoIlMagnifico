@@ -35,4 +35,19 @@ public class ResourceCounter implements Serializable {
 	public String toString() {
 		return "" + value;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ResourceCounter that = (ResourceCounter) o;
+
+		return value == that.value;
+	}
+
+	@Override
+	public int hashCode() {
+		return value;
+	}
 }

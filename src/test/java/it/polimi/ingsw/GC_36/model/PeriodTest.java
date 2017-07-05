@@ -11,8 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +23,7 @@ public class PeriodTest {
 
 	@Before
 	public void setUp() throws Exception {
-		game = Game.getInstance();
+		game = new Game();
 
 		Map<PlayerColor, Player> players = new HashMap<>();
 
@@ -35,6 +36,11 @@ public class PeriodTest {
 		players.put(PlayerColor.BLUE, player2);
 
 		game.setPlayers(players);
+		player1.init(new PersonalBoard(1));
+		player2.init(new PersonalBoard(2));
+
+		game.subscribe(player1.getParticipant());
+		game.subscribe(player2.getParticipant());
 
 		DeckSet deckSet = new DeckSet(1);
 		period = new Period(1, deckSet);
@@ -58,9 +64,7 @@ public class PeriodTest {
 
 	@After
 	public void tearDown() throws Exception {
-		Field field = game.getClass().getDeclaredField("threadInstance");
-		field.setAccessible(true);
-		field.set(game, null);
+
 	}
 
 	@Test
@@ -87,11 +91,11 @@ public class PeriodTest {
 	public void subscribe() throws Exception {
 		PeriodObserver o1 = new PeriodObserver() {
 			@Override
-			public void update() {}
+			public void terminatedRound() {}
 		};
 		PeriodObserver o2 = new PeriodObserver() {
 			@Override
-			public void update() {}
+			public void terminatedRound() {}
 		};
 
 		period.subscribe(o1);
@@ -104,58 +108,4 @@ public class PeriodTest {
 		Set<PeriodObserver> set = (Set<PeriodObserver>) fieldList.get(period);
 		assertTrue(set.contains(o1) && set.contains(o2));
 	}
-
-	@Test
-	public void newRoundNotifyCalled() throws Exception {
-		// check if newRoundNotify is being called correctly
-
-		// at the end both cells have to be true
-		Boolean obValue[] = new Boolean[2];
-
-		PeriodObserver o1 = new PeriodObserver() {
-			@Override
-			public void update() {obValue[0] = true;}
-		};
-		PeriodObserver o2 = new PeriodObserver() {
-			@Override
-			public void update() {obValue[1] = true;}
-		};
-
-		period.subscribe(o1);
-		period.subscribe(o2);
-
-		Method method = period.getClass().getDeclaredMethod("newRound");
-		method.setAccessible(true);
-		method.invoke(period);
-
-		assertTrue(obValue[0]);
-		assertTrue(obValue[1]);
-	}
-
-	@Test
-	public void newRoundNotifyCalledJustOnce() throws Exception {
-		// check if the notify is called just once per each observer
-
-		// can't use a simple counter because it must be final. So our counter
-		// is a List and his size is the counter value
-		List<Integer> updatedCounter = new ArrayList<>();
-
-		PeriodObserver o1 = new PeriodObserver() {
-			@Override
-			public void update() {updatedCounter.add(0);}
-		};
-
-		period.subscribe(o1);
-		period.subscribe(o1);
-		period.subscribe(o1);
-
-		Method method = period.getClass().getDeclaredMethod("newRound");
-		method.setAccessible(true);
-
-		method.invoke(period);
-
-		assertTrue(updatedCounter.size() == 1);
-	}
-
-
 }

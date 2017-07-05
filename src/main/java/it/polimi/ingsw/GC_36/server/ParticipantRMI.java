@@ -36,8 +36,26 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update() throws IOException {
-		user.update();
+	public int chooseLeaderCard(List<LeaderCard> leaderCards)
+			throws IOException, ClassNotFoundException {
+		return user.chooseLeaderCard(leaderCards);
+	}
+
+	@Override
+	public LeaderCard useCard(List<LeaderCard> cardsAvailable)
+			throws IOException, ClassNotFoundException {
+		return user.useCard(cardsAvailable);
+	}
+
+	@Override
+	public int chooseBonusTile()
+			throws IOException, ClassNotFoundException {
+		return user.chooseBonusTile();
+	}
+
+	@Override
+	public void terminatedRound() throws IOException {
+		user.terminatedRound();
 	}
 
 	@Override

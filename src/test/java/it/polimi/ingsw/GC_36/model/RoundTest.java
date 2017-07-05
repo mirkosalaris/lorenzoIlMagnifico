@@ -25,7 +25,7 @@ public class RoundTest {
 
 	@Before
 	public void setUp() throws Exception {
-		game = Game.getInstance();
+		game = new Game();
 
 		Map<PlayerColor, Player> players = new HashMap<>();
 
@@ -36,6 +36,8 @@ public class RoundTest {
 		players.put(PlayerColor.BLUE, player);
 
 		game.setPlayers(players);
+		player.init(new PersonalBoard(1));
+		game.subscribe(player.getParticipant());
 
 		int currentPeriod = 1;
 		DeckSet deckSet = new DeckSet(currentPeriod);
@@ -52,9 +54,7 @@ public class RoundTest {
 
 	@After
 	public void tearDown() throws Exception {
-		Field field = game.getClass().getDeclaredField("threadInstance");
-		field.setAccessible(true);
-		field.set(game, null);
+
 	}
 
 	@Test

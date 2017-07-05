@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -68,6 +69,11 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
+	public GameMode chooseMode() {
+		return GameMode.STANDARD;
+	}
+
+	@Override
 	public void fatalError(String s) {
 
 	}
@@ -88,7 +94,24 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
-	public void update() {
+	public int chooseLeaderCard(List<LeaderCard> leaderCards)
+			throws IOException, ClassNotFoundException {
+		return 0;
+	}
+
+	@Override
+	public LeaderCard useCard(List<LeaderCard> cardsAvailable)
+			throws IOException, ClassNotFoundException {
+		return null;
+	}
+
+	@Override
+	public int chooseBonusTile() throws IOException, ClassNotFoundException {
+		return 0;
+	}
+
+	@Override
+	public void terminatedRound() {
 
 	}
 

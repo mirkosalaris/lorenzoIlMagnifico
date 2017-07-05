@@ -5,7 +5,10 @@ import it.polimi.ingsw.GC_36.observers.BoardObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.EnumMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class Board {
 	private TurnOrder turnOrder;
@@ -42,15 +45,6 @@ public class Board {
 
 	public void setPlayers(Map<PlayerColor, Player> players)
 			throws IllegalStateException, IOException {
-		// initialize players and store them
-
-		// initialize players
-		List<Player> p = new ArrayList<>(players.values());
-		for (int i = 0; i < p.size(); i++) {
-			PersonalBoard playerBoard = new PersonalBoard(i + 1);
-			p.get(i).init(playerBoard);
-		}
-
 		// store the list of players and create a turnOrder instance
 		if (this.players == null) {
 			this.players = players;
@@ -93,7 +87,6 @@ public class Board {
 
 		// reset all actionSpaces
 		for (ActionSpace as : actionSpaces.values()) {
-			// TODO: uncomment when Parser implemented
 			as.reset();
 		}
 

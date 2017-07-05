@@ -42,4 +42,6 @@ public interface ActionInterface extends Serializable, Remote {
 	void addProductionChoice(Integer choice) throws RemoteException;
 
 	ExtraAction getExtraAction() throws RemoteException;
+
+	List<LeaderCard> getLeaderCards() throws RemoteException;
 }

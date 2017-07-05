@@ -19,8 +19,6 @@ public class PersonalBoard {
 		this.resourcesList =
 				Commons.getInitialResources(ordinal);
 
-		bonusTile = Commons.getBonusTile(ordinal);
-
 		// create 4 empty List<DevelopmentCard>
 		cards.put(CardType.TERRITORY, new ArrayList<>());
 		cards.put(CardType.BUILDING, new ArrayList<>());
@@ -35,6 +33,17 @@ public class PersonalBoard {
 
 	public void addResources(ResourcesList resources) throws IOException {
 		resourcesList.addResources(resources);
+		resourcesNotify();
+	}
+
+	public void payResources(ResourcesList resources)
+			throws InsufficientResourcesException, IOException {
+
+		if (resourcesList.checkEnoughResources(resources)) {
+			resourcesList.subtractResources(resources);
+		} else {
+			throw new InsufficientResourcesException();
+		}
 		resourcesNotify();
 	}
 
@@ -83,24 +92,17 @@ public class PersonalBoard {
 		newCardNotify(card);
 	}
 
-	public void payResources(ResourcesList resources)
-			throws InsufficientResourcesException, IOException {
+	public List<DevelopmentCard> getCards(CardType type) {
+		// return a COPY of the list
+		return new ArrayList<>(cards.get(type));
+	}
 
-		if (resourcesList.checkEnoughResources(resources)) {
-			resourcesList.subtractResources(resources);
-		} else {
-			throw new InsufficientResourcesException();
-		}
-		resourcesNotify();
+	public void setBonusTile(BonusTileId id) {
+		bonusTile = Commons.getBonusTile(id);
 	}
 
 	public BonusTile getBonusTile() {
 		return bonusTile;
-	}
-
-	public List<DevelopmentCard> getCards(CardType type) {
-		// return a COPY of the list
-		return new ArrayList<>(cards.get(type));
 	}
 
 	public void subscribe(PersonalBoardObserver o) {

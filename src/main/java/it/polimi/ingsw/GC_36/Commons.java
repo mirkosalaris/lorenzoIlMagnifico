@@ -21,18 +21,12 @@ public final class Commons {
 
 	// TODO, increase the timer.
 	public static final long STARTING_MATCH_TIMER = 3000;
-
-	//TODO:compilare councilPrivilegeMap tramite parser
-	public static Map<Integer, ResourcesList> councilPrivilegeMap;
+	public static final Integer LEADERS_FOR_PLAYER = 4;
 
 	private static final Parser parser = new Parser(new File(COMMONS_FILE));
 
 	public static ResourcesList getTax() {
 		return (ResourcesList) parser.get("tax");
-	}
-
-	public ResourcesList getResourcesList(Integer integer) {
-		return councilPrivilegeMap.get(integer);
 	}
 
 	private Commons() {}
@@ -118,8 +112,8 @@ public final class Commons {
 		return (ResourcesList) parser.get("councilPrivilege" + id);
 	}
 
-	public static BonusTile getBonusTile(int ordinal) {
-		return (BonusTile) parser.get("bonusTile" + ordinal);
+	public static BonusTile getBonusTile(BonusTileId id) {
+		return (BonusTile) parser.get("bonusTile" + id.value());
 	}
 }
 

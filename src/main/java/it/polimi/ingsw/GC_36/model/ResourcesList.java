@@ -95,6 +95,21 @@ public class ResourcesList implements Serializable {
 		return "" + map;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ResourcesList that = (ResourcesList) o;
+
+		return map.equals(that.map);
+	}
+
+	@Override
+	public int hashCode() {
+		return map.hashCode();
+	}
+
 	// TODO @mirko
 	//public <T> T iterate(Function<ResourcesList,T> lambda) {
 

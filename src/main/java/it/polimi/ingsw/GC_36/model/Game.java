@@ -7,14 +7,16 @@ import it.polimi.ingsw.GC_36.model.Period.PeriodTerminatedException;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
 import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
-import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
 import java.util.*;
 
 public class Game {
-	private static ThreadLocal<Game> threadInstance = null;
+	public final GameMode GAME_MODE;
+
+	private static final ThreadLocal<Game> threadInstance = new
+			ThreadLocal<>();
 	private Board board;
 	private GameState currentState;
 	private Period currentPeriod;
@@ -25,40 +27,33 @@ public class Game {
 	private int currentPeriodNumber = 0;
 
 	public Game() throws IOException {
+		this(GameMode.STANDARD);
+	}
+
+	public Game(GameMode mode) throws IOException {
 		setCurrentState(GameState.STARTING);
 
+		GAME_MODE = mode;
 		board = new Board();
+
+		threadInstance.set(this);
 	}
 
 	public static Game getInstance() throws IllegalStateException {
 		// Game is a Thread-Singleton (a singleton for each thread).
 		// This method implements it.
 
-		if (threadInstance == null) {
-			threadInstance = new ThreadLocal<Game>() {
-				@Override
-				protected Game initialValue() {
-
-					try {
-						return new Game();
-					} catch (IOException e) {
-						ExceptionLogger.log(e);
-						return null;
-					}
-
-				}
-			};
-
-			if (threadInstance.get() == null) {
-				throw new IllegalStateException("cannot instantiate Game");
-			}
+		Game instance = threadInstance.get();
+		if (instance == null) {
+			throw new IllegalStateException("cannot instantiate Game");
 		}
-		return threadInstance.get();
+
+		return instance;
 	}
 
-	// TODO: test
 	public void setPlayers(Map<PlayerColor, Player> players)
 			throws IllegalStateException, IOException {
+
 		board.setPlayers(players);
 	}
 

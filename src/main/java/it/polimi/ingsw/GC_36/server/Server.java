@@ -22,7 +22,7 @@ public class Server {
 	}
 
 	public static void main(String[] args)
-			throws IOException, InterruptedException {
+			throws IOException, InterruptedException, ClassNotFoundException {
 		Server server = new Server();
 
 		server.startRMI();
@@ -37,7 +37,8 @@ public class Server {
 		System.out.println("Server RMI up and running");
 	}
 
-	private void startSOC() throws IOException, InterruptedException {
+	private void startSOC()
+			throws IOException, ClassNotFoundException {
 		ss = new ServerSocket(Commons.PORT);
 		System.out.println("ServerSocket waiting for connections...");
 

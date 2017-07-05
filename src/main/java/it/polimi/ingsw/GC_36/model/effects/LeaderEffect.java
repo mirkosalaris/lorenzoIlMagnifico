@@ -9,10 +9,10 @@ import it.polimi.ingsw.GC_36.model.ActionInterface;
 import it.polimi.ingsw.GC_36.model.Player;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class LeaderEffect {
+public class LeaderEffect implements Serializable {
 	private ImmediateEffect effect;
-
 
 	public LeaderEffect(ImmediateEffect effect) {
 		this.effect = effect;

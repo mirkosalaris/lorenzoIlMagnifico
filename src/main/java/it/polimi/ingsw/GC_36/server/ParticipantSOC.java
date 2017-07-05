@@ -52,6 +52,35 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
+	public int chooseLeaderCard(List<LeaderCard> leaderCards)
+			throws IOException, ClassNotFoundException {
+		sendMessage("chooseLeaderCard", leaderCards,
+				"cannot choose leaderCards");
+
+		// return the choice of the player
+		return (int) objIn.readObject();
+	}
+
+	@Override
+	public LeaderCard useCard(List<LeaderCard> cardsAvailable)
+			throws IOException, ClassNotFoundException {
+		sendMessage("useCard", cardsAvailable,
+				"cannot ask to use a LeaderCard");
+
+		// return the choice of the player
+		return (LeaderCard) objIn.readObject();
+	}
+
+	@Override
+	public int chooseBonusTile()
+			throws IOException, ClassNotFoundException {
+		sendMessage("chooseBonusTile", "cannot choose bonus tile");
+
+		// return the choice of the player
+		return (int) objIn.readObject();
+	}
+
+	@Override
 	public void update(BoardState currentState) throws IOException {
 		sendMessage("updateBoardState", currentState,
 				"cannot update Board State");
@@ -98,8 +127,8 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update() throws IOException {
-		sendMessage("updateNewRound", "cannot update new Round");
+	public void terminatedRound() throws IOException {
+		sendMessage("terminatedRound", "cannot update new Round");
 	}
 
 	@Override

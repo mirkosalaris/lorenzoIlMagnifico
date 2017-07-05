@@ -3,16 +3,16 @@ package it.polimi.ingsw.GC_36.model;
 public class BonusTile {
 	private int harvestRequiredActionValue;
 	private int productionRequiredActionValue;
-	private ResourcesList harvestbonus;
+	private ResourcesList harvestBonus;
 	private ResourcesList productionBonus;
 
 	public BonusTile(int harvestRequiredActionValue,
 	                 int productionRequiredActionValue,
-	                 ResourcesList harvestbonus,
+	                 ResourcesList harvestBonus,
 	                 ResourcesList productionBonus) {
 		this.harvestRequiredActionValue = harvestRequiredActionValue;
 		this.productionRequiredActionValue = productionRequiredActionValue;
-		this.harvestbonus = harvestbonus;
+		this.harvestBonus = harvestBonus;
 		this.productionBonus = productionBonus;
 	}
 
@@ -25,7 +25,7 @@ public class BonusTile {
 	}
 
 	public ResourcesList getHarvestBonus() {
-		return harvestbonus;
+		return harvestBonus;
 	}
 
 	public ResourcesList getProductionBonus() {

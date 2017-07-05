@@ -49,6 +49,8 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		view.play(action);
 
+		chooseLeaderOptions(action);
+
 		chooseMemberColor(action);
 		chooseActionSpace(action);
 		setActionValueIncrement(action);
@@ -81,10 +83,34 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void update() throws IOException {
+	public int chooseLeaderCard(List<LeaderCard> leaderCards)
+			throws IOException, ClassNotFoundException {
+		return view.chooseLeaderCard(leaderCards);
+	}
+
+	@Override
+	public LeaderCard useCard(List<LeaderCard> cardsAvailable)
+			throws IOException, ClassNotFoundException {
+		return view.useCard(cardsAvailable);
+	}
+
+	@Override
+	public int chooseBonusTile()
+			throws IOException, ClassNotFoundException {
+		int choice;
+
+		do {
+			choice = view.chooseBonusTile();
+		} while (BonusTileId.DEFAULT.value() == choice);
+
+		return choice;
+	}
+
+	@Override
+	public void terminatedRound() throws IOException {
 		// a new round has started
 		roundReset();
-		view.update();
+		view.terminatedRound();
 	}
 
 	@Override
@@ -185,6 +211,19 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	public List<DevelopmentCard> getCards(CardType type) {
 		// return a COPY of the list
 		return new ArrayList<>(ownedCards.get(type));
+	}
+
+	@Override
+	public GameMode chooseMode() throws RemoteException {
+		return view.chooseMode();
+	}
+
+	private void chooseLeaderOptions(ActionInterface action)
+			throws IOException, ClassNotFoundException {
+		List<LeaderCard> cards = action.getLeaderCards();
+		for (LeaderCard card : cards) {
+			card.getEffect().chooseOption(view, action, this);
+		}
 	}
 
 	private void chooseMemberColor(ActionInterface actionInterface)
