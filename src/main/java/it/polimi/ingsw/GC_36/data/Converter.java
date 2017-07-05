@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.data;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.polimi.ingsw.GC_36.model.CardType;
 import it.polimi.ingsw.GC_36.model.Deck;
@@ -8,12 +9,7 @@ import it.polimi.ingsw.GC_36.model.DevelopmentCard;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
-import it.polimi.ingsw.GC_36.model.effects.immediateEffects
-		.ImmediateCouncilPrivilegeI;
-import it.polimi.ingsw.GC_36.model.effects.immediateEffects
-		.ImmediateResourcesListI;
-import it.polimi.ingsw.GC_36.model.effects.immediateEffects
-		.ResourceListBasedOnOwnedResources;
+import it.polimi.ingsw.GC_36.model.effects.immediateEffects.*;
 import it.polimi.ingsw.GC_36.model.effects.permanentEffects.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
@@ -47,10 +43,13 @@ public class Converter {
 	}
 
 	public ImmediateEffect convertImmediateEffect(String effectType,
-	                                              String effectBody) {
+	                                              JsonElement eBody) {
 		Decoder decoder = new Decoder();
+		String effectBody = new Encoder().serialize(eBody);
 		switch (effectType) {
-
+			case "ExtraTurn":
+				return decoder.deserialize(effectBody,
+						ExtraTurn.class);
 			case "ImmediateCouncilPrivilege":
 				return decoder.deserialize(effectBody,
 						ImmediateCouncilPrivilegeI.class);
@@ -60,14 +59,28 @@ public class Converter {
 			case "ResourceListBasedOnOwnedResources":
 				return decoder.deserialize(effectBody,
 						ResourceListBasedOnOwnedResources.class);
+			case "MultipleEffectI":
+				List<ImmediateEffect> immediateEffectList = new
+						ArrayList<>();
+				JsonArray effectArray = eBody.getAsJsonArray();
+				for (int i = 0; i < effectArray.size(); i++) {
+					JsonObject jo = effectArray.get(
+							i).getAsJsonObject();
+					ImmediateEffect ie1 = convertImmediateEffect(
+							jo.get("EffectType").getAsString(),
+							jo.get("EffectBody"));
+					immediateEffectList.add(ie1);
+				}
+				return new MultipleEffect(immediateEffectList);
 			default:
 				throw new IllegalArgumentException("unknown Effect type");
 		}
 	}
 
 	public PermanentEffect convertPermanentEffect(String effectType,
-	                                              String effectBody) {
+	                                              JsonElement eBody) {
 		Decoder decoder = new Decoder();
+		String effectBody = new Encoder().serialize(eBody);
 		switch (effectType) {
 			case "ActionSpaceModifier":
 				return decoder.deserialize(effectBody,
@@ -75,6 +88,9 @@ public class Converter {
 			case "CardRequirementsModifier":
 				return decoder.deserialize(effectBody,
 						CardRequirementsModifier.class);
+			case "ImmediateCouncilPrivilegeP":
+				return decoder.deserialize(effectBody,
+						ImmediateCouncilPrivilegeP.class);
 			case "HarvestWorkValueModifier":
 				return decoder.deserialize(effectBody,
 						HarvestWorkValueModifier.class);
@@ -90,6 +106,9 @@ public class Converter {
 			case "ResourcesConverting":
 				return decoder.deserialize(effectBody,
 						ResourcesConverting.class);
+			case "ResourceToPrivilege":
+				return decoder.deserialize(effectBody,
+						ResourceToPrivilege.class);
 			default:
 				throw new IllegalArgumentException("unknown Effect type");
 		}
@@ -102,58 +121,107 @@ public class Converter {
 				developmentCard.get("type").getAsString());
 		int period = developmentCard.get("period").getAsInt();
 		String name = developmentCard.get("name").getAsString();
-		List<ResourcesList> requirementsList = decoder
-				.deserializeResourcesListList(new Encoder().serialize(
-						developmentCard.get("requirementsList")));
-		List<Pair<ResourcesList, ResourcesList>> rl = new ArrayList<>();
-		JsonObject effectObj = developmentCard.get(
-				"immediateEffect").getAsJsonObject();
-		ImmediateEffect immediateEffect = convertImmediateEffect(
-				effectObj.get("effectType").getAsString(),
-				new Encoder().serialize(effectObj.get("effectBody")));
+		List<Pair<ResourcesList, ResourcesList>> requirementsList =
+				initRequirements();
+		if (developmentCard.has(
+				"requirements")) {
+			requirementsList = decoder
+					.deserializeResourcesListList(new Encoder().serialize(
+							developmentCard.get(
+									"requirements").getAsJsonArray()));
+		}
+		ImmediateEffect immediateEffect = null;
+		if (developmentCard.has(
+				"immediateEffect")) {
+			JsonObject effectObj = developmentCard.get(
+					"immediateEffect").getAsJsonObject();
+			immediateEffect = convertImmediateEffect(
+					effectObj.get("EffectType").getAsString(),
+					effectObj.get("EffectBody"));
+		}
 		PermanentEffect permanentEffect = null;
-		return new DevelopmentCard(cardType, period, name, rl,
+		if (developmentCard.has(
+				"permanentEffect")) {
+			JsonObject effectObj = developmentCard.get(
+					"permanentEffect").getAsJsonObject();
+			permanentEffect = convertPermanentEffect(
+					effectObj.get("EffectType").getAsString(),
+					effectObj.get("EffectBody"));
+		}
+		return new DevelopmentCard(cardType, period, name, requirementsList,
 				immediateEffect, permanentEffect);
 	}
 
-	public List<DevelopmentCard> convertDevelopmentCardList(
+	public List<DevelopmentCard> convertDevelopmentCardsList(
 			JsonArray jsonArray) {
 		List<DevelopmentCard> developmentCardList = new ArrayList<>();
 		for (int i = 0; i < jsonArray.size(); i++) {
-			DevelopmentCard developmentCard = this.convertDevelopmentCard(
-					jsonArray.get(i).getAsJsonObject());
-			developmentCardList.add(developmentCard);
+			developmentCardList.add(
+					convertDevelopmentCard(jsonArray.get(i).getAsJsonObject
+							()));
 		}
 		return developmentCardList;
 	}
 
-	public Deck convertDeck(JsonObject deck) {
-		CardType type = convertCardType(deck.get("type").getAsString());
-		int period = deck.get("period").getAsInt();
-		List<DevelopmentCard> developmentCardList = convertDevelopmentCardList(
-				deck.get("developmentCardList").getAsJsonArray());
-		return new Deck(type, period, developmentCardList);
-	}
-
-	//here there are cards of only one period
-	public Map<CardType, Deck> convertDeckSet(JsonObject deckSet) {
-		Map<CardType, Deck> decks = new EnumMap<>(CardType.class);
-		for (CardType type : CardType.values()) {
-			Deck deck = convertDeck(deckSet.get(type + "").getAsJsonObject());
-			decks.put(type, deck);
-		}
-		return decks;
-
-	}
-
 	public List<Map<CardType, Deck>> convertDeckSetList(JsonArray jsonArray) {
+		List<DevelopmentCard> developmentCardList =
+				convertDevelopmentCardsList(
+						jsonArray);
+		List<DevelopmentCard> developmentCardsPeriod,
+				developmentCardsPeriodType;
 		List<Map<CardType, Deck>> deckSetList = new ArrayList<>();
-		for (int i = 0; i < jsonArray.size(); i++) {
-			Map<CardType, Deck> deckSet = this.convertDeckSet(
-					jsonArray.get(i).getAsJsonObject());
+
+		for (int i = 1; i <= 3; i++) {
+			// give all card of the same period
+			developmentCardsPeriod = this.buildPeriod(i, developmentCardList);
+			Map<CardType, Deck> deckSet = new EnumMap<>(CardType.class);
+			// type
+			for (CardType cardType : CardType.values()) {
+				// give card of the same period and of the same type
+				developmentCardsPeriodType = this.buildType(cardType,
+						developmentCardsPeriod);
+				//add to deckCard all card having same period and type
+				List<DevelopmentCard> deckSamePeriodType = new ArrayList<>();
+				for (DevelopmentCard dc : developmentCardsPeriodType) {
+					deckSamePeriodType.add(dc);
+				}
+				// add all card of the same period and type (deck) in a map
+				deckSet.put(cardType,
+						new Deck(cardType, i, deckSamePeriodType));
+			}
 			deckSetList.add(deckSet);
 		}
 		return deckSetList;
 	}
 
+	public List<DevelopmentCard> buildType(CardType type,
+	                                       List<DevelopmentCard>
+			                                       developmentCardList) {
+		List<DevelopmentCard> developmentCardType = new ArrayList<>();
+		for (DevelopmentCard developmentCard : developmentCardList) {
+			if (type.equals(developmentCard.getType())) {
+				developmentCardType.add(developmentCard);
+			}
+		}
+		return developmentCardType;
+	}
+
+
+	public List<DevelopmentCard> buildPeriod(int period,
+	                                         List<DevelopmentCard>
+			                                         developmentCardList) {
+		List<DevelopmentCard> developmentCardPeriod = new ArrayList<>();
+		for (DevelopmentCard developmentCard : developmentCardList) {
+			if (period == developmentCard.getPeriod()) {
+				developmentCardPeriod.add(developmentCard);
+			}
+		}
+		return developmentCardPeriod;
+	}
+
+	public List<Pair<ResourcesList, ResourcesList>> initRequirements() {
+		Pair p = new Pair<>(new ResourcesList(), new ResourcesList());
+		List<Pair<ResourcesList, ResourcesList>> lp = new ArrayList<>();
+		return lp;
+	}
 }

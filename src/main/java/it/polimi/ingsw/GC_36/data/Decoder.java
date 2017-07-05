@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.GC_36.model.BonusTile;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
+import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.lang.reflect.Type;
 import java.util.*;
@@ -20,11 +21,13 @@ public class Decoder {
 		return new Gson().fromJson(serializedString, type);
 	}
 
-	public List<ResourcesList> deserializeResourcesListList(
+	public List<Pair<ResourcesList, ResourcesList>>
+	deserializeResourcesListList(
 			String serializedString) {
-		Type collectionType = new TypeToken<Collection<ResourcesList>>() {
+		Type collectionType = new TypeToken<Collection<Pair<ResourcesList,
+				ResourcesList>>>() {
 		}.getType();
-		List<ResourcesList> resourcesListList = gson.fromJson(
+		List<Pair<ResourcesList, ResourcesList>> resourcesListList = gson.fromJson(
 				serializedString, collectionType);
 		return resourcesListList;
 	}

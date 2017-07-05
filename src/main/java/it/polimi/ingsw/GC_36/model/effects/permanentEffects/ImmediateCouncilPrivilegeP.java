@@ -5,7 +5,6 @@ import it.polimi.ingsw.GC_36.client.view.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
 import it.polimi.ingsw.GC_36.model.*;
-import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
 		.ImmediateCouncilPrivilegeI;
@@ -17,7 +16,7 @@ import java.util.List;
 public class ImmediateCouncilPrivilegeP extends PermanentEffect {
 	private Integer numberOfPrivileges;
 	private boolean mustDiffer;
-	private ImmediateEffect immediateEffect;
+	private ImmediateCouncilPrivilegeI immediateEffect;
 	private int actionValue;
 
 	public ImmediateCouncilPrivilegeP(Integer numberOfPrivileges,
