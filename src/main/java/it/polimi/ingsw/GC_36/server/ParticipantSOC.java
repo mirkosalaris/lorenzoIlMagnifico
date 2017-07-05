@@ -118,9 +118,11 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update(int floorNumber, DevelopmentCard developmentCard)
+	public void update(CardType cardType, int floorNumber,
+	                   DevelopmentCard developmentCard)
 			throws IOException {
 		List<Object> obj = new ArrayList<>();
+		obj.add(cardType);
 		obj.add(floorNumber);
 		obj.add(developmentCard);
 		sendMessage("updateFloor", obj, "cannot update Floor");

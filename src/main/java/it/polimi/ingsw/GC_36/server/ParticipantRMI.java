@@ -112,9 +112,10 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update(int floorNumber, DevelopmentCard developmentCard) throws
+	public void update(CardType cardType, int floorNumber,
+	                   DevelopmentCard developmentCard) throws
 			IOException {
-		user.update(floorNumber, developmentCard);
+		user.update(cardType, floorNumber, developmentCard);
 	}
 
 	@Override

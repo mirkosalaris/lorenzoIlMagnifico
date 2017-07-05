@@ -101,9 +101,11 @@ public class Player {
 			if (member.getColor() != MemberColor.UNCOLORED) {
 				ActionSpace as = Game.getInstance().getBoard().getActionSpace(
 						member.getLocation());
-				if (as.getAssociatedFloor().getAssociatedTower().equals(
-						tower)) {
-					return false;
+				if (as != null) {
+					if (as.getAssociatedFloor().getAssociatedTower()
+							.equals(tower)) {
+						return false;
+					}
 				}
 			}
 		}
@@ -128,5 +130,24 @@ public class Player {
 	private void setCurrentState(PlayerState newState) throws IOException {
 		currentState = newState;
 		newStateNotify();
+	}
+
+	public boolean canPlay() {
+		int count = 0;
+		for (FamilyMember member : familyMembers.values()) {
+			count += member.isAvailable() ? 1 : 0;
+		}
+		if (count <= 0) {
+			return false;
+		} else {
+			int servants = personalBoard.getResourcesList().get(
+					ResourceType.SERVANT).getValue();
+			boolean uncoloredAvailable = familyMembers.get(
+					MemberColor.UNCOLORED).isAvailable();
+			if (count == 1 && uncoloredAvailable && servants == 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

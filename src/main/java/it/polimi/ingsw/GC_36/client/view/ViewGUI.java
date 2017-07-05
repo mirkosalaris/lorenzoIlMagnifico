@@ -167,7 +167,8 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
-	public void update(int floorNumber, DevelopmentCard developmentCard) {
+	public void update(CardType cardType, int floorNumber,
+	                   DevelopmentCard developmentCard) {
 
 	}
 

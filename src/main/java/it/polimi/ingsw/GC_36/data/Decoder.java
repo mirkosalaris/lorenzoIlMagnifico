@@ -44,11 +44,12 @@ public class Decoder {
 			                                                  serializedString) {
 		int requiredActionValue, floorNumber;
 		boolean isSingle;
-		ResourcesList bonus = null;
+		ResourcesList bonus;
 		JsonArray jsonArray = new JsonParser().parse(
 				serializedString).getAsJsonArray();
 		List<Map<String, Object>> list = new ArrayList<>();
 		for (int i = 0; i < jsonArray.size(); i++) {
+			bonus = null;
 			Map<String, Object> map = new HashMap<>();
 			requiredActionValue = jsonArray.get(i).getAsJsonObject().get(
 					"requiredActionValue").getAsInt();

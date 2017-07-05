@@ -146,9 +146,10 @@ public class CommunicatorSocket implements Communicator {
 
 			case "updateFloor":
 				params = (List<Object>) entry.getValue();
-				int floorNumber = (int) params.get(0);
-				DevelopmentCard card = (DevelopmentCard) params.get(1);
-				user.update(floorNumber, card);
+				CardType cardType = (CardType) params.get(0);
+				int floorNumber = (int) params.get(1);
+				DevelopmentCard card = (DevelopmentCard) params.get(2);
+				user.update(cardType, floorNumber, card);
 				break;
 
 			case "terminatedRound":

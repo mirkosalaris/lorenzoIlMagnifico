@@ -111,7 +111,8 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 
 	@Override
 	public int getActionValue(Player player) {
-		int memberValue = player.getFamilyMember(memberColor).getValue();
+		int memberValue = (memberColor != null) ? player.getFamilyMember(
+				memberColor).getValue() : 0;
 		return baseActionValue + memberValue + actionValueIncrement;
 	}
 

@@ -56,6 +56,7 @@ public class Checker {
 
 
 	private boolean checkFamilyMember(MemberColor memberColor, Player player) {
+		if (memberColor == null) return true;
 		return player.getFamilyMember(memberColor).isAvailable();
 	}
 
@@ -108,7 +109,9 @@ public class Checker {
 		List<DevelopmentCard> buildingsCard = player.getPersonalBoard()
 				.getCards(CardType.BUILDING);
 		for (DevelopmentCard card : buildingsCard) {
-			if (!card.getPermanentEffect().check(action, playerResources)) {
+			if (card.getPermanentEffect() != null && !card.getPermanentEffect
+					().check(
+					action, playerResources)) {
 				return false;
 			}
 

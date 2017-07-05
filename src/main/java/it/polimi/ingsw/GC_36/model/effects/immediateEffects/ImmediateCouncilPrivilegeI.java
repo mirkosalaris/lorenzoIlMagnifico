@@ -77,7 +77,7 @@ public class ImmediateCouncilPrivilegeI implements ImmediateEffect {
 	}
 
 	private boolean isValid(int choice) {
-		return (choice >= 0 && choice < CouncilPrivilege.values().length - 1);
+		return (choice >= 0 && choice <= CouncilPrivilege.values().length - 1);
 	}
 
 

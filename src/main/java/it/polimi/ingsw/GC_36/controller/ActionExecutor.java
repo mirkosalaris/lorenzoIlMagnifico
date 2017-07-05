@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
 import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
 import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
 import java.io.IOException;
@@ -60,8 +61,10 @@ public class ActionExecutor {
 			if (actionSpace.isInTower()) {
 				DevelopmentCard card =
 						actionSpace.getAssociatedFloor().takeCard();
-
-				card.getImmediateEffect().applyEffect(action, player);
+				ImmediateEffect immediateEffect = card.getImmediateEffect();
+				if (immediateEffect != null) {
+					card.getImmediateEffect().applyEffect(action, player);
+				}
 				player.getPersonalBoard().addCard(card);
 			}
 
@@ -117,7 +120,9 @@ public class ActionExecutor {
 				.getCards(CardType.BUILDING);
 
 		for (DevelopmentCard card : buildingsCards) {
-			card.getPermanentEffect().applyEffect(action, player);
+			if (card.getPermanentEffect() != null) {
+				card.getPermanentEffect().applyEffect(action, player);
+			}
 		}
 	}
 
@@ -133,7 +138,9 @@ public class ActionExecutor {
 				.getCards(CardType.TERRITORY);
 
 		for (DevelopmentCard card : territoryCards) {
-			card.getPermanentEffect().applyEffect(action, player);
+			if (card.getPermanentEffect() != null) {
+				card.getPermanentEffect().applyEffect(action, player);
+			}
 		}
 	}
 }

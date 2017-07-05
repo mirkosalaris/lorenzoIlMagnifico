@@ -53,7 +53,8 @@ public class Floor {
 
 	private void changeNotify() throws IOException {
 		for (FloorObserver o : observers) {
-			o.update(floorNumber, developmentCard);
+			o.update(associatedTower.getCardType(), floorNumber,
+					developmentCard);
 		}
 	}
 

@@ -70,13 +70,24 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public int chooseActionSpaceId(Set<ActionSpaceIds> actionSpaceIds) {
-		System.out.println("Please select an ActionSpace specifying the ID:");
-		if (actionSpaceIds != null) {
-			for (ActionSpaceIds id : actionSpaceIds) {
-				System.out.print(id.value() + ", ");
+		boolean wrong = true;
+		int value;
+		do {
+			System.out.println(
+					"Please select an ActionSpace specifying the ID:");
+			if (actionSpaceIds.size() != ActionSpaceIds.values().length) {
+				for (ActionSpaceIds id : actionSpaceIds) {
+					System.out.print(id.value() + ", ");
+				}
 			}
-		}
-		int value = in.nextInt();
+			value = in.nextInt();
+			if (!ActionSpaceIds.checkId(value)) {
+				wrong = true;
+			} else {
+				wrong = !actionSpaceIds.contains(
+						ActionSpaceIds.values()[value]);
+			}
+		} while (wrong);
 		in.nextLine(); // consume line
 		return value;
 	}
@@ -300,11 +311,8 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public void update(ActionSpaceIds id, boolean free) {
-		System.out.print(id.name());
-		if (free) {
-			System.out.print("is free\n");
-		} else {
-			System.out.print("is not free\n");
+		if (!free) {
+			System.out.print(id.name() + " is no more free\n");
 		}
 	}
 
@@ -351,12 +359,18 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(int floorNumber, DevelopmentCard developmentCard) {
-		System.out.println(
-				"updateFloor:\n floorNumber: " + floorNumber
-						+ "\n tower: " + developmentCard.getType()
-						+ "\n Development Card: " + developmentCard);
-
+	public void update(CardType cardType, int floorNumber,
+	                   DevelopmentCard developmentCard) {
+		if (developmentCard == null) {
+			System.out.println(
+					"The card from floor " + floorNumber + " of tower " +
+							cardType + " has been taken");
+		} else {
+			System.out.println(
+					"updateFloor:\n floorNumber: " + floorNumber
+							+ "\n tower: " + cardType
+							+ "\n Development Card: " + developmentCard);
+		}
 	}
 
 	@Override

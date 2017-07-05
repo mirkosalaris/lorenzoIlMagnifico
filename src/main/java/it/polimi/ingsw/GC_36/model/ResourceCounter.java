@@ -5,7 +5,7 @@ import it.polimi.ingsw.GC_36.exception.InsufficientResourcesException;
 import java.io.Serializable;
 
 public class ResourceCounter implements Serializable {
-	int value;
+	private int value;
 
 	public ResourceCounter(int value) {
 		if (value >= 0) {

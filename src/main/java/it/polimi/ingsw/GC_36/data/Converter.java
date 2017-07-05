@@ -220,8 +220,10 @@ public class Converter {
 	}
 
 	public List<Pair<ResourcesList, ResourcesList>> initRequirements() {
-		Pair p = new Pair<>(new ResourcesList(), new ResourcesList());
+		Pair<ResourcesList, ResourcesList> p = new Pair<>(new ResourcesList(),
+				new ResourcesList());
 		List<Pair<ResourcesList, ResourcesList>> lp = new ArrayList<>();
+		lp.add(p);
 		return lp;
 	}
 }

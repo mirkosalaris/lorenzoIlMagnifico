@@ -43,7 +43,9 @@ public class Round {
 		if (turnOrder.hasNext()) {
 			Player player = turnOrder.getNextPlayer();
 			setCurrentPlayer(player);
-			controller.execute(player);
+			if (player.canPlay()) {
+				controller.execute(player);
+			}
 		} else {
 			setCurrentState(RoundState.FINALIZING);
 			adjustTurnOrder(board);

@@ -61,16 +61,17 @@ public final class Commons {
 		int offset;
 		switch (cardType) {
 			case TERRITORY:
-				offset = 0;
-				break;
-			case BUILDING:
-				offset = 4;
+				offset = ActionSpaceIds.AS_TERRITORIES_1.value() - 1;
 				break;
 			case CHARACTER:
-				offset = 8;
+				offset = ActionSpaceIds.AS_CHARACTERS_1.value() - 1;
+				break;
+			case BUILDING:
+				offset = ActionSpaceIds.AS_BUILDINGS_1.value() - 1;
+
 				break;
 			case VENTURE:
-				offset = 12;
+				offset = ActionSpaceIds.AS_VENTURES_1.value() - 1;
 				break;
 			default:
 				throw new IllegalArgumentException("unknown Tower type");

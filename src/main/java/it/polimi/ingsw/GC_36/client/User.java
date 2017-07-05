@@ -20,11 +20,17 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	private PlayerIdentifier identifier;
 	private ResourcesList ownedResources;
+	private Set<ActionSpaceIds> availableActionSpaces;
+
+	// actionSpaces used in the current action (and extra actions)
+	private List<ActionSpaceIds> currentActionSpaces = new ArrayList<>();
 
 	public User(ViewInterface view) throws RemoteException {
 		this.view = view;
 		cards = new EnumMap<>(ActionSpaceIds.class);
 		actionSpaces = new EnumMap<>(ActionSpaceIds.class);
+		availableActionSpaces =
+				new HashSet<>(Arrays.asList(ActionSpaceIds.values()));
 		ownedCards = new EnumMap<>(CardType.class);
 
 		for (CardType type : CardType.values()) {
@@ -58,6 +64,9 @@ public class User extends UnicastRemoteObject implements UserInterface {
 			chooseCardPaymentOptions(action);
 		}
 		actionSpaceHandler(action);
+
+		// clear the list of currently used action spaces
+		currentActionSpaces.clear();
 	}
 
 	public void play(ExtraAction action)
@@ -133,7 +142,11 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	@Override
 	public void update(ActionSpaceIds id, boolean free) throws
 			IOException {
-		// TODO think and impl
+		if (free) {
+			availableActionSpaces.add(id);
+		} else {
+			availableActionSpaces.remove(id);
+		}
 		view.update(id, free);
 	}
 
@@ -180,14 +193,15 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void update(int floorNumber, DevelopmentCard developmentCard)
+	public void update(CardType cardType, int floorNumber,
+	                   DevelopmentCard developmentCard)
 			throws IOException {
 
 		ActionSpaceIds id = Commons.getAssociatedActionSpaceIds(
-				developmentCard.getType(), floorNumber);
+				cardType, floorNumber);
 		cards.put(id, developmentCard);
 
-		view.update(floorNumber, developmentCard);
+		view.update(cardType, floorNumber, developmentCard);
 	}
 
 	@Override
@@ -234,7 +248,9 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	private void chooseActionSpace(ActionInterface action)
 			throws RemoteException {
-		chooseActionSpace(action, null);
+
+		Set<ActionSpaceIds> fullSet = availableActionSpaces;
+		chooseActionSpace(action, fullSet);
 	}
 
 	private void chooseActionSpace(ActionInterface action,
@@ -243,6 +259,9 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		int id;
 		boolean wrong = true;
 		ActionSpaceIds actionSpaceId;
+		// calculate intersection with available ActionSpaces
+		actionSpaces.retainAll(availableActionSpaces);
+		actionSpaces.removeAll(currentActionSpaces);
 		do {
 			id = view.chooseActionSpaceId(actionSpaces);
 
@@ -253,6 +272,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 					wrong = false;
 					try {
 						action.setActionSpaceIds(actionSpaceId);
+						currentActionSpaces.add(actionSpaceId);
 					} catch (NotAvailableException e) {
 						ExceptionLogger.log(e);
 						wrong = true;
@@ -267,12 +287,12 @@ public class User extends UnicastRemoteObject implements UserInterface {
 			throws IOException, ClassNotFoundException {
 		if (Commons.isFloor(action.getActionSpaceId())) {
 			DevelopmentCard card = cards.get(action.getActionSpaceId());
-			card.getImmediateEffect().chooseOptions(view, action, this);
+			if (card.getImmediateEffect() != null) {
+				card.getImmediateEffect().chooseOptions(view, action, this);
+			}
 		}
 
-		if ((action.getActionSpaceId()) == ActionSpaceIds.AS_COUNCIL)
-
-		{
+		if ((action.getActionSpaceId()) == ActionSpaceIds.AS_COUNCIL) {
 			int choice;
 			do {
 				choice = view.choosePrivilege(1);
@@ -282,33 +302,27 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 		}
 
+		List<DevelopmentCard> cards = null;
 		if ((action.getActionSpaceId() == ActionSpaceIds.AS_HARVEST) ||
 				(action.getActionSpaceId() == ActionSpaceIds.AS_HARVEST_BIG)) {
-			//invokes the chooseoption method for each territory card of the
-			// player
-			//to save the choice
-			List<DevelopmentCard> terrytoriCards = ownedCards.get(
-					CardType.TERRITORY);
-			for (int i = 0; i < terrytoriCards.size(); i++) {
-				terrytoriCards.get(i).getPermanentEffect().chooseOption(view,
-						action, this);
-			}
+			cards = ownedCards.get(CardType.TERRITORY);
+		} else if (
+				(action.getActionSpaceId() == ActionSpaceIds.AS_PRODUCTION) ||
+						(action.getActionSpaceId() == ActionSpaceIds
+								.AS_PRODUCTION_BIG)) {
+			cards = ownedCards.get(CardType.BUILDING);
 		}
-
-		if ((action.getActionSpaceId() == ActionSpaceIds.AS_PRODUCTION) ||
-				(action.getActionSpaceId() == ActionSpaceIds
-						.AS_PRODUCTION_BIG)) {
-			//invokes the chooseoption method for each building card of the
-			// player
+		if (cards != null) {
+			//invokes the chooseoption method for each card of the player
 			//to save the choice
-			List<DevelopmentCard> buildingCards = ownedCards.get(
-					CardType.BUILDING);
-			for (int i = 0; i < buildingCards.size(); i++) {
-				buildingCards.get(i).getPermanentEffect().chooseOption(view,
-						action, this);
+			for (DevelopmentCard card : cards) {
+				if (card.getPermanentEffect() != null) {
+					card.getPermanentEffect().chooseOption(view, action, this);
+				}
 			}
 		}
 	}
+
 
 	private void roundReset() {
 		cards.clear();
@@ -336,8 +350,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		DevelopmentCard card = cards.get(action.getActionSpaceId());
 		int choice;
 		choice = card.getRequirements().size() > 1
-				? view.chooseCardPaymentOptions(card)
-				: 0;
+				? view.chooseCardPaymentOptions(card) : 0;
 
 		// store in action the choice
 		action.setCardPaymentOptions(choice);

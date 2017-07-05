@@ -39,12 +39,15 @@ public class ActionSpace {
 	}
 
 	public void occupy(FamilyMember member)
-			throws NotCorrectlyCheckedException {
+			throws NotCorrectlyCheckedException, IOException {
 		if (free) {
-			familyMembers.add(member);
-			member.setLocation(this.id);
+			if (member != null) {
+				familyMembers.add(member);
+				member.setLocation(this.id);
+			}
+
 			if (isSingle) {
-				free = false;
+				setFree(false);
 			}
 		} else {
 			throw new NotCorrectlyCheckedException(
@@ -77,7 +80,7 @@ public class ActionSpace {
 	}
 
 	public void reset() throws IOException {
-		// TODO impl
+		// TODO @mirko
 
 		setFree(true);
 	}
