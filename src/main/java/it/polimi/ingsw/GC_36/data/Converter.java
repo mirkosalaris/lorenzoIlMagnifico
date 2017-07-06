@@ -3,11 +3,9 @@ package it.polimi.ingsw.GC_36.data;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import it.polimi.ingsw.GC_36.model.CardType;
-import it.polimi.ingsw.GC_36.model.Deck;
-import it.polimi.ingsw.GC_36.model.DevelopmentCard;
-import it.polimi.ingsw.GC_36.model.ResourcesList;
+import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
+import it.polimi.ingsw.GC_36.model.effects.LeaderEffect;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects.*;
 import it.polimi.ingsw.GC_36.model.effects.permanentEffects.*;
@@ -225,5 +223,44 @@ public class Converter {
 		List<Pair<ResourcesList, ResourcesList>> lp = new ArrayList<>();
 		lp.add(p);
 		return lp;
+	}
+
+	public LeaderCard convertLeaderCard(JsonObject leaderCard) {
+		Decoder decoder = new Decoder();
+		String name = leaderCard.get("name").getAsString();
+		ResourcesList requiredResources = new ResourcesList();
+		if (leaderCard.has("requiredResources")) {
+			requiredResources = decoder.deserialize(new Encoder().serialize(
+					leaderCard.get("requiredResources").getAsJsonObject()),
+					ResourcesList.class);
+		}
+		Map<CardType, Integer> requiredCards = new EnumMap<>(CardType.class);
+		if (leaderCard.has("requiredCards")) {
+			requiredCards = decoder.deserializeMapCardTypeInteger(
+					new Encoder().serialize(
+							leaderCard.get("requiredCards").getAsJsonObject
+									()));
+		}
+		ImmediateEffect effect = null;
+		if (leaderCard.has(
+				"effect")) {
+			JsonObject effectObj = leaderCard.get(
+					"effect").getAsJsonObject();
+			effect = convertImmediateEffect(
+					effectObj.get("EffectType").getAsString(),
+					effectObj.get("EffectBody"));
+		}
+		return new LeaderCard(name, requiredResources, requiredCards,
+				new LeaderEffect(effect));
+	}
+
+	public List<LeaderCard> convertLeaderCardsList(
+			JsonArray jsonArray) {
+		List<LeaderCard> leaderCardList = new ArrayList<>();
+		for (int i = 0; i < jsonArray.size(); i++) {
+			leaderCardList.add(
+					convertLeaderCard(jsonArray.get(i).getAsJsonObject()));
+		}
+		return leaderCardList;
 	}
 }

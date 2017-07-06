@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.GC_36.model.BonusTile;
+import it.polimi.ingsw.GC_36.model.CardType;
 import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
@@ -27,7 +28,8 @@ public class Decoder {
 		Type collectionType = new TypeToken<Collection<Pair<ResourcesList,
 				ResourcesList>>>() {
 		}.getType();
-		List<Pair<ResourcesList, ResourcesList>> resourcesListList = gson.fromJson(
+		List<Pair<ResourcesList, ResourcesList>> resourcesListList = gson
+				.fromJson(
 				serializedString, collectionType);
 		return resourcesListList;
 	}
@@ -98,6 +100,19 @@ public class Decoder {
 		List<ResourcesList> councilPrivilege = gson.fromJson(serializedString,
 				collectionType);
 		return councilPrivilege;
+	}
+
+	public Map<CardType, Integer> deserializeMapCardTypeInteger(
+			String serializedString) {
+		JsonObject lc = new JsonObject();
+		Map<CardType, Integer> requiredCards = new EnumMap<>(CardType.class);
+		for (CardType ct : CardType.values()) {
+			if (lc.has("" + ct)) {
+				requiredCards.put(
+						ct, lc.get("" + ct).getAsJsonObject().getAsInt());
+			}
+		}
+		return requiredCards;
 	}
 
 

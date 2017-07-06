@@ -6,10 +6,7 @@ import it.polimi.ingsw.GC_36.data.Converter;
 import it.polimi.ingsw.GC_36.data.Decoder;
 import it.polimi.ingsw.GC_36.data.Encoder;
 import it.polimi.ingsw.GC_36.exception.ParsingException;
-import it.polimi.ingsw.GC_36.model.BonusTile;
-import it.polimi.ingsw.GC_36.model.CardType;
-import it.polimi.ingsw.GC_36.model.Deck;
-import it.polimi.ingsw.GC_36.model.ResourcesList;
+import it.polimi.ingsw.GC_36.model.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +24,7 @@ public class Parser {
 	private List<ResourcesList> personalBoardList;
 	private List<ResourcesList> councilPrivileges;
 	private ResourcesList tax;
+	private List<LeaderCard> leaderCardList;
 
 	public Parser(File file) {
 		String serializedString;
@@ -65,6 +63,11 @@ public class Parser {
 		jsonElement = new JsonParser().parse(
 				serializedString).getAsJsonObject().get("tax");
 		this.tax = decoder.buildTax(encoder.serialize(jsonElement));
+		jsonElement = new JsonParser().parse(
+				serializedString).getAsJsonObject().get("leaderCards");
+		this.leaderCardList = converter.convertLeaderCardsList(
+				new JsonParser().parse(
+						encoder.serialize(jsonElement)).getAsJsonArray());
 	}
 
 	//get developmentCards, bonusTiles, personalBoards, councilPrivileges
@@ -87,6 +90,9 @@ public class Parser {
 			return this.personalBoardList.get(value - 1);
 		} else if (s.contains("councilPrivilege")) {
 			return this.councilPrivileges.get(value);
+		} else if (s.contains("leaderCard")) {
+			// return a copy
+			return this.leaderCardList.get(value - 1);
 		} else {
 			throw new IllegalArgumentException("Parameter not valid");
 		}

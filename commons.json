@@ -11094,5 +11094,462 @@
         }
       }
     }
+  ],
+  "leaderCards": [
+    {
+      "name": "Bartolomeo Colleoni",
+      "requiredCards": {
+        "TERRITORY": 4,
+        "VENTURE": 2
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Cosimo de\u0027 Medici",
+      "requiredCards": {
+        "BUILDING": 4,
+        "CHARACTER": 2
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Francesco Sforza",
+      "requiredCards": {
+        "VENTURE": 5
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Giovanni dalle Bande Nere",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 12
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Girolamo Savonarola",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 18
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Leonardo da Vinci",
+      "requiredCards": {
+        "TERRITORY": 2,
+        "CHARACTER": 4
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Ludovico III Gonzaga",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 15
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Michelangelo Buonarroti",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 10
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Sandro Botticelli",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 10
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "resourcesList": {
+              "map": {
+                "WOOD": {
+                  "value": 0
+                },
+                "STONE": {
+                  "value": 0
+                },
+                "SERVANT": {
+                  "value": 0
+                },
+                "COINS": {
+                  "value": 0
+                },
+                "VICTORY_POINTS": {
+                  "value": 1
+                },
+                "FAITH_POINTS": {
+                  "value": 0
+                },
+                "MILITARY_POINTS": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   ]
 }
