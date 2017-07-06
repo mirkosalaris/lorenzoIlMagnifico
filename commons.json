@@ -2641,6 +2641,2458 @@
       }
     },
     {
+      "name": "Marketplace",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 1
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 1
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 3
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 3
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 2
+                  },
+                  "STONE": {
+                    "value": 2
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 3
+        }
+      }
+    },
+    {
+      "name": "Treasury",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 3
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 3
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 4
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 1
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 3
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "1": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 2
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 5
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 3
+        }
+      }
+    },
+    {
+      "name": "Painters\u0027 Guild",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 4
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 4
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 5
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 1
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 3
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "1": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 3
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 7
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 4
+        }
+      }
+    },
+    {
+      "name": "Sculptors\u0027 Guild",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 6
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 1
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 3
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "1": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 3
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 7
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 5
+        }
+      }
+    },
+    {
+      "name": "Stonemasons\u0027 Guild",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 4
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 1
+                  },
+                  "STONE": {
+                    "value": 1
+                  },
+                  "SERVANT": {
+                    "value": 1
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 6
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 4
+        }
+      }
+    },
+    {
+      "name": "Baptistery",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 3
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 3
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 2
+              },
+              "FAITH_POINTS": {
+                "value": 1
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 1
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 2
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 2
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 4
+        }
+      }
+    },
+    {
+      "name": "Barracks",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 1
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 1
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 3
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 1
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 2
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 1
+        }
+      }
+    },
+    {
+      "name": "Stronghold",
+      "type": "BUILDING",
+      "period": 2,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 2
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 2
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 8
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ImmediateResourcesListP",
+        "EffectBody": {
+          "associatedCardType": "BUILDING",
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 2
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 2
+              }
+            }
+          },
+          "requiredActionValue": 6
+        }
+      }
+    },
+    {
+      "name": "Bank",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 3
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 3
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 3
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 3
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 7
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ImmediateResourcesListP",
+        "EffectBody": {
+          "associatedCardType": "BUILDING",
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 5
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "requiredActionValue": 2
+        }
+      }
+    },
+    {
+      "name": "Fair",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 3
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 4
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 3
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 4
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 8
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 4
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 3
+                  },
+                  "STONE": {
+                    "value": 3
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 4
+        }
+      }
+    },
+    {
+      "name": "Garden",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 4
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 2
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 4
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 2
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 10
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ImmediateResourcesListP",
+        "EffectBody": {
+          "associatedCardType": "BUILDING",
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 3
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "requiredActionValue": 1
+        }
+      }
+    },
+    {
+      "name": "Fortress",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 2
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 2
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 9
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ImmediateResourcesListP",
+        "EffectBody": {
+          "associatedCardType": "BUILDING",
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 2
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "requiredActionValue": 5
+        }
+      }
+    },
+    {
+      "name": "Palace",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 3
+              },
+              "STONE": {
+                "value": 1
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 3
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 3
+              },
+              "STONE": {
+                "value": 1
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 3
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 9
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 1
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 2
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 4
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 6
+        }
+      }
+    },
+    {
+      "name": "Church",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 1
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 5
+              },
+              "FAITH_POINTS": {
+                "value": 1
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 1
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 2
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "1": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 1
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 2
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 1
+        }
+      }
+    },
+    {
+      "name": "Military Academy",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 1
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 2
+              },
+              "STONE": {
+                "value": 2
+              },
+              "SERVANT": {
+                "value": 1
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 7
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ResourcesConverting",
+        "EffectBody": {
+          "options": {
+            "0": {
+              "first": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 1
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 0
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "map": {
+                  "WOOD": {
+                    "value": 0
+                  },
+                  "STONE": {
+                    "value": 0
+                  },
+                  "SERVANT": {
+                    "value": 0
+                  },
+                  "COINS": {
+                    "value": 0
+                  },
+                  "VICTORY_POINTS": {
+                    "value": 1
+                  },
+                  "FAITH_POINTS": {
+                    "value": 0
+                  },
+                  "MILITARY_POINTS": {
+                    "value": 3
+                  }
+                }
+              }
+            }
+          },
+          "requiredActionValue": 3
+        }
+      }
+    },
+    {
+      "name": "Cathedral",
+      "type": "BUILDING",
+      "period": 3,
+      "requirements": [
+        {
+          "first": {
+            "map": {
+              "WOOD": {
+                "value": 4
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "second": {
+            "map": {
+              "WOOD": {
+                "value": 4
+              },
+              "STONE": {
+                "value": 4
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      ],
+      "immediateEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 7
+              },
+              "FAITH_POINTS": {
+                "value": 3
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          }
+        }
+      },
+      "permanentEffect": {
+        "EffectType": "ImmediateResourcesListP",
+        "EffectBody": {
+          "associatedCardType": "BUILDING",
+          "resourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 1
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 0
+              }
+            }
+          },
+          "requiredActionValue": 2
+        }
+      }
+    },
+    {
       "name": "Warlord",
       "type": "CHARACTER",
       "period": 1,
@@ -3215,22 +5667,22 @@
             "EffectType": "ExtraTurn",
             "EffectBody": {
               "actionSpaces": [
-                "AS_BUILDINGS_3",
-                "AS_CHARACTERS_4",
+                "AS_CHARACTERS_3",
+                "AS_BUILDINGS_4",
                 "AS_VENTURES_1",
                 "AS_TERRITORIES_3",
                 "AS_VENTURES_2",
                 "AS_TERRITORIES_2",
-                "AS_BUILDINGS_1",
-                "AS_BUILDINGS_4",
-                "AS_VENTURES_3",
                 "AS_CHARACTERS_1",
+                "AS_CHARACTERS_4",
+                "AS_VENTURES_3",
+                "AS_BUILDINGS_1",
                 "AS_TERRITORIES_4",
-                "AS_CHARACTERS_2",
+                "AS_BUILDINGS_2",
                 "AS_VENTURES_4",
                 "AS_TERRITORIES_1",
-                "AS_BUILDINGS_2",
-                "AS_CHARACTERS_3"
+                "AS_CHARACTERS_2",
+                "AS_BUILDINGS_3"
               ],
               "baseActionValue": 4
             }
@@ -3439,10 +5891,10 @@
             "EffectType": "ExtraTurn",
             "EffectBody": {
               "actionSpaces": [
-                "AS_BUILDINGS_3",
-                "AS_BUILDINGS_4",
-                "AS_BUILDINGS_1",
-                "AS_BUILDINGS_2"
+                "AS_CHARACTERS_3",
+                "AS_CHARACTERS_4",
+                "AS_CHARACTERS_1",
+                "AS_CHARACTERS_2"
               ],
               "baseActionValue": 6
             }
@@ -3545,10 +5997,10 @@
             "EffectType": "ExtraTurn",
             "EffectBody": {
               "actionSpaces": [
-                "AS_CHARACTERS_1",
-                "AS_CHARACTERS_4",
-                "AS_CHARACTERS_2",
-                "AS_CHARACTERS_3"
+                "AS_BUILDINGS_1",
+                "AS_BUILDINGS_4",
+                "AS_BUILDINGS_2",
+                "AS_BUILDINGS_3"
               ],
               "baseActionValue": 6
             }
@@ -3818,7 +6270,7 @@
     },
     {
       "name": "Royal Messenger",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 2,
       "requirements": [
         {
@@ -3884,7 +6336,7 @@
     },
     {
       "name": "Noble",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -3939,11 +6391,43 @@
             }
           }
         }
-      ]
+      ],
+      "immediateEffect": {
+        "EffectType": "ResourceListBasedOnOwnedResources",
+        "EffectBody": {
+          "fromResourceType": "VICTORY_POINTS",
+          "fromResourceValue": 2,
+          "toResourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 4
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "Governor",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -3998,11 +6482,43 @@
             }
           }
         }
-      ]
+      ],
+      "immediateEffect": {
+        "EffectType": "ResourceListBasedOnOwnedResources",
+        "EffectBody": {
+          "fromResourceType": "VICTORY_POINTS",
+          "fromResourceValue": 2,
+          "toResourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 4
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "Paramour",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -4057,11 +6573,43 @@
             }
           }
         }
-      ]
+      ],
+      "immediateEffect": {
+        "EffectType": "ResourceListBasedOnOwnedResources",
+        "EffectBody": {
+          "fromResourceType": "VICTORY_POINTS",
+          "fromResourceValue": 2,
+          "toResourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 4
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "Herald",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -4116,11 +6664,43 @@
             }
           }
         }
-      ]
+      ],
+      "immediateEffect": {
+        "EffectType": "ResourceListBasedOnOwnedResources",
+        "EffectBody": {
+          "fromResourceType": "VICTORY_POINTS",
+          "fromResourceValue": 2,
+          "toResourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 4
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "General",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -4175,11 +6755,43 @@
             }
           }
         }
-      ]
+      ],
+      "immediateEffect": {
+        "EffectType": "ResourceListBasedOnOwnedResources",
+        "EffectBody": {
+          "fromResourceType": "VICTORY_POINTS",
+          "fromResourceValue": 1,
+          "toResourcesList": {
+            "map": {
+              "WOOD": {
+                "value": 0
+              },
+              "STONE": {
+                "value": 0
+              },
+              "SERVANT": {
+                "value": 0
+              },
+              "COINS": {
+                "value": 0
+              },
+              "VICTORY_POINTS": {
+                "value": 0
+              },
+              "FAITH_POINTS": {
+                "value": 0
+              },
+              "MILITARY_POINTS": {
+                "value": 2
+              }
+            }
+          }
+        }
+      }
     },
     {
       "name": "Cardinal",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -4283,7 +6895,7 @@
     },
     {
       "name": "Bishop",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -4387,7 +6999,7 @@
     },
     {
       "name": "Ambassador",
-      "type": "BUILDING",
+      "type": "CHARACTER",
       "period": 3,
       "requirements": [
         {
@@ -4450,22 +7062,22 @@
             "EffectType": "ExtraTurn",
             "EffectBody": {
               "actionSpaces": [
-                "AS_BUILDINGS_3",
-                "AS_CHARACTERS_4",
+                "AS_CHARACTERS_3",
+                "AS_BUILDINGS_4",
                 "AS_VENTURES_1",
                 "AS_TERRITORIES_3",
                 "AS_VENTURES_2",
                 "AS_TERRITORIES_2",
-                "AS_BUILDINGS_1",
-                "AS_BUILDINGS_4",
-                "AS_VENTURES_3",
                 "AS_CHARACTERS_1",
+                "AS_CHARACTERS_4",
+                "AS_VENTURES_3",
+                "AS_BUILDINGS_1",
                 "AS_TERRITORIES_4",
-                "AS_CHARACTERS_2",
+                "AS_BUILDINGS_2",
                 "AS_VENTURES_4",
                 "AS_TERRITORIES_1",
-                "AS_BUILDINGS_2",
-                "AS_CHARACTERS_3"
+                "AS_CHARACTERS_2",
+                "AS_BUILDINGS_3"
               ],
               "baseActionValue": 4
             }
@@ -6729,22 +9341,22 @@
             "EffectType": "ExtraTurn",
             "EffectBody": {
               "actionSpaces": [
-                "AS_BUILDINGS_3",
-                "AS_CHARACTERS_4",
+                "AS_CHARACTERS_3",
+                "AS_BUILDINGS_4",
                 "AS_VENTURES_1",
                 "AS_TERRITORIES_3",
                 "AS_VENTURES_2",
                 "AS_TERRITORIES_2",
-                "AS_BUILDINGS_1",
-                "AS_BUILDINGS_4",
-                "AS_VENTURES_3",
                 "AS_CHARACTERS_1",
+                "AS_CHARACTERS_4",
+                "AS_VENTURES_3",
+                "AS_BUILDINGS_1",
                 "AS_TERRITORIES_4",
-                "AS_CHARACTERS_2",
+                "AS_BUILDINGS_2",
                 "AS_VENTURES_4",
                 "AS_TERRITORIES_1",
-                "AS_BUILDINGS_2",
-                "AS_CHARACTERS_3"
+                "AS_CHARACTERS_2",
+                "AS_BUILDINGS_3"
               ],
               "baseActionValue": 4
             }
@@ -7559,61 +10171,7 @@
     {
       "harvestRequiredActionValue": 1,
       "productionRequiredActionValue": 1,
-      "harvestbonus": {
-        "map": {
-          "WOOD": {
-            "value": 1
-          },
-          "STONE": {
-            "value": 1
-          },
-          "SERVANT": {
-            "value": 1
-          },
-          "COINS": {
-            "value": 0
-          },
-          "VICTORY_POINTS": {
-            "value": 0
-          },
-          "FAITH_POINTS": {
-            "value": 0
-          },
-          "MILITARY_POINTS": {
-            "value": 0
-          }
-        }
-      },
-      "productionBonus": {
-        "map": {
-          "WOOD": {
-            "value": 0
-          },
-          "STONE": {
-            "value": 0
-          },
-          "SERVANT": {
-            "value": 0
-          },
-          "COINS": {
-            "value": 2
-          },
-          "VICTORY_POINTS": {
-            "value": 0
-          },
-          "FAITH_POINTS": {
-            "value": 0
-          },
-          "MILITARY_POINTS": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "harvestRequiredActionValue": 1,
-      "productionRequiredActionValue": 1,
-      "harvestbonus": {
+      "harvestBonus": {
         "map": {
           "WOOD": {
             "value": 1
@@ -7667,7 +10225,7 @@
     {
       "harvestRequiredActionValue": 1,
       "productionRequiredActionValue": 1,
-      "harvestbonus": {
+      "harvestBonus": {
         "map": {
           "WOOD": {
             "value": 1
@@ -7721,7 +10279,7 @@
     {
       "harvestRequiredActionValue": 1,
       "productionRequiredActionValue": 1,
-      "harvestbonus": {
+      "harvestBonus": {
         "map": {
           "WOOD": {
             "value": 1
@@ -7775,7 +10333,7 @@
     {
       "harvestRequiredActionValue": 1,
       "productionRequiredActionValue": 1,
-      "harvestbonus": {
+      "harvestBonus": {
         "map": {
           "WOOD": {
             "value": 1
@@ -7822,6 +10380,60 @@
           },
           "MILITARY_POINTS": {
             "value": 2
+          }
+        }
+      }
+    },
+    {
+      "harvestRequiredActionValue": 1,
+      "productionRequiredActionValue": 1,
+      "harvestBonus": {
+        "map": {
+          "WOOD": {
+            "value": 1
+          },
+          "STONE": {
+            "value": 1
+          },
+          "SERVANT": {
+            "value": 1
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "productionBonus": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 2
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 1
           }
         }
       }
