@@ -168,8 +168,8 @@
         </Button>
 
         <Button fx:id="button0" layoutX="230.0" layoutY="415.0"
-                mnemonicParsing="false" opacity="0.50" prefHeight="60.0"
-                prefWidth="143.0"/>
+                mnemonicParsing="false" onAction="#buttonMultiple"
+                opacity="0.50" prefHeight="60.0" prefWidth="143.0"/>
 
         <Button fx:id="button17" layoutX="5.0" layoutY="581.0"
                 mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
@@ -195,8 +195,8 @@
             </font>
         </Button>
         <Button fx:id="button20" layoutX="65.0" layoutY="643.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.50"
-                prefHeight="42.0" prefWidth="113.0">
+                mnemonicParsing="false" onAction="#buttonMultiple"
+                opacity="0.50" prefHeight="42.0" prefWidth="113.0">
             <font>
                 <Font size="15.0"/>
             </font>
@@ -234,14 +234,26 @@
             </font>
         </Button>
 
-        <Label fx:id="labelBlackDie" layoutX="272.0" layoutY="656.0" text="0"
-               textFill="#000000"/>
-        <Label fx:id="labelWhiteDie" layoutX="326.0" layoutY="657.0" text="0"
-               textFill="#000000"/>
-        <Label fx:id="labelOrangeDie" layoutX="377.0" layoutY="655.0" text="0"
-               textFill="#000000"/>
+        <Label fx:id="labelBlackDie" layoutX="272.0" layoutY="653.0" text="0"
+               textFill="#000000">
+            <font>
+                <Font name="Lucida Handwriting Italic" size="24.0"/>
+            </font>
+        </Label>
+        <Label fx:id="labelWhiteDie" layoutX="326.0" layoutY="653.0" text="0"
+               textFill="#000000">
+            <font>
+                <Font name="Lucida Handwriting Italic" size="24.0"/>
+            </font>
+        </Label>
+        <Label fx:id="labelOrangeDie" layoutX="377.0" layoutY="653.0" text="0"
+               textFill="#000000">
+            <font>
+                <Font name="Lucida Handwriting Italic" size="24.0"/>
+            </font>
+        </Label>
 
-        <Label layoutX="664.0" layoutY="625.0" text="Lorenzo il Magnifico">
+        <Label layoutX="674.0" layoutY="645.0" text="Lorenzo il Magnifico">
             <font>
                 <Font name="Lucida Handwriting Italic" size="18.0"/>
             </font>
@@ -301,7 +313,7 @@
                    layoutX="16.0" layoutY="224.0" pickOnBounds="true"
                    preserveRatio="true"/>
         <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="50.0"
-                   layoutX="16.0" layoutY="307.0" pickOnBounds="true"
+                   layoutX="16.0" layoutY="320.0" pickOnBounds="true"
                    preserveRatio="true"/>
 
         <ImageView fx:id="imageView8" fitHeight="150.0" fitWidth="50.0"
@@ -314,7 +326,7 @@
                    layoutX="123.0" layoutY="224.0" pickOnBounds="true"
                    preserveRatio="true"/>
         <ImageView fx:id="imageView5" fitHeight="150.0" fitWidth="50.0"
-                   layoutX="123.0" layoutY="307.0" pickOnBounds="true"
+                   layoutX="123.0" layoutY="320.0" pickOnBounds="true"
                    preserveRatio="true"/>
 
         <ImageView fx:id="imageView12" fitHeight="150.0" fitWidth="50.0"
@@ -327,7 +339,7 @@
                    layoutX="230.0" layoutY="224.0" pickOnBounds="true"
                    preserveRatio="true"/>
         <ImageView fx:id="imageView9" fitHeight="150.0" fitWidth="50.0"
-                   layoutX="230.0" layoutY="307.0" pickOnBounds="true"
+                   layoutX="230.0" layoutY="320.0" pickOnBounds="true"
                    preserveRatio="true"/>
 
         <ImageView fx:id="imageView16" fitHeight="150.0" fitWidth="50.0"
@@ -340,7 +352,7 @@
                    layoutX="337.0" layoutY="224.0" pickOnBounds="true"
                    preserveRatio="true"/>
         <ImageView fx:id="imageView13" fitHeight="150.0" fitWidth="50.0"
-                   layoutX="337.0" layoutY="307.0" pickOnBounds="true"
+                   layoutX="337.0" layoutY="320.0" pickOnBounds="true"
                    preserveRatio="true"/>
 
         <ImageView fx:id="imageViewPersonalB1" fitHeight="150.0" fitWidth="50.0"
@@ -387,7 +399,7 @@
                    preserveRatio="true" visible="false"/>
         <ImageView fx:id="imageViewPersonalC2" fitHeight="150.0" fitWidth="50.0"
                    layoutX="548.0" layoutY="210.0" pickOnBounds="true"
-                   preserveRatio="true"/>
+                   preserveRatio="true" visible="false"/>
         <ImageView fx:id="imageViewPersonalC3" fitHeight="150.0" fitWidth="50.0"
                    layoutX="610.0" layoutY="210.0" pickOnBounds="true"
                    preserveRatio="true" visible="false"/>
@@ -420,12 +432,13 @@
                    layoutX="790.0" layoutY="290.0" pickOnBounds="true"
                    preserveRatio="true" visible="false"/>
 
-        <Button fx:id="b1" layoutX="485.0" layoutY="555.0"
-                mnemonicParsing="false" onAction="#p" prefHeight="51.0"
-                prefWidth="130.0" text="Click me!"/>
-        <Button fx:id="b2" layoutX="485.0" layoutY="555.0"
-                mnemonicParsing="false" onAction="#q" prefHeight="51.0"
-                prefWidth="130.0" text="Click me!" visible="false"/>
+        <Button fx:id="b1" layoutX="470.0" layoutY="630.0"
+                mnemonicParsing="false" onAction="#initializeBoard"
+                prefHeight="51.0" prefWidth="130.0" text="Initialize"/>
+        <Button fx:id="b2" layoutX="470.0" layoutY="630.0"
+                mnemonicParsing="false" onAction="#refreshBoard"
+                prefHeight="51.0" prefWidth="130.0" text="Refresh"
+                visible="false"/>
 
         <ImageView fx:id="imgStone" fitWidth="28.0" layoutX="845.0"
                    pickOnBounds="true" preserveRatio="true">
@@ -636,10 +649,9 @@
         <ImageView fx:id="fm13" fitHeight="30.0" layoutX="401.0" layoutY="348.0"
                    pickOnBounds="true" preserveRatio="true" visible="false">
         </ImageView>
-        <ComboBox fx:id="comboBoxPlayer" layoutX="485.0" layoutY="615.0"
-                  onAction="#choseFamilyMember" prefHeight="51.0"
-                  prefWidth="101.0" promptText="Player" visible="false"
-                  visibleRowCount="4">
+        <ComboBox fx:id="comboBoxPlayer" layoutX="670.0" layoutY="570.0"
+                  onAction="#choseFamilyMember" prefWidth="200.0"
+                  promptText="Player" visible="false" visibleRowCount="4">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Blue"/>
@@ -649,6 +661,27 @@
                 </FXCollections>
             </items>
         </ComboBox>
+        <Button fx:id="buttonBlackDie" layoutX="259.0" layoutY="655.0"
+                mnemonicParsing="false" onAction="#selectDie" opacity="0.30"
+                prefHeight="36.0" prefWidth="42.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+        </Button>
+        <Button fx:id="buttonWhiteDie" layoutX="311.0" layoutY="655.0"
+                mnemonicParsing="false" onAction="#selectDie" opacity="0.30"
+                prefHeight="36.0" prefWidth="42.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+        </Button>
+        <Button fx:id="buttonOrangeDie" layoutX="363.0" layoutY="655.0"
+                mnemonicParsing="false" onAction="#selectDie" opacity="0.30"
+                prefHeight="36.0" prefWidth="42.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+        </Button>
 
 
     </children>
