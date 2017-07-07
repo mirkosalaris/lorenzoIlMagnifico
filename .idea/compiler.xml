@@ -9,7 +9,7 @@
         <module name="GC_36" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="GC_36" target="1.8" />
     </bytecodeTargetLevel>
   </component>

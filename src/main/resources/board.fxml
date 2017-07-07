@@ -635,26 +635,6 @@
                 mnemonicParsing="false" onAction="#familyMemberButtonClick"
                 text="uncolored">
         </Button>
-        <Button fx:id="STONE_WOOD" layoutX="693.0" layoutY="273.0"
-                mnemonicParsing="false" onAction="#privilegeButtonClick"
-                text="S_W">
-        </Button>
-        <Button fx:id="SERVANTS" layoutX="682.0" layoutY="307.0"
-                mnemonicParsing="false" onAction="#privilegeButtonClick"
-                text="Servants">
-        </Button>
-        <Button fx:id="COINS" layoutX="703.0" layoutY="337.0"
-                mnemonicParsing="false" onAction="#privilegeButtonClick"
-                text="Coins">
-        </Button>
-        <Button fx:id="MILITARY" layoutX="591.0" layoutY="252.0"
-                mnemonicParsing="false" onAction="#privilegeButtonClick"
-                text="Military">
-        </Button>
-        <Button fx:id="FAITH" layoutX="705.0" layoutY="237.0"
-                mnemonicParsing="false" onAction="#privilegeButtonClick"
-                text="Faith">
-        </Button>
 
         <Label fx:id="label" layoutX="204.0" layoutY="510.0" prefHeight="16.0"
                prefWidth="270.0" text="Label">
@@ -663,7 +643,7 @@
             </font>
         </Label>
         <AnchorPane fx:id="servantsAnchor" layoutX="448.0" layoutY="381.0"
-                    prefHeight="306.0" prefWidth="721.0" visible="false">
+                    prefHeight="270.0" prefWidth="475.0" visible="false">
             <Button fx:id="plus" layoutX="279.0" layoutY="87.0"
                     mnemonicParsing="false" onAction="#servantsButtonClick"
                     opacity="0.30" prefHeight="36.0" prefWidth="143.0"
@@ -696,7 +676,38 @@
             </Label>
         </AnchorPane>
         <AnchorPane fx:id="optionsAnchor" layoutX="448.0" layoutY="381.0"
-                    prefHeight="306.0" prefWidth="721.0" visible="false">
+                    prefHeight="270.0" prefWidth="475.0" visible="false">
+
+        </AnchorPane>
+
+        <AnchorPane fx:id="privilegeAnchor" layoutX="448.0" layoutY="381.0"
+                    prefHeight="270.0" prefWidth="475.0" visible="false">
+            <Button fx:id="STONE_WOOD" layoutX="244.0" layoutY="98.0"
+                    mnemonicParsing="false" onAction="#privilegeButtonClick"
+                    text="S_W">
+            </Button>
+            <Button fx:id="SERVANTS" layoutX="132.0" layoutY="98.0"
+                    mnemonicParsing="false" onAction="#privilegeButtonClick"
+                    text="Servants">
+            </Button>
+            <Button fx:id="COINS" layoutX="31.0" layoutY="98.0"
+                    mnemonicParsing="false" onAction="#privilegeButtonClick"
+                    text="Coins">
+            </Button>
+            <Button fx:id="MILITARY" layoutX="382.0" layoutY="98.0"
+                    mnemonicParsing="false" onAction="#privilegeButtonClick"
+                    text="Military">
+            </Button>
+            <Button fx:id="FAITH" layoutX="316.0" layoutY="98.0"
+                    mnemonicParsing="false" onAction="#privilegeButtonClick"
+                    text="Faith">
+            </Button>
+            <Label fx:id="privilege" layoutX="46.0" layoutY="22.0"
+                   prefHeight="16.0" prefWidth="270.0" text="privilege">
+                <font>
+                    <Font name="System Bold Italic" size="13.0"/>
+                </font>
+            </Label>
 
         </AnchorPane>
 
@@ -708,6 +719,7 @@
         </Label>
         <Label fx:id="CURRENT" layoutX="455.0" layoutY="317.0" text="currentpl"
                textFill="#000000"/>
+
 
     </children>
 </AnchorPane>

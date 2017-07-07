@@ -56,6 +56,10 @@ public class BoardController implements ViewInterface {
 	private AnchorPane optionsAnchor;
 	@FXML
 	private Label servants;
+	@FXML
+	private Label privilege;
+	@FXML
+	private AnchorPane privilegeAnchor;
 
 	public BoardController() {
 	}
@@ -259,7 +263,7 @@ public class BoardController implements ViewInterface {
 			@Override
 			public void run() {
 				servantsAnchor.setVisible(false);
-
+				servants.setText("servants: 0");
 			}
 		});
 		return numberOfServants;
@@ -297,7 +301,8 @@ public class BoardController implements ViewInterface {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				label.setText(
+				privilegeAnchor.setVisible(true);
+				privilege.setText(
 						"choice number " + n + ": select the " +
 								"privilege");
 			}
@@ -306,7 +311,7 @@ public class BoardController implements ViewInterface {
 		synchronized (lockChosenPrivilege) {
 			do {
 				try {
-					lockChosenActionSpace.wait();
+					lockChosenPrivilege.wait();
 					choice = chosenPrivilege;
 				} catch (InterruptedException e) {
 					ExceptionLogger.log(e);
@@ -314,8 +319,14 @@ public class BoardController implements ViewInterface {
 			} while (choice == null);
 		}
 		System.out.println(choice);
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				privilegeAnchor.setVisible(false);
+			}
+		});
 
-		return choice.hashCode();
+		return choice.ordinal();
 	}
 
 	@Override
@@ -401,7 +412,7 @@ public class BoardController implements ViewInterface {
 		synchronized (lockChosenPrivilege) {
 			lockChosenPrivilege.notifyAll();
 		}
-		System.out.println("action space selected");
+		System.out.println("privilege selected");
 
 	}
 
