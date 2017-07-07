@@ -1,13 +1,10 @@
 package it.polimi.ingsw.GC_36.client;
 
-import it.polimi.ingsw.GC_36.client.view.ViewCLI;
-import it.polimi.ingsw.GC_36.client.view.ViewGUI;
 import it.polimi.ingsw.GC_36.client.view.ViewInterface;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.Scanner;
 
 public class Main {
@@ -15,11 +12,12 @@ public class Main {
 
 	private Main() {}
 
-	public static void main(String[] args) throws RemoteException {
+	public static void main(String[] args)
+			throws Exception {
 		ExceptionLogger.setDebug();
 
-		ViewInterface view = chooseView();
-
+		ViewStarter starter = chooseView();
+		ViewInterface view = starter.start();
 		User user = new User(view);
 
 		communicator = view.chooseCommunicator(user);
@@ -44,23 +42,26 @@ public class Main {
 		}).start();
 	}
 
-	private static ViewInterface chooseView() {
-		ViewInterface view = null;
+	private static ViewStarter chooseView() {
+		ViewStarter starter = null;
 
 		Scanner sc = new Scanner(System.in);
 		char choice;
 
+		boolean setted = false;
 		do {
 			System.out.print("Type g to choose GUI, c to choose CLI: ");
 			choice = sc.next().charAt(0);
 
 			if (choice == 'c' || choice == 'C') {
-				view = new ViewCLI();
+				starter = new ViewStarter(ViewStarter.CLI);
+				setted = true;
 			} else if (choice == 'g' || choice == 'G') {
-				view = new ViewGUI();
+				starter = new ViewStarter(ViewStarter.GUI);
+				setted = true;
 			}
-		} while (view == null);
+		} while (!setted);
 
-		return view;
+		return starter;
 	}
 }

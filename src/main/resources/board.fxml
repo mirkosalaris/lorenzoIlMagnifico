@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import java.net.URL?>
 <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0"
-            prefWidth="910.0" xmlns="http://javafx.com/javafx/8"
+            prefWidth="910.0" xmlns="http://javafx.com/javafx/8.0.112"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="it.polimi.ingsw.GC_36.client.view.GuiController">
+            fx:controller="it.polimi.ingsw.GC_36.client.view.BoardController">
     <stylesheets>
         <URL value="@stylesheet.css"/>
     </stylesheets>
@@ -44,32 +42,32 @@
         </ImageView>
 
         <Button fx:id="button4" layoutX="71.0" layoutY="38.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
             </font>
         </Button>
         <Button fx:id="button3" layoutX="71.0" layoutY="142.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="13.0"/>
             </font>
         </Button>
         <Button fx:id="button2" layoutX="71.0" layoutY="240.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="12.0"/>
             </font>
         </Button>
         <Button fx:id="button1" layoutX="71.0" layoutY="342.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
@@ -77,90 +75,98 @@
         </Button>
 
         <Button fx:id="button8" layoutX="177.0" layoutY="38.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="5.0"/>
             </font>
         </Button>
         <Button fx:id="button7" layoutX="177.0" layoutY="142.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="11.0"/>
             </font>
         </Button>
         <Button fx:id="button6" layoutX="177.0" layoutY="240.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="13.0"/>
             </font>
         </Button>
         <Button fx:id="button5" layoutX="177.0" layoutY="342.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="3.0"/>
             </font>
         </Button>
 
         <Button fx:id="button12" layoutX="284.0" layoutY="38.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="1.0"/>
             </font>
         </Button>
         <Button fx:id="button11" layoutX="284.0" layoutY="142.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
             </font>
         </Button>
         <Button fx:id="button10" layoutX="284.0" layoutY="240.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="12.0"/>
             </font>
         </Button>
         <Button fx:id="button9" layoutX="284.0" layoutY="342.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="6.0"/>
             </font>
         </Button>
 
         <Button fx:id="button16" layoutX="393.0" layoutY="38.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="5.0"/>
             </font>
         </Button>
         <Button fx:id="button15" layoutX="393.0" layoutY="142.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="5.0"/>
             </font>
         </Button>
         <Button fx:id="button14" layoutX="393.0" layoutY="240.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40" prefWidth="40" styleClass="actionSpaceButton">
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40" prefWidth="40"
+                styleClass="actionSpaceButton">
             <font>
                 <Font size="5.0"/>
             </font>
         </Button>
         <Button fx:id="button13" layoutX="393.0" layoutY="342.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
@@ -168,66 +174,66 @@
         </Button>
 
         <Button fx:id="button0" layoutX="230.0" layoutY="415.0"
-                mnemonicParsing="false" onAction="#buttonMultiple"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.50" prefHeight="60.0" prefWidth="143.0"/>
 
         <Button fx:id="button17" layoutX="5.0" layoutY="581.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
             </font>
         </Button>
         <Button fx:id="button18" layoutX="66.0" layoutY="580.0"
-                mnemonicParsing="false" onAction="#buttonMultiple"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.50" prefHeight="42.0" prefWidth="113.0">
             <font>
                 <Font size="15.0"/>
             </font>
         </Button>
         <Button fx:id="button19" layoutX="5.0" layoutY="644.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
             </font>
         </Button>
         <Button fx:id="button20" layoutX="65.0" layoutY="643.0"
-                mnemonicParsing="false" onAction="#buttonMultiple"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.50" prefHeight="42.0" prefWidth="113.0">
             <font>
                 <Font size="15.0"/>
             </font>
         </Button>
         <Button fx:id="button21" layoutX="272.0" layoutY="570.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
             </font>
         </Button>
         <Button fx:id="button22" layoutX="325.0" layoutY="569.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
             </font>
         </Button>
         <Button fx:id="button23" layoutX="369.0" layoutY="582.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
             </font>
         </Button>
         <Button fx:id="button24" layoutX="406.0" layoutY="620.0"
-                mnemonicParsing="false" onAction="#buttonSingle" opacity="0.40"
-                prefHeight="40.0" prefWidth="40.0"
+                mnemonicParsing="false" onAction="#actionSpaceButtonClick"
+                opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
             <font>
                 <Font size="9.0"/>
@@ -253,41 +259,12 @@
             </font>
         </Label>
 
-        <Label layoutX="674.0" layoutY="645.0" text="Lorenzo il Magnifico">
+        <Label layoutX="718.0" layoutY="658.0" text="Lorenzo il Magnifico">
             <font>
                 <Font name="Lucida Handwriting Italic" size="18.0"/>
             </font>
         </Label>
-        <Button fx:id="minusServants" layoutX="761.0" layoutY="496.0"
-                mnemonicParsing="false" onAction="#minusServants"
-                prefHeight="10.0" prefWidth="0.0" text="-" visible="false">
-            <font>
-                <Font size="10.0"/>
-            </font>
-        </Button>
-        <Button fx:id="plusServants" layoutX="849.0" layoutY="497.0"
-                mnemonicParsing="false" onAction="#plusServants"
-                prefHeight="10.0" prefWidth="0.0" text="+" visible="false">
-            <font>
-                <Font size="10.0"/>
-            </font>
-        </Button>
 
-        <ComboBox fx:id="comboBoxFamilyMember" layoutX="670.0" layoutY="405.0"
-                  onAction="#choseFamilyMember" prefWidth="200.0"
-                  promptText="Choose family member" visible="false"
-                  visibleRowCount="4">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Orange"/>
-                    <String fx:value="Black"/>
-                    <String fx:value="White"/>
-                    <String fx:value="Uncolored"/>
-                </FXCollections>
-
-            </items>
-
-        </ComboBox>
         <Label fx:id="labelhmsdyw" layoutX="478.0" layoutY="496.0"
                text="How many servants do you need?" visible="false">
             <font>
@@ -431,14 +408,6 @@
         <ImageView fx:id="imageViewPersonalV6" fitHeight="150.0" fitWidth="50.0"
                    layoutX="790.0" layoutY="290.0" pickOnBounds="true"
                    preserveRatio="true" visible="false"/>
-
-        <Button fx:id="b1" layoutX="470.0" layoutY="630.0"
-                mnemonicParsing="false" onAction="#initializeBoard"
-                prefHeight="51.0" prefWidth="130.0" text="Initialize"/>
-        <Button fx:id="b2" layoutX="470.0" layoutY="630.0"
-                mnemonicParsing="false" onAction="#refreshBoard"
-                prefHeight="51.0" prefWidth="130.0" text="Refresh"
-                visible="false"/>
 
         <ImageView fx:id="imgStone" fitWidth="28.0" layoutX="845.0"
                    pickOnBounds="true" preserveRatio="true">
@@ -649,40 +618,96 @@
         <ImageView fx:id="fm13" fitHeight="30.0" layoutX="401.0" layoutY="348.0"
                    pickOnBounds="true" preserveRatio="true" visible="false">
         </ImageView>
-        <ComboBox fx:id="comboBoxPlayer" layoutX="670.0" layoutY="570.0"
-                  onAction="#choseFamilyMember" prefWidth="200.0"
-                  promptText="Player" visible="false" visibleRowCount="4">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Blue"/>
-                    <String fx:value="Red"/>
-                    <String fx:value="Yellow"/>
-                    <String fx:value="Green"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <Button fx:id="buttonBlackDie" layoutX="259.0" layoutY="655.0"
-                mnemonicParsing="false" onAction="#selectDie" opacity="0.30"
-                prefHeight="36.0" prefWidth="42.0">
-            <font>
-                <Font size="10.0"/>
-            </font>
+
+        <Button fx:id="ORANGE" layoutX="819.0" layoutY="232.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                text="orange">
         </Button>
-        <Button fx:id="buttonWhiteDie" layoutX="311.0" layoutY="655.0"
-                mnemonicParsing="false" onAction="#selectDie" opacity="0.30"
-                prefHeight="36.0" prefWidth="42.0">
-            <font>
-                <Font size="10.0"/>
-            </font>
+        <Button fx:id="WHITE" layoutX="822.0" layoutY="257.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                text="white">
         </Button>
-        <Button fx:id="buttonOrangeDie" layoutX="363.0" layoutY="655.0"
-                mnemonicParsing="false" onAction="#selectDie" opacity="0.30"
-                prefHeight="36.0" prefWidth="42.0">
-            <font>
-                <Font size="10.0"/>
-            </font>
+        <Button fx:id="BLACK" layoutX="828.0" layoutY="286.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                text="black">
+        </Button>
+        <Button fx:id="UNCOLORED" layoutX="810.0" layoutY="312.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                text="uncolored">
+        </Button>
+        <Button fx:id="STONE_WOOD" layoutX="693.0" layoutY="273.0"
+                mnemonicParsing="false" onAction="#privilegeButtonClick"
+                text="S_W">
+        </Button>
+        <Button fx:id="SERVANTS" layoutX="682.0" layoutY="307.0"
+                mnemonicParsing="false" onAction="#privilegeButtonClick"
+                text="Servants">
+        </Button>
+        <Button fx:id="COINS" layoutX="703.0" layoutY="337.0"
+                mnemonicParsing="false" onAction="#privilegeButtonClick"
+                text="Coins">
+        </Button>
+        <Button fx:id="MILITARY" layoutX="591.0" layoutY="252.0"
+                mnemonicParsing="false" onAction="#privilegeButtonClick"
+                text="Military">
+        </Button>
+        <Button fx:id="FAITH" layoutX="705.0" layoutY="237.0"
+                mnemonicParsing="false" onAction="#privilegeButtonClick"
+                text="Faith">
         </Button>
 
+        <Label fx:id="label" layoutX="204.0" layoutY="510.0" prefHeight="16.0"
+               prefWidth="270.0" text="Label">
+            <font>
+                <Font name="System Bold Italic" size="13.0"/>
+            </font>
+        </Label>
+        <AnchorPane fx:id="servantsAnchor" layoutX="448.0" layoutY="381.0"
+                    prefHeight="306.0" prefWidth="721.0" visible="false">
+            <Button fx:id="plus" layoutX="279.0" layoutY="87.0"
+                    mnemonicParsing="false" onAction="#servantsButtonClick"
+                    opacity="0.30" prefHeight="36.0" prefWidth="143.0"
+                    text="plus">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+            </Button>
+            <Button fx:id="minus" layoutX="58.0" layoutY="87.0"
+                    mnemonicParsing="false" onAction="#servantsButtonClick"
+                    opacity="0.30" prefHeight="36.0" prefWidth="143.0"
+                    text="minus">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+            </Button>
+            <Button fx:id="done" layoutX="279.0" layoutY="12.0"
+                    mnemonicParsing="false" onAction="#servantsButtonClick"
+                    opacity="0.30" prefHeight="36.0" prefWidth="143.0"
+                    text="DONE">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+            </Button>
+            <Label fx:id="servants" layoutX="66.0" layoutY="22.0"
+                   prefHeight="16.0" prefWidth="154.0" text="servants:">
+                <font>
+                    <Font name="System Bold Italic" size="13.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane fx:id="optionsAnchor" layoutX="448.0" layoutY="381.0"
+                    prefHeight="306.0" prefWidth="721.0" visible="false">
+
+        </AnchorPane>
+
+        <Label fx:id="playerColor" layoutX="456.0" layoutY="337.0"
+               prefHeight="16.0" prefWidth="270.0" text="Label">
+            <font>
+                <Font name="System Bold Italic" size="13.0"/>
+            </font>
+        </Label>
+        <Label fx:id="CURRENT" layoutX="455.0" layoutY="317.0" text="currentpl"
+               textFill="#000000"/>
 
     </children>
 </AnchorPane>

@@ -127,6 +127,8 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public int chooseCardPaymentOptions(DevelopmentCard card) {
 		Pair<ResourcesList, ResourcesList> resourcesList;
+		if (card.getRequirements().size() == 1)
+			return 0;
 		System.out.println("Please select the payment option of the card");
 		for (int i = 1; i <= card.getRequirements().size(); i++) {
 			System.out.println("option " + i + ": ");
@@ -144,11 +146,6 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public void show(String message) {
 		System.out.println(message);
-	}
-
-	@Override
-	public void start() {
-
 	}
 
 	@Override
@@ -330,7 +327,8 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public void update(int periodNumber) {
-		System.out.println("A new Period has started");
+		System.out.println(
+				"A new Period has started, current period: " + periodNumber);
 
 	}
 

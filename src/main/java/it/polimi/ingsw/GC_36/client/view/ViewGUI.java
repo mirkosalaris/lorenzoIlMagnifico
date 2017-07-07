@@ -17,55 +17,65 @@ import java.util.Map;
 import java.util.Set;
 
 public class ViewGUI extends Application implements ViewInterface {
-	private GuiController ctrl;
+	public static ViewGUI instance;
+	private BoardController boardCtrl;
+	private SetupController setupController;
+	private Stage primaryStage;
+
 
 	@Override
 	public MemberColor chooseMemberColor() {
-		return null;
+		return boardCtrl.chooseMemberColor();
 	}
 
 	@Override
 	public int setActionValueIncrement() {
-		return 0;
+
+		System.out.println("select the increment");
+		return boardCtrl.setActionValueIncrement();
 	}
 
 	@Override
 	public int chooseActionSpaceId(Set<ActionSpaceIds> actionSpaceIds) {
-		return 0;
+		int choice = boardCtrl.chooseActionSpaceId(actionSpaceIds);
+		return choice;
 	}
 
 	@Override
 	public int choosePrivilege(int n) {
-		return 0;
+		int choice = boardCtrl.choosePrivilege(n);
+		return choice;
 	}
 
 
 	@Override
 	public int chooseConvertingMethod(
 			Map<Integer, Pair<ResourcesList, ResourcesList>> options) {
-		return 0;
+		if (options.size() == 1)
+			return 0;
+		int choice = boardCtrl.chooseConvertingMethod(options);
+		return choice;
 	}
 
 	@Override
 	public int chooseCardPaymentOptions(DevelopmentCard card) {
-		return 0;
+		if (card.getRequirements().size() == 1)
+			return 0;
+		int choice = boardCtrl.chooseCardPaymentOptions(card);
+		return choice;
 	}
 
 
 	@Override
 	public void show(String message) {
-
+		boardCtrl.show(message);
 	}
 
 	@Override
-	public void start() {
-		String args = "";
-		launch(args);
-	}
-
-	@Override
-	public Communicator chooseCommunicator(User user) {
-		return null;
+	public Communicator chooseCommunicator(User user) throws Exception {
+		Communicator communicator;
+		communicator = setupController.chooseCommunicator(user);
+		return communicator;
 	}
 
 	@Override
@@ -81,15 +91,18 @@ public class ViewGUI extends Application implements ViewInterface {
 	@Override
 	public void play(ActionInterface action) {
 
+
 	}
 
 	@Override
 	public void exit(String message) {
+		//TODO
 
 	}
 
 	@Override
-	public void setIdentifier(PlayerIdentifier identifier) {
+	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+		boardCtrl.setIdentifier(identifier);
 
 	}
 
@@ -112,11 +125,14 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public void terminatedRound() {
+		System.out.println("The round is terminated");
+		boardCtrl.show("The round is terminated");
 
 	}
 
 	@Override
 	public void update(BoardState currentState) {
+		boardCtrl.show(currentState.toString());
 
 	}
 
@@ -127,6 +143,7 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public void update(PlayerState newState) {
+		boardCtrl.show(newState.toString());
 
 	}
 
@@ -147,6 +164,9 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public void update(int periodNumber) {
+		boardCtrl.show("A new period has started");
+		boardCtrl.setCurrentPeriod(periodNumber + "");
+		boardCtrl.showCurrent();
 
 	}
 
@@ -158,11 +178,17 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public void update(RoundState newState) {
+		System.out.println("new Round State: " + newState);
+		boardCtrl.show("New Round state" + newState.toString());
 
 	}
 
 	@Override
 	public void update(PlayerIdentifier newPlayer) {
+		System.out.println("Current player: " + newPlayer.get());
+		boardCtrl.show("New Player");
+		boardCtrl.setCurrentPlayer(newPlayer.toString());
+		boardCtrl.showCurrent();
 
 	}
 
@@ -179,21 +205,20 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public void update(ResourcesList resourcesList) {
+		System.out.println(resourcesList);
 
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println("loading...");
-
+		this.primaryStage = primaryStage;
 		FXMLLoader loader;
-
 		URL resource;
-		resource = getClass().getClassLoader().getResource("board.fxml");
-
+		resource = getClass().getClassLoader().getResource("setup.fxml");
 		loader = new FXMLLoader(resource);
 		Parent root = loader.load();
-		ctrl = loader.getController();
+		setupController = loader.getController();
 
 		primaryStage.setTitle("Lorenzo Il Magnifico");
 		primaryStage.setScene(new Scene(root));
@@ -201,5 +226,18 @@ public class ViewGUI extends Application implements ViewInterface {
 		primaryStage.setResizable(false);
 
 		primaryStage.show();
+
+		instance = this;
+
+		resource = getClass().getClassLoader().getResource("board.fxml");
+		loader = new FXMLLoader(resource);
+		Parent boardRoot = loader.load();
+		boardCtrl = loader.getController();
+		Scene boardScene = new Scene(boardRoot);
+
+		setupController.initialize(primaryStage, boardScene, boardCtrl);
+
+
 	}
+
 }

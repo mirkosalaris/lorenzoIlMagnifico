@@ -36,8 +36,6 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		for (CardType type : CardType.values()) {
 			ownedCards.put(type, new ArrayList<>());
 		}
-
-		view.start();
 	}
 
 	@Override
