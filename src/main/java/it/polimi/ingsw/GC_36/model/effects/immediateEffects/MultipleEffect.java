@@ -36,4 +36,11 @@ public class MultipleEffect implements ImmediateEffect {
 			effect.chooseOptions(view, action, user);
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "MultipleEffect{" +
+				"effects=\n" + effects +
+				'}';
+	}
 }

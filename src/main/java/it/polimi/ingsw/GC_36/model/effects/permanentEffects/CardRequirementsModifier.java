@@ -43,4 +43,13 @@ public class CardRequirementsModifier extends PermanentEffect {
 	public boolean check(Action action, ResourcesList playerResources) {
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "CardRequirementsModifier{" +
+				"type=" + type +
+				", actionValueModifier=" + actionValueModifier +
+				", discount=" + discount +
+				'}';
+	}
 }

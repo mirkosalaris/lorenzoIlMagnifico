@@ -80,5 +80,11 @@ public class ImmediateCouncilPrivilegeI implements ImmediateEffect {
 		return (choice >= 0 && choice <= CouncilPrivilege.values().length - 1);
 	}
 
-
+	@Override
+	public String toString() {
+		return "ImmediateCouncilPrivilegeI{" +
+				"mustDiffer=" + mustDiffer +
+				", numberOfPrivileges=" + numberOfPrivileges +
+				'}';
+	}
 }

@@ -64,4 +64,14 @@ public class ResourceToPrivilege extends PermanentEffect {
 		}*/
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "ResourceToPrivilege{" +
+				"actionValue=" + actionValue +
+				", fromResourcesList=" + fromResourcesList +
+				", privileges=" + privileges +
+				", immediateCouncilPrivilegeI=" + immediateCouncilPrivilegeI +
+				'}';
+	}
 }

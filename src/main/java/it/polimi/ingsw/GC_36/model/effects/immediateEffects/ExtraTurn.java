@@ -34,7 +34,13 @@ public class ExtraTurn implements ImmediateEffect {
 		action.setExtraAction(extraAction);
 	}
 
-
+	@Override
+	public String toString() {
+		return "ExtraTurn{" +
+				"actionSpaces=" + actionSpaces +
+				", baseActionValue=" + baseActionValue +
+				'}';
+	}
 }
 
 

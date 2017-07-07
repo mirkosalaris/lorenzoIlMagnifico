@@ -45,4 +45,14 @@ public class ActionSpaceModifier extends PermanentEffect {
 	public boolean check(Action action, ResourcesList playerResources) {
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ActionSpaceModifier{" +
+				"actionSpaceIdsSet=" + actionSpaceIdsSet +
+				", actionValue=" + actionValue +
+				", denyBonus=" + denyBonus +
+				", pass=" + pass +
+				'}';
+	}
 }

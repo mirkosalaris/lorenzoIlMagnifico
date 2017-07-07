@@ -29,4 +29,9 @@ public class HarvestWorkValueModifier extends PermanentEffect {
 	public boolean check(Action action, ResourcesList playerResources) {
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "HarvestWorkValueModifier{}";
+	}
 }

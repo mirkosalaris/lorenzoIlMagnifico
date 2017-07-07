@@ -19,4 +19,10 @@ public class Pair<K, V> implements Serializable {
 	public V getSecond() {
 		return second;
 	}
+
+	@Override
+	public String toString() {
+		return "[" + first + ", " + second + "]";
+
+	}
 }

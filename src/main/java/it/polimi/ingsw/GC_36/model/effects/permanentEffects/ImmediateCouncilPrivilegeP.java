@@ -57,4 +57,14 @@ public class ImmediateCouncilPrivilegeP extends PermanentEffect {
 	public boolean check(Action action, ResourcesList playerResources) {
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ImmediateCouncilPrivilegeP{" +
+				"numberOfPrivileges=" + numberOfPrivileges +
+				", mustDiffer=" + mustDiffer +
+				", immediateEffect=" + immediateEffect +
+				", actionValue=" + actionValue +
+				'}';
+	}
 }

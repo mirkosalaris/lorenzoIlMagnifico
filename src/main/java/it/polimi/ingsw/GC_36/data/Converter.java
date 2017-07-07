@@ -57,6 +57,9 @@ public class Converter {
 			case "ResourceListBasedOnOwnedResources":
 				return decoder.deserialize(effectBody,
 						ResourceListBasedOnOwnedResources.class);
+			case "ResourceListBasedOnOwnedCardsI":
+				return decoder.deserialize(effectBody,
+						ResourceListBasedOnOwnedCardsI.class);
 			case "MultipleEffectI":
 				List<ImmediateEffect> immediateEffectList = new
 						ArrayList<>();
@@ -98,7 +101,7 @@ public class Converter {
 			case "ProductionWorkValueModifier":
 				return decoder.deserialize(effectBody,
 						ProductionWorkValueModifier.class);
-			case "ResourceListBasedOnOwnedCards":
+			case "ResourceListBasedOnOwnedCardsI":
 				return decoder.deserialize(effectBody,
 						ResourceListBasedOnOwnedCards.class);
 			case "ResourcesConverting":

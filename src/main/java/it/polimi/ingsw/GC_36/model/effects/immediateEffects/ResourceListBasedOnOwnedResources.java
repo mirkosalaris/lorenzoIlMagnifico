@@ -44,5 +44,13 @@ public class ResourceListBasedOnOwnedResources implements ImmediateEffect {
 
 	}
 
+	@Override
+	public String toString() {
+		return "ResourceListBasedOnOwnedResources{" +
+				"fromResourceType=" + fromResourceType +
+				", fromResourceValue=" + fromResourceValue +
+				", toResourcesList=" + toResourcesList +
+				'}';
+	}
 }
 

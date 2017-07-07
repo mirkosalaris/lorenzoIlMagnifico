@@ -74,5 +74,12 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 		return true;
 	}
 
-
+	@Override
+	public String toString() {
+		return "ResourceListBasedOnOwnedCardsI{" +
+				"resourcesList=" + resourcesList +
+				", cardType=" + cardType +
+				", requiredActionValue=" + requiredActionValue +
+				'}';
+	}
 }

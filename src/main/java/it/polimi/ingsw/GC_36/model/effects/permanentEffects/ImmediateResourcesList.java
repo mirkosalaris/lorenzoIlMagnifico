@@ -63,5 +63,12 @@ public class ImmediateResourcesList extends PermanentEffect {
 		return true;
 	}
 
-
+	@Override
+	public String toString() {
+		return "ImmediateResourcesList{" +
+				"associatedCardType=" + associatedCardType +
+				", resourcesList=" + resourcesList +
+				", requiredActionValue=" + requiredActionValue +
+				'}';
+	}
 }

@@ -12,21 +12,13 @@ import java.util.List;
 class GameSetupper {
 	private List<Player> players;
 	private GameMode mode;
-	// TODO @antonino get leaderCards from Commons
-	private List<LeaderCard> leaderCards = new ArrayList<>();
+	private List<LeaderCard> leaderCards = Commons.getLeaderCard();
 
 	private List<LeaderCard> chosenCard = new ArrayList<>();
 
 	GameSetupper(List<Player> players, GameMode mode) {
 		this.players = players;
 		this.mode = mode;
-
-		// TODO @antonino remove this loop
-		for (int i = 0; i < 16; i++) {
-			leaderCards.add(
-					new LeaderCard("card " + i, new ResourcesList(), null,
-							null));
-		}
 	}
 
 	void setup() throws SetupException {

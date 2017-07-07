@@ -5,6 +5,7 @@ import it.polimi.ingsw.GC_36.parsers.Parser;
 
 import java.io.File;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 public final class Commons {
@@ -115,6 +116,10 @@ public final class Commons {
 
 	public static BonusTile getBonusTile(BonusTileId id) {
 		return (BonusTile) parser.get("bonusTile" + id.value());
+	}
+
+	public static List<LeaderCard> getLeaderCard() {
+		return (List<LeaderCard>) parser.get("leaderCard");
 	}
 }
 

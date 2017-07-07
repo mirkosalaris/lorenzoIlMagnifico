@@ -28,4 +28,25 @@ public class LeaderEffect implements Serializable {
 			throws IOException, ClassNotFoundException {
 		effect.chooseOptions(view, action, user);
 	}
+
+	@Override
+	public String toString() {
+		return "LeaderEffect: " + effect + "\n";
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof LeaderEffect)) return false;
+
+		LeaderEffect effect1 = (LeaderEffect) o;
+
+		return effect != null ? effect.equals(
+				effect1.effect) : effect1.effect == null;
+	}
+
+	@Override
+	public int hashCode() {
+		return effect != null ? effect.hashCode() : 0;
+	}
 }

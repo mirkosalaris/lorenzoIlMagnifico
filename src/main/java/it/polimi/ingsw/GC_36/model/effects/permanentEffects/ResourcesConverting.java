@@ -88,4 +88,11 @@ public class ResourcesConverting extends PermanentEffect {
 		return (choice >= 0 && choice < options.size());
 	}
 
+	@Override
+	public String toString() {
+		return "ResourcesConverting{" +
+				"options=" + options +
+				", requiredActionValue=" + requiredActionValue +
+				'}';
+	}
 }

@@ -58,7 +58,7 @@ public class DevelopmentCard implements Serializable {
 		return "\n\ttype=" + type +
 				"\n\tperiod=" + period +
 				"\n\tname='" + name + '\'' +
-				"\n\trequirementsList=" + requirements +
+				"\n\trequirementsList[toHave, toPay]:{" + requirements + "}" +
 				"\n\timmediateEffect=" + immediateEffect +
 				"\n\tpermanentEffect=" + permanentEffect +
 				"\n";

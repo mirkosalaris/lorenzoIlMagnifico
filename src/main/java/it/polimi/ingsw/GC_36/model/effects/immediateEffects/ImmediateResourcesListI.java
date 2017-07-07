@@ -32,4 +32,11 @@ public class ImmediateResourcesListI implements ImmediateEffect {
 	public void chooseOptions(ViewInterface view, ActionInterface action,
 	                          User user)
 			throws IOException, ClassNotFoundException {}
+
+	@Override
+	public String toString() {
+		return "ImmediateResourcesListI{" +
+				"resourcesList=" + resourcesList +
+				'}';
+	}
 }

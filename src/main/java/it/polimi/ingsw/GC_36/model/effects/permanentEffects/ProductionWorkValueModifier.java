@@ -29,4 +29,9 @@ public class ProductionWorkValueModifier extends PermanentEffect {
 	public boolean check(Action action, ResourcesList playerResources) {
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductionWorkValueModifier{}";
+	}
 }
