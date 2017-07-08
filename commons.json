@@ -6395,7 +6395,7 @@
       "immediateEffect": {
         "EffectType": "ResourceListBasedOnOwnedCardsI",
         "EffectBody": {
-          "resourceListBasedOnOwnedCards": {
+          "effect": {
             "resourcesList": {
               "map": {
                 "WOOD": {
@@ -6488,7 +6488,7 @@
       "immediateEffect": {
         "EffectType": "ResourceListBasedOnOwnedCardsI",
         "EffectBody": {
-          "resourceListBasedOnOwnedCards": {
+          "effect": {
             "resourcesList": {
               "map": {
                 "WOOD": {
@@ -6581,7 +6581,7 @@
       "immediateEffect": {
         "EffectType": "ResourceListBasedOnOwnedCardsI",
         "EffectBody": {
-          "resourceListBasedOnOwnedCards": {
+          "effect": {
             "resourcesList": {
               "map": {
                 "WOOD": {
@@ -6674,7 +6674,7 @@
       "immediateEffect": {
         "EffectType": "ResourceListBasedOnOwnedCardsI",
         "EffectBody": {
-          "resourceListBasedOnOwnedCards": {
+          "effect": {
             "resourcesList": {
               "map": {
                 "WOOD": {
@@ -11795,5 +11795,30 @@
         }
       }
     }
-  ]
+  ],
+  "tax": {
+    "map": {
+      "WOOD": {
+        "value": 0
+      },
+      "STONE": {
+        "value": 0
+      },
+      "SERVANT": {
+        "value": 0
+      },
+      "COINS": {
+        "value": 3
+      },
+      "VICTORY_POINTS": {
+        "value": 0
+      },
+      "FAITH_POINTS": {
+        "value": 0
+      },
+      "MILITARY_POINTS": {
+        "value": 0
+      }
+    }
+  }
 }

@@ -113,7 +113,8 @@ public class BoardController implements ViewInterface {
 		Image imgDevCard = new Image(
 				"file:src/main/resources/images/cards/" + nameDevCard + "" +
 						".png");
-		ImageView personalImg = put("imageViewPersonal" + firstLetterCardType,
+		ImageView personalImg = getImageView(
+				"imageViewPersonal" + firstLetterCardType,
 				6);
 		personalImg.setImage(imgDevCard);
 		personalImg.setVisible(true);
@@ -211,12 +212,16 @@ public class BoardController implements ViewInterface {
 				mc.length()).toLowerCase();
 		String name = "fm" + p + mc + ".png";
 		int actionSpaceId = id.value();
-		ImageView fm = (ImageView) scene.lookup("#fm" + actionSpaceId);
+		ImageView fm = null;
 		Image img = new Image(
 				"file:src/main/resources/images/familyMember/" + name);
+		if (actionSpaceId == 0 || actionSpaceId == 18 || actionSpaceId == 20) {
+			fm = getImageView("fm" + actionSpaceId, 6);
+		} else {
+			fm = (ImageView) scene.lookup("#fm" + actionSpaceId);
+		}
 		fm.setImage(img);
 		fm.setVisible(true);
-
 	}
 
 	@Override
@@ -662,13 +667,13 @@ public class BoardController implements ViewInterface {
 		devCard.setVisible(true);
 	}
 
-	ImageView put(String s, int max) {
+	ImageView getImageView(String s, int max) {
 		Scene scene = anchor.getScene();
-		ImageView card;
+		ImageView imageView;
 		for (int i = 1; i <= max; i++) {
-			card = (ImageView) scene.lookup("#" + s + i);
-			if (!card.isVisible()) {
-				return card;
+			imageView = (ImageView) scene.lookup("#" + s + i);
+			if (!imageView.isVisible()) {
+				return imageView;
 			}
 		}
 		throw new IllegalStateException();
