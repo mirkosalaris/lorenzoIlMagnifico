@@ -150,4 +150,8 @@ public class Player {
 		}
 		return true;
 	}
+
+	public PlayerColor getPlayerColor() {
+		return playerColor;
+	}
 }

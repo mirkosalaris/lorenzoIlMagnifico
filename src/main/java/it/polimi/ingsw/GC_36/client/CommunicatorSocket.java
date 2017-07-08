@@ -141,7 +141,8 @@ public class CommunicatorSocket implements Communicator {
 				params = (List<Object>) entry.getValue();
 				ActionSpaceIds asId = (ActionSpaceIds) params.get(0);
 				PlayerColor playerColor = (PlayerColor) params.get(1);
-				user.update(asId, playerColor);
+				MemberColor memberColor = (MemberColor) params.get(2);
+				user.update(asId, playerColor, memberColor);
 				break;
 
 			case "updateFloor":

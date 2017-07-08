@@ -10,11 +10,9 @@ public class CouncilActionSpace extends ActionSpace {
 	}
 
 	@Override
-	public void occupy(FamilyMember member)
+	public void occupy(Player player, FamilyMember member)
 			throws NotCorrectlyCheckedException, IOException {
-		super.occupy(member);
-		Player player = Game.getInstance().getCurrentPeriod().getCurrentRound
-				().getCurrentPlayer();
+		super.occupy(player, member);
 		Game.getInstance().getBoard().getTurnOrder().addPlayer(player);
 	}
 }

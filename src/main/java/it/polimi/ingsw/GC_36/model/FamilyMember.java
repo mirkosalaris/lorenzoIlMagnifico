@@ -10,6 +10,7 @@ public class FamilyMember {
 
 	public FamilyMember(PlayerColor playerColor, MemberColor memberColor)
 			throws IllegalStateException {
+		this.memberColor = memberColor;
 		this.playerColor = playerColor;
 
 		if (memberColor == MemberColor.UNCOLORED) {

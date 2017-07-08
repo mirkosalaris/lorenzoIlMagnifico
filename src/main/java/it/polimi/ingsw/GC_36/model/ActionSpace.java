@@ -38,12 +38,13 @@ public class ActionSpace {
 		free = true;
 	}
 
-	public void occupy(FamilyMember member)
+	public void occupy(Player player, FamilyMember member)
 			throws NotCorrectlyCheckedException, IOException {
 		if (free) {
 			if (member != null) {
 				familyMembers.add(member);
 				member.setLocation(this.id);
+				notify(player, member);
 			}
 
 			if (isSingle) {
@@ -52,6 +53,13 @@ public class ActionSpace {
 		} else {
 			throw new NotCorrectlyCheckedException(
 					"ActionSpace is not available");
+		}
+	}
+
+	private void notify(Player player, FamilyMember member) throws
+			IOException {
+		for (ActionSpaceObserver o : observers) {
+			o.update(id, player.getPlayerColor(), member.getColor());
 		}
 	}
 

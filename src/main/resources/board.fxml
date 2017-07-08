@@ -2,12 +2,12 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0"
-            prefWidth="910.0" xmlns="http://javafx.com/javafx/8.0.112"
+            prefWidth="910.0" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="it.polimi.ingsw.GC_36.client.view.BoardController">
     <stylesheets>
@@ -256,12 +256,6 @@
                textFill="#000000">
             <font>
                 <Font name="Lucida Handwriting Italic" size="24.0"/>
-            </font>
-        </Label>
-
-        <Label layoutX="718.0" layoutY="658.0" text="Lorenzo il Magnifico">
-            <font>
-                <Font name="Lucida Handwriting Italic" size="18.0"/>
             </font>
         </Label>
 
@@ -619,106 +613,105 @@
                    pickOnBounds="true" preserveRatio="true" visible="false">
         </ImageView>
 
-        <Button fx:id="ORANGE" layoutX="819.0" layoutY="232.0"
+        <Button fx:id="ORANGE" layoutX="748.0" layoutY="375.0"
                 mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                text="orange">
+                style="-fx-background-color: orange;">
         </Button>
-        <Button fx:id="WHITE" layoutX="822.0" layoutY="257.0"
+        <Button fx:id="WHITE" layoutX="786.0" layoutY="375.0"
                 mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                text="white">
+                style="-fx-background-color: white;">
         </Button>
-        <Button fx:id="BLACK" layoutX="828.0" layoutY="286.0"
+        <Button fx:id="BLACK" layoutX="824.0" layoutY="375.0"
                 mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                text="black">
+                style="-fx-background-color: black;">
         </Button>
-        <Button fx:id="UNCOLORED" layoutX="810.0" layoutY="312.0"
+        <Button fx:id="UNCOLORED" layoutX="863.0" layoutY="375.0"
                 mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                text="uncolored">
+                style="-fx-background-color: pink;">
         </Button>
 
-        <Label fx:id="label" layoutX="204.0" layoutY="510.0" prefHeight="16.0"
-               prefWidth="270.0" text="Label">
+        <Label fx:id="label" layoutX="204.0" layoutY="510.0" prefHeight="19.0"
+               prefWidth="237.0" text="Label" textFill="WHITE">
             <font>
                 <Font name="System Bold Italic" size="13.0"/>
             </font>
         </Label>
-        <AnchorPane fx:id="servantsAnchor" layoutX="448.0" layoutY="381.0"
-                    prefHeight="270.0" prefWidth="475.0" visible="false">
-            <Button fx:id="plus" layoutX="279.0" layoutY="87.0"
-                    mnemonicParsing="false" onAction="#servantsButtonClick"
-                    opacity="0.30" prefHeight="36.0" prefWidth="143.0"
-                    text="plus">
-                <font>
-                    <Font size="10.0"/>
-                </font>
-            </Button>
-            <Button fx:id="minus" layoutX="58.0" layoutY="87.0"
-                    mnemonicParsing="false" onAction="#servantsButtonClick"
-                    opacity="0.30" prefHeight="36.0" prefWidth="143.0"
-                    text="minus">
-                <font>
-                    <Font size="10.0"/>
-                </font>
-            </Button>
-            <Button fx:id="done" layoutX="279.0" layoutY="12.0"
-                    mnemonicParsing="false" onAction="#servantsButtonClick"
-                    opacity="0.30" prefHeight="36.0" prefWidth="143.0"
-                    text="DONE">
-                <font>
-                    <Font size="10.0"/>
-                </font>
-            </Button>
-            <Label fx:id="servants" layoutX="66.0" layoutY="22.0"
-                   prefHeight="16.0" prefWidth="154.0" text="servants:">
-                <font>
-                    <Font name="System Bold Italic" size="13.0"/>
-                </font>
-            </Label>
+        <AnchorPane fx:id="servantsAnchor" layoutX="469.0" layoutY="452.0"
+                    prefHeight="209.0" prefWidth="387.0" visible="false">
+            <children>
+                <Button fx:id="plus" layoutX="96.0" layoutY="61.0"
+                        mnemonicParsing="false" onAction="#servantsButtonClick"
+                        prefHeight="50.0" prefWidth="50.0" text="+"/>
+                <Button fx:id="minus" layoutX="33.0" layoutY="61.0"
+                        mnemonicParsing="false" onAction="#servantsButtonClick"
+                        prefHeight="50.0" prefWidth="50.0" text="-"/>
+                <Button fx:id="done" layoutX="179.0" layoutY="140.0"
+                        mnemonicParsing="false" onAction="#servantsButtonClick"
+                        prefHeight="36.0" prefWidth="143.0" text="Done">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="servants" layoutX="33.0" layoutY="23.0"
+                       prefHeight="16.0" prefWidth="154.0" text="servants:">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0"/>
+                    </font>
+                </Label>
+            </children>
         </AnchorPane>
-        <AnchorPane fx:id="optionsAnchor" layoutX="448.0" layoutY="381.0"
-                    prefHeight="270.0" prefWidth="475.0" visible="false">
+        <AnchorPane fx:id="optionsAnchor" layoutX="460.0" layoutY="450.0"
+                    prefHeight="225.0" prefWidth="437.0" visible="false">
 
         </AnchorPane>
 
         <AnchorPane fx:id="privilegeAnchor" layoutX="448.0" layoutY="381.0"
                     prefHeight="270.0" prefWidth="475.0" visible="false">
-            <Button fx:id="STONE_WOOD" layoutX="244.0" layoutY="98.0"
-                    mnemonicParsing="false" onAction="#privilegeButtonClick"
-                    text="S_W">
+            <children>
+                <Button fx:id="STONE_WOOD" layoutX="244.0" layoutY="98.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="S_W">
             </Button>
-            <Button fx:id="SERVANTS" layoutX="132.0" layoutY="98.0"
-                    mnemonicParsing="false" onAction="#privilegeButtonClick"
-                    text="Servants">
+                <Button fx:id="SERVANTS" layoutX="132.0" layoutY="98.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="Servants">
             </Button>
-            <Button fx:id="COINS" layoutX="31.0" layoutY="98.0"
-                    mnemonicParsing="false" onAction="#privilegeButtonClick"
-                    text="Coins">
+                <Button fx:id="COINS" layoutX="31.0" layoutY="98.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="Coins">
             </Button>
-            <Button fx:id="MILITARY" layoutX="382.0" layoutY="98.0"
-                    mnemonicParsing="false" onAction="#privilegeButtonClick"
-                    text="Military">
+                <Button fx:id="MILITARY" layoutX="382.0" layoutY="98.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="Military">
             </Button>
-            <Button fx:id="FAITH" layoutX="316.0" layoutY="98.0"
-                    mnemonicParsing="false" onAction="#privilegeButtonClick"
-                    text="Faith">
+                <Button fx:id="FAITH" layoutX="316.0" layoutY="98.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="Faith">
             </Button>
-            <Label fx:id="privilege" layoutX="46.0" layoutY="22.0"
-                   prefHeight="16.0" prefWidth="270.0" text="privilege">
-                <font>
-                    <Font name="System Bold Italic" size="13.0"/>
-                </font>
-            </Label>
+                <Label fx:id="privilege" layoutX="46.0" layoutY="22.0"
+                       prefHeight="16.0" prefWidth="270.0" text="privilege">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0"/>
+                    </font>
+                </Label>
+            </children>
 
         </AnchorPane>
 
-        <Label fx:id="playerColor" layoutX="456.0" layoutY="337.0"
-               prefHeight="16.0" prefWidth="270.0" text="Label">
+        <Label fx:id="CURRENT" layoutX="455.0" layoutY="381.0"
+               textFill="#000000">
             <font>
                 <Font name="System Bold Italic" size="13.0"/>
             </font>
         </Label>
-        <Label fx:id="CURRENT" layoutX="455.0" layoutY="317.0" text="currentpl"
-               textFill="#000000"/>
+
+        <Label fx:id="playerColor" layoutX="599.0" layoutY="380.0"
+               prefHeight="30.0" prefWidth="143.0" text="Your color is: "
+               AnchorPane.topAnchor="380.0">
+            <font>
+                <Font name="System Bold Italic" size="13.0"/>
+            </font>
+        </Label>
 
 
     </children>

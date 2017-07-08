@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8.0.112"
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="it.polimi.ingsw.GC_36.client.view.SetupController">
+
     <children>
-        <Button fx:id="321" layoutX="113.0" layoutY="76.0"
-                mnemonicParsing="false" text="socket"
-                onAction="#setupButtonClick">
+        <ImageView fitHeight="260.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/setup_wallpaper.jpg"/>
+            </image>
+        </ImageView>
+        <Button fx:id="321" layoutX="10.0" layoutY="210.0"
+                mnemonicParsing="false" onAction="#setupButtonClick"
+                text="Socket">
         </Button>
-        <Button fx:id="322" layoutX="113.0" layoutY="174.0"
-                mnemonicParsing="false" text="rmi"
-                onAction="#setupButtonClick">
+        <Button fx:id="322" layoutX="70.0" layoutY="210.0"
+                mnemonicParsing="false" onAction="#setupButtonClick" text="RMI">
         </Button>
+        <Label layoutX="110.0" layoutY="23.0" text="Lorenzo il Magnifico"
+               textFill="WHITE">
+            <font>
+                <Font name="Lucida Handwriting Italic" size="24.0"/>
+            </font>
+        </Label>
+        <Label layoutX="10.0" layoutY="180.0" text="Start with"
+               textFill="WHITE">
+            <font>
+                <Font name="Lucida Handwriting Italic" size="14.0"/>
+            </font>
+        </Label>
     </children>
 </AnchorPane>

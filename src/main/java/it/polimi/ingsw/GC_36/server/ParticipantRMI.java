@@ -80,9 +80,10 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor)
+	public void update(ActionSpaceIds id, PlayerColor playerColor,
+	                   MemberColor memberColor)
 			throws IOException {
-		user.update(id, playerColor);
+		user.update(id, playerColor, memberColor);
 	}
 
 	@Override

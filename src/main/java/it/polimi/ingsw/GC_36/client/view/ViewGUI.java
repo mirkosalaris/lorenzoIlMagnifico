@@ -137,8 +137,8 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
-	public void update(DieColor dieColor, int value) {
-
+	public void update(DieColor dieColor, int value) throws IOException {
+		boardCtrl.update(dieColor, value);
 	}
 
 	@Override
@@ -148,13 +148,15 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, boolean free) {
-
+	public void update(ActionSpaceIds id, boolean free) throws IOException {
+		boardCtrl.update(id, free);
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor) {
-
+	public void update(ActionSpaceIds id, PlayerColor playerColor,
+	                   MemberColor memberColor)
+			throws IOException {
+		boardCtrl.update(id, playerColor, memberColor);
 	}
 
 	@Override
@@ -194,19 +196,21 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public void update(CardType cardType, int floorNumber,
-	                   DevelopmentCard developmentCard) {
+	                   DevelopmentCard developmentCard) throws IOException {
+		boardCtrl.update(cardType, floorNumber, developmentCard);
 
 	}
 
 	@Override
-	public void update(DevelopmentCard card) {
+	public void update(DevelopmentCard card) throws IOException {
+		boardCtrl.update(card);
 
 	}
 
 	@Override
-	public void update(ResourcesList resourcesList) {
+	public void update(ResourcesList resourcesList) throws IOException {
 		System.out.println(resourcesList);
-
+		boardCtrl.update(resourcesList);
 	}
 
 	@Override

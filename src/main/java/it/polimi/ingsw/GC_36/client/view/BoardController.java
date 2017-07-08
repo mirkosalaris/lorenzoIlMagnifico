@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -30,8 +32,8 @@ public class BoardController implements ViewInterface {
 	private Scene scene;
 	private Stage primaryStage;
 	private static final double MIN_FIT_HEIGHT = 500.0d;
-
 	private static final double MAX_FIT_HEIGHT = 1500.0d;
+
 	private Object lockChosenPrivilege = new Object();
 	private Object lockChosenActionSpace = new Object();
 	private Object lockChosenMember = new Object();
@@ -44,6 +46,12 @@ public class BoardController implements ViewInterface {
 	private String currentPeriod = new String();
 	private String currentPlayer = new String();
 	AtomicInteger increment = new AtomicInteger(0);
+	@FXML
+	private Label labelOrangeDie;
+	@FXML
+	private Label labelBlackDie;
+	@FXML
+	private Label labelWhiteDie;
 	@FXML
 	private Label label;
 	@FXML
@@ -61,6 +69,25 @@ public class BoardController implements ViewInterface {
 	@FXML
 	private AnchorPane privilegeAnchor;
 
+	@FXML
+	private AnchorPane anchor;
+	@FXML
+	private Label labelWoodPoints;
+	@FXML
+	private Label labelServantPoints;
+	@FXML
+	private Label labelCoinsPoints;
+	@FXML
+	private Label labelStonePoints;
+	@FXML
+	private Label labelVictoryPoints;
+	@FXML
+	private Label labelFaithPoints;
+	@FXML
+	private Label labelMilitaryPoints;
+	@FXML
+	private Label labelWoods;
+
 	public BoardController() {
 	}
 
@@ -76,50 +103,119 @@ public class BoardController implements ViewInterface {
 	@Override
 	public void update(PlayerState newState)
 			throws RemoteException, IOException {
-
 	}
 
 	@Override
 	public void update(DevelopmentCard card) throws IOException {
-
+		String nameDevCard = card.getName();
+		String firstLetterCardType = String.valueOf(
+				card.getType().name().charAt(0));
+		Image imgDevCard = new Image(
+				"file:src/main/resources/images/cards/" + nameDevCard + "" +
+						".png");
+		ImageView personalImg = put("imageViewPersonal" + firstLetterCardType,
+				6);
+		personalImg.setImage(imgDevCard);
+		personalImg.setVisible(true);
 	}
 
 	@Override
 	public void update(ResourcesList resourcesList) throws IOException {
-
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				labelWoodPoints.setText(
+						"" + resourcesList.get(ResourceType.WOOD).getValue());
+				labelStonePoints.setText(
+						"" + resourcesList.get(ResourceType.STONE).getValue());
+				labelCoinsPoints.setText(
+						"" + resourcesList.get(ResourceType.COINS).getValue());
+				labelVictoryPoints.setText(
+						"" + resourcesList.get(
+								ResourceType.VICTORY_POINTS).getValue
+								());
+				labelFaithPoints.setText(
+						"" + resourcesList.get(
+								ResourceType.FAITH_POINTS).getValue());
+				labelMilitaryPoints.setText(
+						"" + resourcesList.get(
+								ResourceType.MILITARY_POINTS).getValue());
+			}
+		});
 	}
 
 	@Override
 	public void update(BoardState currentState)
 			throws RemoteException, IOException {
-
+		// not shown to play
 	}
 
 	@Override
 	public void update(DieColor dieColor, int value) throws IOException {
-
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				switch (dieColor) {
+					case BLACK:
+						labelBlackDie.setText("" + value);
+						break;
+					case WHITE:
+						labelWhiteDie.setText("" + value);
+						break;
+					case ORANGE:
+						labelOrangeDie.setText("" + value);
+						break;
+				}
+			}
+		});
 	}
 
 	@Override
 	public void update(RoundState newState)
 			throws RemoteException, IOException {
+		// not shown to play
+
 
 	}
 
 	@Override
 	public void update(PlayerIdentifier identifier)
 			throws RemoteException, IOException {
+
 	}
 
 	@Override
 	public void update(ActionSpaceIds id, boolean free)
 			throws RemoteException, IOException {
-
+		Scene scene = anchor.getScene();
+		int actionSpaceId = id.value();
+		Button actionSpace = (Button) scene.lookup(
+				"#button" + actionSpaceId);
+		if (!free) {
+			actionSpace.setVisible(false);
+		} else {
+			actionSpace.setVisible(true);
+		}
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor)
+	public void update(ActionSpaceIds id, PlayerColor playerColor,
+	                   MemberColor memberColor)
 			throws IOException {
+		Scene scene = anchor.getScene();
+		String p = playerColor.name();
+		p = p.substring(0, 1).toUpperCase() + p.substring(1,
+				p.length()).toLowerCase();
+		String mc = memberColor.name();
+		mc = mc.substring(0, 1).toUpperCase() + mc.substring(1,
+				mc.length()).toLowerCase();
+		String name = "fm" + p + mc + ".png";
+		int actionSpaceId = id.value();
+		ImageView fm = (ImageView) scene.lookup("#fm" + actionSpaceId);
+		Image img = new Image(
+				"file:src/main/resources/images/familyMember/" + name);
+		fm.setImage(img);
+		fm.setVisible(true);
 
 	}
 
@@ -232,6 +328,17 @@ public class BoardController implements ViewInterface {
 				}
 			} while (choice == null);
 		}
+		MemberColor member = choice;
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Scene scene = anchor.getScene();
+				Button mc = (Button) scene.lookup("#" + member.name());
+				mc.setVisible(false);
+			}
+		});
+		// TODO fix
+
 		System.out.println(choice.toString());
 		return choice;
 
@@ -367,8 +474,6 @@ public class BoardController implements ViewInterface {
 				label.setText(message);
 			}
 		});
-
-
 	}
 
 	@Override
@@ -505,7 +610,7 @@ public class BoardController implements ViewInterface {
 			@Override
 			public void run() {
 				CURRENT.setText(
-						"Current period: " + currentPeriod + "Current " +
+						"Current period: " + currentPeriod + "\nCurrent " +
 								"Player:" +
 								" " +
 								currentPlayer);
@@ -514,11 +619,48 @@ public class BoardController implements ViewInterface {
 
 	}
 
-
 	@Override
 	public void update(CardType cardType, int floorNumber,
 	                   DevelopmentCard developmentCard)
 			throws RemoteException, IOException {
+		Scene scene = anchor.getScene();
+		ImageView devCard = null;
+		Image imgDevCard = null;
+		if (CardType.TERRITORY.equals(cardType)) {
+			devCard = (ImageView) scene.lookup("#imageView" + floorNumber);
+		} else if (CardType.CHARACTER.equals(cardType)) {
+			devCard = (ImageView) scene.lookup(
+					"#imageView" + (floorNumber + 4));
+		} else if (CardType.BUILDING.equals(cardType)) {
+			devCard = (ImageView) scene.lookup(
+					"#imageView" + (floorNumber + 8));
+		} else if (CardType.VENTURE.equals(cardType)) {
+			devCard = (ImageView) scene.lookup(
+					"#imageView" + (floorNumber + 12));
+		}
+		if (developmentCard != null) {
+			String nameDevCard = developmentCard.getName();
+			imgDevCard = new Image(
+					"file:src/main/resources/images/cards/" + nameDevCard +
+							"" +
+							".png");
+		} else {
+			imgDevCard = new Image("file:");
+		}
+		devCard.setImage(imgDevCard);
+		devCard.setVisible(true);
+	}
 
+	ImageView put(String s, int max) {
+		Scene scene = anchor.getScene();
+		ImageView card;
+		for (int i = 1; i <= max; i++) {
+			card = (ImageView) scene.lookup("#" + s + i);
+			if (!card.isVisible()) {
+				return card;
+			}
+		}
+		throw new IllegalStateException();
+		//return new ImageView();
 	}
 }

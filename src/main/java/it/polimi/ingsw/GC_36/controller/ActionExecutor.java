@@ -53,7 +53,7 @@ public class ActionExecutor {
 			player.getPersonalBoard().payResources(paymentList.getSecond());
 
 			// member.setLocation is invoked by actionSpace.occupy()
-			actionSpace.occupy(member);
+			actionSpace.occupy(player, member);
 
 			if (actionSpace.getBonus() != null) {
 				player.getPersonalBoard().addResources(actionSpace.getBonus());

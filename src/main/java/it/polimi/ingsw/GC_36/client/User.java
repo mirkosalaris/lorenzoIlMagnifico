@@ -149,9 +149,10 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor)
+	public void update(ActionSpaceIds id, PlayerColor playerColor,
+	                   MemberColor memberColor)
 			throws IOException {
-		view.update(id, playerColor);
+		view.update(id, playerColor, memberColor);
 	}
 
 	@Override

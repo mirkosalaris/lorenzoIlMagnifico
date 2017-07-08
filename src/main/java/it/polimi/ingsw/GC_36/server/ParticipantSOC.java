@@ -108,11 +108,13 @@ public class ParticipantSOC implements Participant {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor)
+	public void update(ActionSpaceIds id, PlayerColor playerColor,
+	                   MemberColor memberColor)
 			throws IOException {
 		List<Object> obj = new ArrayList<>();
 		obj.add(id);
 		obj.add(playerColor);
+		obj.add(memberColor);
 		sendMessage("updateActionSpacePlayer", obj,
 				"cannot update ActionSpace");
 	}

@@ -308,15 +308,17 @@ public class ViewCLI implements ViewInterface {
 
 	@Override
 	public void update(ActionSpaceIds id, boolean free) {
-		if (!free) {
-			System.out.print(id.name() + " is no more free\n");
+		if (free) {
+			System.out.println(id.name() + " is free again");
 		}
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, PlayerColor playerColor) {
+	public void update(ActionSpaceIds id, PlayerColor playerColor,
+	                   MemberColor memberColor) {
 		System.out.println(
-				"Player " + playerColor + " has entered " + id.name());
+				"Player " + playerColor + " has entered " + id.name() + " with" +
+						" " + memberColor + " color");
 	}
 
 	@Override
