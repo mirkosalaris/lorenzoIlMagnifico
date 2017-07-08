@@ -3,6 +3,7 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.controller.Scorer;
 import it.polimi.ingsw.GC_36.exception.PlayingException;
+import it.polimi.ingsw.GC_36.exception.ScoringException;
 import it.polimi.ingsw.GC_36.model.Period.PeriodTerminatedException;
 import it.polimi.ingsw.GC_36.observers.GameObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
@@ -122,7 +123,7 @@ public class Game {
 		newStateNotify();
 	}
 
-	public void finalScoring() throws IOException {
+	public void finalScoring() throws IOException, ScoringException {
 		List<Player> playerList = new ArrayList<>(board.getPlayers().values());
 		List<Pair<PlayerIdentifier, Integer>> playersWinningList =
 				Scorer.calculate(playerList);

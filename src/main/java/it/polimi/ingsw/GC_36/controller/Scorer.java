@@ -1,5 +1,8 @@
 package it.polimi.ingsw.GC_36.controller;
 
+import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
+import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
+import it.polimi.ingsw.GC_36.exception.ScoringException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.utils.Pair;
 
@@ -12,21 +15,24 @@ public class Scorer {
 			Arrays.asList(0, 0, 1, 4, 10, 20);
 
 	public static List<Pair<PlayerIdentifier, Integer>> calculate(
-			List<Player> players) {
+			List<Player> players) throws ScoringException {
 		Map<Integer, PlayerIdentifier> pointsMap = new HashMap<>();
-		for (Player p : players) {
-			pointsMap.put(calculatePoints(p), p.getIdentifier());
+		try {
+			for (Player p : players) {
+				pointsMap.put(calculatePoints(p), p.getIdentifier());
+			}
+			return winningOrderList(pointsMap);
+		} catch (NotCorrectlyCheckedException
+				| EffectApplyingException e) {
+			throw new ScoringException(e);
 		}
-
-		return winningOrderList(pointsMap);
 	}
 
-	private static int calculatePoints(Player p) {
+	private static int calculatePoints(Player p)
+			throws NotCorrectlyCheckedException, EffectApplyingException {
 		int points = 0;
 		PersonalBoard personalBoard = p.getPersonalBoard();
 
-		points += personalBoard.getResourcesList()
-				.get(ResourceType.VICTORY_POINTS).getValue();
 
 		// Territory's cards: 3/4/5/6 -> 1/4/10/20
 		int nTerritories = personalBoard.getCards(CardType.TERRITORY).size();
@@ -40,15 +46,14 @@ public class Scorer {
 		List<DevelopmentCard> ventureCards =
 				personalBoard.getCards(CardType.VENTURE);
 		for (DevelopmentCard card : ventureCards) {
-			// TODO @mirko
-			// add method applyEffect to PermanentEffect and leave it
-			// unimplemented in other cards
-
-			// card.getPermanentEffect().applyEffect();
+			card.getPermanentEffect().applyEffect(null, p);
 		}
 
 		// military points -> 5 for the first, 2 for the second
 		points += pointsFromMilitaryPoints(p);
+
+		points += personalBoard.getResourcesList()
+				.get(ResourceType.VICTORY_POINTS).getValue();
 
 		// convert resources (resourcesTotal/5)
 		points += resourcesToPoints(personalBoard);
@@ -87,8 +92,13 @@ public class Scorer {
 		int nResources = 0;
 
 		for (ResourceType type : ResourceType.values()) {
-			nResources += personalBoard.getResourcesList().get(type)
-					.getValue();
+
+			if (!(type.equals(ResourceType.FAITH_POINTS) || type.equals(
+					ResourceType.MILITARY_POINTS) || type.equals(
+					ResourceType.VICTORY_POINTS))) {
+				nResources += personalBoard.getResourcesList().get(type)
+						.getValue();
+			}
 		}
 
 		return nResources / 5;

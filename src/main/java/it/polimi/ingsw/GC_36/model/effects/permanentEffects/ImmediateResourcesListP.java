@@ -28,20 +28,28 @@ public class ImmediateResourcesListP extends PermanentEffect {
 	@Override
 	public void applyEffect(Action action, Player player)
 			throws EffectApplyingException {
+		if (!(associatedCardType == CardType.VENTURE)) {
+			// necessary to avoid breaking the productionChoice's sequence
+			if (associatedCardType == CardType.BUILDING)
+				action.getProductionChoice();
 
-		//if building take choice (or null)from productionChoice
-		if (associatedCardType == CardType.BUILDING)
-			action.getProductionChoice();
-
-		if (isDoable(requiredActionValue, action)) {
+			if (isDoable(requiredActionValue, action)) {
+				// add resources to player
+				try {
+					player.getPersonalBoard().addResources(resourcesList);
+				} catch (IOException e) {
+					throw new EffectApplyingException(e);
+				}
+			}
+		} else {
 			// add resources to player
+
 			try {
 				player.getPersonalBoard().addResources(resourcesList);
 			} catch (IOException e) {
 				throw new EffectApplyingException(e);
 			}
 		}
-
 	}
 
 	@Override

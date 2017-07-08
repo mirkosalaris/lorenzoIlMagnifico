@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.controller;
 
 import it.polimi.ingsw.GC_36.exception.PlayingException;
+import it.polimi.ingsw.GC_36.exception.ScoringException;
 import it.polimi.ingsw.GC_36.exception.SetupException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.observers.NewPeriodObserver;
@@ -71,7 +72,7 @@ public class GameExecutor
 			}
 
 		} catch (IllegalStateException | IOException | PlayingException |
-				ClassNotFoundException | SetupException e) {
+				ClassNotFoundException | SetupException | ScoringException e) {
 			ExceptionLogger.log(e);
 			try {
 				closeAll(e.getMessage());

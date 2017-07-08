@@ -30,7 +30,7 @@ public class Decoder {
 		}.getType();
 		List<Pair<ResourcesList, ResourcesList>> resourcesListList = gson
 				.fromJson(
-				serializedString, collectionType);
+						serializedString, collectionType);
 		return resourcesListList;
 	}
 

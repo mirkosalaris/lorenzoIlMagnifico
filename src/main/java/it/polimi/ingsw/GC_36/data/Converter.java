@@ -83,24 +83,13 @@ public class Converter {
 		Decoder decoder = new Decoder();
 		String effectBody = new Encoder().serialize(eBody);
 		switch (effectType) {
-			case "ActionSpaceModifier":
-				return decoder.deserialize(effectBody,
-						ActionSpaceModifier.class);
-			case "CardRequirementsModifier":
-				return decoder.deserialize(effectBody,
-						CardRequirementsModifier.class);
+
 			case "ImmediateCouncilPrivilegeP":
 				return decoder.deserialize(effectBody,
 						ImmediateCouncilPrivilegeP.class);
-			case "HarvestWorkValueModifier":
-				return decoder.deserialize(effectBody,
-						HarvestWorkValueModifier.class);
 			case "ImmediateResourcesListP":
 				return decoder.deserialize(effectBody,
 						ImmediateResourcesListP.class);
-			case "ProductionWorkValueModifier":
-				return decoder.deserialize(effectBody,
-						ProductionWorkValueModifier.class);
 			case "ResourceListBasedOnOwnedCardsI":
 				return decoder.deserialize(effectBody,
 						ResourceListBasedOnOwnedCards.class);

@@ -53,15 +53,11 @@ public class ResourceToPrivilege extends PermanentEffect {
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
-		/*ResourcesList playerResourcesList=player.getPersonalBoard()
-		.getResourcesList();
-		ResourcesList fromResourcesList=this.matchMapPrivilege.get(0)
-		.getFirst();
-		if (isDoable(actionValue, action)){
-			if (playerResourcesList.checkEnoughResources(fromResourcesList)){
-
+		if (isDoable(actionValue, action)) {
+			if (playerResources.checkEnoughResources(fromResourcesList)) {
+				return true;
 			}
-		}*/
+		}
 		return false;
 	}
 
