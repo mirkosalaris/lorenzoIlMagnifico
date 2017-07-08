@@ -43,7 +43,7 @@ public class RoundTest {
 		DeckSet deckSet = new DeckSet(currentPeriod);
 		round = new Round(deckSet);
 
-		RoundController controller = new RoundController() {
+		RoundController controller = new RoundController(GameMode.STANDARD) {
 			@Override
 			public void execute(Player player) {
 				// do nothing

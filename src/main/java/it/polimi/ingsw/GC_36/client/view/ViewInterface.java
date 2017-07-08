@@ -29,4 +29,6 @@ public interface ViewInterface extends Participant {
 	Communicator chooseCommunicator(User user) throws Exception;
 
 	GameMode chooseMode();
+
+	void askToRejoin();
 }

@@ -67,6 +67,11 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		currentActionSpaces.clear();
 	}
 
+	@Override
+	public void outOfTime() throws IOException {
+		view.outOfTime();
+	}
+
 	public void play(ExtraAction action)
 			throws IOException, ClassNotFoundException {
 
@@ -231,6 +236,12 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		return view.chooseMode();
 	}
 
+	@Override
+	public void askRejoin() throws RemoteException {
+		// wait until user wants to rejoin
+		view.askToRejoin();
+	}
+
 	private void chooseLeaderOptions(ActionInterface action)
 			throws IOException, ClassNotFoundException {
 		List<LeaderCard> cards = action.getLeaderCards();
@@ -270,7 +281,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 				if (action.isAvailable(actionSpaceId)) {
 					wrong = false;
 					try {
-						action.setActionSpaceIds(actionSpaceId);
+						action.setActionSpaceId(actionSpaceId);
 						currentActionSpaces.add(actionSpaceId);
 					} catch (NotAvailableException e) {
 						ExceptionLogger.log(e);
@@ -355,5 +366,4 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		action.setCardPaymentOptions(choice);
 
 	}
-
 }

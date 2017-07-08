@@ -36,7 +36,7 @@ public class ParticipantSOC implements Participant {
 
 		sendMessage("play", action, "Error in making user play");
 
-		ActionInterface retrievedAction = (ActionInterface) objIn.readObject();
+		ActionInterface retrievedAction = (ActionInterface) readFromStream();
 		action.copyFrom(retrievedAction);
 	}
 
@@ -58,7 +58,7 @@ public class ParticipantSOC implements Participant {
 				"cannot choose leaderCards");
 
 		// return the choice of the player
-		return (int) objIn.readObject();
+		return (int) readFromStream();
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class ParticipantSOC implements Participant {
 				"cannot ask to use a LeaderCard");
 
 		// return the choice of the player
-		return (LeaderCard) objIn.readObject();
+		return (LeaderCard) readFromStream();
 	}
 
 	@Override
@@ -77,7 +77,41 @@ public class ParticipantSOC implements Participant {
 		sendMessage("chooseBonusTile", "cannot choose bonus tile");
 
 		// return the choice of the player
-		return (int) objIn.readObject();
+		return (int) readFromStream();
+	}
+
+	@Override
+	public void outOfTime() throws IOException {
+		sendMessage("outOfTime", "cannot inform use of time out");
+		final Board board = Game.getInstance().getBoard();
+		Participant thisParticipant = this;
+
+		// ignore every input unless it is a rejoin message
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					boolean rejoined = false;
+					do {
+						Object obj = readFromStream();
+
+						if (obj instanceof String) {
+							if (obj.equals("rejoin")) {
+								board.rejoin(thisParticipant);
+								rejoined = true;
+							}
+						}
+					} while (!rejoined);
+				} catch (IOException | ClassNotFoundException e) {
+					ExceptionLogger.log(e);
+				}
+			}
+		}).start();
+	}
+
+	private synchronized Object readFromStream()
+			throws IOException, ClassNotFoundException {
+		return objIn.readObject();
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.GC_36.controller;
 
+import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.exception.PlayingException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.server.Participant;
@@ -7,45 +8,104 @@ import it.polimi.ingsw.GC_36.server.Participant;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RoundController {
 
 	private final ActionExecutor executor;
+	private final long maxActionTime;
+	private Action action;
+	private final Object playingLock = new Object();
+	private final AtomicBoolean interrupted = new AtomicBoolean(false);
+	private Exception error = null;
+	private GameMode mode;
 
-	public RoundController() {
+	public RoundController(GameMode mode) {
 		executor = new ActionExecutor();
+		this.mode = mode;
+		this.maxActionTime = Commons.getActionMaxTime();
 	}
 
 	public void execute(Player player) throws PlayingException {
-
-		Participant p = player.getParticipant();
-		List<LeaderCard> cards = new ArrayList<>();
-		Action action = null;
+		Thread playingThread;
+		TimerTask timerTask = getNewTimerTask();
 
 		try {
-			if (GameMode.ADVANCED.equals(Game.getInstance().GAME_MODE)) {
-				// leader card
-				cards = chooseLeaderCards(player);
-			}
+			// activate the timer
+			Timer timer = new Timer();
+			timer.schedule(timerTask, maxActionTime);
 
+			// start playing
 			boolean executed = false;
-
 			do {
-				action = new Action();
-				action.setLeaderCards(cards);
-				p.play(action);
-				executed = executor.execute(action);
+				playingThread = new Thread(new TurnExecutor(player, mode));
+				playingThread.start();
+
+				// wait for playingThread or the timer
+				synchronized (playingLock) {
+					playingLock.wait();
+				}
+
+				// if the timer fired
+				if (interrupted.get()) {
+					System.out.println("turn timer has fired");
+					playingThread.interrupt();
+
+					setOutOfGame(player);
+					executed = true;
+				} else {
+					timer.cancel();
+					executed = executor.execute(action);
+
+					// TODO delete
+					System.out.println(action);
+				}
+
 				// TODO @mirko send 'error' to player
 				// (s)he has to know if (s)he had done something wrong
 			} while (!executed);
-
-		} catch (IOException | ClassNotFoundException e) {
-			throw new PlayingException(
-					"An error occurred during turn of player " + player, e);
+		} catch (InterruptedException | IOException e) {
+			error = e;
 		}
 
-		// TODO delete
-		System.out.println(action);
+		Exception tempError = error;
+
+		resetFields();
+
+		// if there was an error
+		if (tempError != null) {
+			throw new PlayingException(
+					"An error occurred during turn of player " + player,
+					tempError);
+		}
+
+
+	}
+
+	private void setOutOfGame(Player player) throws IOException {
+		Participant p = player.getParticipant();
+		Game.getInstance().getBoard().setOutOfGame(player);
+		p.outOfTime();
+	}
+
+	private void resetFields() {
+		action = null;
+		interrupted.set(false);
+		error = null;
+	}
+
+	private TimerTask getNewTimerTask() {
+		return new TimerTask() {
+			@Override
+			public void run() {
+				interrupted.set(true);
+				synchronized (playingLock) {
+					playingLock.notifyAll();
+				}
+			}
+		};
 	}
 
 
@@ -84,7 +144,6 @@ public class RoundController {
 	 * 		original List, to modify
 	 * @param toRemove
 	 * 		List of item to remove
-	 * @param <E>
 	 * @return a List containing elements of 'list' but not in 'toRemove'
 	 */
 	private <E> List<E> copyWithout(List<E> list, List<E> toRemove) {
@@ -92,6 +151,39 @@ public class RoundController {
 		result.removeAll(toRemove);
 
 		return result;
+	}
+
+	private class TurnExecutor implements Runnable {
+		private Player player;
+		private GameMode mode;
+
+		public TurnExecutor(Player player, GameMode mode) {
+			this.player = player;
+			this.mode = mode;
+		}
+
+		@Override
+		public void run() {
+			Participant p = player.getParticipant();
+			List<LeaderCard> cards = new ArrayList<>();
+			try {
+				// if mode is advanced
+				if (GameMode.ADVANCED.equals(mode)) {
+					// leader card
+					cards = chooseLeaderCards(player);
+				}
+
+				action = new Action();
+				action.setLeaderCards(cards);
+				p.play(action);
+
+				synchronized (playingLock) {
+					playingLock.notifyAll();
+				}
+			} catch (IOException | ClassNotFoundException e) {
+				error = e;
+			}
+		}
 	}
 
 }

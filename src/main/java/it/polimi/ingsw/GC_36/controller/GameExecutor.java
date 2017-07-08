@@ -21,7 +21,7 @@ public class GameExecutor
 	private GameMode mode;
 	private Map<PlayerColor, Player> players;
 	private Set<Participant> participants;
-	private RoundController roundController = new RoundController();
+	private RoundController roundController;
 
 	public GameExecutor(Set<Participant> usersSet) throws IOException {
 		this(usersSet, GameMode.STANDARD);
@@ -31,6 +31,7 @@ public class GameExecutor
 			throws IOException {
 		this.participants = participants;
 		this.mode = mode;
+		roundController = new RoundController(mode);
 
 		Participant[] participantsArray =
 				new Participant[participants.size() - 1];

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Action extends UnicastRemoteObject implements ActionInterface {
 	private MemberColor memberColor;
-	private ActionSpaceIds actionSpaceIds;
+	private ActionSpaceIds actionSpaceId;
 	private int actionValueIncrement;
 	private int cardPaymentOptions; //parte da zero
 	private List<CouncilPrivilege> councilPrivilegeList;
@@ -39,9 +39,9 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
-	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds)
+	public void setActionSpaceId(ActionSpaceIds actionSpaceId)
 			throws NotAvailableException {
-		this.actionSpaceIds = actionSpaceIds;
+		this.actionSpaceId = actionSpaceId;
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 
 	@Override
 	public ActionSpaceIds getActionSpaceId() {
-		return actionSpaceIds;
+		return actionSpaceId;
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	public void copyFrom(ActionInterface action) {
 		Action original = (Action) action;
 		this.memberColor = original.memberColor;
-		this.actionSpaceIds = original.actionSpaceIds;
+		this.actionSpaceId = original.actionSpaceId;
 		this.actionValueIncrement = original.actionValueIncrement;
 		this.cardPaymentOptions = original.cardPaymentOptions;
 		this.councilPrivilegeList = original.councilPrivilegeList;
@@ -117,7 +117,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
-	public int getProductionChoice() {
+	public Integer getProductionChoice() {
 		int choice = productionChoice.get(0);
 		productionChoice.remove(0);
 		return choice;
@@ -143,7 +143,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	public String toString() {
 		return "Action{" +
 				"memberColor=" + memberColor +
-				", actionSpaceIds=" + actionSpaceIds +
+				", actionSpaceId=" + actionSpaceId +
 				", actionValueIncrement=" + actionValueIncrement +
 				", cardPaymentOptions=" + cardPaymentOptions +
 				", councilPrivilegeList=" + councilPrivilegeList +
@@ -166,7 +166,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 		Pair<ResourcesList, ResourcesList> paymentList = new Pair<>(
 				requirements, payments);
 
-		ActionSpaceIds id = this.actionSpaceIds;
+		ActionSpaceIds id = this.actionSpaceId;
 
 		if (Commons.isFloor(id)) {
 			Tower tower = Game.getInstance().getBoard().getActionSpace(

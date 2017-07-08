@@ -180,6 +180,18 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
+	public void askToRejoin() {
+		boolean rejoined = false;
+		do {
+			System.out.print("Type y to rejoin: ");
+			String line = in.nextLine();
+			if (line.equalsIgnoreCase("y")) {
+				rejoined = true;
+			}
+		} while (!rejoined);
+	}
+
+	@Override
 	public void fatalError(String s) {
 		System.out.println("fatal error: " + s);
 
@@ -283,6 +295,11 @@ public class ViewCLI implements ViewInterface {
 		tiles.remove(BonusTileId.DEFAULT);
 
 		return chooseFromList(tiles);
+	}
+
+	@Override
+	public void outOfTime() throws IOException {
+		System.out.println("you took too much to play your action");
 	}
 
 	@Override

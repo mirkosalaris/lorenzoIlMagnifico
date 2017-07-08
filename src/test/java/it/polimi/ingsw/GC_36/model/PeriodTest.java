@@ -46,7 +46,7 @@ public class PeriodTest {
 		period = new Period(1, deckSet);
 
 
-		RoundController controller = new RoundController() {
+		RoundController controller = new RoundController(GameMode.STANDARD) {
 			@Override
 			public void execute(Player player) {
 				// do nothing

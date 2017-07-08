@@ -41,6 +41,9 @@ public class Player {
 		// save associated personalBoard
 		this.personalBoard = personalBoard;
 
+		// subscribe participant to personalBoard
+		personalBoard.subscribe(participant);
+
 		// initialize familyMembers
 		for (MemberColor memberColor : MemberColor.values()) {
 

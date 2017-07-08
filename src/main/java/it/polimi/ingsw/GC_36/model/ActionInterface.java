@@ -10,7 +10,7 @@ import java.util.List;
 public interface ActionInterface extends Serializable, Remote {
 	void setMemberColor(MemberColor MemberColor) throws RemoteException;
 
-	void setActionSpaceIds(ActionSpaceIds actionSpaceIds)
+	void setActionSpaceId(ActionSpaceIds actionSpaceId)
 			throws RemoteException, NotAvailableException;
 
 	void setCardPaymentOptions(int choice) throws RemoteException;
@@ -19,7 +19,7 @@ public interface ActionInterface extends Serializable, Remote {
 
 	int getActionValue(Player player) throws RemoteException;
 
-	int getProductionChoice() throws RemoteException;
+	Integer getProductionChoice() throws RemoteException;
 
 	int getActionValueIncrement() throws RemoteException;
 

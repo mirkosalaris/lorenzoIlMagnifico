@@ -20,8 +20,6 @@ public final class Commons {
 	public static final int NUMBER_OF_PERIODS = 3;
 	public static final int NUMBER_OF_FLOORS = 4;
 
-	// TODO, increase the timer.
-	public static final long STARTING_MATCH_TIMER = 3000;
 	public static final Integer LEADERS_FOR_PLAYER = 4;
 
 	private static final Parser parser = new Parser(new File(COMMONS_FILE));
@@ -118,8 +116,19 @@ public final class Commons {
 		return (BonusTile) parser.get("bonusTile" + id.value());
 	}
 
+	public static long getActionMaxTime() {
+		// TODO @antonino
+		return 4 * 60 * 1000; // 4 minutes
+	}
+
+	@SuppressWarnings("unchecked")
 	public static List<LeaderCard> getLeaderCard() {
 		return (List<LeaderCard>) parser.get("leaderCard");
+	}
+
+	public static long getStartingMatchTimer() {
+		// TODO @antonino
+		return 3000; // 3 seconds, for now
 	}
 }
 

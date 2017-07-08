@@ -30,21 +30,18 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public int setActionValueIncrement() {
-
 		System.out.println("select the increment");
 		return boardCtrl.setActionValueIncrement();
 	}
 
 	@Override
 	public int chooseActionSpaceId(Set<ActionSpaceIds> actionSpaceIds) {
-		int choice = boardCtrl.chooseActionSpaceId(actionSpaceIds);
-		return choice;
+		return boardCtrl.chooseActionSpaceId(actionSpaceIds);
 	}
 
 	@Override
 	public int choosePrivilege(int n) {
-		int choice = boardCtrl.choosePrivilege(n);
-		return choice;
+		return boardCtrl.choosePrivilege(n);
 	}
 
 
@@ -53,16 +50,14 @@ public class ViewGUI extends Application implements ViewInterface {
 			Map<Integer, Pair<ResourcesList, ResourcesList>> options) {
 		if (options.size() == 1)
 			return 0;
-		int choice = boardCtrl.chooseConvertingMethod(options);
-		return choice;
+		return boardCtrl.chooseConvertingMethod(options);
 	}
 
 	@Override
 	public int chooseCardPaymentOptions(DevelopmentCard card) {
 		if (card.getRequirements().size() == 1)
 			return 0;
-		int choice = boardCtrl.chooseCardPaymentOptions(card);
-		return choice;
+		return boardCtrl.chooseCardPaymentOptions(card);
 	}
 
 
@@ -73,14 +68,17 @@ public class ViewGUI extends Application implements ViewInterface {
 
 	@Override
 	public Communicator chooseCommunicator(User user) throws Exception {
-		Communicator communicator;
-		communicator = setupController.chooseCommunicator(user);
-		return communicator;
+		return setupController.chooseCommunicator(user);
 	}
 
 	@Override
 	public GameMode chooseMode() {
 		return GameMode.STANDARD;
+	}
+
+	@Override
+	public void askToRejoin() {
+		boardCtrl.askToRejoin();
 	}
 
 	@Override
@@ -124,16 +122,19 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
+	public void outOfTime() throws IOException {
+		boardCtrl.outOfTime();
+	}
+
+	@Override
 	public void terminatedRound() {
 		System.out.println("The round is terminated");
 		boardCtrl.show("The round is terminated");
-
 	}
 
 	@Override
 	public void update(BoardState currentState) {
 		boardCtrl.show(currentState.toString());
-
 	}
 
 	@Override
@@ -144,7 +145,6 @@ public class ViewGUI extends Application implements ViewInterface {
 	@Override
 	public void update(PlayerState newState) {
 		boardCtrl.show(newState.toString());
-
 	}
 
 	@Override
@@ -169,7 +169,6 @@ public class ViewGUI extends Application implements ViewInterface {
 		boardCtrl.show("A new period has started");
 		boardCtrl.setCurrentPeriod(periodNumber + "");
 		boardCtrl.showCurrent();
-
 	}
 
 	@Override
@@ -182,7 +181,6 @@ public class ViewGUI extends Application implements ViewInterface {
 	public void update(RoundState newState) {
 		System.out.println("new Round State: " + newState);
 		boardCtrl.show("New Round state" + newState.toString());
-
 	}
 
 	@Override
@@ -191,7 +189,6 @@ public class ViewGUI extends Application implements ViewInterface {
 		boardCtrl.show("New Player");
 		boardCtrl.setCurrentPlayer(newPlayer.toString());
 		boardCtrl.showCurrent();
-
 	}
 
 	@Override
@@ -240,8 +237,6 @@ public class ViewGUI extends Application implements ViewInterface {
 		Scene boardScene = new Scene(boardRoot);
 
 		setupController.initialize(primaryStage, boardScene, boardCtrl);
-
-
 	}
 
 }

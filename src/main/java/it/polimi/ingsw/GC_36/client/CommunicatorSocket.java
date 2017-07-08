@@ -88,7 +88,6 @@ public class CommunicatorSocket implements Communicator {
 			case "play":
 				ActionInterface action = (ActionInterface) entry.getValue();
 				user.play(action);
-
 				sendBack(action);
 				break;
 
@@ -113,6 +112,13 @@ public class CommunicatorSocket implements Communicator {
 
 			case "chooseBonusTile":
 				sendBack(user.chooseBonusTile());
+				break;
+
+			case "outOfTime":
+				user.outOfTime();
+				// wait for rejoin request
+				user.askRejoin();
+				sendBack("rejoin");
 				break;
 
 			case "updateBoardState":

@@ -22,13 +22,13 @@ public class ExtraAction extends Action {
 	}
 
 	@Override
-	public void setActionSpaceIds(ActionSpaceIds actionSpaceIds)
+	public void setActionSpaceId(ActionSpaceIds actionSpaceId)
 			throws NotAvailableException {
 
-		if (!isAvailable(actionSpaceIds)) {
+		if (!isAvailable(actionSpaceId)) {
 			throw new NotAvailableException();
 		}
-		super.setActionSpaceIds(actionSpaceIds);
+		super.setActionSpaceId(actionSpaceId);
 	}
 
 	@Override

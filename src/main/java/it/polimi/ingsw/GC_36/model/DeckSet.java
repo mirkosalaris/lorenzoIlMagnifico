@@ -10,6 +10,9 @@ public class DeckSet {
 
 	public DeckSet(int period) {
 		decks = Commons.getDeckSet(period);
+		for (Deck deck : decks.values()) {
+			deck.shuffle();
+		}
 		this.period = period;
 	}
 

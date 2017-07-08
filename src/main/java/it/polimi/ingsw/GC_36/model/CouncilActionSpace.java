@@ -13,6 +13,6 @@ public class CouncilActionSpace extends ActionSpace {
 	public void occupy(Player player, FamilyMember member)
 			throws NotCorrectlyCheckedException, IOException {
 		super.occupy(player, member);
-		Game.getInstance().getBoard().getTurnOrder().addPlayer(player);
+		Game.getInstance().getBoard().getTurnOrder().addCouncilPlayer(player);
 	}
 }

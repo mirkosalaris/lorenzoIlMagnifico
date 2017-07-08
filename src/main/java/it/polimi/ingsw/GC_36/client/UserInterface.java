@@ -15,4 +15,6 @@ public interface UserInterface extends Participant, Remote {
 	List<DevelopmentCard> getCards(CardType type) throws RemoteException;
 
 	GameMode chooseMode() throws RemoteException;
+
+	void askRejoin() throws RemoteException;
 }

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.GC_36.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -27,5 +28,9 @@ public class Deck {
 		List<DevelopmentCard> newCards = new ArrayList<>(developmentCardList);
 
 		return new Deck(type, period, newCards);
+	}
+
+	public void shuffle() {
+		Collections.shuffle(developmentCardList);
 	}
 }

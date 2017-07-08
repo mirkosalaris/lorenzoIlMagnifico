@@ -138,7 +138,7 @@ public class UserIncubator extends UnicastRemoteObject
 				}
 			};
 
-			new Timer().schedule(timerTask, Commons.STARTING_MATCH_TIMER);
+			new Timer().schedule(timerTask, Commons.getStartingMatchTimer());
 		}
 
 		return false;

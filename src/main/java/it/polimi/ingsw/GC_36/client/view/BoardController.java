@@ -309,6 +309,12 @@ public class BoardController implements ViewInterface {
 	}
 
 	@Override
+	public void outOfTime() throws IOException {
+		// TODO
+		System.out.println("you took too much to play your action");
+	}
+
+	@Override
 	public MemberColor chooseMemberColor() {
 		System.out.println("select the family member");
 		Platform.runLater(new Runnable() {
@@ -486,6 +492,12 @@ public class BoardController implements ViewInterface {
 		return null;
 	}
 
+	@Override
+	public void askToRejoin() {
+		// TODO maybe ask the user to click a button
+		System.out.println("rejoining...");
+	}
+
 	public void actionSpaceButtonClick(ActionEvent actionEvent) {
 		Button button = (Button) actionEvent.getSource();
 		chosenActionSpace = Integer.parseInt(
@@ -578,8 +590,7 @@ public class BoardController implements ViewInterface {
 					Button button = new Button("options " + i.toString());
 					Label label = new Label(options.get(i));
 					optionsAnchor.getChildren().add(label);
-					button.setOnAction(new EventHandler<ActionEvent>
-							() {
+					button.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							choice.set(value);

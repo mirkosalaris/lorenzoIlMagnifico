@@ -3,12 +3,10 @@ package it.polimi.ingsw.GC_36.model;
 import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.observers.BoardObserver;
 import it.polimi.ingsw.GC_36.observers.ModelObserver;
+import it.polimi.ingsw.GC_36.server.Participant;
 
 import java.io.IOException;
-import java.util.EnumMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Board {
 	private TurnOrder turnOrder;
@@ -21,6 +19,7 @@ public class Board {
 	private Set<BoardObserver> boardObservers;
 	private Map<ActionSpaceIds, ActionSpace> actionSpaces;
 	private Map<CardType, Tower> towers;
+	private Map<Participant, Player> outOfGame = new HashMap<>();
 
 	public Board() throws IOException {
 		// Board is being constructed, but it WON'T be initialized after that
@@ -113,6 +112,16 @@ public class Board {
 		changeDieNotify();
 	}
 
+	public void setOutOfGame(Player player) {
+		turnOrder.setOutOfGame(player);
+		outOfGame.put(player.getParticipant(), player);
+	}
+
+	public void rejoin(Participant participant) {
+		turnOrder.rejoin(outOfGame.get(participant));
+		outOfGame.remove(participant);
+	}
+
 	public void subscribe(BoardObserver o) {
 		boardObservers.add(o);
 	}
@@ -131,11 +140,6 @@ public class Board {
 				tower.getFloor(i + 1).subscribe(o);
 			}
 		}
-
-		for (Player p : players.values()) {
-			p.subscribe(o);
-		}
-
 	}
 
 	private Map<CardType, Tower> initTowers() {
