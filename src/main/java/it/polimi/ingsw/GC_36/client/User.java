@@ -72,6 +72,11 @@ public class User extends UnicastRemoteObject implements UserInterface {
 		view.outOfTime();
 	}
 
+	@Override
+	public void actionResult(boolean result) throws IOException {
+		view.actionResult(result);
+	}
+
 	public void play(ExtraAction action)
 			throws IOException, ClassNotFoundException {
 

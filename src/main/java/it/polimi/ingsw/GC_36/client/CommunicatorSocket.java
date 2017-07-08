@@ -121,6 +121,10 @@ public class CommunicatorSocket implements Communicator {
 				sendBack("rejoin");
 				break;
 
+			case "actionResult":
+				user.actionResult((Boolean) entry.getValue());
+				break;
+
 			case "updateBoardState":
 				user.update((BoardState) entry.getValue());
 				break;

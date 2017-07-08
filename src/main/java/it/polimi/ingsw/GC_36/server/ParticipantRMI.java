@@ -93,6 +93,11 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
+	public void actionResult(boolean result) throws IOException {
+		user.actionResult(result);
+	}
+
+	@Override
 	public void terminatedRound() throws IOException {
 		if (!playing)
 			user.terminatedRound();

@@ -30,4 +30,6 @@ public interface Participant extends ModelObserver, Remote {
 	int chooseBonusTile() throws IOException, ClassNotFoundException;
 
 	void outOfTime() throws IOException;
+
+	void actionResult(boolean result) throws IOException;
 }

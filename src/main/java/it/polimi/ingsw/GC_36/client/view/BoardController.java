@@ -320,6 +320,11 @@ public class BoardController implements ViewInterface {
 	}
 
 	@Override
+	public void actionResult(boolean result) throws IOException {
+		// TODO @antonino
+	}
+
+	@Override
 	public MemberColor chooseMemberColor() {
 		System.out.println("select the family member");
 		Platform.runLater(new Runnable() {

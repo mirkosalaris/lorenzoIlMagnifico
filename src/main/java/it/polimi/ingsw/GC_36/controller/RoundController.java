@@ -58,13 +58,9 @@ public class RoundController {
 				} else {
 					timer.cancel();
 					executed = executor.execute(action);
-
-					// TODO delete
-					System.out.println(action);
 				}
 
-				// TODO @mirko send 'error' to player
-				// (s)he has to know if (s)he had done something wrong
+				player.getParticipant().actionResult(executed);
 			} while (!executed);
 		} catch (InterruptedException | IOException e) {
 			error = e;

@@ -90,7 +90,7 @@ public class Player {
 		observers.add(o);
 	}
 
-	public void subscribe(ModelObserver o) {
+	public void subscribe(ModelObserver o) throws IOException {
 		observers.add(o);
 		personalBoard.subscribe(o);
 	}

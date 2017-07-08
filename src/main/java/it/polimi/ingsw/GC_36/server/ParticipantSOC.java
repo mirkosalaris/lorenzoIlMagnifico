@@ -109,9 +109,10 @@ public class ParticipantSOC implements Participant {
 		}).start();
 	}
 
-	private synchronized Object readFromStream()
-			throws IOException, ClassNotFoundException {
-		return objIn.readObject();
+	@Override
+	public void actionResult(boolean result) throws IOException {
+		sendMessage("actionResult", result,
+				"cannot send action result to user");
 	}
 
 	@Override
@@ -212,7 +213,6 @@ public class ParticipantSOC implements Participant {
 		sendMessage(type, null, error);
 	}
 
-
 	private void sendMessage(String type, Object obj, String error)
 			throws IOException {
 		SimpleEntry<String, Object> entry;
@@ -229,21 +229,8 @@ public class ParticipantSOC implements Participant {
 	}
 
 
-	// TODO do we ever need to receive an "entry"? Can we delete the method?
-	private void handleEntry(SimpleEntry<String, Object> entry) {
-		switch (entry.getKey()) {
-			case "example":
-				break;
-
-			case "second_example":
-				//user.update();
-				break;
-
-			default:
-				System.out.println(
-						"Cannot retrieve information correctly from network:" +
-								" " +
-								"Object with wrong key: " + entry.getKey());
-		}
+	private synchronized Object readFromStream()
+			throws IOException, ClassNotFoundException {
+		return objIn.readObject();
 	}
 }

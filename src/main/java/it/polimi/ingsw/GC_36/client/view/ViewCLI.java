@@ -303,6 +303,13 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
+	public void actionResult(boolean result) throws IOException {
+		if (!result) {
+			System.out.println("You've done an error. You have to play again");
+		}
+	}
+
+	@Override
 	public void terminatedRound() {
 		System.out.println("The round is terminated");
 	}
@@ -334,7 +341,8 @@ public class ViewCLI implements ViewInterface {
 	public void update(ActionSpaceIds id, PlayerColor playerColor,
 	                   MemberColor memberColor) {
 		System.out.println(
-				"Player " + playerColor + " has entered " + id.name() + " with" +
+				"Player " + playerColor + " has entered " + id.name() + " " +
+						"with" +
 						" " + memberColor + " color");
 	}
 

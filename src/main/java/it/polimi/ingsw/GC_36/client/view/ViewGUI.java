@@ -127,6 +127,11 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
+	public void actionResult(boolean result) throws IOException {
+		boardCtrl.actionResult(result);
+	}
+
+	@Override
 	public void terminatedRound() {
 		System.out.println("The round is terminated");
 		boardCtrl.show("The round is terminated");

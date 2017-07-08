@@ -105,8 +105,9 @@ public class PersonalBoard {
 		return bonusTile;
 	}
 
-	public void subscribe(PersonalBoardObserver o) {
+	public void subscribe(PersonalBoardObserver o) throws IOException {
 		observers.add(o);
+		resourcesNotify();
 	}
 
 	private void newCardNotify(DevelopmentCard card) throws IOException {
