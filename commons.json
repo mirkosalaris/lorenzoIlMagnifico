@@ -11820,5 +11820,7 @@
         "value": 0
       }
     }
-  }
+  },
+  "actionMaxTime": 240000,
+  "startingMatchTimer": 3000
 }

@@ -76,10 +76,6 @@ public class Decoder {
 		return list;
 	}
 
-	public ResourcesList buildTax(String serializeString) {
-		return this.deserialize(serializeString, ResourcesList.class);
-	}
-
 	public List<ResourcesList> buildPersonalBoardList(String
 			                                                  serializedString) {
 		JsonArray jsonArray = new JsonParser().parse(

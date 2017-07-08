@@ -117,8 +117,7 @@ public final class Commons {
 	}
 
 	public static long getActionMaxTime() {
-		// TODO @antonino
-		return 4 * 60 * 1000; // 4 minutes
+		return (long) parser.get("actionMaxTime");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -127,8 +126,7 @@ public final class Commons {
 	}
 
 	public static long getStartingMatchTimer() {
-		// TODO @antonino
-		return 3000; // 3 seconds, for now
+		return (long) parser.get("startingMatchTimer");
 	}
 }
 

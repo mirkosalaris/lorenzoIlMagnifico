@@ -88,6 +88,8 @@ public class BoardController implements ViewInterface {
 	@FXML
 	private Label labelWoods;
 
+	private MemberColor memberColor;
+
 	public BoardController() {
 	}
 
@@ -128,6 +130,8 @@ public class BoardController implements ViewInterface {
 				labelWoodPoints.setText(
 						"" + resourcesList.get(ResourceType.WOOD).getValue());
 				labelStonePoints.setText(
+						"" + resourcesList.get(ResourceType.STONE).getValue());
+				labelServantPoints.setText(
 						"" + resourcesList.get(ResourceType.STONE).getValue());
 				labelCoinsPoints.setText(
 						"" + resourcesList.get(ResourceType.COINS).getValue());
@@ -321,7 +325,15 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void actionResult(boolean result) throws IOException {
-		// TODO @antonino
+		MemberColor member = this.memberColor;
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Scene scene = anchor.getScene();
+				Button mc = (Button) scene.lookup("#" + member.name());
+				mc.setVisible(false);
+			}
+		});
 	}
 
 	@Override
@@ -344,17 +356,7 @@ public class BoardController implements ViewInterface {
 				}
 			} while (choice == null);
 		}
-		MemberColor member = choice;
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				Scene scene = anchor.getScene();
-				Button mc = (Button) scene.lookup("#" + member.name());
-				mc.setVisible(false);
-			}
-		});
-		// TODO fix
-
+		this.memberColor = choice;
 		System.out.println(choice.toString());
 		return choice;
 
@@ -504,7 +506,37 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void askToRejoin() {
+		final Object lock = new Object();
 		// TODO maybe ask the user to click a button
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				final Stage dialog = new Stage();
+				dialog.initModality(Modality.APPLICATION_MODAL);
+				dialog.initOwner(primaryStage);
+				VBox dialogVBox = new VBox(20);
+				Button button = new Button("rejoin");
+				button.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						lock.notifyAll();
+					}
+				});
+				dialogVBox.getChildren().add(button);
+				Scene dialogScene = new Scene(dialogVBox, 300, 200);
+				dialog.setScene(dialogScene);
+				dialog.show();
+			}
+		});
+
+
+		synchronized (lock) {
+			try {
+				lock.wait();
+			} catch (InterruptedException e) {
+				ExceptionLogger.log(e);
+			}
+		}
 		System.out.println("rejoining...");
 	}
 

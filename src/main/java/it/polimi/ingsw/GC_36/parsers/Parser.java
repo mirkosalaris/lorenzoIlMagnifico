@@ -26,6 +26,8 @@ public class Parser {
 	private List<ResourcesList> councilPrivileges;
 	private ResourcesList tax;
 	private List<LeaderCard> leaderCardList;
+	private long actionMaxTime;
+	private long startingMatchTimer;
 
 	public Parser(File file) {
 		String serializedString;
@@ -63,20 +65,32 @@ public class Parser {
 				encoder.serialize(jsonElement));
 		jsonElement = new JsonParser().parse(
 				serializedString).getAsJsonObject().get("tax");
-		this.tax = decoder.buildTax(encoder.serialize(jsonElement));
+		this.tax = decoder.deserialize(encoder.serialize(jsonElement),
+				ResourcesList.class);
 		jsonElement = new JsonParser().parse(
 				serializedString).getAsJsonObject().get("leaderCards");
 		this.leaderCardList = converter.convertLeaderCardsList(
 				new JsonParser().parse(
 						encoder.serialize(jsonElement)).getAsJsonArray());
+		jsonElement = new JsonParser().parse(
+				serializedString).getAsJsonObject().get("actionMaxTime");
+		this.actionMaxTime = decoder.deserialize(new JsonParser().parse(
+				encoder.serialize(jsonElement)).getAsString(), Long.class);
+		jsonElement = new JsonParser().parse(
+				serializedString).getAsJsonObject().get("startingMatchTimer");
+		this.startingMatchTimer = decoder.deserialize(new JsonParser().parse(
+				encoder.serialize(jsonElement)).getAsString(), Long.class);
 	}
 
 	//get developmentCards, bonusTiles, personalBoards, councilPrivileges
 	public Object get(String s) {
 		if (s.contains("tax")) {
 			return this.tax;
-		}
-		if (s.contains("leaderCard")) {
+		} else if (s.contains("actionMaxTime")) {
+			return this.actionMaxTime;
+		} else if (s.contains("startingMatchTimer")) {
+			return this.startingMatchTimer;
+		} else if (s.contains("leaderCard")) {
 			// return a copy
 			return new ArrayList<>(this.leaderCardList);
 		} else {
