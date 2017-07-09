@@ -108,7 +108,7 @@ public class Player {
 			if (member.getColor() != MemberColor.UNCOLORED) {
 				ActionSpace as = Game.getInstance().getBoard().getActionSpace(
 						member.getLocation());
-				if (as != null) {
+				if (as != null && as.isInTower()) {
 					if (as.getAssociatedFloor().getAssociatedTower()
 							.equals(tower)) {
 						return false;

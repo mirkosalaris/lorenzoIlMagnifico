@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class BoardController implements ViewInterface {
@@ -48,6 +49,9 @@ public class BoardController implements ViewInterface {
 	private String currentPeriod = "";
 	private String currentPlayer = "";
 	private AtomicInteger increment = new AtomicInteger(0);
+	private AtomicBoolean incrementSelected = new AtomicBoolean(false);
+	private AtomicBoolean actionSpaceSelected = new AtomicBoolean(false);
+
 	@FXML
 	private Label labelOrangeDie;
 	@FXML
@@ -430,7 +434,8 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public int setActionValueIncrement() {
-		int numberOfServants;
+		incrementSelected.set(false);
+		int numberOfServants = 0;
 		increment.set(0);
 		Platform.runLater(new Runnable() {
 			@Override
@@ -441,13 +446,15 @@ public class BoardController implements ViewInterface {
 		});
 		synchronized (lockServantIncrement) {
 			try {
-				lockServantIncrement.wait();
+				while (incrementSelected.get() == false) {
+					lockServantIncrement.wait();
+				}
 			} catch (InterruptedException e) {
 				ExceptionLogger.log(e);
 			}
 		}
 		numberOfServants = increment.get();
-		System.out.println("option " + numberOfServants);
+		System.out.println("number of servants: " + numberOfServants);
 
 
 		Platform.runLater(new Runnable() {
@@ -464,6 +471,7 @@ public class BoardController implements ViewInterface {
 	public int chooseActionSpaceId(Set<ActionSpaceIds>
 			                               actionSpaceIds) {
 		System.out.println("select action space");
+		actionSpaceSelected.set(false);
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -579,6 +587,7 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void askToRejoin() {
+		AtomicBoolean done = new AtomicBoolean(false);
 		final Object lock = new Object();
 		Platform.runLater(new Runnable() {
 			@Override
@@ -608,7 +617,10 @@ public class BoardController implements ViewInterface {
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
+						done.set(true);
+						lock.notifyAll();
 						synchronized (lock) {
+							done.set(true);
 							lock.notifyAll();
 							dialog.close();
 						}
@@ -624,7 +636,10 @@ public class BoardController implements ViewInterface {
 
 		synchronized (lock) {
 			try {
-				lock.wait();
+				while (!done.get()) {
+					lock.wait();
+				}
+
 			} catch (InterruptedException e) {
 				ExceptionLogger.log(e);
 			}
@@ -639,6 +654,7 @@ public class BoardController implements ViewInterface {
 		;
 		if (ActionSpaceIds.checkId(chosenActionSpace)) {
 			synchronized (lockChosenActionSpace) {
+				actionSpaceSelected.set(true);
 				lockChosenActionSpace.notifyAll();
 			}
 			System.out.println("action space selected");
@@ -694,6 +710,7 @@ public class BoardController implements ViewInterface {
 		}
 		if (string.equals("done")) {
 			synchronized (lockServantIncrement) {
+				incrementSelected.set(true);
 				lockServantIncrement.notifyAll();
 			}
 
@@ -758,7 +775,9 @@ public class BoardController implements ViewInterface {
 		});
 		synchronized (lockChooseOption) {
 			try {
-				lockChooseOption.wait();
+				while (choice.get() == -1) {
+					lockChooseOption.wait();
+				}
 			} catch (InterruptedException e) {
 				ExceptionLogger.log(e);
 			}
