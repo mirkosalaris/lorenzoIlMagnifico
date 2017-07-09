@@ -7,7 +7,7 @@
 <?import java.net.URL?>
 <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0"
-            prefWidth="910.0" xmlns="http://javafx.com/javafx/8.0.112"
+            prefWidth="910.0" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="it.polimi.ingsw.GC_36.client.view.BoardController">
     <stylesheets>
@@ -177,7 +177,7 @@
                 mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.50" prefHeight="60.0" prefWidth="143.0"/>
 
-        <Button fx:id="button17" layoutX="5.0" layoutY="581.0"
+        <Button fx:id="button19" layoutX="5.0" layoutY="581.0"
                 mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
@@ -185,14 +185,14 @@
                 <Font size="9.0"/>
             </font>
         </Button>
-        <Button fx:id="button18" layoutX="66.0" layoutY="580.0"
+        <Button fx:id="button20" layoutX="66.0" layoutY="580.0"
                 mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.50" prefHeight="42.0" prefWidth="113.0">
             <font>
                 <Font size="15.0"/>
             </font>
         </Button>
-        <Button fx:id="button19" layoutX="5.0" layoutY="644.0"
+        <Button fx:id="button17" layoutX="5.0" layoutY="644.0"
                 mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.40" prefHeight="40.0" prefWidth="40.0"
                 styleClass="actionSpaceButton">
@@ -200,7 +200,7 @@
                 <Font size="9.0"/>
             </font>
         </Button>
-        <Button fx:id="button20" layoutX="65.0" layoutY="643.0"
+        <Button fx:id="button18" layoutX="65.0" layoutY="643.0"
                 mnemonicParsing="false" onAction="#actionSpaceButtonClick"
                 opacity="0.50" prefHeight="42.0" prefWidth="113.0">
             <font>
@@ -273,177 +273,174 @@
             </font>
         </Label>
 
-        <ImageView fx:id="imageView1" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut"
-
-                   fitHeight="150.0"
-                   fitWidth="50.0"
-                   layoutX="16.0" layoutY="320.0" pickOnBounds="true"
+        <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="16.0" layoutY="320.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
                    preserveRatio="true"/>
-        <ImageView fx:id="imageView2" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="16.0" layoutY="224.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView3" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="16.0" layoutY="122.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView4" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="16.0" layoutY="24.0"
-                   pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="16.0" layoutY="224.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView3" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="16.0" layoutY="122.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView4" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="16.0" layoutY="24.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
 
-        <ImageView fx:id="imageView5" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="123.0" layoutY="320.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView6" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="123.0" layoutY="224.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView7" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="123.0" layoutY="122.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView8" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="123.0" layoutY="24.0"
-                   pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="imageView5" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="123.0" layoutY="320.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView6" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="123.0" layoutY="224.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView7" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="123.0" layoutY="122.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView8" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="123.0" layoutY="24.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
 
-        <ImageView fx:id="imageView9" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="230.0" layoutY="320.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView10" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="230.0" layoutY="224.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView11" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="230.0" layoutY="122.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView12" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="230.0" layoutY="24.0"
-                   pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="imageView9" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="230.0" layoutY="320.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView10" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="230.0" layoutY="224.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView11" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="230.0" layoutY="122.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView12" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="230.0" layoutY="24.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
 
-        <ImageView fx:id="imageView13" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="337.0" layoutY="320.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView14" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="337.0" layoutY="224.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView15" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="337.0" layoutY="122.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fx:id="imageView16" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="337.0" layoutY="24.0"
-                   pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="imageView13" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="337.0" layoutY="320.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView14" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="337.0" layoutY="224.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView15" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="337.0" layoutY="122.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imageView16" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="337.0" layoutY="24.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true"/>
 
 
-        <ImageView fx:id="imageViewPersonalV1" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="485.0" layoutY="290.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalV2" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="548.0" layoutY="290.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalV3" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="610.0" layoutY="290.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalV4" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="670.0" layoutY="290.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalV5" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="730.0" layoutY="290.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalV6" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="790.0" layoutY="290.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalV1" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="485.0" layoutY="290.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalV2" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="548.0" layoutY="290.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalV3" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="610.0" layoutY="290.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalV4" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="670.0" layoutY="290.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalV5" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="730.0" layoutY="290.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalV6" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="790.0" layoutY="290.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
 
-        <ImageView fx:id="imageViewPersonalC1" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="485.0" layoutY="210.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalC2" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="548.0" layoutY="210.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalC3" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="610.0" layoutY="210.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalC4" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="670.0" layoutY="210.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalC5" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="730.0" layoutY="210.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalC6" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="790.0" layoutY="210.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalC1" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="485.0" layoutY="210.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalC2" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="548.0" layoutY="210.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalC3" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="610.0" layoutY="210.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalC4" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="670.0" layoutY="210.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalC5" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="730.0" layoutY="210.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalC6" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="790.0" layoutY="210.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
 
-        <ImageView fx:id="imageViewPersonalT1" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="485.0" layoutY="120.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalT2" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="548.0" layoutY="120.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalT3" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="610.0" layoutY="120.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalT4" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="670.0" layoutY="120.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalT5" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="730.0" layoutY="120.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalT6" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="790.0" layoutY="120.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalT1" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="485.0" layoutY="120.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalT2" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="548.0" layoutY="120.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalT3" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="610.0" layoutY="120.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalT4" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="670.0" layoutY="120.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalT5" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="730.0" layoutY="120.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalT6" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="790.0" layoutY="120.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
 
-        <ImageView fx:id="imageViewPersonalB1" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="485.0" layoutY="7.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalB2" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="548.0" layoutY="7.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalB3" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="610.0" layoutY="7.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalB4" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="670.0" layoutY="7.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalB5" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="730.0" layoutY="7.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
-        <ImageView fx:id="imageViewPersonalB6" onMouseEntered="#cardZoom"
-                   onMouseExited="#cardZoomOut" fitHeight="150.0"
-                   fitWidth="50.0" layoutX="790.0" layoutY="7.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalB1" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="485.0" layoutY="7.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalB2" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="548.0" layoutY="7.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalB3" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="610.0" layoutY="7.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalB4" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="670.0" layoutY="7.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalB5" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="730.0" layoutY="7.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
+        <ImageView fx:id="imageViewPersonalB6" fitHeight="150.0" fitWidth="50.0"
+                   layoutX="790.0" layoutY="7.0" onMouseEntered="#cardZoom"
+                   onMouseExited="#cardZoomOut" pickOnBounds="true"
+                   preserveRatio="true" visible="false"/>
 
         <ImageView fx:id="imgStone" fitWidth="28.0" layoutX="845.0"
                    pickOnBounds="true" preserveRatio="true">
@@ -599,31 +596,35 @@
         <ImageView fx:id="fm21" fitHeight="30.0" layoutX="276.0" layoutY="576.0"
                    pickOnBounds="true" preserveRatio="true" visible="false">
         </ImageView>
-        <ImageView fx:id="fm19" fitHeight="30.0" layoutX="13.0" layoutY="653.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm17" fitHeight="30.0" layoutX="13.0" layoutY="587.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm201" fitHeight="30.0" layoutX="78.0" layoutY="653.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm183" fitHeight="30.0" layoutX="133.0"
-                   layoutY="588.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm202" fitHeight="30.0" layoutX="107.0"
+        <ImageView fx:id="fm17" fitHeight="30.0" layoutX="13.0"
                    layoutY="653.0" pickOnBounds="true" preserveRatio="true"
                    visible="false">
         </ImageView>
-        <ImageView fx:id="fm181" fitHeight="30.0" layoutX="81.0" layoutY="586.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
+        <ImageView fx:id="fm19" fitHeight="30.0" layoutX="13.0"
+                   layoutY="587.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
         </ImageView>
-        <ImageView fx:id="fm203" fitHeight="30.0" layoutX="135.0"
+        <ImageView fx:id="fm181" fitHeight="30.0" layoutX="78.0"
+                   layoutY="653.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm203" fitHeight="30.0" layoutX="133.0"
+                   layoutY="588.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm182" fitHeight="30.0" layoutX="107.0"
+                   layoutY="653.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm201" fitHeight="30.0" layoutX="81.0"
+                   layoutY="586.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm183" fitHeight="30.0" layoutX="135.0"
                    layoutY="656.0" pickOnBounds="true" preserveRatio="true"
                    visible="false">
         </ImageView>
-        <ImageView fx:id="fm182" fitHeight="30.0" layoutX="105.0"
+        <ImageView fx:id="fm202" fitHeight="30.0" layoutX="105.0"
                    layoutY="585.0" pickOnBounds="true" preserveRatio="true"
                    visible="false">
         </ImageView>

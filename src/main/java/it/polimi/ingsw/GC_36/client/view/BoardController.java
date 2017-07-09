@@ -47,7 +47,7 @@ public class BoardController implements ViewInterface {
 	private int cardPaymentOption;
 	private String currentPeriod = "";
 	private String currentPlayer = "";
-	AtomicInteger increment = new AtomicInteger(0);
+	private AtomicInteger increment = new AtomicInteger(0);
 	@FXML
 	private Label labelOrangeDie;
 	@FXML
@@ -91,6 +91,36 @@ public class BoardController implements ViewInterface {
 	@FXML
 	private Label labelWoods;
 
+	@FXML
+	private Button ORANGE;
+	@FXML
+	private Button WHITE;
+	@FXML
+	private Button BLACK;
+	@FXML
+	private Button UNCOLORED;
+
+	@FXML
+	private ImageView fm01;
+	@FXML
+	private ImageView fm02;
+	@FXML
+	private ImageView fm03;
+	@FXML
+	private ImageView fm04;
+	@FXML
+	private ImageView fm181;
+	@FXML
+	private ImageView fm182;
+	@FXML
+	private ImageView fm183;
+	@FXML
+	private ImageView fm201;
+	@FXML
+	private ImageView fm202;
+	@FXML
+	private ImageView fm203;
+
 	private MemberColor memberColor;
 
 	public BoardController() {
@@ -107,7 +137,7 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void update(PlayerState newState)
-			throws RemoteException, IOException {
+			throws IOException {
 	}
 
 	@Override
@@ -154,8 +184,13 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void update(BoardState currentState)
-			throws RemoteException, IOException {
-		// not shown to play
+			throws IOException {
+		if (currentState.equals(BoardState.PREPARING)) {
+			ORANGE.setVisible(true);
+			WHITE.setVisible(true);
+			BLACK.setVisible(true);
+			UNCOLORED.setVisible(true);
+		}
 	}
 
 	@Override
@@ -180,21 +215,54 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void update(RoundState newState)
-			throws RemoteException, IOException {
-		// not shown to play
+			throws IOException {
+		//not shown to user
+	}
 
+	private void resetFm() {
+		Image img = new Image("file:");
+		for (int i = 1; i <= 24; i++) {
+			if (i != 18 && i != 20) {
+				Scene scene = anchor.getScene();
+				ImageView fm = (ImageView) scene.lookup(
+						"#fm" + i);
+				fm.setImage(img);
+				fm.setVisible(false);
+			} else {
+				fm01.setImage(img);
+				fm01.setVisible(false);
+				fm02.setImage(img);
+				fm02.setVisible(false);
+				fm03.setImage(img);
+				fm03.setVisible(false);
+				fm04.setImage(img);
+				fm04.setVisible(false);
+				fm181.setImage(img);
+				fm181.setVisible(false);
+				fm182.setImage(img);
+				fm182.setVisible(false);
+				fm183.setImage(img);
+				fm183.setVisible(false);
+				fm201.setImage(img);
+				fm201.setVisible(false);
+				fm202.setImage(img);
+				fm202.setVisible(false);
+				fm203.setImage(img);
+				fm203.setVisible(false);
+			}
+		}
 
 	}
 
 	@Override
 	public void update(PlayerIdentifier identifier)
-			throws RemoteException, IOException {
+			throws IOException {
 
 	}
 
 	@Override
 	public void update(ActionSpaceIds id, boolean free)
-			throws RemoteException, IOException {
+			throws IOException {
 		Scene scene = anchor.getScene();
 		int actionSpaceId = id.value();
 		Button actionSpace = (Button) scene.lookup(
@@ -222,8 +290,10 @@ public class BoardController implements ViewInterface {
 		ImageView fm = null;
 		Image img = new Image(
 				"file:src/main/resources/images/familyMember/" + name);
-		if (actionSpaceId == 0 || actionSpaceId == 18 || actionSpaceId == 20) {
-			fm = getImageView("fm" + actionSpaceId, 6);
+		if (actionSpaceId == 0) {
+			fm = getImageView("fm" + actionSpaceId, 4);
+		} else if (actionSpaceId == 18 || actionSpaceId == 20) {
+			fm = getImageView("fm" + actionSpaceId, 3);
 		} else {
 			fm = (ImageView) scene.lookup("#fm" + actionSpaceId);
 		}
@@ -270,8 +340,6 @@ public class BoardController implements ViewInterface {
 
 			}
 		});
-
-
 	}
 
 	@Override
@@ -362,7 +430,7 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public int setActionValueIncrement() {
-		int numberOfServants = 0;
+		int numberOfServants;
 		increment.set(0);
 		Platform.runLater(new Runnable() {
 			@Override
@@ -466,7 +534,7 @@ public class BoardController implements ViewInterface {
 			Map<Integer, Pair<ResourcesList, ResourcesList>> options) {
 		int choice;
 		int size = options.size();
-		ArrayList<String> choices = new ArrayList<String>();
+		ArrayList<String> choices = new ArrayList<>();
 		for (Integer i = 0; i < options.size(); i++) {
 			choices.add("pay: " + options.get(i).getFirst()
 					+ "\nget: " + options.get(i).getSecond());
@@ -518,16 +586,36 @@ public class BoardController implements ViewInterface {
 				final Stage dialog = new Stage();
 				dialog.initModality(Modality.APPLICATION_MODAL);
 				dialog.initOwner(primaryStage);
-				VBox dialogVBox = new VBox(20);
+				AnchorPane anchorPane = new AnchorPane();
+				dialog.setResizable(false);
+				dialog.setTitle("Rejoin");
+				dialog.setMaxHeight(180.0);
+				dialog.setMaxWidth(270.0);
+				Label label = new Label(
+						"We're sorry!\nYou took too much to play your " +
+								"action!\nClick to rejoins!");
+				label.setLayoutX(10);
+				label.setLayoutY(20);
+				label.setFont(new Font(14));
+				Image img = new Image(
+						"file:src/main/resources/images/wallpaper.png");
+				ImageView imageView = new ImageView(img);
+				anchorPane.getChildren().add(imageView);
+				anchorPane.getChildren().add(label);
 				Button button = new Button("rejoin");
+				button.setLayoutX(100);
+				button.setLayoutY(100);
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						lock.notifyAll();
+						synchronized (lock) {
+							lock.notifyAll();
+							dialog.close();
+						}
 					}
 				});
-				dialogVBox.getChildren().add(button);
-				Scene dialogScene = new Scene(dialogVBox, 300, 200);
+				anchorPane.getChildren().add(button);
+				Scene dialogScene = new Scene(anchorPane, 300, 200);
 				dialog.setScene(dialogScene);
 				dialog.show();
 			}
@@ -620,7 +708,14 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void terminatedRound() throws RemoteException, IOException {
-
+		Scene scene = anchor.getScene();
+		Button actionSpace;
+		for (int i = 0; i <= 24; i++) {
+			actionSpace = (Button) scene.lookup(
+					"#button" + i);
+			actionSpace.setVisible(true);
+		}
+		resetFm();
 	}
 
 	public int chooseOption(int size, ArrayList<String> options) {
@@ -647,8 +742,7 @@ public class BoardController implements ViewInterface {
 					button.setLayoutY(10);
 					label.setLayoutY(40);
 
-					button.setOnAction(new EventHandler<ActionEvent>
-							() {
+					button.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event) {
 							choice.set(value);
@@ -685,7 +779,6 @@ public class BoardController implements ViewInterface {
 								currentPlayer);
 			}
 		});
-
 	}
 
 	@Override

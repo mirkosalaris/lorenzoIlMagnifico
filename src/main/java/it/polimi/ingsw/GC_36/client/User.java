@@ -145,8 +145,7 @@ public class User extends UnicastRemoteObject implements UserInterface {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, boolean free) throws
-			IOException {
+	public void update(ActionSpaceIds id, boolean free) throws IOException {
 		if (free) {
 			availableActionSpaces.add(id);
 		} else {

@@ -122,8 +122,7 @@ public class ParticipantRMI implements Participant {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, boolean free) throws
-			IOException {
+	public void update(ActionSpaceIds id, boolean free) throws IOException {
 		if (!playing)
 			user.update(id, free);
 	}

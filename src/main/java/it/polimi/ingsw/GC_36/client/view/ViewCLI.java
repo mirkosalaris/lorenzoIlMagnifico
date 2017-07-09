@@ -284,7 +284,7 @@ public class ViewCLI implements ViewInterface {
 	}
 
 	@Override
-	public void update(ActionSpaceIds id, boolean free) {
+	public void update(ActionSpaceIds id, boolean free) throws IOException {
 		if (free) {
 			System.out.println(id.name() + " is free again");
 		}
