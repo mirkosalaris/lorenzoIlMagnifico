@@ -1,10 +1,10 @@
 # LorenzoIlMagnifico
-##Dove si trova il:
+## Dove si trova il:
 - Server: src/main/java/it/polimi/ingsw/GC_36/server/Server.java
 - Client: src/main/java/it/polimi/ingsw/GC_36/client/Main.java
 - Immagini diagrammi UML: uml/images/ 
 
-##Come giocare
+## Come giocare
 Avviare il Server.
 _Il Server deve essere lanciato una sola volta, supporta comunque più partite 
 contemporaneamente._ 
@@ -25,13 +25,13 @@ ma il checking completo è realizzato lato server.
 Se l'azione non va a buon fine il giocatore deve rifarla, non viene segnalato
  esplicitamente l'errore, ma ricomincia chiedendo di selezionare il familiare.
 
-###CLI:
+### CLI:
 - Scegliere se giocare mediante Socket o RMI. 
 _(il gioco è completamente trasparente a questa scelta)_
 
 - Scegli se giocare in modalità Normale o Avanzata. 
     
-####Modalità Avanzata
+#### Modalità Avanzata
 La scelta della BonusTile è sequenziale. Il secondo giocatore potrà 
 scegliere solo dopo aver atteso la scelta del primo giocatore. E così via
  per gli altri giocatori. 
@@ -42,7 +42,7 @@ Per quanto riguarda la distribuzione delle carte Leader la scelta viene
 effettuata a turni in contemporanea: tutti scelgono la loro prima carta, 
 quando tutti hanno scelta tutti possono scegliere la seconda carta. E così via.
     
-####ID degli spazi azione 
+#### ID degli spazi azione 
 - **Zona delle Torri**: Gli spazi azione sono numerati in ordine crescente, da 
 sinistra verso destra, dal basso verso l'alto, da ID=1 ad ID=16 
 - **Zona Raccolto** Lo spazio azione singolo ha ID=17, lo spazio azione 
@@ -54,7 +54,7 @@ multiplo ha ID=20
 da ID=21 
    ad ID=24.
   
-###GUI
+### GUI
 Scegliere se giocare con Socket o RMI mediante gli appositi bottoni.
 Attendere che si connetta almeno un altro giocatore.  
 
@@ -63,7 +63,7 @@ rosa.
 Le carte vengono ingrandite con il passaggio del mouse.  
 L'utilizzo della GUI è ritenuto intuitivo e non necessita di ulteriori spiegazioni.
 
-##Elementi caricati da file (commons.json):
+## Elementi caricati da file (commons.json):
 - Carte Sviluppo
 - Carte Leader
 - Tessere Bonus Personali
@@ -74,15 +74,14 @@ L'utilizzo della GUI è ritenuto intuitivo e non necessita di ulteriori spiegazi
 - Timer di attesa per compilare una mossa
 - Spazi Azione
 
-##Elementi di gioco non implementati
+## Elementi di gioco non implementati
 - Rapporto in vaticano (malus scomunica e tessere scomunica)
 - Effetti permanenti per le carte blu
 - Carte Leader implementate: 9/16, 
   per raggiungere il numero minimo di carte Leader necessarie per la 
   distribuzione iniziale ne sono state duplicate alcune (è stato cambiato il 
   nome per facilitare la giocabilità)
-   
-##Bugs
+
 
 
 
