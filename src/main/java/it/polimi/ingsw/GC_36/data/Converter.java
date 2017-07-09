@@ -235,12 +235,13 @@ public class Converter {
 		}
 		ImmediateEffect effect = null;
 		if (leaderCard.has(
-				"effect")) {
+				"leaderEffect")) {
 			JsonObject effectObj = leaderCard.get(
-					"effect").getAsJsonObject();
+					"leaderEffect").getAsJsonObject();
 			effect = convertImmediateEffect(
 					effectObj.get("EffectType").getAsString(),
-					effectObj.get("EffectBody"));
+					effectObj.get("EffectBody").getAsJsonObject().get(
+							"effect"));
 		}
 		return new LeaderCard(name, requiredResources, requiredCards,
 				new LeaderEffect(effect));

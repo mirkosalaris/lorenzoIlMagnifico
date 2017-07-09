@@ -11144,84 +11144,6 @@
       }
     },
     {
-      "name": "Bartolomeo Colleoni",
-      "requiredCards": {
-        "TERRITORY": 4,
-        "VENTURE": 2
-      },
-      "leaderEffect": {
-        "EffectType": "ImmediateResourcesListI",
-        "EffectBody": {
-          "effect": {
-            "resourcesList": {
-              "map": {
-                "WOOD": {
-                  "value": 0
-                },
-                "STONE": {
-                  "value": 0
-                },
-                "SERVANT": {
-                  "value": 0
-                },
-                "COINS": {
-                  "value": 0
-                },
-                "VICTORY_POINTS": {
-                  "value": 1
-                },
-                "FAITH_POINTS": {
-                  "value": 0
-                },
-                "MILITARY_POINTS": {
-                  "value": 2
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "Cosimo de\u0027 Medici",
-      "requiredCards": {
-        "BUILDING": 4,
-        "CHARACTER": 2
-      },
-      "leaderEffect": {
-        "EffectType": "ImmediateResourcesListI",
-        "EffectBody": {
-          "effect": {
-            "resourcesList": {
-              "map": {
-                "WOOD": {
-                  "value": 0
-                },
-                "STONE": {
-                  "value": 0
-                },
-                "SERVANT": {
-                  "value": 0
-                },
-                "COINS": {
-                  "value": 0
-                },
-                "VICTORY_POINTS": {
-                  "value": 1
-                },
-                "FAITH_POINTS": {
-                  "value": 0
-                },
-                "MILITARY_POINTS": {
-                  "value": 2
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
       "name": "Cosimo de\u0027 Medici",
       "requiredCards": {
         "BUILDING": 4,
@@ -11264,104 +11186,6 @@
       "name": "Francesco Sforza",
       "requiredCards": {
         "VENTURE": 5
-      },
-      "leaderEffect": {
-        "EffectType": "ImmediateResourcesListI",
-        "EffectBody": {
-          "effect": {
-            "resourcesList": {
-              "map": {
-                "WOOD": {
-                  "value": 0
-                },
-                "STONE": {
-                  "value": 0
-                },
-                "SERVANT": {
-                  "value": 0
-                },
-                "COINS": {
-                  "value": 0
-                },
-                "VICTORY_POINTS": {
-                  "value": 1
-                },
-                "FAITH_POINTS": {
-                  "value": 0
-                },
-                "MILITARY_POINTS": {
-                  "value": 2
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "Francesco Sforza",
-      "requiredCards": {
-        "VENTURE": 5
-      },
-      "leaderEffect": {
-        "EffectType": "ImmediateResourcesListI",
-        "EffectBody": {
-          "effect": {
-            "resourcesList": {
-              "map": {
-                "WOOD": {
-                  "value": 0
-                },
-                "STONE": {
-                  "value": 0
-                },
-                "SERVANT": {
-                  "value": 0
-                },
-                "COINS": {
-                  "value": 0
-                },
-                "VICTORY_POINTS": {
-                  "value": 1
-                },
-                "FAITH_POINTS": {
-                  "value": 0
-                },
-                "MILITARY_POINTS": {
-                  "value": 2
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "Giovanni dalle Bande Nere",
-      "requiredResources": {
-        "map": {
-          "WOOD": {
-            "value": 0
-          },
-          "STONE": {
-            "value": 0
-          },
-          "SERVANT": {
-            "value": 0
-          },
-          "COINS": {
-            "value": 0
-          },
-          "VICTORY_POINTS": {
-            "value": 0
-          },
-          "FAITH_POINTS": {
-            "value": 0
-          },
-          "MILITARY_POINTS": {
-            "value": 12
-          }
-        }
       },
       "leaderEffect": {
         "EffectType": "ImmediateResourcesListI",
@@ -11791,6 +11615,180 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    {
+      "name": "Ludovico Ariosto",
+      "requiredCards": {
+        "TERRITORY": 4,
+        "VENTURE": 2
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "mustDiffer": false,
+            "numberOfPrivileges": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Filippo Brunelleschi",
+      "requiredCards": {
+        "BUILDING": 4,
+        "CHARACTER": 2
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "mustDiffer": false,
+            "numberOfPrivileges": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Federico da Montefeltro",
+      "requiredCards": {
+        "VENTURE": 5
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "mustDiffer": false,
+            "numberOfPrivileges": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Pico della Mirandola",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 12
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "mustDiffer": false,
+            "numberOfPrivileges": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Sisto IV",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 0
+          },
+          "COINS": {
+            "value": 18
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "mustDiffer": false,
+            "numberOfPrivileges": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Lucreia Borgia",
+      "requiredCards": {
+        "TERRITORY": 2,
+        "CHARACTER": 4
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "mustDiffer": false,
+            "numberOfPrivileges": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Lorenzo de\u0027 Medici",
+      "requiredResources": {
+        "map": {
+          "WOOD": {
+            "value": 0
+          },
+          "STONE": {
+            "value": 0
+          },
+          "SERVANT": {
+            "value": 15
+          },
+          "COINS": {
+            "value": 0
+          },
+          "VICTORY_POINTS": {
+            "value": 0
+          },
+          "FAITH_POINTS": {
+            "value": 0
+          },
+          "MILITARY_POINTS": {
+            "value": 0
+          }
+        }
+      },
+      "leaderEffect": {
+        "EffectType": "ImmediateResourcesListI",
+        "EffectBody": {
+          "effect": {
+            "mustDiffer": false,
+            "numberOfPrivileges": 1
           }
         }
       }
