@@ -70,4 +70,33 @@ public class ResourceToPrivilege extends PermanentEffect {
 				", immediateCouncilPrivilegeI=" + immediateCouncilPrivilegeI +
 				'}';
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ResourceToPrivilege that = (ResourceToPrivilege) o;
+
+		if (actionValue != that.actionValue) return false;
+		if (privileges != that.privileges) return false;
+		if (fromResourcesList != null ? !fromResourcesList.equals(
+				that.fromResourcesList) : that.fromResourcesList != null)
+			return false;
+		return immediateCouncilPrivilegeI != null ? immediateCouncilPrivilegeI
+				.equals(
+						that.immediateCouncilPrivilegeI) : that
+				.immediateCouncilPrivilegeI == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = actionValue;
+		result = 31 * result + (fromResourcesList != null ? fromResourcesList
+				.hashCode() : 0);
+		result = 31 * result + privileges;
+		result = 31 * result + (immediateCouncilPrivilegeI != null ?
+				immediateCouncilPrivilegeI.hashCode() : 0);
+		return result;
+	}
 }

@@ -4,14 +4,15 @@ import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.client.view.ViewInterface;
 import it.polimi.ingsw.GC_36.exception.EffectApplyingException;
 import it.polimi.ingsw.GC_36.exception.NotCorrectlyCheckedException;
-import it.polimi.ingsw.GC_36.model.*;
+import it.polimi.ingsw.GC_36.model.Action;
+import it.polimi.ingsw.GC_36.model.ActionInterface;
+import it.polimi.ingsw.GC_36.model.Player;
+import it.polimi.ingsw.GC_36.model.ResourcesList;
 import it.polimi.ingsw.GC_36.model.effects.PermanentEffect;
 import it.polimi.ingsw.GC_36.model.effects.immediateEffects
 		.ImmediateCouncilPrivilegeI;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
 
 public class ImmediateCouncilPrivilegeP extends PermanentEffect {
 	private Integer numberOfPrivileges;
@@ -22,11 +23,13 @@ public class ImmediateCouncilPrivilegeP extends PermanentEffect {
 	public ImmediateCouncilPrivilegeP(Integer numberOfPrivileges,
 	                                  boolean mustDiffer,
 	                                  int actionValue) {
+		// stored just for the toString
 		this.numberOfPrivileges = numberOfPrivileges;
 		this.mustDiffer = mustDiffer;
 		this.actionValue = actionValue;
+
 		this.immediateEffect = new ImmediateCouncilPrivilegeI(
-				numberOfPrivileges, false);
+				numberOfPrivileges, mustDiffer);
 	}
 
 	@Override
@@ -35,15 +38,6 @@ public class ImmediateCouncilPrivilegeP extends PermanentEffect {
 		if (isDoable(actionValue, action)) {
 			immediateEffect.applyEffect(action, player);
 		}
-	}
-
-	private boolean allDifferent(List<CouncilPrivilege> list) {
-		HashSet<CouncilPrivilege> set = new HashSet<>(list);
-		return list.size() == set.size();
-	}
-
-	private boolean isValid(int choice) {
-		return (choice >= 0 && choice < CouncilPrivilege.values().length - 1);
 	}
 
 	@Override
@@ -63,8 +57,34 @@ public class ImmediateCouncilPrivilegeP extends PermanentEffect {
 		return "ImmediateCouncilPrivilegeP{" +
 				"numberOfPrivileges=" + numberOfPrivileges +
 				", mustDiffer=" + mustDiffer +
-				", immediateEffect=" + immediateEffect +
 				", actionValue=" + actionValue +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ImmediateCouncilPrivilegeP that = (ImmediateCouncilPrivilegeP) o;
+
+		if (mustDiffer != that.mustDiffer) return false;
+		if (actionValue != that.actionValue) return false;
+		if (numberOfPrivileges != null ? !numberOfPrivileges.equals(
+				that.numberOfPrivileges) : that.numberOfPrivileges != null)
+			return false;
+		return immediateEffect != null ? immediateEffect.equals(
+				that.immediateEffect) : that.immediateEffect == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = numberOfPrivileges != null ? numberOfPrivileges.hashCode
+				() : 0;
+		result = 31 * result + (mustDiffer ? 1 : 0);
+		result = 31 * result + (immediateEffect != null ? immediateEffect
+				.hashCode() : 0);
+		result = 31 * result + actionValue;
+		return result;
 	}
 }

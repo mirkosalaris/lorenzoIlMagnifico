@@ -28,6 +28,10 @@ public abstract class PermanentEffect implements Serializable {
 			return false;
 	}
 
+	@Override
+	public abstract boolean equals(Object obj);
+
 	public abstract boolean check(Action action, ResourcesList
 			playerResources);
+
 }

@@ -17,6 +17,7 @@ public class Player {
 	private PlayerState currentState;
 	private Set<PlayerObserver> observers = new HashSet<>();
 	private List<LeaderCard> leaderCards = new ArrayList<>();
+	private List<LeaderCard> usedLeaderCards = new ArrayList<>();
 
 	public Player(PlayerColor playerColor, Participant participant)
 			throws IOException {
@@ -71,10 +72,13 @@ public class Player {
 	}
 
 	public void roundReset() {
-		// TODO @mirko how it is that this is never invoked?
+		// reset family members
 		for (FamilyMember member : familyMembers.values()) {
 			member.reset();
 		}
+
+		// reset leader cards
+		usedLeaderCards.clear();
 	}
 
 	public Participant getParticipant() {
@@ -120,8 +124,18 @@ public class Player {
 		leaderCards.add(card);
 	}
 
-	public ArrayList<LeaderCard> getLeaderCards() {
-		return new ArrayList<>(leaderCards);
+	public List<LeaderCard> getLeaderCards() {
+		return getLeaderCards(false);
+	}
+
+	public List<LeaderCard> getLeaderCards(boolean onlyAvailable) {
+		List<LeaderCard> result = new ArrayList<>(leaderCards);
+
+		if (onlyAvailable) {
+			result.removeAll(usedLeaderCards);
+		}
+
+		return result;
 	}
 
 	private void newStateNotify() throws IOException {
@@ -156,5 +170,13 @@ public class Player {
 
 	public PlayerColor getPlayerColor() {
 		return playerColor;
+	}
+
+	public void setUsed(List<LeaderCard> cardsList) {
+		if (!leaderCards.containsAll(cardsList)) {
+			throw new IllegalArgumentException(
+					"the players does not own all of those cards");
+		}
+		usedLeaderCards.addAll(cardsList);
 	}
 }

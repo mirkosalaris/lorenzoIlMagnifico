@@ -9,10 +9,11 @@ import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class ImmediateCouncilPrivilegeI implements ImmediateEffect {
+public class ImmediateCouncilPrivilegeI extends ImmediateEffect {
 	private boolean mustDiffer;
 	private Integer numberOfPrivileges;
 
@@ -43,10 +44,10 @@ public class ImmediateCouncilPrivilegeI implements ImmediateEffect {
 			// add resources
 			for (CouncilPrivilege key : action.getCouncilPrivilegeList()) {
 
-				ResourcesList favor = key.getResources();
+				ResourcesList privilege = key.getResources();
 
 				try {
-					player.getPersonalBoard().addResources(favor);
+					player.getPersonalBoard().addResources(privilege);
 				} catch (IOException e) {
 					throw new EffectApplyingException(e);
 				}
@@ -56,17 +57,22 @@ public class ImmediateCouncilPrivilegeI implements ImmediateEffect {
 
 	@Override
 	public void chooseOptions(ViewInterface view, ActionInterface action,
-	                          User user)
-			throws RemoteException {
-		int choice;
-		for (int i = 0; i < numberOfPrivileges; i++) {
-			//check if the choice is valid
-			do {
-				choice = view.choosePrivilege(i + 1);
-			} while (!isValid(choice)
-					|| (mustDiffer && action.getCouncilPrivilegeList()
-					.contains(CouncilPrivilege.values()[choice])));
-			//end check
+	                          User user) throws RemoteException {
+		List<Integer> choices = new ArrayList<>();
+
+		int i = 0;
+		do {
+			int choice = view.choosePrivilege(i + 1);
+			if (isValid(choice)
+					|| (mustDiffer && !choices.contains(choice))) {
+				choices.add(choice);
+				i++;
+			}
+		} while (i < numberOfPrivileges);
+
+		// store choices
+		for (Integer choice : choices) {
+
 			action.putPrivilegeChoice(choice);
 		}
 	}
@@ -86,5 +92,25 @@ public class ImmediateCouncilPrivilegeI implements ImmediateEffect {
 				"mustDiffer=" + mustDiffer +
 				", numberOfPrivileges=" + numberOfPrivileges +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ImmediateCouncilPrivilegeI that = (ImmediateCouncilPrivilegeI) o;
+
+		if (mustDiffer != that.mustDiffer) return false;
+		return numberOfPrivileges != null ? numberOfPrivileges.equals(
+				that.numberOfPrivileges) : that.numberOfPrivileges == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = (mustDiffer ? 1 : 0);
+		result = 31 * result + (numberOfPrivileges != null ?
+				numberOfPrivileges.hashCode() : 0);
+		return result;
 	}
 }

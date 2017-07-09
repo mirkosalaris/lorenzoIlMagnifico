@@ -89,6 +89,11 @@ public class Board {
 			as.reset();
 		}
 
+		// reset players
+		for (Player p : players.values()) {
+			p.roundReset();
+		}
+
 		setCurrentState(BoardState.UNINITIALIZED);
 	}
 

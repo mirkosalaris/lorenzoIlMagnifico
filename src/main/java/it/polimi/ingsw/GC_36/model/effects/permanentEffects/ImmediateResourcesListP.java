@@ -79,4 +79,27 @@ public class ImmediateResourcesListP extends PermanentEffect {
 				", requiredActionValue=" + requiredActionValue +
 				'}';
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ImmediateResourcesListP that = (ImmediateResourcesListP) o;
+
+		if (requiredActionValue != that.requiredActionValue) return false;
+		if (associatedCardType != that.associatedCardType) return false;
+		return resourcesList != null ? resourcesList.equals(
+				that.resourcesList) : that.resourcesList == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = associatedCardType != null ? associatedCardType.hashCode
+				() : 0;
+		result = 31 * result + (resourcesList != null ? resourcesList.hashCode
+				() : 0);
+		result = 31 * result + requiredActionValue;
+		return result;
+	}
 }

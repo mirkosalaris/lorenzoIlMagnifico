@@ -12,7 +12,7 @@ import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import java.io.IOException;
 import java.util.List;
 
-public class MultipleEffect implements ImmediateEffect {
+public class MultipleEffect extends ImmediateEffect {
 	private List<ImmediateEffect> effects;
 
 	public MultipleEffect(List<ImmediateEffect> effects) {
@@ -42,5 +42,21 @@ public class MultipleEffect implements ImmediateEffect {
 		return "MultipleEffect{" +
 				"effects=\n" + effects +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		MultipleEffect that = (MultipleEffect) o;
+
+		return effects != null ? effects.equals(
+				that.effects) : that.effects == null;
+	}
+
+	@Override
+	public int hashCode() {
+		return effects != null ? effects.hashCode() : 0;
 	}
 }

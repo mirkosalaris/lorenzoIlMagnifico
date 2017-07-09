@@ -132,18 +132,15 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void update(BoardState currentState) throws IOException {
-		// TODO think and impl
 		view.update(currentState);
 	}
 
 	public void update(DieColor dieColor, int value) throws IOException {
-		// TODO think and impl
 		view.update(dieColor, value);
 	}
 
 	@Override
 	public void update(PlayerState newState) throws IOException {
-		// TODO think and impl
 		view.update(newState);
 	}
 
@@ -176,7 +173,6 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void update(int periodNumber) throws IOException {
-		// TODO think and impl
 		view.update(periodNumber);
 	}
 
@@ -188,7 +184,6 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void update(RoundState newState) throws IOException {
-		// TODO think and impl
 		view.update(newState);
 	}
 
@@ -307,14 +302,27 @@ public class User extends UnicastRemoteObject implements UserInterface {
 			}
 		}
 
-		if ((action.getActionSpaceId()) == ActionSpaceIds.AS_COUNCIL) {
-			int choice;
-			do {
-				choice = view.choosePrivilege(1);
-			} while ((choice < 0) || (choice > (CouncilPrivilege.values()
-					.length - 1)));
-			action.putPrivilegeChoice(choice);
+		ActionSpaceIds asId = action.getActionSpaceId();
 
+		if (ActionSpaceIds.AS_COUNCIL.equals(asId)) {
+			List<Integer> choices = chooseCouncilPrivileges(1);
+			action.putPrivilegeChoice(choices.get(0));
+		} else if (ActionSpaceIds.AS_MARKET_COUNCILS_FAVORS.equals(asId)) {
+			List<Integer> choices;
+			boolean error = false;
+			do {
+				error = false;
+				choices = chooseCouncilPrivileges(2);
+				// check duplicates
+				if (new HashSet<>(choices).size() != 2) {
+					error = true;
+					view.show("Privileges must differ");
+				}
+			} while (error);
+
+			for (Integer choice : choices) {
+				action.putPrivilegeChoice(choice);
+			}
 		}
 
 		List<DevelopmentCard> cards = null;
@@ -336,6 +344,20 @@ public class User extends UnicastRemoteObject implements UserInterface {
 				}
 			}
 		}
+	}
+
+	private List<Integer> chooseCouncilPrivileges(int n) {
+		List<Integer> choices = new ArrayList<>();
+		int choice;
+		for (int i = 0; i < n; i++) {
+			do {
+				choice = view.choosePrivilege(i + 1);
+			} while ((choice < 0)
+					|| (choice > (CouncilPrivilege.values().length - 1)));
+
+			choices.add(choice);
+		}
+		return choices;
 	}
 
 

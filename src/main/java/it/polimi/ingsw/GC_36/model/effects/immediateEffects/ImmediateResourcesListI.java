@@ -11,7 +11,7 @@ import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
 import java.io.IOException;
 
-public class ImmediateResourcesListI implements ImmediateEffect {
+public class ImmediateResourcesListI extends ImmediateEffect {
 	ResourcesList resourcesList;
 
 	public ImmediateResourcesListI(ResourcesList resourcesList) {
@@ -32,6 +32,22 @@ public class ImmediateResourcesListI implements ImmediateEffect {
 	public void chooseOptions(ViewInterface view, ActionInterface action,
 	                          User user)
 			throws IOException, ClassNotFoundException {}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ImmediateResourcesListI that = (ImmediateResourcesListI) o;
+
+		return resourcesList != null ? resourcesList.equals(
+				that.resourcesList) : that.resourcesList == null;
+	}
+
+	@Override
+	public int hashCode() {
+		return resourcesList != null ? resourcesList.hashCode() : 0;
+	}
 
 	@Override
 	public String toString() {

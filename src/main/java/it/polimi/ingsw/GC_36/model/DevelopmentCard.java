@@ -58,9 +58,32 @@ public class DevelopmentCard implements Serializable {
 		return "\n\ttype=" + type +
 				"\n\tperiod=" + period +
 				"\n\tname='" + name + '\'' +
-				"\n\trequirementsList[toHave, toPay]:{" + requirements + "}" +
+				"\n\trequirementsList: " + requirementsToString(requirements) +
 				"\n\timmediateEffect=" + immediateEffect +
 				"\n\tpermanentEffect=" + permanentEffect +
 				"\n";
+	}
+
+	private String requirementsToString(
+			List<Pair<ResourcesList, ResourcesList>> requirements) {
+		String s;
+		if (requirements == null || requirements.size() == 0) {
+			s = "\tno requirements";
+		} else if (requirements.size() == 1) {
+			s = "\tto have: " + requirements.get(0).getFirst()
+					+ "\n\tto pay: " + requirements.get(0).getSecond();
+		} else {
+			StringBuilder sBuilder = new StringBuilder();
+			for (int i = 0; i < requirements.size(); i++) {
+				sBuilder.append("option ").append(i).append(": \n")
+						.append("\tto have: ")
+						.append(requirements.get(i).getFirst())
+						.append("\n\tto pay: ")
+						.append(requirements.get(i).getSecond());
+			}
+			s = sBuilder.toString();
+		}
+
+		return s;
 	}
 }

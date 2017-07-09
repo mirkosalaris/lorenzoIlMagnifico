@@ -12,11 +12,15 @@ import java.io.IOException;
 import java.io.Serializable;
 
 
-public interface ImmediateEffect extends Serializable {
-	void applyEffect(Action action, Player player)
+public abstract class ImmediateEffect implements Serializable {
+	public abstract void applyEffect(Action action, Player player)
 			throws IllegalStateException, EffectApplyingException,
 			NotCorrectlyCheckedException;
 
-	void chooseOptions(ViewInterface view, ActionInterface action, User user)
+	public abstract void chooseOptions(ViewInterface view,
+	                                   ActionInterface action, User user)
 			throws IOException, ClassNotFoundException;
+
+	@Override
+	public abstract boolean equals(Object o);
 }

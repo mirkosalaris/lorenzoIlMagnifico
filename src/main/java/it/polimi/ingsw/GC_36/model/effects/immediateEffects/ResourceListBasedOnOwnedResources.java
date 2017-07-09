@@ -8,7 +8,7 @@ import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 
 import java.io.IOException;
 
-public class ResourceListBasedOnOwnedResources implements ImmediateEffect {
+public class ResourceListBasedOnOwnedResources extends ImmediateEffect {
 	private ResourceType fromResourceType;
 	private int fromResourceValue;
 	private ResourcesList toResourcesList;
@@ -51,6 +51,30 @@ public class ResourceListBasedOnOwnedResources implements ImmediateEffect {
 				", fromResourceValue=" + fromResourceValue +
 				", toResourcesList=" + toResourcesList +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ResourceListBasedOnOwnedResources that =
+				(ResourceListBasedOnOwnedResources) o;
+
+		if (fromResourceValue != that.fromResourceValue) return false;
+		if (fromResourceType != that.fromResourceType) return false;
+		return toResourcesList != null ? toResourcesList.equals(
+				that.toResourcesList) : that.toResourcesList == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = fromResourceType != null ? fromResourceType.hashCode()
+				: 0;
+		result = 31 * result + fromResourceValue;
+		result = 31 * result + (toResourcesList != null ? toResourcesList
+				.hashCode() : 0);
+		return result;
 	}
 }
 

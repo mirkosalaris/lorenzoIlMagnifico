@@ -37,12 +37,12 @@ public class LeaderEffect implements Serializable {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof LeaderEffect)) return false;
+		if (o == null || getClass() != o.getClass()) return false;
 
-		LeaderEffect effect1 = (LeaderEffect) o;
+		LeaderEffect that = (LeaderEffect) o;
 
 		return effect != null ? effect.equals(
-				effect1.effect) : effect1.effect == null;
+				that.effect) : that.effect == null;
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import it.polimi.ingsw.GC_36.model.effects.permanentEffects
 
 import java.io.IOException;
 
-public class ResourceListBasedOnOwnedCardsI implements ImmediateEffect {
+public class ResourceListBasedOnOwnedCardsI extends ImmediateEffect {
 	private ResourceListBasedOnOwnedCards effect;
 
 	public ResourceListBasedOnOwnedCardsI(ResourcesList resourcesList,
@@ -33,5 +33,22 @@ public class ResourceListBasedOnOwnedCardsI implements ImmediateEffect {
 	                          User user)
 			throws IOException, ClassNotFoundException {
 		effect.chooseOption(view, action, user);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ResourceListBasedOnOwnedCardsI that =
+				(ResourceListBasedOnOwnedCardsI) o;
+
+		return effect != null ? effect.equals(
+				that.effect) : that.effect == null;
+	}
+
+	@Override
+	public int hashCode() {
+		return effect != null ? effect.hashCode() : 0;
 	}
 }

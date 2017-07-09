@@ -40,7 +40,7 @@ public class FamilyMember {
 
 	public int getValue() {
 		if (die == null)
-			return 1;
+			return 0;
 		else
 			return die.getValue();
 	}

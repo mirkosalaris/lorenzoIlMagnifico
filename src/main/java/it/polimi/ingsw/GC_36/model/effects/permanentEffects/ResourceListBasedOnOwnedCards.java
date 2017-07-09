@@ -82,4 +82,25 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 				", requiredActionValue=" + requiredActionValue +
 				'}';
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ResourceListBasedOnOwnedCards that = (ResourceListBasedOnOwnedCards) o;
+
+		if (requiredActionValue != that.requiredActionValue) return false;
+		if (resourcesList != null ? !resourcesList.equals(
+				that.resourcesList) : that.resourcesList != null) return false;
+		return cardType == that.cardType;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = resourcesList != null ? resourcesList.hashCode() : 0;
+		result = 31 * result + (cardType != null ? cardType.hashCode() : 0);
+		result = 31 * result + requiredActionValue;
+		return result;
+	}
 }

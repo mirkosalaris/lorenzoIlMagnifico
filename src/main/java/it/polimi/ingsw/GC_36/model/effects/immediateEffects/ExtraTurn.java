@@ -8,7 +8,7 @@ import it.polimi.ingsw.GC_36.model.effects.ImmediateEffect;
 import java.io.IOException;
 import java.util.Set;
 
-public class ExtraTurn implements ImmediateEffect {
+public class ExtraTurn extends ImmediateEffect {
 	private Set<ActionSpaceIds> actionSpaces;
 	private int baseActionValue;
 
@@ -40,6 +40,25 @@ public class ExtraTurn implements ImmediateEffect {
 				"actionSpaces=" + actionSpaces +
 				", baseActionValue=" + baseActionValue +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ExtraTurn extraTurn = (ExtraTurn) o;
+
+		if (baseActionValue != extraTurn.baseActionValue) return false;
+		return actionSpaces != null ? actionSpaces.equals(
+				extraTurn.actionSpaces) : extraTurn.actionSpaces == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = actionSpaces != null ? actionSpaces.hashCode() : 0;
+		result = 31 * result + baseActionValue;
+		return result;
 	}
 }
 

@@ -507,7 +507,6 @@ public class BoardController implements ViewInterface {
 	@Override
 	public void askToRejoin() {
 		final Object lock = new Object();
-		// TODO maybe ask the user to click a button
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {

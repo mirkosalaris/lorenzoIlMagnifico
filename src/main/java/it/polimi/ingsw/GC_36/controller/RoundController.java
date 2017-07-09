@@ -116,12 +116,10 @@ public class RoundController {
 
 		// this will be the list of chosen cards
 		List<LeaderCard> cardsList = new ArrayList<>();
-
-
 		LeaderCard card;
 		do {
 			List<LeaderCard> cardsAvailable =
-					copyWithout(player.getLeaderCards(), cardsList);
+					copyWithout(player.getLeaderCards(true), cardsList);
 			card = p.useCard(cardsAvailable);
 
 			// check if card is not null and is one of the available ones
@@ -129,9 +127,10 @@ public class RoundController {
 				cardsList.add(card);
 			}
 		} while (card != null);
+
+		player.setUsed(cardsList);
 		return cardsList;
 	}
-
 
 	/**
 	 * Return a copy of the first list without items in the second list

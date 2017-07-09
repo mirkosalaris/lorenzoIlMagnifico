@@ -95,4 +95,23 @@ public class ResourcesConverting extends PermanentEffect {
 				", requiredActionValue=" + requiredActionValue +
 				'}';
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ResourcesConverting that = (ResourcesConverting) o;
+
+		if (requiredActionValue != that.requiredActionValue) return false;
+		return options != null ? options.equals(
+				that.options) : that.options == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = options != null ? options.hashCode() : 0;
+		result = 31 * result + requiredActionValue;
+		return result;
+	}
 }

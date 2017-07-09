@@ -58,8 +58,7 @@ public class ViewCLI implements ViewInterface {
 				wrong = false;
 			if (answer.equalsIgnoreCase("yes")) {
 				System.out.println("How much servants do you want to use?");
-				servants = in.nextInt();
-				in.nextLine(); // consume line
+				servants = getInt();
 				if (servants >= 0)
 					wrong = false;
 
@@ -75,12 +74,21 @@ public class ViewCLI implements ViewInterface {
 		do {
 			System.out.println(
 					"Please select an ActionSpace specifying the ID:");
-			if (actionSpaceIds.size() != ActionSpaceIds.values().length) {
-				for (ActionSpaceIds id : actionSpaceIds) {
-					System.out.print(id.value() + ", ");
+
+			// print the list of available actionSpaces
+			for (Iterator<ActionSpaceIds> iterator = actionSpaceIds.iterator();
+			     iterator.hasNext();
+					) {
+				ActionSpaceIds id = iterator.next();
+
+				System.out.print(id.value());
+				if (iterator.hasNext()) {
+					System.out.print(", ");
 				}
 			}
-			value = in.nextInt();
+			System.out.print("\n");
+
+			value = getInt();
 			if (!ActionSpaceIds.checkId(value)) {
 				wrong = true;
 			} else {
@@ -88,7 +96,6 @@ public class ViewCLI implements ViewInterface {
 						ActionSpaceIds.values()[value]);
 			}
 		} while (wrong);
-		in.nextLine(); // consume line
 		return value;
 	}
 
@@ -101,8 +108,7 @@ public class ViewCLI implements ViewInterface {
 				"2: two coins\n" +
 				"3: two military points\n" +
 				"4: one faith point\n");
-		int value = in.nextInt();
-		in.nextLine(); // consume line
+		int value = getInt();
 		return value;
 	}
 
@@ -119,8 +125,7 @@ public class ViewCLI implements ViewInterface {
 			System.out.println(options.get(i).getSecond());
 		}
 		System.out.println("Please specify the options");
-		int value = in.nextInt();
-		in.nextLine(); // consume line
+		int value = getInt();
 		return value;
 	}
 
@@ -137,9 +142,7 @@ public class ViewCLI implements ViewInterface {
 					"\tRequired: " + resourcesList.getFirst() + "\n\tTo Pay: "
 							+ resourcesList.getSecond());
 		}
-		int choice = in.nextInt() - 1;
-		in.nextLine(); // consume line
-		return choice;
+		return getInt() - 1;
 	}
 
 
@@ -220,61 +223,11 @@ public class ViewCLI implements ViewInterface {
 		return chooseFromList(leaderCards);
 	}
 
-	private <E> int chooseFromList(List<E> list) {
-		// it never returns null if 'cancel' is set to null
-		return chooseFromList(list, null);
-	}
-
-	/**
-	 * Let the user choose between elements of a list typing an integer or a
-	 * string 'cancel'
-	 *
-	 * @param list
-	 * 		the list of element
-	 * @param cancel
-	 * 		the string to type to not choose.
-	 * @param <E>
-	 * @return the choice of the user. Null if no choice is made. Never returns
-	 * null if 'cancel' is null
-	 */
-	private <E> Integer chooseFromList(List<E> list, String cancel) {
-		boolean wrong = true;
-		boolean canceled = false;
-		int choice = 0;
-
-		do {
-			// print the alternatives
-			for (int i = 0; i <= list.size() - 1; i++) {
-				System.out.println(i + ") " + list.get(i));
-			}
-
-			String typed = in.nextLine();
-
-			if (typed.matches("^-?\\d+$")) {
-				// is it an integer?
-
-				choice = Integer.parseInt(typed);
-				if (choice >= 0 && choice <= list.size() - 1) {
-					wrong = false;
-				}
-			} else if (cancel != null) {
-				// maybe is a 'cancel' String
-
-				if (typed.equalsIgnoreCase(cancel)) {
-					wrong = false;
-					canceled = true;
-				}
-			}
-		} while (wrong);
-
-		return (canceled) ? null : choice;
-	}
-
 	@Override
 	public LeaderCard useCard(List<LeaderCard> cardsAvailable)
 			throws IOException, ClassNotFoundException {
 		System.out.println(
-				"If you want to use a card choose one of the following, " +
+				"\nIf you want to use a card choose one of the following, " +
 						"otherwise type 'no':");
 		Integer choice = chooseFromList(cardsAvailable, "no");
 		if (choice == null) {
@@ -406,5 +359,69 @@ public class ViewCLI implements ViewInterface {
 	@Override
 	public void update(ResourcesList resourcesList) {
 		System.out.println("Your current resources are: " + resourcesList);
+	}
+
+	private int getInt() {
+		int i;
+		while (!in.hasNextInt()) {
+			System.out.println("Please, integer");
+			in.nextLine();
+		}
+		i = in.nextInt();
+
+		// consume line
+		in.nextLine();
+
+		return i;
+	}
+
+	private <E> int chooseFromList(List<E> list) {
+		// it never returns null if 'cancel' is set to null
+		return chooseFromList(list, null);
+	}
+
+	/**
+	 * Let the user choose between elements of a list typing an integer or a
+	 * string 'cancel'
+	 *
+	 * @param list
+	 * 		the list of element
+	 * @param cancel
+	 * 		the string to type to not choose.
+	 * @param <E>
+	 * @return the choice of the user. Null if no choice is made. Never returns
+	 * null if 'cancel' is null
+	 */
+	private <E> Integer chooseFromList(List<E> list, String cancel) {
+		boolean wrong = true;
+		boolean canceled = false;
+		int choice = 0;
+
+		do {
+			// print the alternatives
+			for (int i = 0; i <= list.size() - 1; i++) {
+				System.out.println(i + ") " + list.get(i));
+			}
+
+			String typed = in.nextLine();
+
+			if (typed.matches("^-?\\d+$")) {
+				// is it an integer?
+
+				choice = Integer.parseInt(typed);
+				if (choice >= 0 && choice <= list.size() - 1) {
+					wrong = false;
+				}
+			} else if (cancel != null) {
+				// maybe is a 'cancel' String
+
+				if (typed.equalsIgnoreCase(cancel)) {
+					wrong = false;
+					canceled = true;
+				}
+			}
+		} while (wrong);
+
+		return (canceled) ? null : choice;
 	}
 }
