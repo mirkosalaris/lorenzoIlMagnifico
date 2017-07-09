@@ -14,8 +14,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -68,6 +70,7 @@ public class BoardController implements ViewInterface {
 	private Label privilege;
 	@FXML
 	private AnchorPane privilegeAnchor;
+	private PlayerIdentifier identifier;
 
 	@FXML
 	private AnchorPane anchor;
@@ -280,7 +283,8 @@ public class BoardController implements ViewInterface {
 	@Override
 	public void play(ActionInterface action)
 			throws RemoteException, IOException, ClassNotFoundException {
-
+		setCurrentPlayer(identifier.toString());
+		showCurrent();
 	}
 
 	@Override
@@ -291,6 +295,7 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public void setIdentifier(PlayerIdentifier identifier) throws IOException {
+		this.identifier = identifier;
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -461,11 +466,8 @@ public class BoardController implements ViewInterface {
 		int size = options.size();
 		ArrayList<String> choices = new ArrayList<String>();
 		for (Integer i = 0; i < options.size(); i++) {
-			choices.add(
-					"pay: " + options.get(
-							i).getFirst() + "get: " + options
-							.get(
-									i).getSecond());
+			choices.add("pay: " + options.get(i).getFirst()
+					+ "\nget: " + options.get(i).getSecond());
 		}
 		choice = chooseOption(size, choices);
 		return choice;
@@ -477,8 +479,7 @@ public class BoardController implements ViewInterface {
 		int size = card.getRequirements().size();
 		ArrayList<String> options = new ArrayList<String>();
 		for (int i = 0; i < size; i++) {
-			options.add(card.getRequirements().get(
-					i).getSecond().toString());
+			options.add(card.getRequirements().get(i).getSecond().toString());
 		}
 		choice = chooseOption(size, options);
 		return choice;
@@ -492,6 +493,8 @@ public class BoardController implements ViewInterface {
 				label.setText(message);
 			}
 		});
+
+
 	}
 
 	@Override
@@ -631,7 +634,19 @@ public class BoardController implements ViewInterface {
 					Button button = new Button("options " + i.toString());
 					Label label = new Label(options.get(i));
 					optionsAnchor.getChildren().add(label);
-					button.setOnAction(new EventHandler<ActionEvent>() {
+					optionsAnchor.getChildren().add(button);
+					label.setFont(new Font(10));
+					label.setMaxWidth(150);
+					label.setWrapText(true);
+
+					label.setLayoutX(i * 150);
+					button.setLayoutX(i * 150);
+
+					button.setLayoutY(10);
+					label.setLayoutY(40);
+
+					button.setOnAction(new EventHandler<ActionEvent>
+							() {
 						@Override
 						public void handle(ActionEvent event) {
 							choice.set(value);
@@ -662,7 +677,7 @@ public class BoardController implements ViewInterface {
 			@Override
 			public void run() {
 				CURRENT.setText(
-						"Current period: " + currentPeriod + "\nCurrent " +
+						"Current period:" + currentPeriod + " Current " +
 								"Player:" +
 								" " +
 								currentPlayer);
@@ -714,5 +729,15 @@ public class BoardController implements ViewInterface {
 		}
 		throw new IllegalStateException();
 		//return new ImageView();
+	}
+
+	public void cardZoom(MouseEvent event) {
+		ImageView cardView = (ImageView) event.getSource();
+		cardView.setFitWidth(cardView.getFitWidth() * 2);
+	}
+
+	public void cardZoomOut(MouseEvent event) {
+		ImageView cardView = (ImageView) event.getSource();
+		cardView.setFitWidth(cardView.getFitWidth() / 2);
 	}
 }

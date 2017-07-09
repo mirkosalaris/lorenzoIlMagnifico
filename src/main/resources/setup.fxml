@@ -22,7 +22,7 @@
                 mnemonicParsing="false" onAction="#setupButtonClick"
                 text="Socket">
         </Button>
-        <Button fx:id="322" layoutX="70.0" layoutY="210.0"
+        <Button fx:id="322" layoutX="100.0" layoutY="210.0"
                 mnemonicParsing="false" onAction="#setupButtonClick" text="RMI">
         </Button>
         <Label layoutX="110.0" layoutY="23.0" text="Lorenzo il Magnifico"

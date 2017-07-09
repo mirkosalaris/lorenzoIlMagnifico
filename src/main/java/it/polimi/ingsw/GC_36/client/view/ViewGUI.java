@@ -87,9 +87,9 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
-	public void play(ActionInterface action) {
-
-
+	public void play(ActionInterface action)
+			throws IOException, ClassNotFoundException {
+		boardCtrl.play(action);
 	}
 
 	@Override
