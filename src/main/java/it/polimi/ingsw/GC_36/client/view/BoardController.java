@@ -36,17 +36,17 @@ public class BoardController implements ViewInterface {
 	private static final double MIN_FIT_HEIGHT = 500.0d;
 	private static final double MAX_FIT_HEIGHT = 1500.0d;
 
-	private Object lockChosenPrivilege = new Object();
-	private Object lockChosenActionSpace = new Object();
-	private Object lockChosenMember = new Object();
-	private Object lockChooseOption = new Object();
-	private Object lockServantIncrement = new Object();
+	private final Object lockChosenPrivilege = new Object();
+	private final Object lockChosenActionSpace = new Object();
+	private final Object lockChosenMember = new Object();
+	private final Object lockChooseOption = new Object();
+	private final Object lockServantIncrement = new Object();
 	private int chosenActionSpace;
 	private MemberColor chosenMember;
 	private CouncilPrivilege chosenPrivilege;
 	private int cardPaymentOption;
-	private String currentPeriod = new String();
-	private String currentPlayer = new String();
+	private String currentPeriod = "";
+	private String currentPlayer = "";
 	AtomicInteger increment = new AtomicInteger(0);
 	@FXML
 	private Label labelOrangeDie;
@@ -331,14 +331,17 @@ public class BoardController implements ViewInterface {
 	@Override
 	public void actionResult(boolean result) throws IOException {
 		MemberColor member = this.memberColor;
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				Scene scene = anchor.getScene();
-				Button mc = (Button) scene.lookup("#" + member.name());
-				mc.setVisible(false);
-			}
-		});
+		// if last action was successful
+		if (result) {
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					Scene scene = anchor.getScene();
+					Button mc = (Button) scene.lookup("#" + member.name());
+					mc.setVisible(false);
+				}
+			});
+		}
 	}
 
 	@Override
@@ -350,17 +353,7 @@ public class BoardController implements ViewInterface {
 				label.setText("select the Family Member");
 			}
 		});
-		MemberColor choice = null;
-		synchronized (lockChosenMember) {
-			do {
-				try {
-					lockChosenMember.wait();
-					choice = chosenMember;
-				} catch (InterruptedException e) {
-					ExceptionLogger.log(e);
-				}
-			} while (choice == null);
-		}
+		MemberColor choice = (MemberColor) waitForChoice(lockChosenMember);
 		this.memberColor = choice;
 		System.out.println(choice.toString());
 		return choice;
@@ -409,19 +402,10 @@ public class BoardController implements ViewInterface {
 				label.setText("select the Action Space");
 			}
 		});
-		Integer choice = null;
-		synchronized (lockChosenActionSpace) {
-			do {
-				try {
-					lockChosenActionSpace.wait();
-					choice = chosenActionSpace;
-				} catch (InterruptedException e) {
-					ExceptionLogger.log(e);
-				}
-			} while (choice == null);
-		}
-		System.out.println(choice);
 
+		int choice = (int) waitForChoice(lockChosenActionSpace);
+
+		System.out.println(choice);
 		return choice;
 	}
 
@@ -437,17 +421,9 @@ public class BoardController implements ViewInterface {
 								"privilege");
 			}
 		});
-		CouncilPrivilege choice = null;
-		synchronized (lockChosenPrivilege) {
-			do {
-				try {
-					lockChosenPrivilege.wait();
-					choice = chosenPrivilege;
-				} catch (InterruptedException e) {
-					ExceptionLogger.log(e);
-				}
-			} while (choice == null);
-		}
+		CouncilPrivilege choice =
+				(CouncilPrivilege) waitForChoice(lockChosenPrivilege);
+
 		System.out.println(choice);
 		Platform.runLater(new Runnable() {
 			@Override
@@ -457,6 +433,32 @@ public class BoardController implements ViewInterface {
 		});
 
 		return choice.ordinal();
+	}
+
+	private Object waitForChoice(Object lock) {
+		Object choice;
+
+		do {
+			try {
+				synchronized (lock) {
+					lock.wait();
+				}
+			} catch (InterruptedException e) {
+				ExceptionLogger.log(e);
+			}
+			if (lockChosenPrivilege.equals(lock)) {
+				choice = chosenPrivilege;
+			} else if (lockChosenActionSpace.equals(lock)) {
+				choice = chosenActionSpace;
+			} else if (lockChosenMember.equals(lock)) {
+				choice = chosenMember;
+			} else {
+				throw new IllegalArgumentException(
+						"lock is not of a known type");
+			}
+		} while (choice == null);
+
+		return choice;
 	}
 
 	@Override
