@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.GC_36.model.Action</OriginalElement>
+  <nodes>
+    <node x="918.9166666666661" y="559.0">it.polimi.ingsw.GC_36.model.BonusTileId</node>
+    <node x="7625.187896825397" y="2611.0">it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceToPrivilege</node>
+    <node x="6495.738874020133" y="1759.0">it.polimi.ingsw.GC_36.model.BonusTile</node>
+    <node x="419.1234894047484" y="5220.0">it.polimi.ingsw.GC_36.model.Game</node>
+    <node x="1569.9126567820422" y="3345.0">it.polimi.ingsw.GC_36.model.DeckSet</node>
+    <node x="4922.758886940772" y="2611.0">it.polimi.ingsw.GC_36.model.Tower</node>
+    <node x="1023.9166666666661" y="131.0">java.lang.Enum</node>
+    <node x="9167.687896825397" y="793.0">it.polimi.ingsw.GC_36.model.ActionInterface</node>
+    <node x="8747.230383904758" y="1748.0">it.polimi.ingsw.GC_36.model.effects.immediateEffects.ImmediateCouncilPrivilegeI</node>
+    <node x="2910.4984894047484" y="1418.0">it.polimi.ingsw.GC_36.model.ActionSpaceIds</node>
+    <node x="178.0" y="614.5">it.polimi.ingsw.GC_36.model.GameMode</node>
+    <node x="7529.176374020133" y="4724.0">it.polimi.ingsw.GC_36.model.effects.immediateEffects.ExtraTurn</node>
+    <node x="6058.738874020133" y="1759.0">it.polimi.ingsw.GC_36.model.effects.immediateEffects.ResourceListBasedOnOwnedResources</node>
+    <node x="8592.187896825397" y="958.0">it.polimi.ingsw.GC_36.model.effects.ImmediateEffect</node>
+    <node x="4316.738874020133" y="1748.0">it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceListBasedOnOwnedCards</node>
+    <node x="3886.2901560714145" y="4790.5">it.polimi.ingsw.GC_36.model.CouncilActionSpace</node>
+    <node x="6793.637896825397" y="11.0">java.io.Serializable</node>
+    <node x="578.5793234487082" y="4647.0">it.polimi.ingsw.GC_36.model.Period</node>
+    <node x="4727.738874020133" y="1770.0">it.polimi.ingsw.GC_36.model.CouncilPrivilege</node>
+    <node x="0.0" y="592.5">it.polimi.ingsw.GC_36.model.GameState</node>
+    <node x="6177.887896825397" y="559.5">it.polimi.ingsw.GC_36.model.ResourceType</node>
+    <node x="2159.2003968253966" y="3070.0">it.polimi.ingsw.GC_36.model.Player</node>
+    <node x="6602.137896825397" y="559.0">it.polimi.ingsw.GC_36.model.ResourceCounter</node>
+    <node x="6427.387896825397" y="869.5">it.polimi.ingsw.GC_36.model.ResourcesList</node>
+    <node x="2180.598637048022" y="1803.5">it.polimi.ingsw.GC_36.model.MemberColor</node>
+    <node x="1989.2003968253966" y="2655.0">it.polimi.ingsw.GC_36.model.Deck</node>
+    <node x="5438.738874020133" y="1748.0">it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourcesConverting</node>
+    <node x="4577.927499289373" y="3257.0">it.polimi.ingsw.GC_36.model.Floor</node>
+    <node x="2789.2068227380814" y="4482.0">it.polimi.ingsw.GC_36.model.Board</node>
+    <node x="4992.738874020133" y="1693.0">it.polimi.ingsw.GC_36.model.DevelopmentCard</node>
+    <node x="3066.4503968253966" y="3830.0">it.polimi.ingsw.GC_36.model.ActionSpace</node>
+    <node x="1129.916666666666" y="592.5">it.polimi.ingsw.GC_36.model.PlayerState</node>
+    <node x="9111.230383904758" y="1781.0">it.polimi.ingsw.GC_36.model.effects.immediateEffects.MultipleEffect</node>
+    <node x="5250.742883904757" y="936.0">it.polimi.ingsw.GC_36.model.effects.PermanentEffect</node>
+    <node x="849.9166666666661" y="1792.0">it.polimi.ingsw.GC_36.model.Die</node>
+    <node x="1537.2003968253966" y="2589.0">it.polimi.ingsw.GC_36.model.FamilyMember</node>
+    <node x="9806.687896825397" y="2589.0">java.rmi.server.UnicastRemoteObject</node>
+    <node x="8069.230383904758" y="1781.0">it.polimi.ingsw.GC_36.model.effects.LeaderEffect</node>
+    <node x="3889.738874020133" y="1748.0">it.polimi.ingsw.GC_36.model.effects.permanentEffects.ImmediateResourcesListP</node>
+    <node x="2700.7003968253966" y="2666.0">it.polimi.ingsw.GC_36.model.PlayerIdentifier</node>
+    <node x="9769.383886940774" y="636.5">java.rmi.Remote</node>
+    <node x="5754.613874020133" y="2666.0">it.polimi.ingsw.GC_36.model.effects.immediateEffects.ResourceListBasedOnOwnedCardsI</node>
+    <node x="9834.187896825397" y="1792.0">java.rmi.server.RemoteServer</node>
+    <node x="718.1666666666661" y="603.5">it.polimi.ingsw.GC_36.model.BoardState</node>
+    <node x="6893.1486370480225" y="2611.0">it.polimi.ingsw.GC_36.model.LeaderCard</node>
+    <node x="9815.687896825397" y="891.5">java.rmi.server.RemoteObject</node>
+    <node x="2999.3878968253966" y="947.0">it.polimi.ingsw.GC_36.model.CardType</node>
+    <node x="1258.416666666666" y="1803.5">it.polimi.ingsw.GC_36.model.PlayerColor</node>
+    <node x="8395.230383904758" y="1781.0">it.polimi.ingsw.GC_36.model.effects.immediateEffects.ImmediateResourcesListI</node>
+    <node x="849.4166666666661" y="958.0">it.polimi.ingsw.GC_36.model.DieColor</node>
+    <node x="324.16666666666606" y="3885.0">it.polimi.ingsw.GC_36.model.Round</node>
+    <node x="7698.897050571424" y="4006.0">it.polimi.ingsw.GC_36.model.ExtraAction</node>
+    <node x="8755.730383904758" y="2611.0">it.polimi.ingsw.GC_36.model.effects.permanentEffects.ImmediateCouncilPrivilegeP</node>
+    <node x="7518.230383904758" y="3026.0">it.polimi.ingsw.GC_36.model.Action</node>
+    <node x="1039.166666666666" y="0.0">java.lang.Comparable</node>
+    <node x="2313.2003968253966" y="3940.0">it.polimi.ingsw.GC_36.model.TurnOrder</node>
+    <node x="4391.758886940772" y="2556.0">it.polimi.ingsw.GC_36.model.PersonalBoard</node>
+    <node x="323.0" y="592.5">it.polimi.ingsw.GC_36.model.RoundState</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.GC_36.model.RoundState" target="java.lang.Enum">
+      <point x="0.0" y="-58.5" />
+      <point x="402.0" y="509.0" />
+      <point x="1100.6474358974351" y="509.0" />
+      <point x="-122.76923076923094" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceToPrivilege" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="-42.125" y="-125.0" />
+      <point x="7751.562896825397" y="1328.0" />
+      <point x="6839.106646825397" y="1328.0" />
+      <point x="148.21875" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.BonusTileId" target="java.lang.Enum">
+      <point x="0.0" y="-92.0" />
+      <point x="1014.4166666666661" y="539.0" />
+      <point x="1192.7243589743584" y="539.0" />
+      <point x="-30.692307692307622" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DevelopmentCard" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="82.80000000000018" y="-169.0" />
+      <point x="5282.538874020133" y="1318.0" />
+      <point x="6542.669146825397" y="1318.0" />
+      <point x="-148.21875" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ImmediateCouncilPrivilegeP" target="it.polimi.ingsw.GC_36.model.effects.PermanentEffect">
+      <point x="-137.66666666666697" y="-125.0" />
+      <point x="8824.563717238092" y="2326.0" />
+      <point x="5428.238874020133" y="2326.0" />
+      <point x="5428.238874020133" y="1278.0" />
+      <point x="5501.992883904757" y="1278.0" />
+      <point x="83.75" y="69.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.FamilyMember" target="it.polimi.ingsw.GC_36.model.MemberColor">
+      <point x="54.0" y="-147.0" />
+      <point x="1807.2003968253966" y="2406.0" />
+      <point x="2205.598637048022" y="2406.0" />
+      <point x="-50.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceListBasedOnOwnedCards" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-130.33333333333348" y="-114.0" />
+      <point x="4381.9055406868" y="1248.0" />
+      <point x="3139.6378968253966" y="1248.0" />
+      <point x="57.75" y="58.5" />
+    </edge>
+    <edge source="java.rmi.server.RemoteObject" target="java.io.Serializable">
+      <point x="78.75" y="-114.0" />
+      <point x="10051.937896825397" y="768.0" />
+      <point x="9990.187896825397" y="768.0" />
+      <point x="9990.187896825397" y="71.0" />
+      <point x="6904.36516955267" y="71.0" />
+      <point x="52.72727272727252" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.ActionSpace">
+      <point x="188.0" y="-334.0" />
+      <point x="3353.2068227380814" y="4352.0" />
+      <point x="3160.7837301587297" y="4352.0" />
+      <point x="-188.66666666666652" y="246.0" />
+    </edge>
+    <edge source="java.rmi.server.UnicastRemoteObject" target="java.rmi.server.RemoteServer">
+      <point x="0.0" y="-147.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Player" target="it.polimi.ingsw.GC_36.model.PersonalBoard">
+      <point x="250.66666666666697" y="-323.0" />
+      <point x="2785.8670634920636" y="2996.0" />
+      <point x="4647.258886940772" y="2996.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ImmediateResourcesListP" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-135.66666666666652" y="-114.0" />
+      <point x="3957.572207353467" y="1378.0" />
+      <point x="3123.1378968253966" y="1378.0" />
+      <point x="41.25" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Player" target="it.polimi.ingsw.GC_36.model.MemberColor">
+      <point x="0.0" y="-323.0" />
+      <point x="2535.2003968253966" y="2946.0" />
+      <point x="2253.7003968253966" y="2946.0" />
+      <point x="2253.7003968253966" y="2406.0" />
+      <point x="2255.598637048022" y="2406.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ResourceListBasedOnOwnedCardsI" target="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceListBasedOnOwnedCards">
+      <point x="-130.33333333333348" y="-70.0" />
+      <point x="5819.7805406868" y="2366.0" />
+      <point x="4414.488874020133" y="2366.0" />
+      <point x="-97.75" y="114.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="it.polimi.ingsw.GC_36.model.ExtraAction">
+      <point x="214.0" y="367.0" />
+      <point x="8160.230383904758" y="3810.0" />
+      <point x="8008.063717238091" y="3810.0" />
+      <point x="123.66666666666652" y="-70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.Die">
+      <point x="-241.71428571428532" y="-334.0" />
+      <point x="2923.492537023796" y="4432.0" />
+      <point x="913.6666666666661" y="4432.0" />
+      <point x="-63.75" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Floor" target="it.polimi.ingsw.GC_36.model.Tower">
+      <point x="-51.125" y="-136.0" />
+      <point x="4731.302499289373" y="2976.0" />
+      <point x="4955.258886940772" y="2976.0" />
+      <point x="-130.0" y="125.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DieColor" target="java.lang.Enum">
+      <point x="0.0" y="-47.5" />
+      <point x="908.4166666666661" y="529.0" />
+      <point x="1162.0320512820508" y="529.0" />
+      <point x="-61.384615384615245" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.Player">
+      <point x="80.57142857142844" y="-334.0" />
+      <point x="3245.77825130951" y="4372.0" />
+      <point x="2869.5059523809523" y="4372.0" />
+      <point x="2869.5059523809523" y="3810.0" />
+      <point x="2785.8670634920636" y="3810.0" />
+      <point x="250.66666666666697" y="323.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.CardType" target="java.lang.Enum">
+      <point x="0.0" y="-58.5" />
+      <point x="3081.8878968253966" y="519.0" />
+      <point x="1315.493589743589" y="519.0" />
+      <point x="92.07692307692287" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Deck" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-63.5" y="-81.0" />
+      <point x="2052.7003968253966" y="2396.0" />
+      <point x="1968.1963869407718" y="2396.0" />
+      <point x="1968.1963869407718" y="1378.0" />
+      <point x="3040.6378968253966" y="1378.0" />
+      <point x="-41.25" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DevelopmentCard" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="165.5999999999999" y="-169.0" />
+      <point x="5365.3388740201335" y="1368.0" />
+      <point x="8608.576785714286" y="1368.0" />
+      <point x="-131.1111111111111" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.LeaderEffect" target="java.io.Serializable">
+      <point x="-76.25" y="-81.0" />
+      <point x="8145.480383904758" y="111.0" />
+      <point x="6862.183351370852" y="111.0" />
+      <point x="10.545454545454504" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DeckSet" target="it.polimi.ingsw.GC_36.model.Deck">
+      <point x="41.5" y="-48.0" />
+      <point x="1694.4126567820422" y="3006.0" />
+      <point x="2116.2003968253966" y="3006.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.GameState" target="java.lang.Enum">
+      <point x="0.0" y="-58.5" />
+      <point x="79.0" y="489.0" />
+      <point x="1039.2628205128199" y="489.0" />
+      <point x="-184.1538461538462" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Player" target="it.polimi.ingsw.GC_36.model.LeaderCard">
+      <point x="334.2222222222226" y="-323.0" />
+      <point x="2869.4226190476193" y="3006.0" />
+      <point x="6972.8986370480225" y="3006.0" />
+      <point x="-79.75" y="125.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourcesConverting" target="it.polimi.ingsw.GC_36.model.effects.PermanentEffect">
+      <point x="-150.0" y="-114.0" />
+      <point x="5588.738874020133" y="1278.0" />
+      <point x="5557.826217238091" y="1278.0" />
+      <point x="139.58333333333348" y="69.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DevelopmentCard" target="java.io.Serializable">
+      <point x="-82.80000000000018" y="-169.0" />
+      <point x="5116.938874020133" y="1248.0" />
+      <point x="5193.05121723809" y="1248.0" />
+      <point x="5193.05121723809" y="91.0" />
+      <point x="6820.001533189034" y="91.0" />
+      <point x="-31.636363636363512" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Tower" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="81.25" y="-125.0" />
+      <point x="5166.508886940772" y="2506.0" />
+      <point x="6954.417883904758" y="2506.0" />
+      <point x="6954.417883904758" y="1358.0" />
+      <point x="6740.294146825397" y="1358.0" />
+      <point x="49.40625" y="136.0" />
+    </edge>
+    <edge source="java.rmi.server.RemoteServer" target="java.rmi.server.RemoteObject">
+      <point x="0.0" y="-70.0" />
+      <point x="0.0" y="114.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ImmediateResourcesListP" target="it.polimi.ingsw.GC_36.model.effects.PermanentEffect">
+      <point x="0.0" y="-114.0" />
+      <point x="4093.238874020133" y="1258.0" />
+      <point x="5278.659550571424" y="1258.0" />
+      <point x="-139.58333333333326" y="69.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionSpace" target="it.polimi.ingsw.GC_36.model.Floor">
+      <point x="70.75" y="-246.0" />
+      <point x="3420.2003968253966" y="3800.0" />
+      <point x="4782.427499289373" y="3800.0" />
+      <point x="0.0" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Round" target="it.polimi.ingsw.GC_36.model.DeckSet">
+      <point x="0.0" y="-191.0" />
+      <point x="557.6666666666661" y="3800.0" />
+      <point x="1590.6626567820422" y="3800.0" />
+      <point x="-62.25" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Game" target="it.polimi.ingsw.GC_36.model.Period">
+      <point x="0.0" y="-290.0" />
+      <point x="768.6234894047484" y="5170.0" />
+      <point x="903.3293234487082" y="5170.0" />
+      <point x="108.25" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="it.polimi.ingsw.GC_36.model.ActionInterface">
+      <point x="267.5" y="-367.0" />
+      <point x="8213.730383904758" y="2996.0" />
+      <point x="9481.687896825397" y="2996.0" />
+      <point x="0.0" y="212.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.TurnOrder" target="it.polimi.ingsw.GC_36.model.Player">
+      <point x="0.0" y="-136.0" />
+      <point x="0.0" y="323.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionSpace" target="it.polimi.ingsw.GC_36.model.ActionSpaceIds">
+      <point x="-70.75" y="-246.0" />
+      <point x="3278.7003968253966" y="2416.0" />
+      <point x="3275.081822738082" y="2416.0" />
+      <point x="-72.91666666666652" y="444.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.LeaderCard" target="java.io.Serializable">
+      <point x="119.625" y="-125.0" />
+      <point x="7172.2736370480225" y="2506.0" />
+      <point x="8384.730383904758" y="2506.0" />
+      <point x="8384.730383904758" y="101.0" />
+      <point x="6872.728805916306" y="101.0" />
+      <point x="21.09090909090901" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceListBasedOnOwnedCards" target="it.polimi.ingsw.GC_36.model.effects.PermanentEffect">
+      <point x="0.0" y="-114.0" />
+      <point x="4512.238874020133" y="1268.0" />
+      <point x="5334.492883904757" y="1268.0" />
+      <point x="-83.75" y="69.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.Tower">
+      <point x="295.42857142857156" y="-334.0" />
+      <point x="3460.635394166653" y="4452.0" />
+      <point x="7496.730383904758" y="4452.0" />
+      <point x="7496.730383904758" y="2996.0" />
+      <point x="5150.258886940772" y="2996.0" />
+      <point x="65.0" y="125.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Game" target="it.polimi.ingsw.GC_36.model.Board">
+      <point x="199.71428571428578" y="-290.0" />
+      <point x="968.3377751190342" y="5190.0" />
+      <point x="2977.2068227380814" y="5190.0" />
+      <point x="-188.0" y="334.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="it.polimi.ingsw.GC_36.model.MemberColor">
+      <point x="-374.5" y="-367.0" />
+      <point x="7571.730383904758" y="2966.0" />
+      <point x="3664.9503968253966" y="2966.0" />
+      <point x="3664.9503968253966" y="2396.0" />
+      <point x="2305.598637048022" y="2396.0" />
+      <point x="50.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DevelopmentCard" target="it.polimi.ingsw.GC_36.model.effects.PermanentEffect">
+      <point x="0.0" y="-169.0" />
+      <point x="5199.738874020133" y="1278.0" />
+      <point x="5390.32621723809" y="1278.0" />
+      <point x="-27.916666666666742" y="69.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ExtraTurn" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="131.0" y="-92.0" />
+      <point x="7856.676374020133" y="4462.0" />
+      <point x="9467.730383904758" y="4462.0" />
+      <point x="9467.730383904758" y="1368.0" />
+      <point x="8870.799007936508" y="1368.0" />
+      <point x="131.1111111111113" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.FamilyMember" target="it.polimi.ingsw.GC_36.model.Die">
+      <point x="-162.0" y="-147.0" />
+      <point x="1591.2003968253966" y="2526.0" />
+      <point x="1041.166666666666" y="2526.0" />
+      <point x="63.75" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourcesConverting" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="150.0" y="-114.0" />
+      <point x="5888.738874020133" y="1328.0" />
+      <point x="6575.606646825397" y="1328.0" />
+      <point x="-115.28125" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.MultipleEffect" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="-86.5" y="-81.0" />
+      <point x="9197.730383904758" y="1388.0" />
+      <point x="8805.243452380953" y="1388.0" />
+      <point x="65.55555555555566" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceToPrivilege" target="it.polimi.ingsw.GC_36.model.effects.PermanentEffect">
+      <point x="-126.375" y="-125.0" />
+      <point x="7667.312896825397" y="2336.0" />
+      <point x="5417.238874020133" y="2336.0" />
+      <point x="5417.238874020133" y="1268.0" />
+      <point x="5446.159550571424" y="1268.0" />
+      <point x="27.916666666666742" y="69.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionSpaceIds" target="java.lang.Enum">
+      <point x="218.75" y="-444.0" />
+      <point x="3566.7484894047484" y="1398.0" />
+      <point x="3715.4984894047484" y="1398.0" />
+      <point x="3715.4984894047484" y="509.0" />
+      <point x="1346.185897435897" y="509.0" />
+      <point x="122.76923076923094" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.BoardState">
+      <point x="-349.1428571428569" y="-334.0" />
+      <point x="2816.0639655952245" y="4452.0" />
+      <point x="801.6666666666661" y="4452.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-134.28571428571468" y="-334.0" />
+      <point x="3030.9211084523668" y="4412.0" />
+      <point x="1406.916666666666" y="4412.0" />
+      <point x="1406.916666666666" y="1358.0" />
+      <point x="3007.6378968253966" y="1358.0" />
+      <point x="-74.25" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="it.polimi.ingsw.GC_36.model.CouncilPrivilege">
+      <point x="-160.5" y="-367.0" />
+      <point x="7785.730383904758" y="2946.0" />
+      <point x="3686.9503968253966" y="2946.0" />
+      <point x="3686.9503968253966" y="2436.0" />
+      <point x="4850.238874020133" y="2436.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.PersonalBoard" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-204.4000000000001" y="-180.0" />
+      <point x="4442.858886940772" y="2386.0" />
+      <point x="2788.558886940772" y="2386.0" />
+      <point x="2788.558886940772" y="1388.0" />
+      <point x="3057.1378968253966" y="1388.0" />
+      <point x="-24.75" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ImmediateCouncilPrivilegeI" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="0.0" y="-114.0" />
+      <point x="8919.230383904758" y="1398.0" />
+      <point x="8772.465674603174" y="1398.0" />
+      <point x="32.77777777777783" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Tower" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-81.25" y="-125.0" />
+      <point x="5004.008886940772" y="2376.0" />
+      <point x="2899.9984894047484" y="2376.0" />
+      <point x="2899.9984894047484" y="1398.0" />
+      <point x="3073.6378968253966" y="1398.0" />
+      <point x="-8.25" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Round" target="it.polimi.ingsw.GC_36.model.Player">
+      <point x="155.66666666666697" y="-191.0" />
+      <point x="713.333333333333" y="3810.0" />
+      <point x="2284.53373015873" y="3810.0" />
+      <point x="-250.66666666666652" y="323.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ResourceType" target="java.lang.Enum">
+      <point x="0.0" y="-91.5" />
+      <point x="6277.387896825397" y="489.0" />
+      <point x="1407.5705128205122" y="489.0" />
+      <point x="184.1538461538462" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ResourceListBasedOnOwnedResources" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="135.0" y="-103.0" />
+      <point x="6396.238874020133" y="1378.0" />
+      <point x="8641.354563492063" y="1378.0" />
+      <point x="-98.33333333333326" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.FamilyMember" target="it.polimi.ingsw.GC_36.model.ActionSpaceIds">
+      <point x="162.0" y="-147.0" />
+      <point x="1915.2003968253966" y="2416.0" />
+      <point x="2983.415156071415" y="2416.0" />
+      <point x="-364.5833333333335" y="444.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.LeaderCard" target="it.polimi.ingsw.GC_36.model.effects.LeaderEffect">
+      <point x="39.875" y="-125.0" />
+      <point x="7092.5236370480225" y="2496.0" />
+      <point x="8221.730383904758" y="2496.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionSpace" target="it.polimi.ingsw.GC_36.model.FamilyMember">
+      <point x="-212.25" y="-246.0" />
+      <point x="3137.2003968253966" y="3790.0" />
+      <point x="1746.4126567820422" y="3790.0" />
+      <point x="1746.4126567820422" y="2996.0" />
+      <point x="1609.2003968253966" y="2996.0" />
+      <point x="-144.0" y="147.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DevelopmentCard" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-165.5999999999999" y="-169.0" />
+      <point x="5034.138874020134" y="1238.0" />
+      <point x="3156.1378968253966" y="1238.0" />
+      <point x="74.25" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.PersonalBoard" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="0.0" y="-180.0" />
+      <point x="4647.258886940772" y="2476.0" />
+      <point x="6474.238874020133" y="2476.0" />
+      <point x="6474.238874020133" y="1348.0" />
+      <point x="6641.481646825397" y="1348.0" />
+      <point x="-49.40625" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ResourceCounter" target="java.io.Serializable">
+      <point x="0.0" y="-92.0" />
+      <point x="6721.637896825397" y="111.0" />
+      <point x="6841.092442279942" y="111.0" />
+      <point x="-10.545454545454504" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Tower" target="it.polimi.ingsw.GC_36.model.Floor">
+      <point x="-65.0" y="125.0" />
+      <point x="5020.258886940772" y="2986.0" />
+      <point x="4833.552499289373" y="2986.0" />
+      <point x="51.125" y="-136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Player" target="it.polimi.ingsw.GC_36.model.PlayerColor">
+      <point x="-250.66666666666652" y="-323.0" />
+      <point x="2284.53373015873" y="2976.0" />
+      <point x="1327.416666666666" y="2976.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Deck" target="it.polimi.ingsw.GC_36.model.DevelopmentCard">
+      <point x="63.5" y="-81.0" />
+      <point x="2179.7003968253966" y="2446.0" />
+      <point x="5061.738874020133" y="2446.0" />
+      <point x="-138.0" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.BoardState" target="java.lang.Enum">
+      <point x="0.0" y="-47.5" />
+      <point x="801.6666666666661" y="519.0" />
+      <point x="1131.3397435897432" y="519.0" />
+      <point x="-92.07692307692287" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="java.rmi.server.UnicastRemoteObject">
+      <point x="374.5" y="-367.0" />
+      <point x="8320.730383904758" y="3006.0" />
+      <point x="9973.187896825397" y="3006.0" />
+      <point x="0.0" y="147.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ImmediateResourcesListI" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="-82.75" y="-81.0" />
+      <point x="8477.980383904758" y="1298.0" />
+      <point x="6937.919146825397" y="1298.0" />
+      <point x="247.03125" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionSpaceIds" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-218.75" y="-444.0" />
+      <point x="3129.2484894047484" y="1398.0" />
+      <point x="3090.1378968253966" y="1398.0" />
+      <point x="8.25" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionInterface" target="java.io.Serializable">
+      <point x="-157.0" y="-212.5" />
+      <point x="9324.687896825397" y="768.0" />
+      <point x="9464.687896825397" y="768.0" />
+      <point x="9464.687896825397" y="81.0" />
+      <point x="6893.819715007215" y="81.0" />
+      <point x="42.18181818181802" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceListBasedOnOwnedCards" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="130.33333333333348" y="-114.0" />
+      <point x="4642.572207353467" y="1298.0" />
+      <point x="6476.794146825397" y="1298.0" />
+      <point x="-214.09375" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.LeaderEffect" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="76.25" y="-81.0" />
+      <point x="8297.980383904758" y="1388.0" />
+      <point x="8674.13234126984" y="1388.0" />
+      <point x="-65.55555555555566" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect" target="java.io.Serializable">
+      <point x="0.0" y="-47.5" />
+      <point x="8739.687896825397" y="91.0" />
+      <point x="6883.27426046176" y="91.0" />
+      <point x="31.636363636363512" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ResourcesList" target="java.io.Serializable">
+      <point x="197.625" y="-136.0" />
+      <point x="6888.512896825397" y="768.0" />
+      <point x="6851.637896825397" y="768.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ImmediateCouncilPrivilegeP" target="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ImmediateCouncilPrivilegeI">
+      <point x="137.66666666666663" y="-125.0" />
+      <point x="9099.897050571424" y="2536.0" />
+      <point x="9048.230383904758" y="2536.0" />
+      <point x="129.0" y="114.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ExtraAction" target="it.polimi.ingsw.GC_36.model.ActionSpaceIds">
+      <point x="-123.66666666666652" y="-70.0" />
+      <point x="7760.730383904758" y="3790.0" />
+      <point x="3653.9503968253966" y="3790.0" />
+      <point x="3653.9503968253966" y="2406.0" />
+      <point x="3566.7484894047484" y="2406.0" />
+      <point x="218.75" y="444.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Round" target="it.polimi.ingsw.GC_36.model.RoundState">
+      <point x="-155.66666666666697" y="-191.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Floor" target="it.polimi.ingsw.GC_36.model.DevelopmentCard">
+      <point x="-153.375" y="-136.0" />
+      <point x="4629.052499289373" y="2986.0" />
+      <point x="3876.0128968253966" y="2986.0" />
+      <point x="3876.0128968253966" y="2456.0" />
+      <point x="5199.738874020133" y="2456.0" />
+      <point x="0.0" y="169.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.Comparable">
+      <point x="-99.75" y="-169.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.PlayerIdentifier" target="java.io.Serializable">
+      <point x="0.0" y="-70.0" />
+      <point x="2820.7003968253966" y="2426.0" />
+      <point x="3879.238874020133" y="2426.0" />
+      <point x="3879.238874020133" y="81.0" />
+      <point x="6809.456078643579" y="81.0" />
+      <point x="-42.18181818181802" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Game" target="it.polimi.ingsw.GC_36.model.GameState">
+      <point x="-299.57142857142844" y="-290.0" />
+      <point x="469.05206083331996" y="5200.0" />
+      <point x="79.0" y="5200.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.PersonalBoard" target="it.polimi.ingsw.GC_36.model.BonusTile">
+      <point x="204.4000000000001" y="-180.0" />
+      <point x="4851.658886940772" y="2496.0" />
+      <point x="6693.738874020133" y="2496.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ResourcesList" target="it.polimi.ingsw.GC_36.model.ResourceCounter">
+      <point x="65.875" y="-136.0" />
+      <point x="6756.762896825397" y="768.0" />
+      <point x="6781.387896825397" y="768.0" />
+      <point x="59.75" y="92.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="it.polimi.ingsw.GC_36.model.LeaderCard">
+      <point x="-53.5" y="-367.0" />
+      <point x="7892.730383904758" y="2936.0" />
+      <point x="7132.3986370480225" y="2936.0" />
+      <point x="79.75" y="125.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ExtraTurn" target="it.polimi.ingsw.GC_36.model.ActionSpaceIds">
+      <point x="-131.0" y="-92.0" />
+      <point x="7594.676374020133" y="4432.0" />
+      <point x="3642.9503968253966" y="4432.0" />
+      <point x="3642.9503968253966" y="2416.0" />
+      <point x="3420.915156071415" y="2416.0" />
+      <point x="72.91666666666652" y="444.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ResourceListBasedOnOwnedCardsI" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="130.33333333333348" y="-70.0" />
+      <point x="6080.447207353467" y="2516.0" />
+      <point x="8736.730383904758" y="2516.0" />
+      <point x="8736.730383904758" y="1398.0" />
+      <point x="8739.687896825397" y="1398.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ResourcesList" target="it.polimi.ingsw.GC_36.model.ResourceType">
+      <point x="-197.625" y="-136.0" />
+      <point x="6493.262896825397" y="768.0" />
+      <point x="6327.137896825397" y="768.0" />
+      <point x="49.75" y="91.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.FamilyMember" target="it.polimi.ingsw.GC_36.model.PlayerColor">
+      <point x="-54.0" y="-147.0" />
+      <point x="1699.2003968253966" y="2516.0" />
+      <point x="1373.416666666666" y="2516.0" />
+      <point x="46.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Player" target="it.polimi.ingsw.GC_36.model.PlayerState">
+      <point x="-334.2222222222222" y="-323.0" />
+      <point x="2200.9781746031745" y="2986.0" />
+      <point x="1223.416666666666" y="2986.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.CouncilPrivilege" target="java.lang.Enum">
+      <point x="-61.25" y="-92.0" />
+      <point x="4787.992883904757" y="499.0" />
+      <point x="1376.8782051282046" y="499.0" />
+      <point x="153.46153846153857" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.PersonalBoard" target="it.polimi.ingsw.GC_36.model.DevelopmentCard">
+      <point x="-102.19999999999982" y="-180.0" />
+      <point x="4545.058886940773" y="2466.0" />
+      <point x="5337.738874020133" y="2466.0" />
+      <point x="138.0" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.DeckSet">
+      <point x="-80.57142857142844" y="-334.0" />
+      <point x="3084.635394166653" y="4402.0" />
+      <point x="1801.6269424963275" y="4402.0" />
+      <point x="1801.6269424963275" y="3800.0" />
+      <point x="1715.1626567820422" y="3800.0" />
+      <point x="62.25" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ExtraTurn" target="it.polimi.ingsw.GC_36.model.ExtraAction">
+      <point x="0.0" y="-92.0" />
+      <point x="7725.676374020133" y="4452.0" />
+      <point x="7884.397050571424" y="4452.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="it.polimi.ingsw.GC_36.model.ActionSpaceIds">
+      <point x="-267.5" y="-367.0" />
+      <point x="7678.730383904758" y="2956.0" />
+      <point x="3675.9503968253966" y="2956.0" />
+      <point x="3675.9503968253966" y="2416.0" />
+      <point x="3712.5818227380814" y="2416.0" />
+      <point x="364.58333333333303" y="444.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.LeaderCard" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-119.625" y="-125.0" />
+      <point x="6933.0236370480225" y="2346.0" />
+      <point x="3795.9984894047484" y="2346.0" />
+      <point x="3795.9984894047484" y="1388.0" />
+      <point x="3106.6378968253966" y="1388.0" />
+      <point x="24.75" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.PlayerState" target="java.lang.Enum">
+      <point x="0.0" y="-58.5" />
+      <point x="0.0" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Player" target="it.polimi.ingsw.GC_36.model.FamilyMember">
+      <point x="-83.55555555555566" y="-323.0" />
+      <point x="2451.644841269841" y="2956.0" />
+      <point x="1897.2003968253966" y="2956.0" />
+      <point x="144.0" y="147.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionSpace" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="212.25" y="-246.0" />
+      <point x="3561.7003968253966" y="3810.0" />
+      <point x="7485.730383904758" y="3810.0" />
+      <point x="7485.730383904758" y="1338.0" />
+      <point x="6806.169146825397" y="1338.0" />
+      <point x="115.28125" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.PlayerColor" target="java.lang.Enum">
+      <point x="0.0" y="-58.5" />
+      <point x="1327.416666666666" y="539.0" />
+      <point x="1254.1089743589737" y="539.0" />
+      <point x="30.692307692307622" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Period" target="it.polimi.ingsw.GC_36.model.Round">
+      <point x="0.0" y="-169.0" />
+      <point x="795.0793234487082" y="4462.0" />
+      <point x="674.4166666666661" y="4462.0" />
+      <point x="116.75" y="191.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.LeaderCard" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="-39.875" y="-125.0" />
+      <point x="7012.7736370480225" y="2486.0" />
+      <point x="7275.855383904758" y="2486.0" />
+      <point x="7275.855383904758" y="1348.0" />
+      <point x="6773.231646825397" y="1348.0" />
+      <point x="82.34375" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.GameMode" target="java.lang.Enum">
+      <point x="0.0" y="-36.5" />
+      <point x="240.5" y="499.0" />
+      <point x="1069.9551282051275" y="499.0" />
+      <point x="-153.46153846153857" y="169.0" />
+    </edge>
+    <edge source="java.rmi.server.RemoteObject" target="java.rmi.Remote">
+      <point x="-78.75" y="-114.0" />
+      <point x="9894.437896825397" y="768.0" />
+      <point x="9839.883886940774" y="768.0" />
+      <point x="23.5" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ImmediateResourcesListP" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="135.66666666666674" y="-114.0" />
+      <point x="4228.9055406868" y="1288.0" />
+      <point x="6443.856646825397" y="1288.0" />
+      <point x="-247.03125" y="136.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.io.Serializable">
+      <point x="99.75" y="-169.0" />
+      <point x="1323.166666666666" y="71.0" />
+      <point x="6798.910624098124" y="71.0" />
+      <point x="-52.72727272727252" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.ActionSpaceIds">
+      <point x="134.28571428571468" y="-334.0" />
+      <point x="3299.492537023796" y="4362.0" />
+      <point x="3055.9503968253966" y="4362.0" />
+      <point x="3055.9503968253966" y="2416.0" />
+      <point x="3129.2484894047484" y="2416.0" />
+      <point x="-218.75" y="444.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.DeckSet" target="it.polimi.ingsw.GC_36.model.CardType">
+      <point x="-41.5" y="-48.0" />
+      <point x="1611.4126567820422" y="3006.0" />
+      <point x="1438.416666666666" y="3006.0" />
+      <point x="1438.416666666666" y="1368.0" />
+      <point x="3024.1378968253966" y="1368.0" />
+      <point x="-57.75" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Period" target="it.polimi.ingsw.GC_36.model.DeckSet">
+      <point x="144.33333333333303" y="-169.0" />
+      <point x="939.4126567820413" y="4462.0" />
+      <point x="1632.1626567820422" y="4462.0" />
+      <point x="-20.75" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.MemberColor" target="java.lang.Enum">
+      <point x="0.0" y="-58.5" />
+      <point x="2255.598637048022" y="1348.0" />
+      <point x="2253.7003968253966" y="1348.0" />
+      <point x="2253.7003968253966" y="529.0" />
+      <point x="1284.8012820512813" y="529.0" />
+      <point x="61.384615384615245" y="169.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.CouncilPrivilege" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="61.25" y="-92.0" />
+      <point x="4911.488874020133" y="1308.0" />
+      <point x="6509.731646825397" y="1308.0" />
+      <point x="-181.15625" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ImmediateResourcesListI" target="it.polimi.ingsw.GC_36.model.effects.ImmediateEffect">
+      <point x="82.75" y="-81.0" />
+      <point x="8643.480383904758" y="1398.0" />
+      <point x="8706.91011904762" y="1398.0" />
+      <point x="-32.77777777777783" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ResourceListBasedOnOwnedResources" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="0.0" y="-103.0" />
+      <point x="6261.238874020133" y="1338.0" />
+      <point x="6608.544146825397" y="1338.0" />
+      <point x="-82.34375" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.TurnOrder">
+      <point x="26.857142857143117" y="-334.0" />
+      <point x="3192.0639655952245" y="4382.0" />
+      <point x="2646.2003968253966" y="4382.0" />
+      <point x="111.0" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Player" target="it.polimi.ingsw.GC_36.model.PlayerIdentifier">
+      <point x="167.1111111111113" y="-323.0" />
+      <point x="2702.311507936508" y="2986.0" />
+      <point x="2880.7003968253966" y="2986.0" />
+      <point x="60.0" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Game" target="it.polimi.ingsw.GC_36.model.DeckSet">
+      <point x="99.85714285714312" y="-290.0" />
+      <point x="868.4806322618915" y="5180.0" />
+      <point x="1643.1626567820422" y="5180.0" />
+      <point x="1643.1626567820422" y="3800.0" />
+      <point x="1673.6626567820422" y="3800.0" />
+      <point x="20.75" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="160.5" y="-367.0" />
+      <point x="8106.730383904758" y="3006.0" />
+      <point x="8058.730383904758" y="3006.0" />
+      <point x="8058.730383904758" y="1308.0" />
+      <point x="6904.981646825397" y="1308.0" />
+      <point x="214.09375" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ExtraAction" target="it.polimi.ingsw.GC_36.model.Action">
+      <point x="0.0" y="-70.0" />
+      <point x="7884.397050571424" y="3780.0" />
+      <point x="7732.230383904758" y="3780.0" />
+      <point x="-214.0" y="367.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ResourceListBasedOnOwnedResources" target="it.polimi.ingsw.GC_36.model.ResourceType">
+      <point x="-135.0" y="-103.0" />
+      <point x="6126.238874020133" y="1278.0" />
+      <point x="6227.637896825397" y="1278.0" />
+      <point x="-49.75" y="91.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.BonusTile" target="it.polimi.ingsw.GC_36.model.ResourcesList">
+      <point x="0.0" y="-103.0" />
+      <point x="6693.738874020133" y="1358.0" />
+      <point x="6707.356646825397" y="1358.0" />
+      <point x="16.46875" y="136.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.permanentEffects.ResourceToPrivilege" target="it.polimi.ingsw.GC_36.model.effects.immediateEffects.ImmediateCouncilPrivilegeI">
+      <point x="42.125" y="-125.0" />
+      <point x="7835.812896825397" y="2526.0" />
+      <point x="8790.230383904758" y="2526.0" />
+      <point x="-129.0" y="114.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.PlayerColor">
+      <point x="-188.0" y="-334.0" />
+      <point x="2977.2068227380814" y="4422.0" />
+      <point x="1275.416666666666" y="4422.0" />
+      <point x="1275.416666666666" y="2536.0" />
+      <point x="1281.416666666666" y="2536.0" />
+      <point x="-46.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.effects.PermanentEffect" target="java.io.Serializable">
+      <point x="0.0" y="-69.5" />
+      <point x="5418.242883904757" y="101.0" />
+      <point x="6830.546987734488" y="101.0" />
+      <point x="-21.09090909090901" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Die" target="it.polimi.ingsw.GC_36.model.DieColor">
+      <point x="0.0" y="-70.0" />
+      <point x="977.4166666666661" y="1398.0" />
+      <point x="937.9166666666661" y="1398.0" />
+      <point x="29.5" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.ActionInterface" target="java.rmi.Remote">
+      <point x="157.0" y="-212.5" />
+      <point x="9638.687896825397" y="768.0" />
+      <point x="9792.883886940774" y="768.0" />
+      <point x="-23.5" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Board" target="it.polimi.ingsw.GC_36.model.DieColor">
+      <point x="-295.42857142857156" y="-334.0" />
+      <point x="2869.77825130951" y="4442.0" />
+      <point x="839.4166666666661" y="4442.0" />
+      <point x="839.4166666666661" y="1398.0" />
+      <point x="878.9166666666661" y="1398.0" />
+      <point x="-29.5" y="47.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Game" target="it.polimi.ingsw.GC_36.model.GameMode">
+      <point x="-199.71428571428578" y="-290.0" />
+      <point x="568.9092036904626" y="5190.0" />
+      <point x="240.5" y="5190.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.CouncilActionSpace" target="it.polimi.ingsw.GC_36.model.ActionSpace">
+      <point x="0.0" y="-25.5" />
+      <point x="4024.7901560714145" y="4442.0" />
+      <point x="3538.1170634920627" y="4442.0" />
+      <point x="188.66666666666652" y="246.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.1" x="4837.0" y="3572.0" />
+  <SelectedNodes>
+    <node>it.polimi.ingsw.GC_36.model.Game</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.GC_36.server.UserIncubator</OriginalElement>
+  <nodes>
+    <node x="344.0" y="97.0">it.polimi.ingsw.GC_36.server.UserIncubator</node>
+    <node x="-21.0" y="108.0">it.polimi.ingsw.GC_36.server.Server</node>
+    <node x="2361.0" y="141.0">it.polimi.ingsw.GC_36.server.GameInitializer</node>
+    <node x="1730.5" y="750.0">it.polimi.ingsw.GC_36.model.Game</node>
+    <node x="899.8349282296651" y="1132.2084757347916">it.polimi.ingsw.GC_36.controller.Scorer</node>
+    <node x="2867.0" y="454.5">it.polimi.ingsw.GC_36.observers.NewRoundObserver</node>
+    <node x="2480.5" y="355.0">it.polimi.ingsw.GC_36.controller.GameExecutor</node>
+    <node x="1186.5" y="322.0">it.polimi.ingsw.GC_36.controller.GameSetupper</node>
+    <node x="2546.5" y="1014.5">it.polimi.ingsw.GC_36.observers.NewPeriodObserver</node>
+    <node x="602.0" y="-25.5">it.polimi.ingsw.GC_36.server.UserIncubatorInterface</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.GC_36.server.Server" target="it.polimi.ingsw.GC_36.server.UserIncubator">
+      <point x="141.0" y="0.0" />
+      <point x="-376.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.UserIncubator" target="it.polimi.ingsw.GC_36.server.UserIncubatorInterface">
+      <point x="0.0" y="-103.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.controller.GameExecutor" target="it.polimi.ingsw.GC_36.observers.NewPeriodObserver">
+      <point x="0.0" y="125.0" />
+      <point x="0.0" y="-25.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.controller.GameExecutor" target="it.polimi.ingsw.GC_36.controller.GameSetupper">
+      <point x="-159.5" y="0.0" />
+      <point x="213.5" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.UserIncubator" target="it.polimi.ingsw.GC_36.server.GameInitializer">
+      <point x="376.0" y="0.0" />
+      <point x="-279.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Game" target="it.polimi.ingsw.GC_36.observers.NewPeriodObserver">
+      <point x="349.5" y="0.0" />
+      <point x="-93.5" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.controller.GameExecutor" target="it.polimi.ingsw.GC_36.observers.NewRoundObserver">
+      <point x="159.5" y="0.0" />
+      <point x="-93.0" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.controller.GameExecutor" target="it.polimi.ingsw.GC_36.model.Game">
+      <point x="-159.5" y="40.0" />
+      <point x="1680.0" y="520.0" />
+      <point x="1680.0" y="1040.0" />
+      <point x="-349.5" y="0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.GameInitializer" target="it.polimi.ingsw.GC_36.controller.GameExecutor">
+      <point x="0.0" y="59.0" />
+      <point x="0.0" y="-125.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.24102141680395386" x="1642.9951690821258" y="760.5000000000002" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

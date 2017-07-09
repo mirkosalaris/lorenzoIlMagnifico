@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.GC_36.server.ParticipantRMI</OriginalElement>
+  <nodes>
+    <node x="1472.013888888889" y="112.5">it.polimi.ingsw.GC_36.server.Participant</node>
+    <node x="0.0" y="1119.0">it.polimi.ingsw.GC_36.client.User</node>
+    <node x="775.3055555555557" y="0.0">java.rmi.Remote</node>
+    <node x="1670.763888888889" y="0.0">it.polimi.ingsw.GC_36.observers.ModelObserver</node>
+    <node x="1147.3333333333335" y="423.0">it.polimi.ingsw.GC_36.server.ParticipantSOC</node>
+    <node x="895.3333333333335" y="687.5">it.polimi.ingsw.GC_36.client.UserInterface</node>
+    <node x="275.5000000000001" y="79.0">java.rmi.server.UnicastRemoteObject</node>
+    <node x="1174.75" y="1328.0">it.polimi.ingsw.GC_36.server.ParticipantRMI</node>
+    <node x="388.5000000000001" y="2189.0">it.polimi.ingsw.GC_36.client.CommunicatorSocket</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.GC_36.client.User" target="it.polimi.ingsw.GC_36.client.UserInterface">
+      <point x="265.25" y="-510.0" />
+      <point x="795.75" y="1094.0" />
+      <point x="953.3333333333335" y="1094.0" />
+      <point x="-58.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.Participant" target="java.rmi.Remote">
+      <point x="-89.75" y="-113.5" />
+      <point x="1561.763888888889" y="49.0" />
+      <point x="853.6388888888889" y="49.0" />
+      <point x="31.333333333333258" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.ParticipantRMI" target="it.polimi.ingsw.GC_36.client.UserInterface">
+      <point x="-169.25" y="-301.0" />
+      <point x="1344.0" y="1094.0" />
+      <point x="1069.3333333333335" y="1094.0" />
+      <point x="58.0" y="58.5" />
+    </edge>
+    <edge source="java.rmi.server.UnicastRemoteObject" target="java.rmi.Remote">
+      <point x="0.0" y="-147.0" />
+      <point x="442.0000000000001" y="59.0" />
+      <point x="790.9722222222224" y="59.0" />
+      <point x="-31.333333333333258" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.ParticipantSOC" target="it.polimi.ingsw.GC_36.server.Participant">
+      <point x="0.0" y="-323.0" />
+      <point x="1535.3333333333335" y="403.0" />
+      <point x="1651.513888888889" y="403.0" />
+      <point x="0.0" y="113.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.User" target="java.rmi.server.UnicastRemoteObject">
+      <point x="-265.25" y="-510.0" />
+      <point x="265.25" y="1094.0" />
+      <point x="442.0000000000001" y="1094.0" />
+      <point x="0.0" y="147.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.ParticipantRMI" target="it.polimi.ingsw.GC_36.server.Participant">
+      <point x="169.25" y="-301.0" />
+      <point x="1682.5" y="1094.0" />
+      <point x="1933.8333333333335" y="1094.0" />
+      <point x="1933.8333333333335" y="403.0" />
+      <point x="1771.1805555555557" y="403.0" />
+      <point x="119.66666666666674" y="113.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.UserInterface" target="java.rmi.Remote">
+      <point x="-58.0" y="-58.5" />
+      <point x="953.3333333333335" y="59.0" />
+      <point x="822.3055555555557" y="59.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.UserInterface" target="it.polimi.ingsw.GC_36.server.Participant">
+      <point x="58.0" y="-58.5" />
+      <point x="1069.3333333333335" y="393.0" />
+      <point x="1531.8472222222222" y="393.0" />
+      <point x="-119.66666666666674" y="113.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.CommunicatorSocket" target="it.polimi.ingsw.GC_36.client.User">
+      <point x="0.0" y="-114.0" />
+      <point x="0.0" y="510.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.server.Participant" target="it.polimi.ingsw.GC_36.observers.ModelObserver">
+      <point x="89.75" y="-113.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.40000000000000013" x="822.9999999999995" y="860.9999999999998" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

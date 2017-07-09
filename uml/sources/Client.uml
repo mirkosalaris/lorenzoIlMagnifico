@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.GC_36.client.Communicator</OriginalElement>
+  <nodes>
+    <node x="4780.5" y="-33.5">it.polimi.ingsw.GC_36.server.Participant</node>
+    <node x="2167.0" y="3115.5">it.polimi.ingsw.GC_36.client.view.ViewInterface</node>
+    <node x="3136.0" y="538.0">it.polimi.ingsw.GC_36.client.view.ViewCLI</node>
+    <node x="4117.0" y="901.0">it.polimi.ingsw.GC_36.client.ViewStarter</node>
+    <node x="4844.0" y="261.5">it.polimi.ingsw.GC_36.client.UserInterface</node>
+    <node x="60.5" y="1141.0">it.polimi.ingsw.GC_36.client.view.BoardController</node>
+    <node x="2291.5" y="272.0">it.polimi.ingsw.GC_36.client.CommunicatorRMI</node>
+    <node x="4059.0" y="432.0">it.polimi.ingsw.GC_36.client.Main</node>
+    <node x="4429.5" y="3450.0">it.polimi.ingsw.GC_36.client.User</node>
+    <node x="2222.0" y="835.0">it.polimi.ingsw.GC_36.client.view.SetupController</node>
+    <node x="2834.0" y="443.5">it.polimi.ingsw.GC_36.client.Communicator</node>
+    <node x="2778.0" y="846.0">it.polimi.ingsw.GC_36.client.CommunicatorSocket</node>
+    <node x="1944.5" y="1647.0">it.polimi.ingsw.GC_36.client.view.ViewGUI</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.GC_36.client.User" target="it.polimi.ingsw.GC_36.client.UserInterface">
+      <point x="0.0" y="-510.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.SetupController" target="it.polimi.ingsw.GC_36.client.CommunicatorRMI">
+      <point x="0.0" y="-125.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.User" target="it.polimi.ingsw.GC_36.client.view.ViewInterface">
+      <point x="-530.5" y="-0.0" />
+      <point x="2400.0" y="3960.0" />
+      <point x="0.0" y="124.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.ViewCLI" target="it.polimi.ingsw.GC_36.client.CommunicatorRMI">
+      <point x="0.0" y="-422.0" />
+      <point x="3560.0" y="360.0" />
+      <point x="108.5" y="40.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.ViewCLI" target="it.polimi.ingsw.GC_36.client.CommunicatorSocket">
+      <point x="-424.0" y="-0.0" />
+      <point x="142.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.Main" target="it.polimi.ingsw.GC_36.client.User">
+      <point x="141.0" y="-0.0" />
+      <point x="4920.0" y="480.0" />
+      <point x="-40.0" y="-510.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.ViewInterface" target="it.polimi.ingsw.GC_36.server.Participant">
+      <point x="-233.0" y="-0.0" />
+      <point x="0.0" y="3240.0" />
+      <point x="0.0" y="80.0" />
+      <point x="-179.5" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.ViewCLI" target="it.polimi.ingsw.GC_36.client.view.ViewInterface">
+      <point x="0.0" y="422.0" />
+      <point x="3560.0" y="3240.0" />
+      <point x="233.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.ViewGUI" target="it.polimi.ingsw.GC_36.client.view.ViewInterface">
+      <point x="0.0" y="433.0" />
+      <point x="0.0" y="-124.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.ViewGUI" target="it.polimi.ingsw.GC_36.client.view.BoardController">
+      <point x="-455.5" y="-0.0" />
+      <point x="899.5" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.ViewStarter" target="it.polimi.ingsw.GC_36.client.view.ViewCLI">
+      <point x="-83.0" y="-0.0" />
+      <point x="424.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.CommunicatorSocket" target="it.polimi.ingsw.GC_36.client.User">
+      <point x="0.0" y="114.0" />
+      <point x="2920.0" y="3920.0" />
+      <point x="-530.5" y="-40.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.UserInterface" target="it.polimi.ingsw.GC_36.server.Participant">
+      <point x="0.0" y="-58.5" />
+      <point x="0.0" y="113.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.SetupController" target="it.polimi.ingsw.GC_36.client.view.BoardController">
+      <point x="-178.0" y="-0.0" />
+      <point x="960.0" y="960.0" />
+      <point x="0.0" y="-939.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.Main" target="it.polimi.ingsw.GC_36.client.Communicator">
+      <point x="-141.0" y="-0.0" />
+      <point x="86.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.CommunicatorSocket" target="it.polimi.ingsw.GC_36.client.Communicator">
+      <point x="0.0" y="-114.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.ViewGUI" target="it.polimi.ingsw.GC_36.client.view.SetupController">
+      <point x="0.0" y="-433.0" />
+      <point x="0.0" y="125.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.CommunicatorRMI" target="it.polimi.ingsw.GC_36.client.Communicator">
+      <point x="40.0" y="48.0" />
+      <point x="2440.0" y="480.0" />
+      <point x="-86.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.BoardController" target="it.polimi.ingsw.GC_36.client.view.ViewInterface">
+      <point x="0.0" y="939.0" />
+      <point x="960.0" y="3200.0" />
+      <point x="-233.0" y="-40.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.CommunicatorRMI" target="it.polimi.ingsw.GC_36.client.UserInterface">
+      <point x="108.5" y="-0.0" />
+      <point x="-116.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.view.SetupController" target="it.polimi.ingsw.GC_36.client.CommunicatorSocket">
+      <point x="178.0" y="-0.0" />
+      <point x="-142.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.Main" target="it.polimi.ingsw.GC_36.client.ViewStarter">
+      <point x="0.0" y="48.0" />
+      <point x="0.0" y="-59.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.1" x="3506.0" y="1545.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.polimi.ingsw.GC_36.client.User</OriginalElement>
+  <nodes>
+    <node x="1907.0" y="268.0">it.polimi.ingsw.GC_36.controller.Checker</node>
+    <node x="2258.0" y="268.0">it.polimi.ingsw.GC_36.controller.ActionExecutor</node>
+    <node x="1369.5" y="425.5">it.polimi.ingsw.GC_36.observers.ModelObserver</node>
+    <node x="342.0" y="1025.5">java.io.Serializable</node>
+    <node x="909.5" y="530.0">it.polimi.ingsw.GC_36.client.User</node>
+    <node x="-28.0" y="-7.0">it.polimi.ingsw.GC_36.model.Action</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.GC_36.client.User" target="it.polimi.ingsw.GC_36.observers.ModelObserver">
+      <point x="0.0" y="-510.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.controller.ActionExecutor" target="it.polimi.ingsw.GC_36.controller.Checker">
+      <point x="0.0" y="92.0" />
+      <point x="2400.0" y="520.0" />
+      <point x="2040.0" y="520.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.controller.Checker" target="it.polimi.ingsw.GC_36.model.Action">
+      <point x="-133.0" y="-0.0" />
+      <point x="428.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.client.User" target="java.io.Serializable">
+      <point x="-530.5" y="-0.0" />
+      <point x="58.0" y="-0.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.GC_36.model.Action" target="java.io.Serializable">
+      <point x="0.0" y="367.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.2619607843137255" x="1726.874251497006" y="1125.0" />
+  <SelectedNodes>
+    <node>it.polimi.ingsw.GC_36.controller.ActionExecutor</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
