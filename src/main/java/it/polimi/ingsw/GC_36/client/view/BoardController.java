@@ -169,7 +169,8 @@ public class BoardController implements ViewInterface {
 				labelStonePoints.setText(
 						"" + resourcesList.get(ResourceType.STONE).getValue());
 				labelServantPoints.setText(
-						"" + resourcesList.get(ResourceType.STONE).getValue());
+						"" + resourcesList.get(
+								ResourceType.SERVANT).getValue());
 				labelCoinsPoints.setText(
 						"" + resourcesList.get(ResourceType.COINS).getValue());
 				labelVictoryPoints.setText(

@@ -141,8 +141,9 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
-	public void update(BoardState currentState) {
+	public void update(BoardState currentState) throws IOException {
 		boardCtrl.show(currentState.toString());
+		boardCtrl.update(currentState);
 	}
 
 	@Override

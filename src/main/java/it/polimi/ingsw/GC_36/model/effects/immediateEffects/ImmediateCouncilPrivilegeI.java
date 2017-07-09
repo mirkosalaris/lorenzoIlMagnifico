@@ -64,7 +64,7 @@ public class ImmediateCouncilPrivilegeI extends ImmediateEffect {
 		do {
 			int choice = view.choosePrivilege(i + 1);
 			if (isValid(choice)
-					|| (mustDiffer && !choices.contains(choice))) {
+					&& !(mustDiffer && choices.contains(choice))) {
 				choices.add(choice);
 				i++;
 			}

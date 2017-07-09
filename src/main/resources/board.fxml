@@ -7,7 +7,7 @@
 <?import java.net.URL?>
 <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0"
-            prefWidth="910.0" xmlns="http://javafx.com/javafx/8"
+            prefWidth="910.0" xmlns="http://javafx.com/javafx/8.0.112"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="it.polimi.ingsw.GC_36.client.view.BoardController">
     <stylesheets>
@@ -40,6 +40,212 @@
                 <Image url="@images/personalBoard.jpg"/>
             </image>
         </ImageView>
+
+        <AnchorPane fx:id="servantsAnchor" layoutX="469.0" layoutY="452.0"
+                    prefHeight="209.0" prefWidth="387.0" visible="false">
+            <children>
+                <Button fx:id="plus" layoutX="96.0" layoutY="61.0"
+                        mnemonicParsing="false" onAction="#servantsButtonClick"
+                        prefHeight="50.0" prefWidth="50.0" text="+"/>
+                <Button fx:id="minus" layoutX="33.0" layoutY="61.0"
+                        mnemonicParsing="false" onAction="#servantsButtonClick"
+                        prefHeight="50.0" prefWidth="50.0" text="-"/>
+                <Button fx:id="done" layoutX="179.0" layoutY="140.0"
+                        mnemonicParsing="false" onAction="#servantsButtonClick"
+                        prefHeight="36.0" prefWidth="143.0" text="Done">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="servants" layoutX="33.0" layoutY="23.0"
+                       prefHeight="16.0" prefWidth="154.0" text="servants:">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="optionsAnchor" layoutX="460.0" layoutY="450.0"
+                    prefHeight="225.0" prefWidth="437.0" visible="false">
+
+        </AnchorPane>
+
+        <AnchorPane fx:id="privilegeAnchor" layoutX="470.0" layoutY="450.0"
+                    prefHeight="225.0" prefWidth="326.0" visible="false">
+            <children>
+                <Button fx:id="STONE_WOOD" layoutX="26.0" layoutY="120.0"
+                        mnemonicParsing="false"
+                        onAction="#privilegeButtonClick"
+                        text="1 Stone &amp; 1 Wood" prefWidth="150.0">
+                </Button>
+                <Button fx:id="SERVANTS" layoutX="26.0" layoutY="85.0"
+                        mnemonicParsing="false"
+                        onAction="#privilegeButtonClick" text="2 Servants"
+                        prefWidth="150.0">
+                </Button>
+                <Button fx:id="COINS" layoutX="26.0" layoutY="50.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="2 Coins" prefWidth="150.0">
+                </Button>
+                <Button fx:id="MILITARY" layoutX="26.0" layoutY="190.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="2 Military Points" prefWidth="150.0">
+                </Button>
+                <Button fx:id="FAITH" layoutX="26.0" layoutY="155.0"
+                        mnemonicParsing="false" onAction="#privilegeButtonClick"
+                        text="1 Faith Points" prefWidth="150.0">
+                </Button>
+                <Label fx:id="privilege" layoutX="26.0" layoutY="22.0"
+                       prefHeight="16.0" prefWidth="400.0" text="privilege">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0"/>
+                    </font>
+                </Label>
+            </children>
+
+        </AnchorPane>
+
+        <Label fx:id="CURRENT" layoutX="450.0" layoutY="410.0"
+               textFill="#000000">
+            <font>
+                <Font name="System Bold Italic" size="13.0"/>
+            </font>
+        </Label>
+
+        <Label fx:id="playerColor" layoutX="450.0" layoutY="383.0"
+               prefHeight="30.0" prefWidth="170.0" text="Your color is: "
+               AnchorPane.topAnchor="383.0">
+            <font>
+                <Font name="System Bold Italic" size="13.0"/>
+            </font>
+        </Label>
+
+        <ImageView fitHeight="7.0" fitWidth="461.0" layoutX="449.0"
+                   layoutY="372.0" pickOnBounds="true">
+            <image>
+                <Image url="@images/divide.png"/>
+            </image>
+        </ImageView>
+
+        <ImageView fx:id="fm1" fitHeight="30.0" layoutX="75.0" layoutY="348.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm2" fitHeight="30.0" layoutX="76.0" layoutY="246.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+
+        </ImageView>
+        <ImageView fx:id="fm3" fitHeight="30.0" layoutX="77.0" layoutY="148.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+
+        </ImageView>
+        <ImageView fx:id="fm4" fitHeight="30.0" layoutX="78.0" layoutY="43.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm8" fitHeight="30.0" layoutX="184.0" layoutY="46.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm12" fitHeight="30.0" layoutX="292.0" layoutY="47.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm16" fitHeight="30.0" layoutX="397.0" layoutY="44.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm04" fitHeight="30.0" layoutX="339.0" layoutY="426.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm03" fitHeight="30.0" layoutX="311.0" layoutY="429.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm02" fitHeight="30.0" layoutX="277.0" layoutY="430.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm01" fitHeight="30.0" layoutX="242.0" layoutY="431.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm24" fitHeight="30.0" layoutX="413.0" layoutY="627.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm23" fitHeight="30.0" layoutX="376.0" layoutY="588.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm22" fitHeight="30.0" layoutX="329.0" layoutY="576.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm21" fitHeight="30.0" layoutX="276.0" layoutY="576.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm17" fitHeight="30.0" layoutX="13.0" layoutY="653.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm19" fitHeight="30.0" layoutX="13.0" layoutY="587.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm181" fitHeight="30.0" layoutX="78.0" layoutY="653.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm203" fitHeight="30.0" layoutX="133.0"
+                   layoutY="588.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm182" fitHeight="30.0" layoutX="107.0"
+                   layoutY="653.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm201" fitHeight="30.0" layoutX="81.0" layoutY="586.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm183" fitHeight="30.0" layoutX="135.0"
+                   layoutY="656.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm202" fitHeight="30.0" layoutX="105.0"
+                   layoutY="585.0" pickOnBounds="true" preserveRatio="true"
+                   visible="false">
+        </ImageView>
+        <ImageView fx:id="fm10" fitHeight="30.0" layoutX="295.0" layoutY="245.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm6" fitHeight="30.0" layoutX="182.0" layoutY="245.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm7" fitHeight="30.0" layoutX="187.0" layoutY="147.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm15" fitHeight="30.0" layoutX="399.0" layoutY="147.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm11" fitHeight="30.0" layoutX="290.0" layoutY="148.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm14" fitHeight="30.0" layoutX="402.0" layoutY="250.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm5" fitHeight="30.0" layoutX="183.0" layoutY="349.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm9" fitHeight="30.0" layoutX="290.0" layoutY="347.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+        <ImageView fx:id="fm13" fitHeight="30.0" layoutX="401.0" layoutY="348.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+        </ImageView>
+
+        <Button fx:id="ORANGE" layoutX="748.0" layoutY="375.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                style="-fx-background-color: orange;">
+        </Button>
+        <Button fx:id="WHITE" layoutX="786.0" layoutY="375.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                style="-fx-background-color: white;">
+        </Button>
+        <Button fx:id="BLACK" layoutX="824.0" layoutY="375.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                style="-fx-background-color: black;">
+        </Button>
+        <Button fx:id="UNCOLORED" layoutX="863.0" layoutY="375.0"
+                mnemonicParsing="false" onAction="#familyMemberButtonClick"
+                style="-fx-background-color: pink;">
+        </Button>
 
         <Button fx:id="button4" layoutX="71.0" layoutY="38.0"
                 mnemonicParsing="false" onAction="#actionSpaceButtonClick"
@@ -525,232 +731,16 @@
                 <Font name="Lucida Handwriting Italic" size="18.0"/>
             </font>
         </Label>
-        <ImageView fitHeight="7.0" fitWidth="461.0" layoutX="449.0"
-                   layoutY="372.0" pickOnBounds="true">
-            <image>
-                <Image url="@images/divide.png"/>
-            </image>
-        </ImageView>
         <Label fx:id="labelWoods" layoutX="802.0" layoutY="493.0" text="0"
                visible="false">
             <font>
                 <Font name="Lucida Handwriting Italic" size="18.0"/>
             </font>
         </Label>
-        <ImageView fx:id="fm1" fitHeight="30.0" layoutX="75.0" layoutY="348.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm2" fitHeight="30.0" layoutX="76.0" layoutY="246.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
 
-        </ImageView>
-        <ImageView fx:id="fm3" fitHeight="30.0" layoutX="77.0" layoutY="148.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-
-        </ImageView>
-        <ImageView fx:id="fm4" fitHeight="30.0" layoutX="78.0" layoutY="43.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm8" fitHeight="30.0" layoutX="184.0" layoutY="46.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm12" fitHeight="30.0" layoutX="292.0" layoutY="47.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm16" fitHeight="30.0" layoutX="397.0" layoutY="44.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm04" fitHeight="30.0" layoutX="339.0" layoutY="426.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm03" fitHeight="30.0" layoutX="311.0" layoutY="429.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm02" fitHeight="30.0" layoutX="277.0" layoutY="430.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm01" fitHeight="30.0" layoutX="242.0" layoutY="431.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="o4" fitHeight="30.0" layoutX="402.0" layoutY="483.0"
-                   pickOnBounds="true" preserveRatio="true" visible="true">
-        </ImageView>
-        <ImageView fx:id="o3" fitHeight="30.0" layoutX="403.0" layoutY="452.0"
-                   pickOnBounds="true" preserveRatio="true" visible="true">
-        </ImageView>
-        <ImageView fx:id="o2" fitHeight="30.0" layoutX="404.0" layoutY="425.0"
-                   pickOnBounds="true" preserveRatio="true" visible="true">
-        </ImageView>
-        <ImageView fx:id="o1" fitHeight="30.0" layoutX="401.0" layoutY="398.0"
-                   pickOnBounds="true" preserveRatio="true" visible="true">
-        </ImageView>
-        <ImageView fx:id="fm24" fitHeight="30.0" layoutX="413.0" layoutY="627.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm23" fitHeight="30.0" layoutX="376.0" layoutY="588.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm22" fitHeight="30.0" layoutX="329.0" layoutY="576.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm21" fitHeight="30.0" layoutX="276.0" layoutY="576.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm17" fitHeight="30.0" layoutX="13.0"
-                   layoutY="653.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm19" fitHeight="30.0" layoutX="13.0"
-                   layoutY="587.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm181" fitHeight="30.0" layoutX="78.0"
-                   layoutY="653.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm203" fitHeight="30.0" layoutX="133.0"
-                   layoutY="588.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm182" fitHeight="30.0" layoutX="107.0"
-                   layoutY="653.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm201" fitHeight="30.0" layoutX="81.0"
-                   layoutY="586.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm183" fitHeight="30.0" layoutX="135.0"
-                   layoutY="656.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm202" fitHeight="30.0" layoutX="105.0"
-                   layoutY="585.0" pickOnBounds="true" preserveRatio="true"
-                   visible="false">
-        </ImageView>
-        <ImageView fx:id="fm10" fitHeight="30.0" layoutX="295.0" layoutY="245.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm6" fitHeight="30.0" layoutX="182.0" layoutY="245.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm7" fitHeight="30.0" layoutX="187.0" layoutY="147.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm15" fitHeight="30.0" layoutX="399.0" layoutY="147.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm11" fitHeight="30.0" layoutX="290.0" layoutY="148.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm14" fitHeight="30.0" layoutX="402.0" layoutY="250.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm5" fitHeight="30.0" layoutX="183.0" layoutY="349.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm9" fitHeight="30.0" layoutX="290.0" layoutY="347.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-        <ImageView fx:id="fm13" fitHeight="30.0" layoutX="401.0" layoutY="348.0"
-                   pickOnBounds="true" preserveRatio="true" visible="false">
-        </ImageView>
-
-        <Button fx:id="ORANGE" layoutX="748.0" layoutY="375.0"
-                mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                style="-fx-background-color: orange;">
-        </Button>
-        <Button fx:id="WHITE" layoutX="786.0" layoutY="375.0"
-                mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                style="-fx-background-color: white;">
-        </Button>
-        <Button fx:id="BLACK" layoutX="824.0" layoutY="375.0"
-                mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                style="-fx-background-color: black;">
-        </Button>
-        <Button fx:id="UNCOLORED" layoutX="863.0" layoutY="375.0"
-                mnemonicParsing="false" onAction="#familyMemberButtonClick"
-                style="-fx-background-color: pink;">
-        </Button>
 
         <Label fx:id="label" layoutX="204.0" layoutY="510.0" prefHeight="19.0"
                prefWidth="237.0" text="Label" textFill="WHITE">
-            <font>
-                <Font name="System Bold Italic" size="13.0"/>
-            </font>
-        </Label>
-        <AnchorPane fx:id="servantsAnchor" layoutX="469.0" layoutY="452.0"
-                    prefHeight="209.0" prefWidth="387.0" visible="false">
-            <children>
-                <Button fx:id="plus" layoutX="96.0" layoutY="61.0"
-                        mnemonicParsing="false" onAction="#servantsButtonClick"
-                        prefHeight="50.0" prefWidth="50.0" text="+"/>
-                <Button fx:id="minus" layoutX="33.0" layoutY="61.0"
-                        mnemonicParsing="false" onAction="#servantsButtonClick"
-                        prefHeight="50.0" prefWidth="50.0" text="-"/>
-                <Button fx:id="done" layoutX="179.0" layoutY="140.0"
-                        mnemonicParsing="false" onAction="#servantsButtonClick"
-                        prefHeight="36.0" prefWidth="143.0" text="Done">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Button>
-                <Label fx:id="servants" layoutX="33.0" layoutY="23.0"
-                       prefHeight="16.0" prefWidth="154.0" text="servants:">
-                    <font>
-                        <Font name="System Bold Italic" size="13.0"/>
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
-        <AnchorPane fx:id="optionsAnchor" layoutX="460.0" layoutY="450.0"
-                    prefHeight="225.0" prefWidth="437.0" visible="false">
-
-        </AnchorPane>
-
-        <AnchorPane fx:id="privilegeAnchor" layoutX="470.0" layoutY="450.0"
-                    prefHeight="270.0" prefWidth="475.0" visible="false">
-            <children>
-                <Button fx:id="STONE_WOOD" layoutX="224.0" layoutY="98.0"
-                        mnemonicParsing="false" onAction="#privilegeButtonClick"
-                        text="S_W">
-            </Button>
-                <Button fx:id="SERVANTS" layoutX="112.0" layoutY="98.0"
-                        mnemonicParsing="false" onAction="#privilegeButtonClick"
-                        text="Servants">
-            </Button>
-                <Button fx:id="COINS" layoutX="11.0" layoutY="98.0"
-                        mnemonicParsing="false" onAction="#privilegeButtonClick"
-                        text="Coins">
-            </Button>
-                <Button fx:id="MILITARY" layoutX="362.0" layoutY="98.0"
-                        mnemonicParsing="false" onAction="#privilegeButtonClick"
-                        text="Military">
-            </Button>
-                <Button fx:id="FAITH" layoutX="296.0" layoutY="98.0"
-                        mnemonicParsing="false" onAction="#privilegeButtonClick"
-                        text="Faith">
-            </Button>
-                <Label fx:id="privilege" layoutX="26.0" layoutY="22.0"
-                       prefHeight="16.0" prefWidth="400.0" text="privilege">
-                    <font>
-                        <Font name="System Bold Italic" size="13.0"/>
-                    </font>
-                </Label>
-            </children>
-
-        </AnchorPane>
-
-        <Label fx:id="CURRENT" layoutX="450.0" layoutY="410.0"
-               textFill="#000000">
-            <font>
-                <Font name="System Bold Italic" size="13.0"/>
-            </font>
-        </Label>
-
-        <Label fx:id="playerColor" layoutX="450.0" layoutY="383.0"
-               prefHeight="30.0" prefWidth="170.0" text="Your color is: "
-               AnchorPane.topAnchor="383.0">
             <font>
                 <Font name="System Bold Italic" size="13.0"/>
             </font>
