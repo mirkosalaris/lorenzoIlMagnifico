@@ -11820,5 +11820,5 @@
     }
   },
   "actionMaxTime": 240000,
-  "startingMatchTimer": 3000
+  "startingMatchTimer": 30000
 }
