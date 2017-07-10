@@ -36,7 +36,7 @@ public class ResourcesConverting extends PermanentEffect {
 	@Override
 	public void applyEffect(Action action, Player player)
 			throws EffectApplyingException {
-		int choice = action.getProductionChoice();
+		Integer choice = action.getProductionChoice(false);
 		ResourcesList payResourcesList = options.get(choice).getFirst();
 		ResourcesList addResourcesList = options.get(choice).getSecond();
 
@@ -75,7 +75,8 @@ public class ResourcesConverting extends PermanentEffect {
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
-		int choice = action.getProductionChoice();
+		Integer choice = action.getProductionChoice(true);
+
 		ResourcesList payResourcesList = options.get(choice).getFirst();
 		if (!playerResources.checkEnoughResources(payResourcesList)) {
 			return false;

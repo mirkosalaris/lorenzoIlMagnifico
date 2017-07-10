@@ -32,7 +32,6 @@ public class ResourceToPrivilege extends PermanentEffect {
 	@Override
 	public void applyEffect(Action action, Player player)
 			throws EffectApplyingException, NotCorrectlyCheckedException {
-		action.getProductionChoice();
 		ResourcesList playerResourcesList = player.getPersonalBoard()
 				.getResourcesList();
 		if (isDoable(actionValue, action)) {
@@ -47,12 +46,12 @@ public class ResourceToPrivilege extends PermanentEffect {
 	public void chooseOption(ViewInterface view, ActionInterface action,
 	                         User user)
 			throws IOException, ClassNotFoundException {
-		action.addProductionChoice(null);
 		immediateCouncilPrivilegeI.chooseOptions(view, action, user);
 	}
 
 	@Override
 	public boolean check(Action action, ResourcesList playerResources) {
+
 		if (isDoable(actionValue, action)) {
 			if (playerResources.checkEnoughResources(fromResourcesList)) {
 				return true;

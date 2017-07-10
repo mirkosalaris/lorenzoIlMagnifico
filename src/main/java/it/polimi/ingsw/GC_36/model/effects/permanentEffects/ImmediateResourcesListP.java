@@ -29,10 +29,6 @@ public class ImmediateResourcesListP extends PermanentEffect {
 	public void applyEffect(Action action, Player player)
 			throws EffectApplyingException {
 		if (!(associatedCardType == CardType.VENTURE)) {
-			// necessary to avoid breaking the productionChoice's sequence
-			if (associatedCardType == CardType.BUILDING)
-				action.getProductionChoice();
-
 			if (isDoable(requiredActionValue, action)) {
 				// add resources to player
 				try {
@@ -56,14 +52,7 @@ public class ImmediateResourcesListP extends PermanentEffect {
 	public void chooseOption(ViewInterface view,
 	                         ActionInterface action, User user)
 			throws RemoteException {
-		// when the cardType is BUILDING we have to add a null production
-		// choice
-		// into action to avoid broking the sequence of choices of building's
-		// card
-
-		if (associatedCardType.equals(CardType.BUILDING)) {
-			action.addProductionChoice(null);
-		}
+		// no need to do anything
 	}
 
 	@Override

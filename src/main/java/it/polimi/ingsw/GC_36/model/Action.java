@@ -20,6 +20,7 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	private int baseActionValue;
 	private ResourcesList discount;
 	private List<LeaderCard> leaderCards;
+	private ArrayList<Integer> productionChoiceCopy;
 
 	public Action() throws RemoteException {
 		productionChoice = new ArrayList<>();
@@ -117,10 +118,19 @@ public class Action extends UnicastRemoteObject implements ActionInterface {
 	}
 
 	@Override
-	public Integer getProductionChoice() {
-		int choice = productionChoice.get(0);
-		productionChoice.remove(0);
-		return choice;
+	public Integer getProductionChoice(boolean checking) {
+		if (checking) {
+			if (productionChoiceCopy == null) {
+				productionChoiceCopy = new ArrayList<>(productionChoice);
+			}
+			Integer choice = productionChoiceCopy.get(0);
+			productionChoiceCopy.remove(0);
+			return choice;
+		} else {
+			Integer choice = productionChoice.get(0);
+			productionChoice.remove(0);
+			return choice;
+		}
 	}
 
 	@Override

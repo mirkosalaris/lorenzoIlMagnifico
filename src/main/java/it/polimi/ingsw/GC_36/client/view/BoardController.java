@@ -482,15 +482,8 @@ public class BoardController implements ViewInterface {
 
 			}
 		});
-		synchronized (lockServantIncrement) {
-			try {
-				while (incrementSelected.get()) {
-					lockServantIncrement.wait();
-				}
-			} catch (InterruptedException e) {
-				ExceptionLogger.log(e);
-			}
-		}
+		lockAndWait(lockServantIncrement, incrementSelected);
+
 		numberOfServants = increment.get();
 		System.out.println("number of servants: " + numberOfServants);
 
@@ -503,6 +496,18 @@ public class BoardController implements ViewInterface {
 			}
 		});
 		return numberOfServants;
+	}
+
+	private void lockAndWait(Object lock, AtomicBoolean checker) {
+		synchronized (lock) {
+			try {
+				while (!checker.get()) {
+					lock.wait();
+				}
+			} catch (InterruptedException e) {
+				ExceptionLogger.log(e);
+			}
+		}
 	}
 
 	@Override
@@ -678,17 +683,7 @@ public class BoardController implements ViewInterface {
 			}
 		});
 
-
-		synchronized (lock) {
-			try {
-				while (!done.get()) {
-					lock.wait();
-				}
-
-			} catch (InterruptedException e) {
-				ExceptionLogger.log(e);
-			}
-		}
+		lockAndWait(lock, done);
 		System.out.println("rejoining...");
 	}
 

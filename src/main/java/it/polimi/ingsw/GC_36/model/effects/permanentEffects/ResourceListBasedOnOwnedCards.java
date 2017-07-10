@@ -37,10 +37,6 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 	@Override
 	public void applyEffect(Action action, Player player)
 			throws EffectApplyingException {
-		// this call is necessary because the production choices are stored in
-		// sequence, and if we don't access them we broke the sequence
-
-		action.getProductionChoice();
 
 		if (isDoable(requiredActionValue, action)) {
 			//count the number of owned cards
@@ -63,10 +59,7 @@ public class ResourceListBasedOnOwnedCards extends PermanentEffect {
 	public void chooseOption(ViewInterface view,
 	                         ActionInterface action, User user)
 			throws RemoteException {
-		//non fa niente
-		// deve aggiungere un elemento nullo in action.productionChoice
-		action.addProductionChoice(null);
-
+		// no need to do anything
 	}
 
 	@Override

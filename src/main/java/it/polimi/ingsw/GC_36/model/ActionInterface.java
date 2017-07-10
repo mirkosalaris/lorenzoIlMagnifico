@@ -19,7 +19,7 @@ public interface ActionInterface extends Serializable, Remote {
 
 	int getActionValue(Player player) throws RemoteException;
 
-	Integer getProductionChoice() throws RemoteException;
+	Integer getProductionChoice(boolean checking) throws RemoteException;
 
 	int getActionValueIncrement() throws RemoteException;
 
