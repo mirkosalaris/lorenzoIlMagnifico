@@ -67,7 +67,7 @@ public class ViewGUI extends Application implements ViewInterface {
 	}
 
 	@Override
-	public Communicator chooseCommunicator(User user) throws Exception {
+	public Communicator chooseCommunicator(User user) {
 		return setupController.chooseCommunicator(user);
 	}
 

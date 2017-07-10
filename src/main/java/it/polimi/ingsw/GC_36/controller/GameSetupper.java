@@ -4,6 +4,7 @@ import it.polimi.ingsw.GC_36.Commons;
 import it.polimi.ingsw.GC_36.exception.SetupException;
 import it.polimi.ingsw.GC_36.model.*;
 import it.polimi.ingsw.GC_36.server.Participant;
+import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ class GameSetupper {
 		}
 	}
 
-	private void setupBonusTiles(List<Player> players) throws Exception {
+	private void setupBonusTiles(List<Player> players) throws SetupException {
 		if (GameMode.STANDARD.equals(mode)) {
 			for (Player p : players) {
 				p.setBonusTile(BonusTileId.DEFAULT);
@@ -49,7 +50,7 @@ class GameSetupper {
 		}
 	}
 
-	private void chooseBonusTiles(List<Player> players) throws Exception {
+	private void chooseBonusTiles(List<Player> players) throws SetupException {
 		ExceptionListener exceptionListener = new ExceptionListener();
 		List<Thread> threads = new ArrayList<>();
 
@@ -73,17 +74,21 @@ class GameSetupper {
 
 		// wait for all users to choose
 		for (int j = 0; j <= players.size() - 1; j++) {
-			threads.get(j).join();
+			try {
+				threads.get(j).join();
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+			}
 		}
 
 		Exception e = exceptionListener.get();
 		if (e != null) {
-			throw e;
+			throw new SetupException("Cannot complete setup of game", e);
 		}
 	}
 
 	private void setupLeaderCards(List<Player> players)
-			throws Exception {
+			throws SetupException {
 		if (GameMode.STANDARD.equals(mode)) {
 			// exit. This function has to be executed only in advanced mode
 			return;
@@ -104,7 +109,7 @@ class GameSetupper {
 	 * @param iteration
 	 * 		the choosing turn number
 	 */
-	private void startChoosingTurn(int iteration) throws Exception {
+	private void startChoosingTurn(int iteration) throws SetupException {
 		List<Thread> threads = new ArrayList<>();
 		ExceptionListener exceptionListener = new ExceptionListener();
 		for (int j = 0; j <= players.size() - 1; j++) {
@@ -131,12 +136,17 @@ class GameSetupper {
 
 		// wait for all users to choose
 		for (int j = 0; j <= players.size() - 1; j++) {
-			threads.get(j).join();
+			try {
+				threads.get(j).join();
+			} catch (InterruptedException e) {
+				ExceptionLogger.log(e);
+				Thread.currentThread().interrupt();
+			}
 		}
 
 		Exception e = exceptionListener.get();
 		if (e != null) {
-			throw e;
+			throw new SetupException("Cannot complete setup of game", e);
 		}
 	}
 

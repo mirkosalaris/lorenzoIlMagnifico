@@ -26,7 +26,7 @@ public interface ViewInterface extends Participant {
 
 	void show(String message);
 
-	Communicator chooseCommunicator(User user) throws Exception;
+	Communicator chooseCommunicator(User user);
 
 	GameMode chooseMode();
 

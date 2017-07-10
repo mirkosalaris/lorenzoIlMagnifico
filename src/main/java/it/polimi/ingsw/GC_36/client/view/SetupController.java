@@ -38,15 +38,13 @@ public class SetupController {
 	}
 
 
-	public void setupButtonClick(javafx.event.ActionEvent actionEvent)
-			throws Exception {
+	public void setupButtonClick(javafx.event.ActionEvent actionEvent) {
 		Button button = (Button) actionEvent.getSource();
 		comunicator.set(Integer.parseInt(button.getId()));
 		synchronized (comunicator) {
 			comunicator.notifyAll();
 		}
 		launchBoard();
-
 	}
 
 	public Communicator chooseCommunicator(User user) {
@@ -74,7 +72,7 @@ public class SetupController {
 		return communicato;
 	}
 
-	public void launchBoard() throws Exception {
+	public void launchBoard() {
 
 		primaryStage.setTitle("Lorenzo Il Magnifico");
 		primaryStage.setScene(this.boardScene);
