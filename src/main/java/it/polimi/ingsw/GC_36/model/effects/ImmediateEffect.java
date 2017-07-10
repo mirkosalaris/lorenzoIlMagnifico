@@ -22,5 +22,10 @@ public abstract class ImmediateEffect implements Serializable {
 			throws IOException, ClassNotFoundException;
 
 	@Override
+	public abstract int hashCode();
+
+	@Override
 	public abstract boolean equals(Object o);
+
+
 }

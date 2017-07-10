@@ -59,6 +59,7 @@ public class SetupController {
 						comunicator.wait();
 						choice = comunicator.get();
 					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
 						ExceptionLogger.log(e);
 					}
 				} while (choice == 0);

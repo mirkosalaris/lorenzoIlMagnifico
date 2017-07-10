@@ -36,7 +36,11 @@ public class Board {
 				ActionSpaceIds.class);
 
 		for (ActionSpaceIds id : ActionSpaceIds.values()) {
-			map.put(id, new ActionSpace(id, this));
+			if (id.equals(ActionSpaceIds.AS_COUNCIL)) {
+				map.put(id, new CouncilActionSpace(id, this));
+			} else {
+				map.put(id, new ActionSpace(id, this));
+			}
 		}
 
 		return map;
@@ -92,6 +96,11 @@ public class Board {
 		// reset players
 		for (Player p : players.values()) {
 			p.roundReset();
+		}
+
+		// clean towers
+		for (Tower t : towers.values()) {
+			t.reset();
 		}
 
 		setCurrentState(BoardState.UNINITIALIZED);

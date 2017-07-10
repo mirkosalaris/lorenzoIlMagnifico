@@ -237,7 +237,9 @@ public class ViewGUI extends Application implements ViewInterface {
 
 		primaryStage.show();
 
-		instance = this;
+		synchronized (ViewGUI.class) {
+			instance = this;
+		}
 
 		resource = getClass().getClassLoader().getResource("board.fxml");
 		loader = new FXMLLoader(resource);

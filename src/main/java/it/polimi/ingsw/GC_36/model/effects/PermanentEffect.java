@@ -29,6 +29,9 @@ public abstract class PermanentEffect implements Serializable {
 	}
 
 	@Override
+	public abstract int hashCode();
+
+	@Override
 	public abstract boolean equals(Object obj);
 
 	public abstract boolean check(Action action, ResourcesList

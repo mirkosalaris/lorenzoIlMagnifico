@@ -61,6 +61,10 @@ public class ActionExecutor {
 			if (actionSpace.isInTower()) {
 				DevelopmentCard card =
 						actionSpace.getAssociatedFloor().takeCard();
+				Tower tower =
+						actionSpace.getAssociatedFloor().getAssociatedTower();
+				tower.occupy();
+
 				ImmediateEffect immediateEffect = card.getImmediateEffect();
 				if (immediateEffect != null) {
 					card.getImmediateEffect().applyEffect(action, player);

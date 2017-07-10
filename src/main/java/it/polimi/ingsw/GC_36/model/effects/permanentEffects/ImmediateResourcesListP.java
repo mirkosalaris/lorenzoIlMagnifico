@@ -49,15 +49,15 @@ public class ImmediateResourcesListP extends PermanentEffect {
 	}
 
 	@Override
+	public boolean check(Action action, ResourcesList playerResources) {
+		return true;
+	}
+
+	@Override
 	public void chooseOption(ViewInterface view,
 	                         ActionInterface action, User user)
 			throws RemoteException {
 		// no need to do anything
-	}
-
-	@Override
-	public boolean check(Action action, ResourcesList playerResources) {
-		return true;
 	}
 
 	@Override

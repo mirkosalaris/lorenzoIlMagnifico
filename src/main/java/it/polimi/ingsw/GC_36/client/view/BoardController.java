@@ -383,23 +383,25 @@ public class BoardController implements ViewInterface {
 	@Override
 	public int chooseLeaderCard(List<LeaderCard> leaderCards)
 			throws IOException, ClassNotFoundException {
-		return 0;
+		throw new UnsupportedOperationException(
+				"GUI does not support advanced mode");
 	}
 
 	@Override
 	public LeaderCard useCard(List<LeaderCard> cardsAvailable)
 			throws IOException, ClassNotFoundException {
-		return null;
+		throw new UnsupportedOperationException(
+				"GUI does not support advanced mode");
 	}
 
 	@Override
 	public int chooseBonusTile() throws IOException, ClassNotFoundException {
-		return 0;
+		throw new UnsupportedOperationException(
+				"GUI does not support advanced mode");
 	}
 
 	@Override
 	public void outOfTime() throws IOException {
-		// TODO
 		System.out.println("you took too much to play your action");
 	}
 
@@ -433,6 +435,7 @@ public class BoardController implements ViewInterface {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 				ExceptionLogger.log(e);
 			}
 
@@ -499,6 +502,7 @@ public class BoardController implements ViewInterface {
 					lock.wait();
 				}
 			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 				ExceptionLogger.log(e);
 			}
 		}
@@ -529,6 +533,7 @@ public class BoardController implements ViewInterface {
 			try {
 				Thread.sleep(250);
 			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 				ExceptionLogger.log(e);
 			}
 		}
@@ -566,6 +571,7 @@ public class BoardController implements ViewInterface {
 					lock.wait();
 				}
 			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 				ExceptionLogger.log(e);
 			}
 			if (lockChosenPrivilege.equals(lock)) {
@@ -813,6 +819,7 @@ public class BoardController implements ViewInterface {
 					lockChooseOption.wait();
 				}
 			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 				ExceptionLogger.log(e);
 			}
 		}
@@ -849,7 +856,7 @@ public class BoardController implements ViewInterface {
 		} else if (CardType.BUILDING.equals(cardType)) {
 			devCard = (ImageView) scene.lookup(
 					"#imageView" + (floorNumber + 8));
-		} else if (CardType.VENTURE.equals(cardType)) {
+		} else { // VENTURE
 			devCard = (ImageView) scene.lookup(
 					"#imageView" + (floorNumber + 12));
 		}

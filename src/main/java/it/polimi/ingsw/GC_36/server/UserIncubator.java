@@ -30,7 +30,7 @@ public class UserIncubator extends UnicastRemoteObject
 
 	// AtomicInteger and not Integer
 	private Map<GameMode, AtomicInteger> totalPlayers;
-	private TimerTask timerTask;
+	private transient TimerTask timerTask;
 
 	public UserIncubator() throws RemoteException {
 		sockets = new HashMap<>();

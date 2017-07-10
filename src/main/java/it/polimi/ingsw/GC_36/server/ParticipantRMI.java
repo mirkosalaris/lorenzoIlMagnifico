@@ -74,7 +74,9 @@ public class ParticipantRMI implements Participant {
 					// synchronized to avoid being called together with play()
 					// because it'd cause problems with Scanner
 					synchronized (lockOutOfTime) {
-						lockOutOfTime.wait();
+						while (playing) {
+							lockOutOfTime.wait();
+						}
 					}
 
 					user.outOfTime();
