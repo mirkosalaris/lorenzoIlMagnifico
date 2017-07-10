@@ -16,7 +16,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -191,10 +194,15 @@ public class BoardController implements ViewInterface {
 	public void update(BoardState currentState)
 			throws IOException {
 		if (currentState.equals(BoardState.PREPARING)) {
-			ORANGE.setVisible(true);
-			WHITE.setVisible(true);
-			BLACK.setVisible(true);
-			UNCOLORED.setVisible(true);
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					ORANGE.setVisible(true);
+					WHITE.setVisible(true);
+					BLACK.setVisible(true);
+					UNCOLORED.setVisible(true);
+				}
+			});
 		}
 	}
 
@@ -414,6 +422,35 @@ public class BoardController implements ViewInterface {
 					mc.setVisible(false);
 				}
 			});
+		} else {
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println("Action failed. Play again");
+					label.setText("Action failed. Play again");
+					label.setTextFill(new Color(0.9, 0.1, 0.1, 1));
+					label.setBackground(new Background(
+							new BackgroundFill(
+									new Color(1, 1, 1, 1), null, null)));
+				}
+			});
+
+			// let the user read the message
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				ExceptionLogger.log(e);
+			}
+
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					label.setBackground(new Background(
+							new BackgroundFill(
+									new Color(1, 1, 1, 0), null, null)));
+					label.setTextFill(new Color(1, 1, 1, 1));
+				}
+			});
 		}
 	}
 
@@ -447,7 +484,7 @@ public class BoardController implements ViewInterface {
 		});
 		synchronized (lockServantIncrement) {
 			try {
-				while (incrementSelected.get() == false) {
+				while (incrementSelected.get()) {
 					lockServantIncrement.wait();
 				}
 			} catch (InterruptedException e) {
@@ -488,7 +525,15 @@ public class BoardController implements ViewInterface {
 
 	@Override
 	public int choosePrivilege(int n) {
-		//TODO
+		if (n > 1) {
+			// sleep a bit, to let the user have a graphic response
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+				ExceptionLogger.log(e);
+			}
+		}
+
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -508,6 +553,7 @@ public class BoardController implements ViewInterface {
 				privilegeAnchor.setVisible(false);
 			}
 		});
+
 
 		return choice.ordinal();
 	}
@@ -618,8 +664,6 @@ public class BoardController implements ViewInterface {
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						done.set(true);
-						lock.notifyAll();
 						synchronized (lock) {
 							done.set(true);
 							lock.notifyAll();

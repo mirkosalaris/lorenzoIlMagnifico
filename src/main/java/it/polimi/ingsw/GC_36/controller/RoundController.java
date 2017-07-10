@@ -40,7 +40,8 @@ public class RoundController {
 			// start playing
 			boolean executed = false;
 			do {
-				playingThread = new Thread(new TurnExecutor(player, mode));
+				TurnExecutor turnExecutor = new TurnExecutor(player, mode);
+				playingThread = new Thread(turnExecutor);
 				playingThread.start();
 
 				// wait for playingThread or the timer
@@ -172,8 +173,10 @@ public class RoundController {
 				action.setLeaderCards(cards);
 				p.play(action);
 
-				synchronized (playingLock) {
-					playingLock.notifyAll();
+				if (!Thread.interrupted()) {
+					synchronized (playingLock) {
+						playingLock.notifyAll();
+					}
 				}
 			} catch (IOException | ClassNotFoundException e) {
 				error = e;
