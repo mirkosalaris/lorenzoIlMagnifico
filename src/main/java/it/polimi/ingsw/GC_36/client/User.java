@@ -40,7 +40,6 @@ public class User extends UnicastRemoteObject implements UserInterface {
 
 	@Override
 	public void fatalError(String s) throws IOException {
-		// TODO think and impl
 		view.fatalError(s);
 	}
 

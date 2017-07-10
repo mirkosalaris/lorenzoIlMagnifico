@@ -5,12 +5,12 @@ import it.polimi.ingsw.GC_36.client.CommunicatorRMI;
 import it.polimi.ingsw.GC_36.client.CommunicatorSocket;
 import it.polimi.ingsw.GC_36.client.User;
 import it.polimi.ingsw.GC_36.utils.ExceptionLogger;
+import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 

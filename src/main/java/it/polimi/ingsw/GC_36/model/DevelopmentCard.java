@@ -67,7 +67,7 @@ public class DevelopmentCard implements Serializable {
 	private String requirementsToString(
 			List<Pair<ResourcesList, ResourcesList>> requirements) {
 		String s;
-		if (requirements == null || requirements.size() == 0) {
+		if (requirements == null || requirements.isEmpty()) {
 			s = "\tno requirements";
 		} else if (requirements.size() == 1) {
 			s = "\tto have: " + requirements.get(0).getFirst()

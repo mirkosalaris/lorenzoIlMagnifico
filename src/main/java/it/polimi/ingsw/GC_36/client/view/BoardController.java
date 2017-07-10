@@ -37,9 +37,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BoardController implements ViewInterface {
 	private Scene scene;
 	private Stage primaryStage;
-	private static final double MIN_FIT_HEIGHT = 500.0d;
-	private static final double MAX_FIT_HEIGHT = 1500.0d;
-
 	private final Object lockChosenPrivilege = new Object();
 	private final Object lockChosenActionSpace = new Object();
 	private final Object lockChosenMember = new Object();
@@ -48,7 +45,6 @@ public class BoardController implements ViewInterface {
 	private int chosenActionSpace;
 	private MemberColor chosenMember;
 	private CouncilPrivilege chosenPrivilege;
-	private int cardPaymentOption;
 	private String currentPeriod = "";
 	private String currentPlayer = "";
 	private AtomicInteger increment = new AtomicInteger(0);
@@ -95,8 +91,6 @@ public class BoardController implements ViewInterface {
 	private Label labelFaithPoints;
 	@FXML
 	private Label labelMilitaryPoints;
-	@FXML
-	private Label labelWoods;
 
 	@FXML
 	private Button ORANGE;
@@ -300,7 +294,7 @@ public class BoardController implements ViewInterface {
 				mc.length()).toLowerCase();
 		String name = "fm" + p + mc + ".png";
 		int actionSpaceId = id.value();
-		ImageView fm = null;
+		ImageView fm;
 		Image img = new Image(
 				"file:src/main/resources/images/familyMember/" + name);
 		if (actionSpaceId == 0) {
@@ -473,7 +467,7 @@ public class BoardController implements ViewInterface {
 	@Override
 	public int setActionValueIncrement() {
 		incrementSelected.set(false);
-		int numberOfServants = 0;
+		int numberOfServants;
 		increment.set(0);
 		Platform.runLater(new Runnable() {
 			@Override
@@ -726,7 +720,7 @@ public class BoardController implements ViewInterface {
 	public void servantsButtonClick(ActionEvent actionEvent) {
 		Button button = (Button) actionEvent.getSource();
 		String string = button.getId();
-		if (string.equals("plus")) {
+		if ("plus".equals(string)) {
 			increment.incrementAndGet();
 			Platform.runLater(new Runnable() {
 				@Override
@@ -737,7 +731,7 @@ public class BoardController implements ViewInterface {
 			});
 
 		}
-		if (string.equals("minus") && increment.get() > 0) {
+		if ("minus".equals(string) && increment.get() > 0) {
 			increment.decrementAndGet();
 			Platform.runLater(new Runnable() {
 				@Override
@@ -748,7 +742,7 @@ public class BoardController implements ViewInterface {
 			});
 
 		}
-		if (string.equals("done")) {
+		if ("done".equals(string)) {
 			synchronized (lockServantIncrement) {
 				incrementSelected.set(true);
 				lockServantIncrement.notifyAll();
